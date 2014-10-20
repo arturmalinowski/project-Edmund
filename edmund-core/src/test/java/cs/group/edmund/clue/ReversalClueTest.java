@@ -8,10 +8,9 @@ import static org.hamcrest.core.Is.is;
 
 public class ReversalClueTest {
 
-
     @Ignore
     @Test
-    public void anagramClueTestCanBeSolved() {
+    public void reversalClueTestCanBeSolved() {
         Clue clue = new ReversalClue();
         String solvedWord = clue.solve("Are you an ogre?");
 
