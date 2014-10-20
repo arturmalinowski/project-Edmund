@@ -10,7 +10,7 @@ public class ContainerClueTest {
 
     @Ignore
     @Test
-    public void anagramClueTestCanBeSolved() {
+    public void containerClueTestCanBeSolved() {
         Clue clue = new ContainerClue();
         String solvedWord = clue.solve("Stop getting letters from friends");
 

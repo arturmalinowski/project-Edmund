@@ -10,7 +10,7 @@ public class DoubleDefinitionsClueTest {
 
     @Ignore
     @Test
-    public void anagramClueTestCanBeSolved() {
+    public void doubleDefinitionsClueTestCanBeSolved() {
         Clue clue = new DoubleDefinitionsClue();
         String solvedWord = clue.solve("Yearn for quite a while");
 
