@@ -18,7 +18,7 @@ public class AnagramClueTest {
     }
 
     @Test
-    public void detectsThatClueIsNotAnAnAnagram() {
+    public void detectsThatClueIsNotAnAnagram() {
         Clue clue = new AnagramClue();
         assertThat(clue.isRelevant("yearn for quite a while"), is(false));
     }
