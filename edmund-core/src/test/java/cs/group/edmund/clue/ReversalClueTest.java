@@ -8,6 +8,18 @@ import static org.hamcrest.core.Is.is;
 
 public class ReversalClueTest {
 
+    @Test
+    public void detectsThatClueIsAReversal() {
+        Clue clue = new ContainerClue();
+        assertThat(clue.isRelevant("Physician brings fish round"), is(true));
+    }
+
+    @Test
+    public void detectsThatClueIsNotAReversal() {
+        Clue clue = new ContainerClue();
+        assertThat(clue.isRelevant("Crazy flying mammals"), is(false));
+    }
+
     @Ignore
     @Test
     public void reversalClueTestCanBeSolved() {

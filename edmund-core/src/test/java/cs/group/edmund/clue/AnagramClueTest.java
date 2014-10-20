@@ -20,7 +20,7 @@ public class AnagramClueTest {
     @Test
     public void detectsThatClueIsNotAnAnAnagram() {
         Clue clue = new AnagramClue();
-        assertThat(clue.isRelevant("dancing in the moonlight"), is(false));
+        assertThat(clue.isRelevant("yearn for quite a while"), is(false));
     }
 
     @Ignore
