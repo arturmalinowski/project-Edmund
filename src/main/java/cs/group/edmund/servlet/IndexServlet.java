@@ -1,22 +1,19 @@
-package servlet;
+package cs.group.edmund.servlet;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/myservlet")
-public class Servlet extends HttpServlet {
+import static org.eclipse.jetty.http.HttpStatus.OK_200;
+
+public class IndexServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        ServletOutputStream out = resp.getOutputStream();
-        out.flush();
-        out.close();
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setStatus(OK_200);
+        resp.getWriter().println("Just ask Edmund!");
     }
 
     @Override
@@ -27,6 +24,7 @@ public class Servlet extends HttpServlet {
             // solve the clue
             // display result
         }
+
     }
 
 }

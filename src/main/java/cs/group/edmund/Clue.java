@@ -1,3 +1,5 @@
+package cs.group.edmund;
+
 public abstract class Clue {
 
 	// Fields
