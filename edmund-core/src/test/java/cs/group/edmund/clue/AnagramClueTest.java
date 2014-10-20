@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.anyOf;
 
 public class AnagramClueTest {
 
@@ -21,9 +22,19 @@ public class AnagramClueTest {
 
     @Ignore
     @Test
-    public void anagramClueTestCanBeCreated() {
+    public void firstAnagramClueTestCanBeCreated() {
         Clue clue = new AnagramClue();
         String crypticCrossword = clue.create("nights");
+
         assertThat(crypticCrossword, containsString("things"));
+    }
+
+    @Ignore
+    @Test
+    public void secondAnagramClueTestCanBeCreated() {
+        Clue clue = new AnagramClue();
+        String crypticCrossword = clue.create("friend");
+
+        assertThat(crypticCrossword, anyOf(containsString("finder"), containsString("redfin")));
     }
 }
