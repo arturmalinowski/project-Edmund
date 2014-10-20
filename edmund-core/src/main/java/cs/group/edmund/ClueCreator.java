@@ -1,4 +1,4 @@
-package cs.group.edmund.clue;
+package cs.group.edmund;
 
 import cs.group.edmund.clue.Clue;
 
