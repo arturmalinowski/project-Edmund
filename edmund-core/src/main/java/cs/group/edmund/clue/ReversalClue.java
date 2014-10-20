@@ -8,6 +8,11 @@ public class ReversalClue implements Clue {
     }
 
     @Override
+    public boolean isRelevant(String phrase) {
+        return false;
+    }
+
+    @Override
     public String solve(String phrase) {
         return null;
     }

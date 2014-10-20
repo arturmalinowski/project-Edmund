@@ -11,6 +11,18 @@ import static org.hamcrest.CoreMatchers.anyOf;
 
 public class AnagramClueTest {
 
+    @Test
+    public void detectsThatClueIsAnAnagram() {
+        Clue clue = new AnagramClue();
+        assertThat(clue.isRelevant("Times when things appear obscure?"), is(true));
+    }
+
+    @Test
+    public void detectsThatClueIsNotAnAnAnagram() {
+        Clue clue = new AnagramClue();
+        assertThat(clue.isRelevant("dancing in the moonlight"), is(false));
+    }
+
     @Ignore
     @Test
     public void anagramClueTestCanBeSolved() {
