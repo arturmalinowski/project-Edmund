@@ -1,18 +1,8 @@
 package cs.group.edmund.clue;
 
-public abstract class Clue {
+public interface Clue {
 
-	// Fields
-	String answer;
-	String clue;
+	String create(String word);
+	String solve(String phrase);
 
-	int answerLength;
-	int answerXPosition;
-	int answerYPosition;
-	boolean answerVertical;
-
-
-	// Abstract Methods
-	abstract void create();
-	abstract void solve();
 }
