@@ -8,6 +8,16 @@ import static org.hamcrest.core.Is.is;
 
 public class ContainerClueTest {
 
+    @Test
+    public void detectsThatClueIsAnContainer() {
+        Clue clue = new ContainerClue();
+        assertThat(clue.isRelevant("Everything can be a container"), is(true));
+        assertThat(clue.isRelevant("No matter what the clue is"), is(true));
+        assertThat(clue.isRelevant("Containers have no magical keywords"), is(true));
+        assertThat(clue.isRelevant("Even this will return true"), is(true));
+        assertThat(clue.isRelevant(null), is(true));
+    }
+
     @Ignore
     @Test
     public void containerClueTestCanBeSolved() {

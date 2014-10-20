@@ -8,6 +8,11 @@ public class ContainerClue implements Clue {
     }
 
     @Override
+    public boolean isRelevant(String phrase) {
+        return true;
+    }
+
+    @Override
     public String solve(String phrase) {
         return null;
     }
