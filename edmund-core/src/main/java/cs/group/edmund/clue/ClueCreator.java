@@ -1,4 +1,6 @@
-package cs.group.edmund;
+package cs.group.edmund.clue;
+
+import cs.group.edmund.clue.Clue;
 
 public class ClueCreator {
     // Fields

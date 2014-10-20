@@ -1,4 +1,4 @@
-package cs.group.edmund;
+package cs.group.edmund.clue;
 
 public abstract class Clue {
 
