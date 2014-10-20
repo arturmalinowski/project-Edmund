@@ -11,11 +11,15 @@ public class ContainerClueTest {
     @Test
     public void detectsThatClueIsAnContainer() {
         Clue clue = new ContainerClue();
-        assertThat(clue.isRelevant("Everything can be a container"), is(true));
-        assertThat(clue.isRelevant("No matter what the clue is"), is(true));
-        assertThat(clue.isRelevant("Containers have no magical keywords"), is(true));
-        assertThat(clue.isRelevant("Even this will return true"), is(true));
-        assertThat(clue.isRelevant(null), is(true));
+        assertThat(clue.isRelevant("Bird allowed outside tavern"), is(true));
+        assertThat(clue.isRelevant("Relative entering Highland dance and showing off"), is(true));
+        assertThat(clue.isRelevant("Stuck with tot holding present"), is(true));
+    }
+
+    @Test
+    public void detectsThatClueIsNotAContainer() {
+        Clue clue = new ContainerClue();
+        assertThat(clue.isRelevant("Crazy flying mammals"), is(false));
     }
 
     @Ignore
