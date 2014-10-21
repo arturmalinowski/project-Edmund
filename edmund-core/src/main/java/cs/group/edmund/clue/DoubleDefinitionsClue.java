@@ -1,5 +1,7 @@
 package cs.group.edmund.clue;
 
+import cs.group.edmund.solver.DoubleDefinitionSolver;
+
 public class DoubleDefinitionsClue implements Clue {
 
     @Override
@@ -9,6 +11,8 @@ public class DoubleDefinitionsClue implements Clue {
 
     @Override
     public boolean isRelevant(String phrase) {
+        DoubleDefinitionSolver doubleDefinitionSolver = new DoubleDefinitionSolver();
+        doubleDefinitionSolver.getSynonyms(phrase);
         return false;
     }
 
