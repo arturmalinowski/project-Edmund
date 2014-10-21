@@ -1,7 +1,5 @@
 package cs.group.edmund.utils;
 
-import org.apache.commons.io.FileUtils;
-
 import java.io.File;
 import java.net.URI;
 import java.util.ArrayList;
