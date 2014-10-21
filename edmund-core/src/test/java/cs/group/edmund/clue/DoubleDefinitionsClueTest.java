@@ -1,6 +1,6 @@
 package cs.group.edmund.clue;
 
-import cs.group.edmund.solver.ThesaurusHttpUrlConnection;
+import cs.group.edmund.fixtures.HttpClient;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -34,10 +34,9 @@ public class DoubleDefinitionsClueTest {
 
     @Test
     public void thesaurusHttpConnectionOK() throws Exception {
-        ThesaurusHttpUrlConnection httpUrlConnection = new ThesaurusHttpUrlConnection();
-        httpUrlConnection.sendGet("Honey");
+        clue.sendGet("Honey");
 
-        assertThat(httpUrlConnection.responseCode(), is(200));
+        assertThat(HttpClient.responseCode(), is(200));
     }
 
 }

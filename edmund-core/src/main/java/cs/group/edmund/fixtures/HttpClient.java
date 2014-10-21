@@ -7,19 +7,26 @@ import java.io.IOException;
 
 public class HttpClient {
 
+    private static int responseCode;
+
     public static String makeRequest(String url) {
         org.apache.commons.httpclient.HttpClient client = new org.apache.commons.httpclient.HttpClient();
         HttpMethod method = new GetMethod(url);
 
         String responseBody = "";
         try {
-            client.executeMethod(method);
+            responseCode = client.executeMethod(method);
             responseBody = method.getResponseBodyAsString();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         return responseBody;
+
+    }
+
+    public static int responseCode() {
+        return responseCode;
     }
 
 }
