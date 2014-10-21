@@ -32,4 +32,9 @@ public class ContainerClue implements Clue {
         return null;
     }
 
+    @Override
+    public String sendGet(String url) {
+        return null;
+    }
+
 }
