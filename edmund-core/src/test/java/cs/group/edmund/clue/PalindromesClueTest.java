@@ -12,7 +12,7 @@ public class PalindromesClueTest {
     @Test
     public void palindromesClueTestCanBeSolved() {
         Clue clue = new PalindromesClue();
-        String solvedWord = clue.solve("Advance in either direction");
+        String solvedWord = clue.solve("Advance in either direction", 6);
 
         assertThat(solvedWord, is("put up"));
     }

@@ -11,7 +11,9 @@ public class HttpClient {
 
     public static String makeRequest(String url) {
         org.apache.commons.httpclient.HttpClient client = new org.apache.commons.httpclient.HttpClient();
+
         HttpMethod method = new GetMethod(url);
+
 
         String responseBody = "";
         try {

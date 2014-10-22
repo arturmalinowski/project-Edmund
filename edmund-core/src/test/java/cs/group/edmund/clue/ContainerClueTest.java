@@ -26,7 +26,7 @@ public class ContainerClueTest {
     @Test
     public void containerClueTestCanBeSolved() {
         Clue clue = new ContainerClue();
-        String solvedWord = clue.solve("Stop getting letters from friends");
+        String solvedWord = clue.solve("Stop getting letters from friends", 3);
 
         assertThat(solvedWord, is("end"));
     }

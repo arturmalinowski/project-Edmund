@@ -27,7 +27,7 @@ public class AnagramClueTest {
     @Test
     public void anagramClueTestCanBeSolved() {
         Clue clue = new AnagramClue();
-        String solvedWord = clue.solve("Times when things appear obscure?");
+        String solvedWord = clue.solve("Times when things appear obscure?", 6);
 
         assertThat(solvedWord, is("nights"));
     }

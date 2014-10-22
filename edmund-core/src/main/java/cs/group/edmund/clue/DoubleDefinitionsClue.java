@@ -19,7 +19,7 @@ public class DoubleDefinitionsClue implements Clue {
     }
 
     @Override
-    public String solve(String phrase) {
+    public String solve(String phrase, int answerLength) {
         return null;
     }
 
