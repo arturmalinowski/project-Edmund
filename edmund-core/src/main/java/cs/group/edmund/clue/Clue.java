@@ -6,5 +6,4 @@ public interface Clue {
 
     boolean isRelevant(String phrase);
     String solve(String phrase);
-    String sendGet(String url);
 }

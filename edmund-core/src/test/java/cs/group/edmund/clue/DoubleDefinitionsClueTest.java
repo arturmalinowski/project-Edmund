@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 public class DoubleDefinitionsClueTest {
 
-    private Clue clue;
+    private DoubleDefinitionsClue clue;
 
     @Before
     public void setup() {
