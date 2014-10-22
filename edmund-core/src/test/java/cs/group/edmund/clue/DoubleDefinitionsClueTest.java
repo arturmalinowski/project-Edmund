@@ -27,7 +27,7 @@ public class DoubleDefinitionsClueTest {
     @Ignore
     @Test
     public void doubleDefinitionsClueTestCanBeSolved() {
-        String solvedWord = clue.solve("Yearn for quite a while");
+        String solvedWord = clue.solve("Yearn for quite a while", 4);
 
         assertThat(solvedWord, is("long"));
     }
