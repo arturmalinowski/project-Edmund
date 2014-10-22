@@ -17,9 +17,4 @@ public class PalindromesClue implements Clue {
         return null;
     }
 
-    @Override
-    public String sendGet(String url) {
-        return null;
-    }
-
 }
