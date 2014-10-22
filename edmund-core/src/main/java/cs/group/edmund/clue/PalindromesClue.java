@@ -13,7 +13,7 @@ public class PalindromesClue implements Clue {
     }
 
     @Override
-    public String solve(String phrase, int answerLength) {
+    public String solve(String phrase, int... answerLength) {
         return null;
     }
 
