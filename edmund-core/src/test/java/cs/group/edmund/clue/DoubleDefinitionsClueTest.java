@@ -2,7 +2,6 @@ package cs.group.edmund.clue;
 
 import cs.group.edmund.fixtures.HttpClient;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -18,18 +17,17 @@ public class DoubleDefinitionsClueTest {
         clue = new DoubleDefinitionsClue();
     }
 
-    @Ignore
     @Test
     public void detectsTheDoubleDefinitionClue() {
         assertEquals(clue.isRelevant("Expensive honey"), true);
     }
 
-    @Ignore
+    // enable answer length
     @Test
-    public void doubleDefinitionsClueTestCanBeSolved() {
-        String solvedWord = clue.solve("Yearn for quite a while", 4);
+    public void basicDoubleDefinitionClueWithDefinitionsAddEitherEndCanBeSolved() {
+        String solvedWord = clue.solve("Expensive sweet golden honey", 4);
 
-        assertThat(solvedWord, is("long"));
+        assertThat(solvedWord, is("dear"));
     }
 
     @Test
