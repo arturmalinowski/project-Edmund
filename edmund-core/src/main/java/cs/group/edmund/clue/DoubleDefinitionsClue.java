@@ -41,15 +41,10 @@ public class DoubleDefinitionsClue implements Clue {
 
     private void getUnformattedSynonymResults(String word, int i) {
         unformattedSynonymsResults = new String[2];
-        try {
-            unformattedSynonymsResults[i] = sendGet(word);
-        } catch (Exception e) {
-            System.out.println("Error occurred during GET request");
-        }
+        unformattedSynonymsResults[i] = sendGet(word);
         System.out.println(i + ": " + unformattedSynonymsResults[i]);
     }
 
-    @Override
     public String sendGet(String word) {
         String url = "http://words.bighugelabs.com/api/2/ecdcfa6e1dd349d1d1f4c0755f8b4d1d/" + word + "/";
         return HttpClient.makeRequest(url);
