@@ -24,7 +24,7 @@ public class DoubleDefinitionsClueTest {
 
     // enable answer length
     @Test
-    public void basicDoubleDefinitionClueWithDefinitionsAddEitherEndCanBeSolved() {
+    public void basicDoubleDefinitionClueWithDefinitionsAtEitherEndCanBeSolved() {
         String solvedWord = clue.solve("Expensive sweet golden honey", 4);
 
         assertThat(solvedWord, is("dear"));
