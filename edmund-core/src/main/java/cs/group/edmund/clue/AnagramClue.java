@@ -32,9 +32,4 @@ public class AnagramClue implements Clue {
         return null;
     }
 
-    @Override
-    public String sendGet(String url) {
-        return null;
-    }
-
 }
