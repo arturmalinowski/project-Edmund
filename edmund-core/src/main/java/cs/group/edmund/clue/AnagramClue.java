@@ -1,6 +1,14 @@
 package cs.group.edmund.clue;
 
+import cs.group.edmund.fixtures.HttpClient;
+
+import java.util.ArrayList;
 import java.util.List;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import static java.util.Arrays.asList;
 
@@ -28,8 +36,32 @@ public class AnagramClue implements Clue {
     }
 
     @Override
-    public String solve(String phrase, int... answerLength) {
+    public String solve(String phrase, int ... answerLength) {
         return null;
+    }
+
+    public List findAnagram(String word) {
+        List anagrams = new ArrayList<String>();
+
+        String httpResponse = HttpClient.makeRequest("http://www.solverscrabble.com/words-with-the-letters-" + word);
+
+        if (httpResponse.contains("Anagrams of " + word)) {
+
+            int resultStartPosition = httpResponse.indexOf("<p class=\"letterInfo\">Anagrams");
+            int resultEndingPosition = httpResponse.indexOf("<p class=\"letterInfo\">Words with");
+            String result = httpResponse.substring(resultStartPosition, resultEndingPosition);
+
+            Document document = Jsoup.parse(result);
+            Elements elements = document.getElementsByClass("jumble");
+
+            for (Element element : elements) {
+                anagrams.add(element.text());
+            }
+        }
+        else {
+            return null;
+        }
+        return anagrams;
     }
 
 }
