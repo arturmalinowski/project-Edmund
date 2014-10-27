@@ -31,21 +31,21 @@ public class ThesaurusTest {
 
     @Test
     public void nounTest(){
-        List list = thesaurus.getNouns("future");
+        List list = thesaurus.getSynonyms(Thesaurus.SynonymType.NOUN, "future");
         assertThat(list.contains("hereafter"), is(true));
         assertThat(list.contains("time to come"), is(true));
     }
 
     @Test
     public void adjectiveTest(){
-        List list = thesaurus.getAdjectives("future");
+        List list = thesaurus.getSynonyms(Thesaurus.SynonymType.ADJECTIVE, "future");
         assertThat(list.contains("next"), is(true));
         assertThat(list.contains("later"), is(true));
     }
 
     @Test
     public void verbTest(){
-        List list = thesaurus.getVerbs("time");
+        List list = thesaurus.getSynonyms(Thesaurus.SynonymType.VERB, "time");
         assertThat(list.contains("clock"), is(true));
         assertThat(list.contains("schedule"), is(true));
     }
