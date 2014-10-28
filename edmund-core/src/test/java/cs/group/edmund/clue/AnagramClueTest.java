@@ -25,7 +25,6 @@ public class AnagramClueTest {
         assertThat(clue.isRelevant("yearn for quite a while"), is(false));
     }
 
-    @Ignore
     @Test
     public void anagramClueTestCanBeSolved() {
         clue = new AnagramClue();
@@ -61,4 +60,5 @@ public class AnagramClueTest {
         assertThat(listOfWords.contains("redfin"), is(true));
         assertThat(listOfWords.contains("refind"), is(true));
     }
+
 }

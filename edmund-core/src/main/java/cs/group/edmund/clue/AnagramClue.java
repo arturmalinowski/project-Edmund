@@ -3,6 +3,7 @@ package cs.group.edmund.clue;
 import cs.group.edmund.fixtures.HttpClient;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.jsoup.Jsoup;
@@ -37,7 +38,53 @@ public class AnagramClue implements Clue {
 
     @Override
     public String solve(String phrase, int ... answerLength) {
-        return null;
+        String keyWord = null;
+        String[] words = phrase.replaceAll("[-+.^:,?!]","").toUpperCase().split(" ");
+        ArrayList<String> newList = new ArrayList<>(Arrays.asList(words));
+
+        Boolean isAnagram = false;
+        for(String word : newList) {
+            if (keyWords.contains(word)) {
+                keyWord = word;
+                isAnagram = true;
+            }
+        }
+
+        if (!isAnagram) {
+            return "Could not solve this clue.";
+        }
+        else {
+            newList.remove(keyWord);
+
+            ArrayList<String> matchingWords = new ArrayList<>();
+
+            for (int i = 0; i<answerLength.length; i++) {
+
+                for(String word : newList) {
+                    if (word.length() == answerLength[i]) {
+                        matchingWords.add(word);
+                    }
+                }
+
+            }
+
+            String possibleAnswer = null;
+
+            for(String word : matchingWords) {
+                List<String> answers = findAnagram(word);
+
+                // TODO need to distinguish possible answers, when each word has just 1 result - using synonyms
+                if ((answers != null) && (answers.size() < 2)) {
+                    possibleAnswer = answers.get(0);
+                }
+                // TODO come up with a solution when there is more then one anagram of a word
+                else {
+
+                }
+            }
+
+            return possibleAnswer;
+        }
     }
 
     public List findAnagram(String word) {
@@ -55,13 +102,21 @@ public class AnagramClue implements Clue {
             Elements elements = document.getElementsByClass("jumble");
 
             for (Element element : elements) {
-                anagrams.add(element.text());
+                if (!element.text().equals(word.toLowerCase())) {
+                    anagrams.add(element.text());
+                }
             }
         }
         else {
             return null;
         }
-        return anagrams;
+
+        if ((anagrams.size() == 0) || (anagrams.size() < 2) && (anagrams.get(0).equals(word.toLowerCase()))) {
+            return null;
+        }
+        else {
+            return anagrams;
+        }
     }
 
 }
