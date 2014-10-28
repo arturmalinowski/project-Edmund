@@ -49,4 +49,12 @@ public class ThesaurusTest {
         assertThat(list.contains("clock"), is(true));
         assertThat(list.contains("schedule"), is(true));
     }
+
+    @Test
+    public void allSynonymsTest() {
+        List list = thesaurus.getAllSynonyms("stable");
+        assertThat(list.contains("static"), is(true));
+        assertThat(list.contains("stalls"), is(true));
+        assertThat(list.contains("shelter"), is(true));
+    }
 }

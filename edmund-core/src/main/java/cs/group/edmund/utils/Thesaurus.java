@@ -51,4 +51,13 @@ public class Thesaurus {
         return list;
     }
 
+    public List getAllSynonyms(String word) {
+        List list = new ArrayList<String>();
+        list = getSynonyms(SynonymType.VERB, word);
+        list.addAll(getSynonyms(SynonymType.ADJECTIVE, word));
+        list.addAll(getSynonyms(SynonymType.NOUN, word));
+
+        return list;
+    }
+
 }
