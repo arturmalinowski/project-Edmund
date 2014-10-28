@@ -43,12 +43,18 @@ public class Thesaurus {
     public List getSynonyms(SynonymType type, String word) {
         List list = new ArrayList<String>();
         JSONObject obj = getJSON(word);
-        JSONArray arr = obj.getJSONObject(type.toString()).getJSONArray("syn");
-        for (int i = 0; i < arr.length(); i++) {
-            list.add(arr.getString(i));
+
+        if (obj.has(type.toString())) {
+            JSONArray arr = obj.getJSONObject(type.toString()).getJSONArray("syn");
+            for (int i = 0; i < arr.length(); i++) {
+                list.add(arr.getString(i));
+            }
+            return list;
+        }
+        else {
+            return list;
         }
 
-        return list;
     }
 
     public List getAllSynonyms(String word) {
