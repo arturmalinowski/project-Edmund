@@ -74,5 +74,4 @@ public class ContainerClueTest {
         words = thesaurus.getAllSynonyms("Hat");
         System.out.println(words);
     }
-
 }
