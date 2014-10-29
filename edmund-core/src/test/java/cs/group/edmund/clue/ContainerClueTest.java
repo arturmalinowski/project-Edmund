@@ -1,7 +1,12 @@
 package cs.group.edmund.clue;
 
+import cs.group.edmund.utils.Thesaurus;
 import org.junit.Ignore;
 import org.junit.Test;
+import java.util.List;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -12,8 +17,6 @@ public class ContainerClueTest {
     public void detectsThatClueIsAnContainer() {
         Clue clue = new ContainerClue();
         assertThat(clue.isRelevant("Bird allowed outside tavern"), is(true));
-        assertThat(clue.isRelevant("Relative entering Highland dance and showing off"), is(true));
-        assertThat(clue.isRelevant("Stuck with tot holding present"), is(true));
     }
 
     @Test
@@ -26,9 +29,50 @@ public class ContainerClueTest {
     @Test
     public void containerClueTestCanBeSolved() {
         Clue clue = new ContainerClue();
-        String solvedWord = clue.solve("Stop getting letters from friends", 3);
+        String solvedWord = clue.solve("Bird allowed outside tavern", 6);
 
-        assertThat(solvedWord, is("end"));
+        assertThat(solvedWord, is("linnet"));
+    }
+
+    @Test
+    public void testGetKeyword() {
+        ContainerClue clue = new ContainerClue();
+        assertThat(clue.getKeyword("BIRD ALLOWED OUTSIDE TAVERN"), is("OUTSIDE"));
+    }
+
+    @Test
+    public void testGetSideWords() {
+        ContainerClue clue = new ContainerClue();
+
+        String phrase = "BIRD ALLOWED OUTSIDE TAVERN";
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("BIRD");
+        list.add("TAVERN");
+
+        assertThat(clue.getSideWords(phrase), is(list));
+    }
+
+    @Test
+    public void testSplitPhrase() {
+        ContainerClue clue = new ContainerClue();
+
+        String phrase = "BIRD ALLOWED OUTSIDE TAVERN";
+        String keyword = "OUTSIDE";
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("BIRD ALLOWED");
+        list.add("TAVERN");
+
+        assertThat(clue.splitPhrase(phrase,keyword), is(list));
+    }
+
+    @Test
+    public void testGetSolutions() {
+        ContainerClue clue = new ContainerClue();
+
+        Thesaurus thesaurus = new Thesaurus();
+        List words = null;
+        words = thesaurus.getAllSynonyms("Hat");
+        System.out.println(words);
     }
 
 }
