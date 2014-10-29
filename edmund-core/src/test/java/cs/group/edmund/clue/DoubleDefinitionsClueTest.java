@@ -2,6 +2,7 @@ package cs.group.edmund.clue;
 
 import cs.group.edmund.fixtures.HttpClient;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -24,10 +25,24 @@ public class DoubleDefinitionsClueTest {
 
     // enable answer length
     @Test
-    public void basicDoubleDefinitionClueWithDefinitionsAtEitherEndCanBeSolved() {
+    public void limitedDoubleDefinitionClueCanBeSolved() {
         String solvedWord = clue.solve("Expensive sweet golden honey", 4);
 
         assertThat(solvedWord, is("dear"));
+    }
+
+    @Test
+    public void handlesWhenNoMatchingWordIsFound() {
+        String solvedWord = clue.solve("Blah blah bluegh", 4);
+
+        assertThat(solvedWord, is("Answer not found :("));
+    }
+
+    @Ignore
+    @Test
+    public void correctLengthWordIsReturned() {
+        String solvedWord = clue.solve("Yearn for quite a while", 4);
+        assertThat(solvedWord, is("long"));
     }
 
     @Test
