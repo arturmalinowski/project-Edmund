@@ -1,5 +1,6 @@
 package cs.group.edmund.clue;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import cs.group.edmund.fixtures.HttpClient;
 
 import java.util.ArrayList;
@@ -39,52 +40,56 @@ public class AnagramClue implements Clue {
     @Override
     public String solve(String phrase, int ... answerLength) {
         String keyWord = null;
-        String[] words = phrase.replaceAll("[-+.^:,?!]","").toUpperCase().split(" ");
+        String possibleAnswer = null;
+        String[] words = phrase.replaceAll("[-+.^:,?!/]"," ").toUpperCase().split(" ");
         ArrayList<String> newList = new ArrayList<>(Arrays.asList(words));
+        newList.removeAll(Arrays.asList("", null));
 
-        Boolean isAnagram = false;
-        for(String word : newList) {
-            if (keyWords.contains(word)) {
-                keyWord = word;
-                isAnagram = true;
+        for (int i = 0; i<answerLength.length; i++) {
+
+            Boolean isAnagram = false;
+
+            ArrayList<String> tempList = new ArrayList<String>();
+            tempList.addAll(newList);
+
+            for(String word : newList) {
+                if (keyWords.contains(word)) {
+                    if (isValidKeyword(tempList, word, answerLength[i])) {
+                        keyWord = word;
+                        isAnagram = true;
+                        break;
+                    }
+                }
             }
-        }
+            if (!isAnagram) {
+                return "Could not solve this clue. Very likely this isn't an anagram type of a clue.";
+            }
+            else {
+                newList.remove(keyWord);
 
-        if (!isAnagram) {
-            return "Could not solve this clue.";
-        }
-        else {
-            newList.remove(keyWord);
+                ArrayList<String> matchingWords = new ArrayList<>();
 
-            ArrayList<String> matchingWords = new ArrayList<>();
-
-            for (int i = 0; i<answerLength.length; i++) {
-
-                for(String word : newList) {
+                for (String word : newList) {
                     if (word.length() == answerLength[i]) {
                         matchingWords.add(word);
                     }
                 }
+                for (String word : matchingWords) {
+                    List<String> answers = findAnagram(word);
 
-            }
+                    // TODO need to distinguish possible answers, when each word has just 1 result - using synonyms
+                    if ((answers != null) && (answers.size() < 2)) {
+                        possibleAnswer = answers.get(0);
+                    }
+                    // TODO come up with a solution when there is more then one anagram of a word
+                    else {
 
-            String possibleAnswer = null;
-
-            for(String word : matchingWords) {
-                List<String> answers = findAnagram(word);
-
-                // TODO need to distinguish possible answers, when each word has just 1 result - using synonyms
-                if ((answers != null) && (answers.size() < 2)) {
-                    possibleAnswer = answers.get(0);
-                }
-                // TODO come up with a solution when there is more then one anagram of a word
-                else {
-
+                    }
                 }
             }
 
-            return possibleAnswer;
         }
+        return possibleAnswer;
     }
 
     public List findAnagram(String word) {
@@ -117,6 +122,28 @@ public class AnagramClue implements Clue {
         else {
             return anagrams;
         }
+    }
+
+    public Boolean isValidKeyword(ArrayList<String> list, String keyWord, int answerLength) {
+        Boolean check = false;
+        list.remove(keyWord);
+
+        for(String word : list) {
+            if (word.length() > answerLength) {
+                list.remove(word);
+                continue;
+            }
+            for(String secondWord : list) {
+                if (secondWord.length() + word.length() == answerLength) {
+                    check = true;
+                }
+            }
+            if (word.length() == answerLength) {
+                check = true;
+            }
+        }
+        list.add(keyWord);
+        return check;
     }
 
 }
