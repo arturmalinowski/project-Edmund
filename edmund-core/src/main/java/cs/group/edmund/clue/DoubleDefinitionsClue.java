@@ -1,6 +1,6 @@
 package cs.group.edmund.clue;
 
-import cs.group.edmund.fixtures.HttpClient;
+import cs.group.edmund.utils.Thesaurus;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,8 +31,8 @@ public class DoubleDefinitionsClue implements Clue {
     }
 
     public String sendGet(String word) {
-        String url = "http://words.bighugelabs.com/api/2/ecdcfa6e1dd349d1d1f4c0755f8b4d1d/" + word + "/xml";
-        return HttpClient.makeRequest(url);
+        Thesaurus thesaurus = new Thesaurus();
+        return thesaurus.getXML(word);
     }
 
     public String getAnswer(String phrase) {
