@@ -3,6 +3,8 @@ package cs.group.edmund.clue;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -35,6 +37,15 @@ public class AnagramClueTest {
 
     @Ignore
     @Test
+    public void secondAnagramClueCanBeSolved() {
+        clue = new AnagramClue();
+        String answer = clue.solve("School run - true/false", 7);
+
+        assertThat(answer, is("nurture"));
+    }
+
+    @Ignore
+    @Test
     public void firstAnagramClueTestCanBeCreated() {
         clue = new AnagramClue();
         String crypticCrossword = clue.create("nights");
@@ -61,4 +72,19 @@ public class AnagramClueTest {
         assertThat(listOfWords.contains("refind"), is(true));
     }
 
+    @Test
+    public void isValidKeywordTest() {
+        clue = new AnagramClue();
+        ArrayList list = new ArrayList<>(Arrays.asList("school", "run", "true", "false"));
+
+        assertThat(clue.isValidKeyword(list, "run", 7), is(false));
+    }
+
+    @Test
+    public void isValidKeywordSecondTest() {
+        clue = new AnagramClue();
+        ArrayList list = new ArrayList<>(Arrays.asList("school", "run", "true", "false"));
+
+        assertThat(clue.isValidKeyword(list, "false", 7), is(true));
+    }
 }
