@@ -66,12 +66,42 @@ public class ContainerClueTest {
     }
 
     @Test
-    public void testGetSolutions() {
+    public void testGetLeftRightWords() {
         ContainerClue clue = new ContainerClue();
 
+        String leftHalf = "ALLOWED";
+        String rightHalf = "TAVERN";
+
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("ALLOWED");
+        list.add("TAVERN");
+
+
+        assertThat(clue.getLeftRightWords(leftHalf, rightHalf), is(list));
+    }
+
+    @Ignore
+    @Test
+    public void testCompareLists() {
+        ContainerClue clue = new ContainerClue();
+
+        ArrayList<String> synonyms = new ArrayList<String>();
+        ArrayList<String> solutions = new ArrayList<String>();
+        synonyms.add("ROBIN");
+        synonyms.add("LINNET");
+
+        // TO COMPLETE
+    }
+
+    @Ignore
+    @Test
+    public void testGetSolutions() {
+        ContainerClue clue = new ContainerClue();
         Thesaurus thesaurus = new Thesaurus();
-        List words = null;
-        words = thesaurus.getAllSynonyms("Hat");
-        System.out.println(words);
+
+        String leftHalf = "BIRD ALLOWED";
+        String rightHalf = "TAVERN";
+
+        // TO COMPLETE
     }
 }
