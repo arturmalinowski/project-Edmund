@@ -80,7 +80,6 @@ public class ContainerClueTest {
         assertThat(clue.getLeftRightWords(leftHalf, rightHalf), is(list));
     }
 
-    @Ignore
     @Test
     public void testCompareLists() {
         ContainerClue clue = new ContainerClue();
@@ -89,8 +88,13 @@ public class ContainerClueTest {
         ArrayList<String> solutions = new ArrayList<String>();
         synonyms.add("ROBIN");
         synonyms.add("LINNET");
+        synonyms.add("OWL");
+        synonyms.add("PIGEON");
+        solutions.add("LINNET");
+        solutions.add("LEINNT");
+        solutions.add("LETINN");
 
-        // TO COMPLETE
+        assertThat("LINNET", is(clue.compareLists(synonyms, solutions)));
     }
 
     @Ignore
