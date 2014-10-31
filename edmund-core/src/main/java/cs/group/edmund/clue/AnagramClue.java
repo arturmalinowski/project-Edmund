@@ -67,13 +67,10 @@ public class AnagramClue implements Clue {
             else {
                 newList.remove(keyWord);
 
-                ArrayList<String> matchingWords = new ArrayList<>();
+                ArrayList<String> matchingWords;
 
-                for (String word : newList) {
-                    if (word.length() == answerLength[i]) {
-                        matchingWords.add(word);
-                    }
-                }
+                matchingWords = possibleAnagrams(newList, answerLength[i]);
+
                 for (String word : matchingWords) {
                     List<String> answers = findAnagram(word);
 
@@ -144,6 +141,28 @@ public class AnagramClue implements Clue {
         }
         list.add(keyWord);
         return check;
+    }
+
+    public ArrayList possibleAnagrams(ArrayList<String> list, int answerLength) {
+        ArrayList<String> wordsList = new ArrayList<>();
+        ArrayList<String> secondList = new ArrayList<>(list);
+
+        for(String word : list) {
+            if (word.length() > answerLength) {
+                continue;
+            }
+            if (word.length() == answerLength) {
+                wordsList.add(word);
+            }
+            secondList.remove(word);
+            for(String secondWord : secondList) {
+                if (word.length() + secondWord.length() == answerLength) {
+                    String newWord = secondWord + word;
+                    wordsList.add(newWord);
+                }
+            }
+        }
+        return wordsList;
     }
 
 }
