@@ -2,10 +2,8 @@ package cs.group.edmund.clue;
 
 import cs.group.edmund.utils.Thesaurus;
 import org.dom4j.Document;
-import org.dom4j.Element;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class DoubleDefinitionsClue implements Clue {
 
@@ -58,24 +56,11 @@ public class DoubleDefinitionsClue implements Clue {
     private void putRelatedWordsInTwoLists(String[] splitPhrase) {
         Thesaurus thesaurus = new Thesaurus();
         for (int i = 0; i < 2; i++) {
-            try {
-                Document document = thesaurus.getSynonymsAsDocument(splitPhrase[i]);
-                getSynonyms(document, i);
-            } catch (Exception e) {
-                System.out.println("Error parsing xml");
-            }
-        }
-    }
-
-    private void getSynonyms(Document document, int list) {
-
-        Element root = document.getRootElement();
-        for (Iterator i = root.elementIterator("w"); i.hasNext(); ) {
-            Element word = (Element) i.next();
-            if (list == 0) {
-                firstElementList.add(word.getText());
-            } else {
-                secondElementList.add(word.getText());
+            Document document = thesaurus.getSynonymsAsDocument(splitPhrase[i]);
+            if (i == 0 && document != null) {
+                firstElementList = thesaurus.addSynonymsToList(document);
+            } else if (document != null) {
+                secondElementList = thesaurus.addSynonymsToList(document);
             }
         }
     }
