@@ -40,26 +40,27 @@ public class ContainerClue implements Clue {
 
         // Get synonyms list for first and last words in phrase
         ArrayList<String> firstLastList = getSideWords(phrase);
-        List<String> firstWordSynonyms = thesaurus.getAllSynonyms((String) firstLastList.get(0));
-        List<String> lastWordSynonyms = thesaurus.getAllSynonyms((String) firstLastList.get(1));
+        ArrayList<String> firstWordSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms(firstLastList.get(0));
+        ArrayList<String> lastWordSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms(firstLastList.get(1));
+
 
         // Get left and right half of phrase (removing the keyword)
         String leftHalf = splitPhrase(phrase, key).get(0);
         String rightHalf = splitPhrase(phrase, key).get(1);
 
         // Get list of potential cryptic crossword solutions (assuming the first word is the answer, remove the first word)
-        leftHalf = leftHalf.substring(leftHalf.indexOf(" "));
-        List<String> firstList = returnContainedWords(leftHalf.substring(leftHalf.lastIndexOf(" ") + 1), rightHalf.substring(0, rightHalf.indexOf(" ")));
+        ArrayList<String> solutions = getSolutions(phrase, leftHalf, rightHalf);
 
-        // Get list of potential cryptic crossword solutions (assuming the last word is the answer, remove the last word)
-        rightHalf = rightHalf.substring(rightHalf.lastIndexOf(" "));
-        List<String> lastList = returnContainedWords(leftHalf.substring(leftHalf.lastIndexOf(" ") + 1), rightHalf.substring(0, rightHalf.indexOf(" ")));
+        // Compare against list of synonyms, and return the result (null if no match has been found)
+        return compareLists(firstWordSynonyms, solutions);
+    }
 
-        // Combine first and last lists, and compare against list of synonyms
-        firstList.addAll(lastList);
-        firstWordSynonyms.addAll(lastWordSynonyms);
-        for (String word : firstList) {
-            for (String synonym : firstWordSynonyms) {
+    // Compare the list of solutions to the list of synonyms. Return a match, else return null.
+    public String compareLists(ArrayList<String> synonyms, ArrayList<String> solutions) {
+
+        //
+        for (String word : solutions) {
+            for (String synonym : synonyms) {
                 if (word.equals(synonym)) {
                     return synonym;
                 }
@@ -102,17 +103,54 @@ public class ContainerClue implements Clue {
         return list;
     }
 
+    // Return a list of potential solutions given the left and right half of the phrase
+    public ArrayList<String> getSolutions(String phrase, String leftHalf, String rightHalf) {
+
+        // List of solutions
+        ArrayList<String> solutions = new ArrayList<String>();
+        String leftWord, rightWord = null;
+
+        // Get solutions
+        ArrayList<String> l = getLeftRightWords(leftHalf, rightHalf);
+        leftWord = l.get(0);
+        rightWord = l.get(1);
+
+        // FIX
+        //solutions = returnContainedWords(leftWord, rightWord);
+
+        return null;
+    }
+
+    // Return a list containing the words to the left and right of the keyword
+    public ArrayList<String> getLeftRightWords(String leftHalf, String rightHalf) {
+
+        //
+        ArrayList<String> list = new ArrayList<String>();
+        String leftWord, rightWord = null;
+
+        leftWord = leftHalf.substring(leftHalf.lastIndexOf(" ")+1).trim();
+        try {
+            rightWord = rightHalf.substring(0, rightHalf.indexOf(" ")).trim();
+        } catch (Exception e) {
+            rightWord = rightHalf.substring(0).trim();
+        }
+        list.add(leftWord);
+        list.add(rightWord);
+        return list;
+
+    }
+
     // Return a list of all possible containment of words, and check if they are real words
-    public List<String> returnContainedWords(String wordA, String wordB) {
+    public ArrayList<String> returnContainedWords(String wordA, String wordB, int answerLength) {
 
         // List of possible words
-        List possibleWords = null;
+        ArrayList<String> possibleWords = null;
 
         // Place wordA in every possible position in wordB
         for (int i = 0; i < wordB.length(); i++) {
             String possibleWord = wordB.substring(i, i) + wordA + wordB.substring(i + 1);
 
-            if (isWord(possibleWord)) {
+            if ((isWord(possibleWord)) && (possibleWord.length() == answerLength)) {
                 possibleWords.add(possibleWord);
             }
         }
@@ -121,7 +159,7 @@ public class ContainerClue implements Clue {
         for (int i = 0; i < wordA.length(); i++) {
             String possibleWord = wordA.substring(i, i) + wordB + wordA.substring(i + 1);
 
-            if (isWord(possibleWord)) {
+            if ((isWord(possibleWord)) && (possibleWord.length() == answerLength)) {
                 possibleWords.add(possibleWord);
             }
         }
