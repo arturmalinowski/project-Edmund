@@ -1,6 +1,7 @@
 package cs.group.edmund.clue;
 
 import cs.group.edmund.fixtures.HttpClient;
+import cs.group.edmund.utils.Thesaurus;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -47,7 +48,8 @@ public class DoubleDefinitionsClueTest {
 
     @Test
     public void thesaurusHttpConnectionOK() throws Exception {
-        clue.sendGet("Honey");
+        Thesaurus thesaurus = new Thesaurus();
+        thesaurus.getXML("Honey");
 
         assertThat(HttpClient.responseCode(), is(200));
     }
