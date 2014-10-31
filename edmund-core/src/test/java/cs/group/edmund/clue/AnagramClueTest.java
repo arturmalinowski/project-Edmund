@@ -87,4 +87,12 @@ public class AnagramClueTest {
 
         assertThat(clue.isValidKeyword(list, "false", 7), is(true));
     }
+
+    @Test
+    public void possibleAnagramsTest() {
+        clue = new AnagramClue();
+        ArrayList list = new ArrayList<>(Arrays.asList("school", "run", "true", "false"));
+
+        assertThat(clue.possibleAnagrams(list, 7).contains("truerun"), is(true));
+    }
 }
