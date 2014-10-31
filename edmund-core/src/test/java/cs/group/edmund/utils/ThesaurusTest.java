@@ -16,35 +16,35 @@ public class ThesaurusTest {
     private static Thesaurus thesaurus = new Thesaurus();
 
     @Test
-    public void XMLTest(){
+    public void XMLTest() {
         String answer = thesaurus.getXML("fork");
         assertThat(answer, containsString("cutlery"));
     }
 
     @Test
-    public void JSONTest(){
+    public void JSONTest() {
         JSONObject answer = thesaurus.getJSON("monkey");
-        JSONArray array =  answer.getJSONObject("noun").getJSONArray("syn");
+        JSONArray array = answer.getJSONObject("noun").getJSONArray("syn");
 
         assertThat(array.toString(), containsString("primate"));
     }
 
     @Test
-    public void nounTest(){
+    public void nounTest() {
         List list = thesaurus.getSynonyms(Thesaurus.SynonymType.NOUN, "future");
         assertThat(list.contains("hereafter"), is(true));
         assertThat(list.contains("time to come"), is(true));
     }
 
     @Test
-    public void adjectiveTest(){
+    public void adjectiveTest() {
         List list = thesaurus.getSynonyms(Thesaurus.SynonymType.ADJECTIVE, "future");
         assertThat(list.contains("next"), is(true));
         assertThat(list.contains("later"), is(true));
     }
 
     @Test
-    public void verbTest(){
+    public void verbTest() {
         List list = thesaurus.getSynonyms(Thesaurus.SynonymType.VERB, "time");
         assertThat(list.contains("clock"), is(true));
         assertThat(list.contains("schedule"), is(true));
