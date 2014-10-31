@@ -30,11 +30,6 @@ public class DoubleDefinitionsClue implements Clue {
         return getAnswer(phrase);
     }
 
-    public String sendGet(String word) {
-        Thesaurus thesaurus = new Thesaurus();
-        return thesaurus.getXML(word);
-    }
-
     public String getAnswer(String phrase) {
         findMatchingWords(phrase);
         if (answer == null) {
@@ -100,8 +95,9 @@ public class DoubleDefinitionsClue implements Clue {
     }
 
     private void getUnformattedSynonymResults(String word, int i) {
+        Thesaurus thesaurus = new Thesaurus();
         unformattedSynonymsResults = new String[2];
-        unformattedSynonymsResults[i] = sendGet(word);
+        unformattedSynonymsResults[i] = thesaurus.getXML(word);
     }
 
     public String formatWords(String formattedWords) {
