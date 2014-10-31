@@ -1,7 +1,5 @@
 package cs.group.edmund.clue;
 
-import cs.group.edmund.fixtures.HttpClient;
-import cs.group.edmund.utils.Thesaurus;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -44,14 +42,6 @@ public class DoubleDefinitionsClueTest {
     public void correctLengthWordIsReturned() {
         String solvedWord = clue.solve("Yearn for quite a while", 4);
         assertThat(solvedWord, is("long"));
-    }
-
-    @Test
-    public void thesaurusHttpConnectionOK() throws Exception {
-        Thesaurus thesaurus = new Thesaurus();
-        thesaurus.getXML("Honey");
-
-        assertThat(HttpClient.responseCode(), is(200));
     }
 
 }

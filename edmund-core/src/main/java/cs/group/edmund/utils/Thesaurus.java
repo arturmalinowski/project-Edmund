@@ -3,10 +3,13 @@ package cs.group.edmund.utils;
 
 import cs.group.edmund.fixtures.HttpClient;
 import org.dom4j.Document;
+import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
-import org.json.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Thesaurus {
@@ -31,20 +34,31 @@ public class Thesaurus {
         }
     }
 
-    public String getXML(String word) {
-        String url = "http://words.bighugelabs.com/api/2/ecdcfa6e1dd349d1d1f4c0755f8b4d1d/" + word + "/xml";
-        return HttpClient.makeRequest(url);
-    }
 
-
-    public Document getSynonymsAsDocument(String word) throws Exception {
+    public Document getSynonymsAsDocument(String word) {
         SAXReader reader = new SAXReader();
-        return reader.read("http://words.bighugelabs.com/api/2/ecdcfa6e1dd349d1d1f4c0755f8b4d1d/" + word + "/xml");
+        Document document = null;
+        try {
+            document = reader.read("http://words.bighugelabs.com/api/2/ecdcfa6e1dd349d1d1f4c0755f8b4d1d/" + word + "/xml");
+        } catch (Exception e) {
+            System.out.println("Error parsing xml");
+        }
+        return document;
     }
 
     public JSONObject getJSON(String word) {
         String url = "http://words.bighugelabs.com/api/2/ecdcfa6e1dd349d1d1f4c0755f8b4d1d/" + word + "/json";
         return new JSONObject(HttpClient.makeRequest(url));
+    }
+
+    public ArrayList<String> addSynonymsToList(Document document) {
+        Element root = document.getRootElement();
+        ArrayList<String> elementList = new ArrayList<>();
+        for (Iterator i = root.elementIterator("w"); i.hasNext(); ) {
+            Element word = (Element) i.next();
+            elementList.add(word.getText());
+        }
+        return elementList;
     }
 
     public List getSynonyms(SynonymType type, String word) {
@@ -57,8 +71,7 @@ public class Thesaurus {
                 list.add(arr.getString(i));
             }
             return list;
-        }
-        else {
+        } else {
             return list;
         }
 

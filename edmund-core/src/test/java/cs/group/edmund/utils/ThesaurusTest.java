@@ -1,10 +1,12 @@
 package cs.group.edmund.utils;
 
 
+import org.dom4j.Document;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -16,13 +18,14 @@ public class ThesaurusTest {
     private static Thesaurus thesaurus = new Thesaurus();
 
     @Test
-    public void XMLTest() {
-        String answer = thesaurus.getXML("fork");
-        assertThat(answer, containsString("cutlery"));
+    public void xmlTest() {
+        Document document = thesaurus.getSynonymsAsDocument("fork");
+        ArrayList list = thesaurus.addSynonymsToList(document);
+        assertThat(list.toString(), containsString("cutlery"));
     }
 
     @Test
-    public void JSONTest() {
+    public void jsonTest() {
         JSONObject answer = thesaurus.getJSON("monkey");
         JSONArray array = answer.getJSONObject("noun").getJSONArray("syn");
 
@@ -53,6 +56,16 @@ public class ThesaurusTest {
     @Test
     public void allSynonymsTest() {
         List list = thesaurus.getAllSynonyms("stable");
+        assertThat(list.contains("static"), is(true));
+        assertThat(list.contains("stalls"), is(true));
+        assertThat(list.contains("shelter"), is(true));
+    }
+
+    @Test
+    public void allSynonymsXmlTest() {
+        Document document = thesaurus.getSynonymsAsDocument("Stable");
+
+        ArrayList list = thesaurus.addSynonymsToList(document);
         assertThat(list.contains("static"), is(true));
         assertThat(list.contains("stalls"), is(true));
         assertThat(list.contains("shelter"), is(true));
