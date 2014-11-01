@@ -11,6 +11,7 @@ public class DoubleDefinitionsClue implements Clue {
     private ArrayList<String> secondElementList = new ArrayList<>();
     private boolean matchingWordFound;
     private String answer;
+    private ArrayList<Integer> answerLength = new ArrayList<>();
 
     @Override
     public String create(String word) {
@@ -19,12 +20,15 @@ public class DoubleDefinitionsClue implements Clue {
 
     @Override
     public boolean isRelevant(String phrase) {
+        answerLength.add(0);
         return findMatchingWords(phrase);
     }
 
-    // enable answer length
     @Override
     public String solve(String phrase, int... answerLength) {
+        for (int value : answerLength) {
+            this.answerLength.add(value);
+        }
         return getAnswer(phrase);
     }
 
@@ -68,7 +72,10 @@ public class DoubleDefinitionsClue implements Clue {
     private void compareTheListsOfWords() {
         matchingWordFound = false;
         for (String element : firstElementList) {
-            if (secondElementList.contains(element)) {
+            if (secondElementList.contains(element) && answerLength.get(0) == 0) {
+                matchingWordFound = true;
+                answer = element;
+            } else if (secondElementList.contains(element) && element.length() == answerLength.get(0)) {
                 matchingWordFound = true;
                 answer = element;
             }
