@@ -1,7 +1,6 @@
 package cs.group.edmund.clue;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -22,7 +21,6 @@ public class DoubleDefinitionsClueTest {
         assertEquals(clue.isRelevant("Expensive honey"), true);
     }
 
-    // enable answer length
     @Test
     public void limitedDoubleDefinitionClueCanBeSolved() {
         String solvedWord = clue.solve("Expensive sweet golden honey", 4);
@@ -37,11 +35,10 @@ public class DoubleDefinitionsClueTest {
         assertThat(solvedWord, is("Answer not found :("));
     }
 
-    @Ignore
     @Test
     public void correctLengthWordIsReturned() {
-        String solvedWord = clue.solve("Yearn for quite a while", 4);
-        assertThat(solvedWord, is("long"));
+        String solvedWord = clue.solve("Expensive expensive", 4);
+        assertThat(solvedWord, is("dear"));
     }
 
 }
