@@ -97,6 +97,34 @@ public class ContainerClueTest {
         assertThat("LINNET", is(clue.compareLists(synonyms, solutions)));
     }
 
+    @Test
+    @Ignore
+    public void testReturnContainedWords() {
+        ContainerClue clue = new ContainerClue();
+        Thesaurus thesaurus = new Thesaurus();
+
+        ArrayList<String> leftSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms("SON");
+        ArrayList<String> rightSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms("MARY");
+        leftSynonyms.add("SON");
+        rightSynonyms.add("MARY");
+
+        System.out.println(clue.returnContainedWords(leftSynonyms, rightSynonyms));
+        System.out.println(leftSynonyms);
+        System.out.println(rightSynonyms);
+        //String rightWord = "mary";
+        //String leftWord = "boy";
+        //ArrayList<String> list = new ArrayList<String>();
+        //list.add(leftWord + rightWord);
+        //for (int i = 1; i < rightWord.length(); i++) {
+            //list.add(rightWord.substring(0, i).trim() + leftWord.trim() + rightWord.substring(i));
+        //}
+        //list.add(rightWord.substring(0, 1).trim() + leftWord.trim() + rightWord.substring(1).trim());
+        //list.add(rightWord.substring(0, 2).trim() + leftWord.trim() + rightWord.substring(2).trim());
+        //list.add(rightWord.substring(0, 3).trim() + leftWord.trim() + rightWord.substring(3).trim());
+        //list.add(rightWord + leftWord);
+        //System.out.println(list);
+    }
+
     @Ignore
     @Test
     public void testGetSolutions() {
