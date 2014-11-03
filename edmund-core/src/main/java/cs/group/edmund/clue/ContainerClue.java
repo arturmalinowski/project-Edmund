@@ -12,6 +12,7 @@ public class ContainerClue implements Clue {
 
     private final List<String> keyWords;
     private Thesaurus thesaurus;
+
     public ContainerClue() {
         keyWords = asList("ABOUT", "ADMIT", "ADMITS", "ADMITTING", "AROUND", "BESIEGE", "BESIEGES", "BESIEGING", "BOX", "BOXES", "BOXING", "BRIDGE", "BRIDGES", "BRIDGING", "CAPTURE", "CAPTURED", "CAPTURES", "CAPTURING", "CATCH", "CATCHES", "CATCHING", "CIRCLE", "CIRCLES", "CIRCLING", "CLUTCH", "CLUTCHES", "CLUTCHING", "CONTAIN", "CONTAINING", "CONTAINS", "COVER", "COVERING", "COVERS", "EMBRACE", "EMBRACES", "EMBRACING", "ENCIRCLE", "ENCIRCLES", "ENCIRCLING", "ENFOLD", "ENFOLDING", "ENFOLDS", "ENVELOP", "ENVELOPING", "ENVELOPS", "EXTERNAL", "FLANK", "FLANKING", "FLANKS", "FRAME", "FRAMED", "FRAMING", "FRAMES", "GRASP", "GRASPING", "GRASPS", "HARBOUR", "HARBOURS", "HARBOURING", "HOLD", "HOLDING", "HOLDS", "HOUSE", "HOUSES", "HOUSING", "OUTSIDE", "RING", "RINGING", "RINGS", "ROUND", "SHELTER", "SHELTERING", "SHELTERS", "SURROUND", "SURROUNDING", "SURROUNDS", "SWALLOW", "SWALLOWING", "SWALLOWS", "TAKE IN", "TAKES IN", "TAKING IN", "WITHOUT", "WRAP", "WRAPPING", "WRAPS");
         thesaurus = new Thesaurus();
@@ -38,11 +39,15 @@ public class ContainerClue implements Clue {
         // Get container clue keyword
         String key = getKeyword(phrase);
 
-        // Get synonyms list for first and last words in phrase
+        // Get synonyms list for first and last words in phrase, set all to lowercase or future comparison
         ArrayList<String> firstLastList = getSideWords(phrase);
         ArrayList<String> firstWordSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms(firstLastList.get(0));
         ArrayList<String> lastWordSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms(firstLastList.get(1));
+        firstWordSynonyms.addAll(lastWordSynonyms);
 
+        for(int i=0; i < firstWordSynonyms.size(); i++) {
+            firstWordSynonyms.set(i, firstWordSynonyms.get(i).toLowerCase());
+        }
 
         // Get left and right half of phrase (removing the keyword)
         String leftHalf = splitPhrase(phrase, key).get(0);
@@ -115,10 +120,14 @@ public class ContainerClue implements Clue {
         leftWord = l.get(0);
         rightWord = l.get(1);
 
-        // FIX
+        // Get lists of synonyms for left and right words
         //solutions = returnContainedWords(leftWord, rightWord);
+        ArrayList<String> leftSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms(leftWord);
+        ArrayList<String> rightSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms(rightWord);
+        leftSynonyms.add(leftWord);
+        rightSynonyms.add(rightWord);
 
-        return null;
+        return returnContainedWords(leftSynonyms, rightSynonyms);
     }
 
     // Return a list containing the words to the left and right of the keyword
@@ -140,30 +149,40 @@ public class ContainerClue implements Clue {
 
     }
 
-    // Return a list of all possible containment of words, and check if they are real words
-    public ArrayList<String> returnContainedWords(String wordA, String wordB, int answerLength) {
+    // Return a list of all possible containment of words
+    public ArrayList<String> returnContainedWords(ArrayList<String> leftSynonyms, ArrayList<String> rightSynonyms) {
 
         // List of possible words
-        ArrayList<String> possibleWords = null;
+        ArrayList<String> possibleWords = new ArrayList<String>();
 
-        // Place wordA in every possible position in wordB
-        for (int i = 0; i < wordB.length(); i++) {
-            String possibleWord = wordB.substring(i, i) + wordA + wordB.substring(i + 1);
+        //
+        for (String leftWord : leftSynonyms) {
+            for (String rightWord : rightSynonyms) {
 
-            if ((isWord(possibleWord)) && (possibleWord.length() == answerLength)) {
-                possibleWords.add(possibleWord);
+                // Place leftWord and rightWord next to each other
+                possibleWords.add((leftWord + rightWord).toLowerCase());
+                possibleWords.add((rightWord + leftWord).toLowerCase());
+
+                // Place leftWord in every possible position in rightWord
+                for (int i = 1; i < rightWord.length(); i++) {
+                    String possibleWord = rightWord.substring(0, i).trim() + leftWord.trim() + rightWord.substring(i);
+
+                    if (isWord(possibleWord)) {
+                        possibleWords.add(possibleWord.toLowerCase());
+                    }
+                }
+
+                // Place rightWord in every possible position in leftWord
+                for (int i = 1; i < leftWord.length(); i++) {
+                    String possibleWord = leftWord.substring(0, i).trim() + rightWord.trim() + leftWord.substring(i);
+
+                    if (isWord(possibleWord)) {
+                        possibleWords.add(possibleWord.toLowerCase());
+                    }
+                }
+
             }
         }
-
-        // Place wordB in every possible position in wordA
-        for (int i = 0; i < wordA.length(); i++) {
-            String possibleWord = wordA.substring(i, i) + wordB + wordA.substring(i + 1);
-
-            if ((isWord(possibleWord)) && (possibleWord.length() == answerLength)) {
-                possibleWords.add(possibleWord);
-            }
-        }
-
         return possibleWords;
     }
 
