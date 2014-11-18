@@ -40,7 +40,7 @@ public class AnagramClue implements Clue {
     @Override
     public String solve(String phrase, int ... answerLength) {
         String keyWord = null;
-        String possibleAnswer = null;
+        String possibleAnswer = "";
         String[] words = phrase.replaceAll("[-+.^:,?!/]"," ").toUpperCase().split(" ");
         ArrayList<String> newList = new ArrayList<>(Arrays.asList(words));
         newList.removeAll(Arrays.asList("", null));
@@ -77,10 +77,15 @@ public class AnagramClue implements Clue {
                     // TODO need to distinguish possible answers, when each word has just 1 result - using synonyms
                     if ((answers != null) && (answers.size() < 2)) {
                         possibleAnswer = answers.get(0);
+                        break;
                     }
                     // TODO come up with a solution when there is more then one anagram of a word
                     else {
-
+                        for (String answer : answers) {
+                            possibleAnswer = possibleAnswer + ", " + answer;
+                        }
+                        possibleAnswer = possibleAnswer.substring(2);
+                        possibleAnswer = "Possible answers: " + possibleAnswer;
                     }
                 }
             }
