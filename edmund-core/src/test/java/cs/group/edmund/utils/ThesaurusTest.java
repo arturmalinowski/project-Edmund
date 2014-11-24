@@ -75,8 +75,15 @@ public class ThesaurusTest {
     }
 
     @Test
-    public void relatedWordsTest() {
-        List list = thesaurus.getRelatedWords("nurture");
+    public void relatedWordsJSONTest() {
+        List list = thesaurus.getRelatedWordsJSON("nurture");
+
+        assertThat(list.contains("school"), is(true));
+    }
+
+    @Test
+    public void relatedWordsXMLTest() {
+        List list = thesaurus.getRelatedWordsXML("nurture");
 
         assertThat(list.contains("school"), is(true));
     }
