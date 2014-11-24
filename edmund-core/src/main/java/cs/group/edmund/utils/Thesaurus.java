@@ -79,7 +79,7 @@ public class Thesaurus {
 
     }
 
-    public List getRelatedWordsJSON(String word) {
+    public List getRelatedWords(String word) {
         List list = new ArrayList<String>();
         JSONObject obj = new JSONObject(HttpClient.makeRequest("http://project-shakespeare.herokuapp.com/shakespeare/api/word/" + word + "?format=json"));
 
@@ -92,8 +92,9 @@ public class Thesaurus {
         } else {
             return list;
         }
-
     }
+
+
 
     public List getAllSynonyms(String word) {
         if (offlineThesaurus.hasWord(word)) {
