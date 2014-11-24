@@ -14,6 +14,8 @@ import java.util.List;
 
 public class Thesaurus {
 
+    private OfflineThesaurus offlineThesaurus = new OfflineThesaurus();
+
     public enum SynonymType {
         NOUN {
             public String toString() {
@@ -77,13 +79,33 @@ public class Thesaurus {
 
     }
 
-    public List getAllSynonyms(String word) {
+    public List getRelatedWordsJSON(String word) {
         List list = new ArrayList<String>();
-        list = getSynonyms(SynonymType.VERB, word);
-        list.addAll(getSynonyms(SynonymType.ADJECTIVE, word));
-        list.addAll(getSynonyms(SynonymType.NOUN, word));
+        JSONObject obj = new JSONObject(HttpClient.makeRequest("http://project-shakespeare.herokuapp.com/shakespeare/api/word/" + word + "?format=json"));
 
-        return list;
+        if (obj.has("synonyms")) {
+            JSONArray arr = obj.getJSONArray("synonyms");
+            for (int i = 0; i < arr.length(); i++) {
+                list.add(arr.getString(i).toLowerCase());
+            }
+            return list;
+        } else {
+            return list;
+        }
+
     }
 
+    public List getAllSynonyms(String word) {
+        if (offlineThesaurus.hasWord(word)) {
+            return offlineThesaurus.results(word);
+        }
+        else {
+            List list = new ArrayList<String>();
+            list = getSynonyms(SynonymType.VERB, word);
+            list.addAll(getSynonyms(SynonymType.ADJECTIVE, word));
+            list.addAll(getSynonyms(SynonymType.NOUN, word));
+            offlineThesaurus.addNewQuery(word, list);
+            return list;
+        }
+    }
 }

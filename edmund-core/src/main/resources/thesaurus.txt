@@ -1,0 +1,1 @@
+potter:thrower,ceramicist,artificer,journeyman

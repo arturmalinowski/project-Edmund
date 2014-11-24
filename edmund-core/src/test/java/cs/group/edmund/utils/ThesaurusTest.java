@@ -4,6 +4,7 @@ package cs.group.edmund.utils;
 import org.dom4j.Document;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -15,7 +16,12 @@ import static org.hamcrest.core.Is.is;
 
 public class ThesaurusTest {
 
-    private static Thesaurus thesaurus = new Thesaurus();
+    private static Thesaurus thesaurus;
+
+    @BeforeClass
+    public static void setup() {
+        thesaurus = new Thesaurus();
+    }
 
     @Test
     public void xmlTest() {
@@ -69,5 +75,12 @@ public class ThesaurusTest {
         assertThat(list.contains("static"), is(true));
         assertThat(list.contains("stalls"), is(true));
         assertThat(list.contains("shelter"), is(true));
+    }
+
+    @Test
+    public void relatedWordsJSONTest() {
+        List list = thesaurus.getRelatedWordsJSON("nurture");
+
+        assertThat(list.contains("school"), is(true));
     }
 }
