@@ -55,8 +55,8 @@ public class OfflineThesaurus {
             e.printStackTrace();
         }
         for(String word : listOfWords) {
-            String wordList = word.substring(word.indexOf(":")+1, word.length());
-            words.put(word.substring(0, word.indexOf(":")), new ArrayList<>(Arrays.asList(wordList.split(","))));
+            String arrayNew = word.substring(word.indexOf(":")+1, word.length());
+            words.put(word.substring(0, word.indexOf(":")), new ArrayList<>(Arrays.asList(arrayNew.split(","))));
         }
     }
 }

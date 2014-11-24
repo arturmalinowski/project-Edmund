@@ -78,8 +78,8 @@ public class ThesaurusTest {
     }
 
     @Test
-    public void relatedWordsJSONTest() {
-        List list = thesaurus.getRelatedWordsJSON("nurture");
+    public void relatedWordsTest() {
+        List list = thesaurus.getRelatedWords("nurture");
 
         assertThat(list.contains("school"), is(true));
     }
