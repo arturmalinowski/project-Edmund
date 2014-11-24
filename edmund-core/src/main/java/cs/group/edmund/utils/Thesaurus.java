@@ -65,18 +65,21 @@ public class Thesaurus {
 
     public List getSynonyms(SynonymType type, String word) {
         List list = new ArrayList<String>();
-        JSONObject obj = getJSON(word);
-
-        if (obj.has(type.toString())) {
-            JSONArray arr = obj.getJSONObject(type.toString()).getJSONArray("syn");
-            for (int i = 0; i < arr.length(); i++) {
-                list.add(arr.getString(i));
+        try {
+            JSONObject obj = getJSON(word);
+            if (obj.has(type.toString())) {
+                JSONArray arr = obj.getJSONObject(type.toString()).getJSONArray("syn");
+                for (int i = 0; i < arr.length(); i++) {
+                    list.add(arr.getString(i));
+                }
+                return list;
+            } else {
+                return list;
             }
-            return list;
-        } else {
-            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
+        return list;
     }
 
     public List getRelatedWords(String word) {
@@ -94,8 +97,6 @@ public class Thesaurus {
         }
     }
 
-
-
     public List getAllSynonyms(String word) {
         if (offlineThesaurus.hasWord(word)) {
             return offlineThesaurus.results(word);
@@ -105,7 +106,9 @@ public class Thesaurus {
             list = getSynonyms(SynonymType.VERB, word);
             list.addAll(getSynonyms(SynonymType.ADJECTIVE, word));
             list.addAll(getSynonyms(SynonymType.NOUN, word));
-            offlineThesaurus.addNewQuery(word, list);
+            if (!list.isEmpty()){
+                offlineThesaurus.addNewQuery(word, list);
+            }
             return list;
         }
     }

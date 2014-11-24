@@ -1,16 +1,15 @@
 package cs.group.edmund.clue;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import cs.group.edmund.fixtures.HttpClient;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+import cs.group.edmund.utils.Thesaurus;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static java.util.Arrays.asList;
 
@@ -71,6 +70,7 @@ public class AnagramClue implements Clue {
 
                 matchingWords = possibleAnagrams(newList, answerLength[i]);
 
+                answerLoop:
                 for (String word : matchingWords) {
                     List<String> answers = findAnagram(word);
 
@@ -81,6 +81,13 @@ public class AnagramClue implements Clue {
                     }
                     // TODO come up with a solution when there is more then one anagram of a word
                     else {
+
+                        possibleAnswer = synonymsCheck(answers, newList);
+
+                        if (!possibleAnswer.equals("")){
+                            break;
+                        }
+
                         for (String answer : answers) {
                             possibleAnswer = possibleAnswer + ", " + answer;
                         }
@@ -168,6 +175,40 @@ public class AnagramClue implements Clue {
             }
         }
         return wordsList;
+    }
+
+    private String synonymsCheck(List<String> answers, ArrayList<String> possibleSynonyms) {
+        Thesaurus thesaurus = new Thesaurus();
+        String newAnswer = "";
+
+        twoLoops:
+        for(String answer : answers) {
+            List list = thesaurus.getAllSynonyms(answer);
+            for(String checkedWord : possibleSynonyms) {
+                if(list.contains(checkedWord.toLowerCase())) {
+                    newAnswer = answer.toLowerCase();
+                    break twoLoops;
+                }
+            }
+        }
+
+        if(!newAnswer.equals("")) {
+            return newAnswer;
+        }
+        else{
+            twoLoops:
+            for(String answer : answers) {
+                List list = thesaurus.getRelatedWords(answer);
+                for(String checkedWord : possibleSynonyms) {
+                    if(list.contains(checkedWord.toLowerCase())) {
+                        newAnswer = answer.toLowerCase();
+                        break twoLoops;
+                    }
+                }
+            }
+        }
+
+        return newAnswer;
     }
 
 }
