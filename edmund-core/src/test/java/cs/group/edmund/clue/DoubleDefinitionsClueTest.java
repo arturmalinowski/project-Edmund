@@ -1,6 +1,7 @@
 package cs.group.edmund.clue;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -22,6 +23,11 @@ public class DoubleDefinitionsClueTest {
     }
 
     @Test
+    public void detectsClueIsNotADoubleDefinitionClue() {
+        assertEquals(clue.isRelevant("Bird allowed outside tavern"), false);
+    }
+
+    @Test
     public void limitedDoubleDefinitionClueCanBeSolved() {
         String solvedWord = clue.solve("Expensive sweet golden honey", 4);
 
@@ -29,8 +35,30 @@ public class DoubleDefinitionsClueTest {
     }
 
     @Test
+    public void doubleDefinitionClueWithClueWordNotAtTheLeftEndOfTheClueCanBeSolved() {
+        String solvedWord = clue.solve("Sweet expensive golden honey", 4);
+
+        assertThat(solvedWord, is("dear"));
+    }
+
+    @Test
+    public void doubleDefinitionClueWithClueWordNotAtTheRightEndOfTheClueCanBeSolved() {
+        String solvedWord = clue.solve("Expensive sweet honey golden", 4);
+
+        assertThat(solvedWord, is("dear"));
+    }
+
+    @Ignore
+    @Test
+    public void moreComplexDoubleDefinitionClueCanBeSolved() {
+        String solvedWord = clue.solve("A fast train, say", 7);
+
+        assertThat(solvedWord, is("Express"));
+    }
+
+    @Test
     public void handlesWhenNoMatchingWordIsFound() {
-        String solvedWord = clue.solve("Blah blah bluegh", 4);
+        String solvedWord = clue.solve("Bird allowed outside tavern", 4);
 
         assertThat(solvedWord, is("Answer not found :("));
     }
