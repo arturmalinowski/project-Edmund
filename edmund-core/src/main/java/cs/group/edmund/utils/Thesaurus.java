@@ -36,8 +36,12 @@ public class Thesaurus {
         }
     }
 
+    public JSONObject getJSON(String word) {
+        String url = "http://words.bighugelabs.com/api/2/ecdcfa6e1dd349d1d1f4c0755f8b4d1d/" + word + "/json";
+        return new JSONObject(HttpClient.makeRequest(url));
+    }
 
-    public Document getSynonymsAsDocument(String word) {
+    public ArrayList<String> getAllSynonymsXML(String word) {
         SAXReader reader = new SAXReader();
         Document document = null;
         try {
@@ -45,20 +49,12 @@ public class Thesaurus {
         } catch (Exception e) {
             System.out.println("Error parsing xml");
         }
-        return document;
-    }
 
-    public JSONObject getJSON(String word) {
-        String url = "http://words.bighugelabs.com/api/2/ecdcfa6e1dd349d1d1f4c0755f8b4d1d/" + word + "/json";
-        return new JSONObject(HttpClient.makeRequest(url));
-    }
-
-    public ArrayList<String> addSynonymsToList(Document document) {
         Element root = document.getRootElement();
         ArrayList<String> elementList = new ArrayList<>();
         for (Iterator i = root.elementIterator("w"); i.hasNext(); ) {
-            Element word = (Element) i.next();
-            elementList.add(word.getText());
+            Element element = (Element) i.next();
+            elementList.add(element.getText());
         }
         return elementList;
     }

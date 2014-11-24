@@ -1,7 +1,6 @@
 package cs.group.edmund.utils;
 
 
-import org.dom4j.Document;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.BeforeClass;
@@ -25,8 +24,7 @@ public class ThesaurusTest {
 
     @Test
     public void xmlTest() {
-        Document document = thesaurus.getSynonymsAsDocument("fork");
-        ArrayList list = thesaurus.addSynonymsToList(document);
+        ArrayList list = thesaurus.getAllSynonymsXML("fork");
         assertThat(list.toString(), containsString("cutlery"));
     }
 
@@ -69,9 +67,8 @@ public class ThesaurusTest {
 
     @Test
     public void allSynonymsXmlTest() {
-        Document document = thesaurus.getSynonymsAsDocument("Stable");
 
-        ArrayList list = thesaurus.addSynonymsToList(document);
+        ArrayList list = thesaurus.getAllSynonymsXML("stable");
         assertThat(list.contains("static"), is(true));
         assertThat(list.contains("stalls"), is(true));
         assertThat(list.contains("shelter"), is(true));
