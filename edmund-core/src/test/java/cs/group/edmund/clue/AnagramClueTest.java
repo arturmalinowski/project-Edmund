@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.anyOf;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -35,7 +36,6 @@ public class AnagramClueTest {
         assertThat(solvedWord, is("nights"));
     }
 
-    @Ignore
     @Test
     public void secondAnagramClueCanBeSolved() {
         clue = new AnagramClue();
@@ -94,5 +94,10 @@ public class AnagramClueTest {
         ArrayList list = new ArrayList<>(Arrays.asList("school", "run", "true", "false"));
 
         assertThat(clue.possibleAnagrams(list, 7).contains("truerun"), is(true));
+    }
+
+    @Test
+    public void bulkClueTest() {
+
     }
 }
