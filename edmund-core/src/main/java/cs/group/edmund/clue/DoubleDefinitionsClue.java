@@ -1,16 +1,16 @@
 package cs.group.edmund.clue;
 
 import cs.group.edmund.utils.Thesaurus;
-import org.dom4j.Document;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DoubleDefinitionsClue implements Clue {
 
-    private ArrayList<String> firstElementList = new ArrayList<>();
-    private ArrayList<String> secondElementList = new ArrayList<>();
-    private ArrayList<String> leftBackupWordList = new ArrayList<>();
-    private ArrayList<String> rightBackupWordList = new ArrayList<>();
+    private List<String> firstElementList = new ArrayList<>();
+    private List<String> secondElementList = new ArrayList<>();
+    private List<String> leftBackupWordList = new ArrayList<>();
+    private List<String> rightBackupWordList = new ArrayList<>();
     private boolean matchingWordFound;
     private String answer;
     private ArrayList<Integer> answerLength = new ArrayList<>();
@@ -60,18 +60,10 @@ public class DoubleDefinitionsClue implements Clue {
 
     private void putRelatedWordsInTwoLists(String[] splitPhrase) {
         Thesaurus thesaurus = new Thesaurus();
-        Document documentLeftBackUp = thesaurus.getSynonymsAsDocument(leftBackupWord);
-        leftBackupWordList = thesaurus.addSynonymsToList(documentLeftBackUp);
-        Document documentRightBackUp = thesaurus.getSynonymsAsDocument(rightBackupWord);
-        rightBackupWordList = thesaurus.addSynonymsToList(documentRightBackUp);
-        for (int i = 0; i < 2; i++) {
-            Document document = thesaurus.getSynonymsAsDocument(splitPhrase[i]);
-            if (i == 0 && document != null) {
-                firstElementList = thesaurus.addSynonymsToList(document);
-            } else if (document != null) {
-                secondElementList = thesaurus.addSynonymsToList(document);
-            }
-        }
+        leftBackupWordList = thesaurus.getAllSynonymsXML(leftBackupWord);
+        rightBackupWordList = thesaurus.getAllSynonymsXML(rightBackupWord);
+            firstElementList = thesaurus.getAllSynonymsXML(splitPhrase[0]);
+            secondElementList = thesaurus.getAllSynonymsXML(splitPhrase[1]);
     }
 
     private void compareTheListsOfWords() {
@@ -83,8 +75,7 @@ public class DoubleDefinitionsClue implements Clue {
             } else if (secondElementList.contains(element) && element.length() == answerLength.get(0)) {
                 matchingWordFound = true;
                 answer = element;
-            }
-            else if (rightBackupWordList.contains(element) && element.length() == answerLength.get(0)) {
+            } else if (rightBackupWordList.contains(element) && element.length() == answerLength.get(0)) {
                 matchingWordFound = true;
                 answer = element;
             }
