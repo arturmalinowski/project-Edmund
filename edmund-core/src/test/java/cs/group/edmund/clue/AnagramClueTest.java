@@ -1,7 +1,11 @@
 package cs.group.edmund.clue;
 
+import com.googlecode.yatspec.junit.Row;
+import com.googlecode.yatspec.junit.Table;
+import com.googlecode.yatspec.junit.TableRunner;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,6 +16,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
+@RunWith(TableRunner.class)
 public class AnagramClueTest {
 
     private AnagramClue clue;
@@ -96,8 +101,45 @@ public class AnagramClueTest {
         assertThat(clue.possibleAnagrams(list, 7).contains("truerun"), is(true));
     }
 
-    @Test
-    public void bulkClueTest() {
 
+    @Test
+    @Table({@Row({"Get cast adrift in boat", "obtain", "6"}),
+    @Row({"Lisa mistaken to travel to sea", "sail", "4"}),
+    @Row({"Pleasant tumble in gale", "genial", "6"}),
+    @Row({"Delays upset traders", "retards", "7"}),
+    @Row({"Pleased about a dire gift?", "gratified", "9"}),
+    @Row({"Desert or ruins made good", "restored", "8"}),
+    @Row({"Dreadful nag punter found offensive", "repugnant", "9"}),
+    @Row({"A Greek mountain could be so lumpy", "olympus", "7"}),
+    @Row({"Go near fresh fruit", "orange", "6"}),
+    @Row({"Keeps dissolving in tears", "retains", "7"}),
+    @Row({"The importance of eating mud pie?", "magnitude", "9"}),
+    @Row({"Reach up at tangled skydiving apparatus", "parachute", "9"}),
+    @Row({"Form of rule as yet without extravagance", "austerely", "9"}),
+    @Row({"Insane damn yeti is explosive", "dynamite", "8"}),
+    @Row({"Badly pare the fruit", "pear", "4"}),
+    @Row({"He cooked planet's animal", "elephant", "8"}),
+    @Row({"Flustered, I forget rarer chilly compartment", "refrigerator", "12"}),
+    @Row({"Perilous sea dog? Run all over the place!", "dangerous", "9"}),
+    @Row({"Mixed a lad’s greens", "salad", "5"}),
+    @Row({"Stinging insect damaged paws", "wasp", "4"}),
+    @Row({"Reversed out and got booked!", "reserved", "8"}),
+    @Row({"His patter confused analyst", "therapist", "9"}),
+    @Row({"Teach about swindler", "cheat", "5"}),
+    @Row({"Hens to become truthful?", "honest", "5"}),
+    @Row({"Who's shaken up the display?", "show", "4"})})
+    public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength) {
+        clue = new AnagramClue();
+        String answer = clue.solve(crosswordClue, Integer.parseInt(answerLength));
+
+        assertThat(answer, is(clueAnswer));
+    }
+
+    @Test
+    public void secondAnagramClueCanBeSolved1() throws Exception {
+        clue = new AnagramClue();
+        String answer = clue.solve("Get cast adrift in boat", 6);
+
+        assertThat(answer, is("obtain"));
     }
 }

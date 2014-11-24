@@ -42,20 +42,30 @@ public class Thesaurus {
     }
 
     public ArrayList<String> getAllSynonymsXML(String word) {
+        if (offlineThesaurus.hasWord(word)) {
+            return offlineThesaurus.results(word);
+        }
+        ArrayList<String> elementList = new ArrayList<>();
         SAXReader reader = new SAXReader();
         Document document = null;
         try {
             document = reader.read("http://words.bighugelabs.com/api/2/ecdcfa6e1dd349d1d1f4c0755f8b4d1d/" + word + "/xml");
         } catch (Exception e) {
             System.out.println("Error parsing xml");
+            return elementList;
         }
 
         Element root = document.getRootElement();
-        ArrayList<String> elementList = new ArrayList<>();
+
         for (Iterator i = root.elementIterator("w"); i.hasNext(); ) {
             Element element = (Element) i.next();
             elementList.add(element.getText());
         }
+
+        if (!elementList.isEmpty()){
+            offlineThesaurus.addNewQuery(word, elementList);
+        }
+
         return elementList;
     }
 
@@ -78,7 +88,7 @@ public class Thesaurus {
         return list;
     }
 
-    public List getRelatedWords(String word) {
+    public List getRelatedWordsJSON(String word) {
         List list = new ArrayList<String>();
         JSONObject obj = new JSONObject(HttpClient.makeRequest("http://project-shakespeare.herokuapp.com/shakespeare/api/word/" + word + "?format=json"));
 
@@ -107,5 +117,26 @@ public class Thesaurus {
             }
             return list;
         }
+    }
+
+    public ArrayList<String> getRelatedWordsXML(String word) {
+        ArrayList<String> elementList = new ArrayList<>();
+        SAXReader reader = new SAXReader();
+        Document document;
+        try {
+            document = reader.read("http://project-shakespeare.herokuapp.com/shakespeare/api/word/" + word);
+        } catch (Exception e) {
+            System.out.println("Error parsing xml");
+            return elementList;
+        }
+
+        Element root = document.getRootElement();
+
+        for (Iterator i = root.elementIterator("synonym"); i.hasNext(); ) {
+            Element element = (Element) i.next();
+            elementList.add(element.getText());
+        }
+
+        return elementList;
     }
 }

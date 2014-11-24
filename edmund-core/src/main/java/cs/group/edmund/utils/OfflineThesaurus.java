@@ -39,7 +39,7 @@ public class OfflineThesaurus {
         }
     }
 
-    public List<String> results(String word){
+    public ArrayList<String> results(String word){
         return words.get(word);
     }
 
