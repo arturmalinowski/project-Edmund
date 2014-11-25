@@ -2,10 +2,9 @@ package cs.group.edmund.clue;
 
 import cs.group.edmund.utils.Thesaurus;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
 
 import static java.util.Arrays.asList;
 
@@ -38,7 +37,7 @@ public class ContainerClue implements Clue {
     }
 
     @Override
-    public String solve(String phrase, int... answerLength)
+    public String solve(String phrase, String hint, int... answerLength)
     {
         // Set phrase to lowercase, and get container clue keyword
         phrase = phrase.toLowerCase();

@@ -3,9 +3,7 @@ package cs.group.edmund.clue;
 import cs.group.edmund.utils.Thesaurus;
 import org.junit.Ignore;
 import org.junit.Test;
-import java.util.List;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -44,7 +42,7 @@ public class ContainerClueTest {
         //String solvedWord5 = clue.solve("Stuck with tot holding present", 7);
         //assertThat(solvedWord5, is("ADHERED"));
 
-        String solvedWord6 = clue.solve("wear around the brave", 7);
+        String solvedWord6 = clue.solve("wear around the brave", null, 7);
         assertThat(solvedWord6, is("weather"));
 
 

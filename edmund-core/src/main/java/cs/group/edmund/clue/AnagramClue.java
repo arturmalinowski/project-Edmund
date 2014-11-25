@@ -38,7 +38,7 @@ public class AnagramClue implements Clue {
     }
 
     @Override
-    public String solve(String phrase, int ... answerLength) {
+    public String solve(String phrase, String hint, int... answerLength) {
         String keyWord = null;
         String possibleAnswer = "";
         String[] words = phrase.replaceAll("[-+.^:,?!'’/]"," ").toUpperCase().split(" ");

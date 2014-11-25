@@ -29,21 +29,21 @@ public class DoubleDefinitionsClueTest {
 
     @Test
     public void limitedDoubleDefinitionClueCanBeSolved() {
-        String solvedWord = clue.solve("Expensive sweet golden honey", 4);
+        String solvedWord = clue.solve("Expensive sweet golden honey", null, 4);
 
         assertThat(solvedWord, is("dear"));
     }
 
     @Test
     public void doubleDefinitionClueWithClueWordNotAtTheLeftEndOfTheClueCanBeSolved() {
-        String solvedWord = clue.solve("Sweet expensive golden honey", 4);
+        String solvedWord = clue.solve("Sweet expensive golden honey", null, 4);
 
         assertThat(solvedWord, is("dear"));
     }
 
     @Test
     public void doubleDefinitionClueWithClueWordNotAtTheRightEndOfTheClueCanBeSolved() {
-        String solvedWord = clue.solve("Expensive sweet honey golden", 4);
+        String solvedWord = clue.solve("Expensive sweet honey golden", null, 4);
 
         assertThat(solvedWord, is("dear"));
     }
@@ -51,21 +51,21 @@ public class DoubleDefinitionsClueTest {
     @Ignore
     @Test
     public void moreComplexDoubleDefinitionClueCanBeSolved() {
-        String solvedWord = clue.solve("A fast train, say", 7);
+        String solvedWord = clue.solve("A fast train, say", null, 7);
 
         assertThat(solvedWord, is("Express"));
     }
 
     @Test
     public void handlesWhenNoMatchingWordIsFound() {
-        String solvedWord = clue.solve("Bird allowed outside tavern", 4);
+        String solvedWord = clue.solve("Bird allowed outside tavern", null, 4);
 
         assertThat(solvedWord, is("Answer not found :("));
     }
 
     @Test
     public void correctLengthWordIsReturned() {
-        String solvedWord = clue.solve("Expensive expensive", 4);
+        String solvedWord = clue.solve("Expensive expensive", null, 4);
         assertThat(solvedWord, is("dear"));
     }
 
