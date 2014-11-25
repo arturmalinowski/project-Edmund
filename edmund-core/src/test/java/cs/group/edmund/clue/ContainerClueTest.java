@@ -27,7 +27,7 @@ public class ContainerClueTest {
 
     @Test
     public void containerClueTestCanBeSolved() {
-        Clue clue = new ContainerClue();
+        ContainerClue clue = new ContainerClue();
 
         //String solvedWord1 = clue.solve("Bird allowed outside tavern", 6);
         //assertThat(solvedWord1, is("LINNET"));
@@ -47,9 +47,18 @@ public class ContainerClueTest {
         String solvedWord6 = clue.solve("wear around the brave", 7);
         assertThat(solvedWord6, is("weather"));
 
+
         //delete
         //Thesaurus thesaurus = new Thesaurus();
         //System.out.println(thesaurus.getAllSynonyms("brave"));
+        //System.out.println("TESTING CONTAINED WORDS");
+        //System.out.println("**********");
+        //ArrayList<String> leftSynonyms = new ArrayList<String>();
+        //ArrayList<String> rightSynonyms = new ArrayList<String>();
+        //leftSynonyms.add("hello");
+        //rightSynonyms.add("there");
+        //System.out.println(clue.returnContainedWords(leftSynonyms, rightSynonyms));
+        //System.out.println("**********");
         //delete
 
         //String solvedWord7 = clue.solve("Put on around the brave", 7);
@@ -68,7 +77,7 @@ public class ContainerClueTest {
     @Test
     public void testGetKeyword() {
         ContainerClue clue = new ContainerClue();
-        assertThat(clue.getKeyword("BIRD ALLOWED OUTSIDE TAVERN"), is("OUTSIDE"));
+        assertThat(clue.getKeyword("bird allowed outside tavern"), is("outside"));
     }
 
     @Test
@@ -139,9 +148,9 @@ public class ContainerClueTest {
         leftSynonyms.add("SON");
         rightSynonyms.add("MARY");
 
-        System.out.println(clue.returnContainedWords(leftSynonyms, rightSynonyms));
-        System.out.println(leftSynonyms);
-        System.out.println(rightSynonyms);
+        //System.out.println(clue.returnContainedWords(leftSynonyms, rightSynonyms));
+        //System.out.println(leftSynonyms);
+        //System.out.println(rightSynonyms);
         //String rightWord = "mary";
         //String leftWord = "boy";
         //ArrayList<String> list = new ArrayList<String>();
