@@ -225,20 +225,33 @@ public class AnagramClue implements Clue {
         if(!newAnswer.equals("")) {
             return newAnswer;
         }
-        else{
-            twoLoops:
-            for(String answer : answers) {
-                List list = thesaurus.getRelatedWordsXML(answer);
-                for(String checkedWord : possibleSynonyms) {
-                    if(list.contains(checkedWord.toLowerCase())) {
-                        newAnswer = answer.toLowerCase();
-                        break twoLoops;
-                    }
+
+        twoLoops:
+        for(String answer : answers) {
+            List list = thesaurus.getRelatedWordsXML(answer);
+            for(String checkedWord : possibleSynonyms) {
+                if(list.contains(checkedWord.toLowerCase())) {
+                    newAnswer = answer.toLowerCase();
+                    break twoLoops;
+                }
+            }
+        }
+
+        if(!newAnswer.equals("")) {
+            return newAnswer;
+        }
+
+        twoLoops:
+        for(String answer : answers) {
+            for(String checkedWord : possibleSynonyms) {
+                List list = thesaurus.getRelatedWordsXML(checkedWord.toLowerCase());
+                if(list.contains(answer)) {
+                    newAnswer = answer.toLowerCase();
+                    break twoLoops;
                 }
             }
         }
 
         return newAnswer;
     }
-
 }
