@@ -33,7 +33,7 @@ public class ContainerClueTest {
         //String solvedWord2 = clue.solve("Object when put into torn clothing", 7);
         //assertThat(solvedWord2, is("RAIMENT"));
 
-        //String solvedWord3 = clue.solve("Outlaws in gangs carrying equipment", 8);
+        //String solvedWord3 = clue.solve("Outlaws in gangs carrying equipment", null, 8);
         //assertThat(solvedWord3, is("BRIGANDS"));
 
         //String solvedWord4 = clue.solve("Relative entering Highland dance and showing off", 9);
@@ -42,12 +42,15 @@ public class ContainerClueTest {
         //String solvedWord5 = clue.solve("Stuck with tot holding present", 7);
         //assertThat(solvedWord5, is("ADHERED"));
 
+        // passes
         String solvedWord6 = clue.solve("wear around the brave", null, 7);
         assertThat(solvedWord6, is("weather"));
 
 
         //delete
         //Thesaurus thesaurus = new Thesaurus();
+        //System.out.println(thesaurus.getAllSynonymsXML("stash"));
+        //System.out.println(thesaurus.getAllSynonymsXML("put on"));
         //System.out.println(thesaurus.getAllSynonyms("brave"));
         //System.out.println("TESTING CONTAINED WORDS");
         //System.out.println("**********");
@@ -59,35 +62,23 @@ public class ContainerClueTest {
         //System.out.println("**********");
         //delete
 
-        //String solvedWord7 = clue.solve("Put on around the brave", 7);
-        //assertThat(solvedWord7, is("WEATHER"));
+        String solvedWord7 = clue.solve("Put on around the brave", null, 7);
+        assertThat(solvedWord7, is("weather"));
 
-        //String solvedWord8 = clue.solve("Attire clothing the brave", 7);
-        //assertThat(solvedWord8, is("WEATHER"));
+        //String solvedWord8 = clue.solve("Attire clothing the brave", null, 7);
+        //assertThat(solvedWord8, is("weather"));
 
-        //String solvedWord9 = clue.solve("Damage surrounding the brave", 7);
-        //assertThat(solvedWord9, is("WEATHER"));
+        //String solvedWord9 = clue.solve("Damage surrounding the brave", null, 7);
+        //assertThat(solvedWord9, is("weather"));
 
-        //String solvedWord10 = clue.solve("Stash or put in stage", 7);
-        //assertThat(solvedWord10, is("STORAGE"));
+        //String solvedWord10 = clue.solve("Stash or put in stage", null, 7);
+        //assertThat(solvedWord10, is("storage"));
     }
 
     @Test
     public void testGetKeyword() {
         ContainerClue clue = new ContainerClue();
         assertThat(clue.getKeyword("bird allowed outside tavern"), is("outside"));
-    }
-
-    @Test
-    public void testGetSideWords() {
-        ContainerClue clue = new ContainerClue();
-
-        String phrase = "BIRD ALLOWED OUTSIDE TAVERN";
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("BIRD");
-        list.add("TAVERN");
-
-        assertThat(clue.getSideWords(phrase), is(list));
     }
 
     @Test
@@ -101,21 +92,6 @@ public class ContainerClueTest {
         list.add("tavern");
 
         assertThat(clue.splitPhrase(phrase,keyword), is(list));
-    }
-
-    @Test
-    public void testGetLeftRightWords() {
-        ContainerClue clue = new ContainerClue();
-
-        String leftHalf = "ALLOWED";
-        String rightHalf = "TAVERN";
-
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("ALLOWED");
-        list.add("TAVERN");
-
-
-        assertThat(clue.getLeftRightWords(leftHalf, rightHalf), is(list));
     }
 
     @Test
