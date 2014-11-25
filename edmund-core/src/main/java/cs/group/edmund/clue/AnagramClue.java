@@ -158,6 +158,11 @@ public class AnagramClue implements Clue {
                 if (secondWord.length() + word.length() == answerLength) {
                     check = true;
                 }
+                for(String thirdWord : newList) {
+                    if (thirdWord.length() + secondWord.length() + word.length() == answerLength) {
+                        check = true;
+                    }
+                }
             }
             if (word.length() == answerLength) {
                 check = true;
@@ -170,6 +175,7 @@ public class AnagramClue implements Clue {
     public ArrayList possibleAnagrams(ArrayList<String> list, int answerLength) {
         ArrayList<String> wordsList = new ArrayList<>();
         ArrayList<String> secondList = new ArrayList<>(list);
+        ArrayList<String> thirdList = new ArrayList<>(list);
 
         for(String word : list) {
             if (word.length() > answerLength) {
@@ -183,6 +189,14 @@ public class AnagramClue implements Clue {
                 if (word.length() + secondWord.length() == answerLength) {
                     String newWord = secondWord + word;
                     wordsList.add(newWord);
+                }
+                thirdList.remove(word);
+                thirdList.remove(secondWord);
+                for(String thirdWord : thirdList) {
+                    if (word.length() + secondWord.length() + thirdWord.length() == answerLength) {
+                        String newWord = thirdWord + secondWord + word;
+                        wordsList.add(newWord);
+                    }
                 }
             }
         }
