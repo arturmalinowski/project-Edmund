@@ -134,12 +134,4 @@ public class AnagramClueTest {
 
         assertThat(answer, is(clueAnswer));
     }
-
-    @Test
-    public void secondAnagramClueCanBeSolved1() throws Exception {
-        clue = new AnagramClue();
-        String answer = clue.solve("Delays upset traders", null, 7);
-
-        assertThat(answer, is("retards"));
-    }
 }
