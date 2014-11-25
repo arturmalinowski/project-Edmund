@@ -44,12 +44,12 @@ public class ContainerClueTest {
         //String solvedWord5 = clue.solve("Stuck with tot holding present", 7);
         //assertThat(solvedWord5, is("ADHERED"));
 
-        String solvedWord6 = clue.solve("Wear around the brave", 7);
-        assertThat(solvedWord6, is("WEATHER"));
+        String solvedWord6 = clue.solve("wear around the brave", 7);
+        assertThat(solvedWord6, is("weather"));
 
         //delete
         //Thesaurus thesaurus = new Thesaurus();
-        //System.out.println(thesaurus.getAllSynonyms("THE"));
+        //System.out.println(thesaurus.getAllSynonyms("brave"));
         //delete
 
         //String solvedWord7 = clue.solve("Put on around the brave", 7);
@@ -87,11 +87,11 @@ public class ContainerClueTest {
     public void testSplitPhrase() {
         ContainerClue clue = new ContainerClue();
 
-        String phrase = "BIRD ALLOWED OUTSIDE TAVERN";
-        String keyword = "OUTSIDE";
+        String phrase = "bird allowed outside tavern";
+        String keyword = "outside";
         ArrayList<String> list = new ArrayList<String>();
-        list.add("BIRD ALLOWED");
-        list.add("TAVERN");
+        list.add("bird allowed");
+        list.add("tavern");
 
         assertThat(clue.splitPhrase(phrase,keyword), is(list));
     }
@@ -125,7 +125,7 @@ public class ContainerClueTest {
         solutions.add("LEINNT");
         solutions.add("LETINN");
 
-        assertThat("LINNET", is(clue.compareLists(synonyms, solutions)));
+        assertThat("linnet", is(clue.compareLists(synonyms, solutions)));
     }
 
     @Test

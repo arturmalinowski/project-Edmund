@@ -39,11 +39,12 @@ public class ContainerClue implements Clue {
         // Get container clue keyword
         String key = getKeyword(phrase);
 
-        // Get synonyms list for first and last words in phrase, set all to lowercase or future comparison
+        // Get synonyms list for first and last words in phrase, set all to lowercase or future comparison, removing the words not of the appropriate length
         ArrayList<String> firstLastList = getSideWords(phrase);
         ArrayList<String> firstWordSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms(firstLastList.get(0));
         ArrayList<String> lastWordSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms(firstLastList.get(1));
         firstWordSynonyms.addAll(lastWordSynonyms);
+        System.out.println("Possible Answers at start/end of word: " + firstWordSynonyms); //delete
 
         for(int i=0; i < firstWordSynonyms.size(); i++) {
             firstWordSynonyms.set(i, firstWordSynonyms.get(i).toLowerCase());
@@ -67,7 +68,7 @@ public class ContainerClue implements Clue {
         for (String word : solutions) {
             for (String synonym : synonyms) {
                 if (word.equals(synonym)) {
-                    return synonym.toUpperCase();
+                    return synonym.toLowerCase();
                 }
             }
         }
@@ -102,8 +103,11 @@ public class ContainerClue implements Clue {
     public ArrayList<String> splitPhrase(String phrase, String keyword) {
 
         //
-        phrase = phrase.toUpperCase();
+        phrase = phrase.toLowerCase();
+        keyword = keyword.toLowerCase();
         ArrayList<String> list = new ArrayList<String>();
+        //System.out.println(phrase); //delete
+        //System.out.println(keyword); //delete
         list.add(phrase.substring(0, phrase.indexOf(keyword)).trim());
         list.add(phrase.substring(phrase.lastIndexOf(keyword) + keyword.length()).trim());
         return list;
@@ -120,21 +124,26 @@ public class ContainerClue implements Clue {
         ArrayList<String> l = getLeftRightWords(leftHalf, rightHalf);
         leftWord = l.get(0);
         rightWord = l.get(1);
-        System.out.println(leftWord); //delete
-        System.out.println(rightWord); //delete
+        System.out.println("Left Word: " + leftWord); //delete
+        System.out.println("Right Word: " + rightWord); //delete
 
         // Get lists of synonyms for left and right words
-        ArrayList<String> leftSynonyms = null;
-        ArrayList<String> rightSynonyms = null;
-        if (leftWord != null) {
-            leftSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms(leftWord);
-        }
-        if (rightWord != null) {
-            rightSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms(rightWord);
-        }
+        ArrayList<String> leftSynonyms = new ArrayList<String>();
+        ArrayList<String> rightSynonyms = new ArrayList<String>();
         leftSynonyms.add(leftWord);
         rightSynonyms.add(rightWord);
+        ArrayList<String> l1 = null;
 
+        if (leftWord != null) {
+            l1 = (ArrayList<String>) thesaurus.getAllSynonymsXML(leftWord);
+            leftSynonyms.addAll(l1);
+        }
+        if (rightWord != null) {
+            l1 = (ArrayList<String>) thesaurus.getAllSynonymsXML(rightWord);
+            rightSynonyms.addAll(l1);
+        }
+        System.out.println("Left Synonyms: " + leftSynonyms); //delete
+        System.out.println("Right Synonyms: " + rightSynonyms); //delete
         return returnContainedWords(leftSynonyms, rightSynonyms);
     }
 
