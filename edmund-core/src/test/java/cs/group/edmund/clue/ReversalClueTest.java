@@ -24,7 +24,7 @@ public class ReversalClueTest {
     @Test
     public void reversalClueTestCanBeSolved() {
         Clue clue = new ReversalClue();
-        String solvedWord = clue.solve("Are you an ogre?", 4);
+        String solvedWord = clue.solve("Are you an ogre?", null, 4);
 
         assertThat(solvedWord, is("ergo"));
     }

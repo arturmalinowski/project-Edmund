@@ -51,7 +51,7 @@ public class Thesaurus {
         try {
             document = reader.read("http://words.bighugelabs.com/api/2/ecdcfa6e1dd349d1d1f4c0755f8b4d1d/" + word + "/xml");
         } catch (Exception e) {
-            System.out.println("Error parsing xml");
+            System.out.println("Error parsing xml - synonyms");
             return elementList;
         }
 
@@ -126,7 +126,7 @@ public class Thesaurus {
         try {
             document = reader.read("http://project-shakespeare.herokuapp.com/shakespeare/api/word/" + word);
         } catch (Exception e) {
-            System.out.println("Error parsing xml");
+            System.out.println("Error parsing xml - related words");
             return elementList;
         }
 

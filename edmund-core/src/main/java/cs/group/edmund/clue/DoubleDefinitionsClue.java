@@ -28,7 +28,7 @@ public class DoubleDefinitionsClue implements Clue {
     }
 
     @Override
-    public String solve(String phrase, int... answerLength) {
+    public String solve(String phrase, String hint, int... answerLength) {
         for (int value : answerLength) {
             this.answerLength.add(value);
         }
