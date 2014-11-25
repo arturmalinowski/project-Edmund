@@ -120,11 +120,18 @@ public class ContainerClue implements Clue {
         ArrayList<String> l = getLeftRightWords(leftHalf, rightHalf);
         leftWord = l.get(0);
         rightWord = l.get(1);
+        System.out.println(leftWord); //delete
+        System.out.println(rightWord); //delete
 
         // Get lists of synonyms for left and right words
-        //solutions = returnContainedWords(leftWord, rightWord);
-        ArrayList<String> leftSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms(leftWord);
-        ArrayList<String> rightSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms(rightWord);
+        ArrayList<String> leftSynonyms = null;
+        ArrayList<String> rightSynonyms = null;
+        if (leftWord != null) {
+            leftSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms(leftWord);
+        }
+        if (rightWord != null) {
+            rightSynonyms = (ArrayList<String>) thesaurus.getAllSynonyms(rightWord);
+        }
         leftSynonyms.add(leftWord);
         rightSynonyms.add(rightWord);
 
