@@ -101,7 +101,7 @@ public class AnagramClueTest {
         assertThat(clue.possibleAnagrams(list, 7).contains("truerun"), is(true));
     }
 
-    @Ignore
+
     @Test
     @Table({@Row({"Get cast adrift in boat", "obtain", "6"}),
     @Row({"Lisa mistaken to travel to sea", "sail", "4"}),
@@ -126,7 +126,7 @@ public class AnagramClueTest {
     @Row({"Reversed out and got booked!", "reserved", "8"}),
     @Row({"His patter confused analyst", "therapist", "9"}),
     @Row({"Teach about swindler", "cheat", "5"}),
-    @Row({"Hens to become truthful?", "honest", "5"}),
+    @Row({"Hens to become truthful?", "honest", "6"}),
     @Row({"Who's shaken up the display?", "show", "4"})})
     public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength) {
         clue = new AnagramClue();

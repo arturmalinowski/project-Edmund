@@ -1,1 +1,34 @@
 potter:thrower,ceramicist,artificer
+tennis:lawn tennis,court game
+nurture:foster,rear,raise,bring up,parent,nourish,sustain,cater,encourage,ply,provide,supply,raising,rearing,breeding,bringing up,fostering,fosterage,upbringing,acculturation,enculturation,socialisation,socialization
+stable:shelter,static,unchanging,stalls,horse barn,farm building
+darters:snakebird,anhinga,animal,animate being,beast,brute,creature,fauna,pelecaniform seabird
+retards:check,delay,decelerate,slow,slow down,slow up,alter,be,change,decrease,diminish,fall,lessen,modify,idiot,imbecile,cretin,moron,changeling,half-wit,simple,simpleton
+starred:asterisked
+resorted:fall back,recur,repair,apply,employ,go,locomote,move,travel,use,utilise,utilize,resort hotel,holiday resort,haunt,hangout,repair,stamping ground,recourse,refuge,aid,area,assist,assistance,country,help,hotel,resource
+onager:catapult,arbalest,arbalist,ballista,bricole,mangonel,trebuchet,trebucket,Equus hemionus,artillery,gun,heavy weapon,ordnance,wild ass
+orange:orangish,orangeness,orange tree,Orange,Orange River,chromatic color,chromatic colour,citrous fruit,citrus,citrus fruit,citrus tree,pigment,river,spectral color,spectral colour
+reserved:restrained,reticent,unemotional
+obtain:receive,get,find,incur,prevail,hold,acquire,be,change,exist
+swap:barter,swop,trade,exchange,interchange,trade,swop,switch,change,exchange,go,interchange,locomote,move,travel
+wasp:white Anglo-Saxon Protestant,WASP,Caucasian,hymenopter,hymenopteran,hymenopteron,hymenopterous insect,Protestant,White,white person
+ails:garlic,flavorer,flavoring,flavourer,flavouring,seasoner,seasoning,trouble,pain,afflict,hurt,suffer
+sail:canvas,canvass,sheet,cruise,ocean trip,piece of cloth,piece of material,voyage,sweep,voyage,navigate,boat,journey,move,travel,sail through,sweep through
+aper:copycat,imitator,emulator,ape,individual,mortal,person,somebody,someone,soul
+pear:pear tree,Pyrus communis,edible fruit,false fruit,fruit tree,pome
+rape:colza,Brassica napus,rapine,violation,assault,ravishment,mustard,pillage,pillaging,plundering,sex crime,sex offense,sexual abuse,sexual assault,ravish,violate,assault,dishonor,dishonour,outrage,spoil,despoil,plunder,assail,attack,destroy,ruin,set on
+reap:harvest,glean,draw,collect,derive,gain,garner,gather,pull together
+cheat:darnel,tare,bearded darnel,Lolium temulentum,chess,Bromus secalinus,deceiver,cheater,trickster,beguiler,slicker,swindle,rig,cheating,brome,bromegrass,deceit,deception,dissembling,dissimulation,fraud,offender,rye grass,ryegrass,wrongdoer,rip off,chisel,chouse,shaft,screw,chicane,jockey,cheat on,cuckold,betray,wander,beat,beat out,cozen,crush,deceive,delude,lead on,shell,trounce,vanquish,victimise,victimize
+theca:sac,case,cover,covering,natural covering,sheath
+hets:heated,heated up,het up,hot
+show:display,appearance,amusement,demo,demonstration,entertainment,feigning,pretence,pretending,pretense,simulation,social event,show,demo,exhibit,present,demonstrate,prove,establish,shew,testify,bear witness,evidence,picture,depict,render,express,evince,indicate,point,show up,read,register,record,usher,affirm,appear,communicate,conduct,confirm,convey,corroborate,direct,display,guide,impart,inform,interpret,lead,pass,pass along,pass on,put across,race,represent,reveal,run,substantiate,support,sustain,take,disprove,hide,show off
+genial:affable,amiable,cordial,mental,kind,feature,body part,lineament,friendly,hospitable
+linage:lineage,charge per unit,number,rate
+retains:continue,keep,keep on,hold,keep back,hold back,bear,carry,contain,hold on,keep going,keep up,prolong,remember,sustain,think of
+retinas:membrane,tissue layer
+retsina:vino,wine
+stainer:worker
+stearin:glyceryl ester
+ethnos:ethnic group,group,grouping
+honest:honorable,dependable,reliable,guileless,true,veracious,dishonest,honorable,artless,direct,echt,genuine,honourable,ingenuous,sincere,square,straight,true,trustworthy,trusty,artless,downright,sincere,true,trustworthy,trusty,truthful,unpretentious
+untruer:

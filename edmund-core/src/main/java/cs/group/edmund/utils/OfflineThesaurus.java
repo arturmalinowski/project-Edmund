@@ -28,14 +28,24 @@ public class OfflineThesaurus {
 
     public void addNewQuery(String queryWord, List<String> synonyms) {
         String line = "";
-        for(String word : synonyms) {
-            line = line + "," + word;
+
+        if(!synonyms.isEmpty()) {
+            for (String word : synonyms) {
+                line = line + "," + word;
+            }
+            line = line.substring(1);
+            try {
+                FileUtils.writeStringToFile(new File(url), queryWord + ":" + line + "\n", "utf8", true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        line = line.substring(1);
-        try {
-            FileUtils.writeStringToFile(new File(url), queryWord + ":" + line+"\n", "utf8", true);
-        } catch (IOException e) {
-            e.printStackTrace();
+        else {
+            try {
+                FileUtils.writeStringToFile(new File(url), queryWord + ":\n", "utf8", true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
