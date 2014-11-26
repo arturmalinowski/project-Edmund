@@ -3,6 +3,7 @@ package cs.group.edmund.clue;
 import com.googlecode.yatspec.junit.Row;
 import com.googlecode.yatspec.junit.Table;
 import com.googlecode.yatspec.junit.TableRunner;
+import cs.group.edmund.utils.Thesaurus;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -11,6 +12,7 @@ import org.junit.runner.RunWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 @RunWith(TableRunner.class)
 public class DoubleDefinitionsClueTest {
@@ -19,7 +21,7 @@ public class DoubleDefinitionsClueTest {
 
     @Before
     public void setup() {
-        clue = new DoubleDefinitionsClue();
+        clue = new DoubleDefinitionsClue(new Thesaurus());
     }
 
     @Test
@@ -32,20 +34,33 @@ public class DoubleDefinitionsClueTest {
         assertEquals(clue.isRelevant("Bird allowed outside tavern"), false);
     }
 
-    // Current success rate 42.8%, more examples needed
+    // Current success rate 20% without hints, 50% with hints
     @Ignore
     @Test
     @Table({
-            @Row({"nothing for romance", ".o..", "4", "love"}),
-            @Row({"instant credit", "...k", "4", "tick"}),
-            @Row({"armor in the post", "m...", "4", "mail"}),
-            @Row({"sound warning for a temptress", "..r..", "5", "siren"}),
-            @Row({"fish detected by its odour", ".m...", "5", "smelt"}),
-            @Row({"run away from an infertile area", ".....t", "6", "desert"}),
-            @Row({"a fast train say", "e......", "7", "express"})
+            @Row({"Nothing for romance", "", "4", "love"}),
+            @Row({"Expensive honey", "", "4", "dear"}),
+            @Row({"Instant credit", "", "4", "tick"}),
+            @Row({"Armor in the post", "m...", "4", "mail"}),
+            @Row({"Sound warning for a temptress", "", "5", "siren"}),
+            @Row({"Fish detected by its odour", "", "5", "smelt"}),
+            @Row({"Run away from an infertile area", "d.....", "6", "desert"}),
+            @Row({"A fast train say", "", "7", "express"}),
+            @Row({"Put up with an animal", "", "4", "bear"}),
+            @Row({"Yearn for a while", "", "4", "long"}),
+            @Row({"Succession of command", "", "5", "order"}),
+            @Row({"Eaten up and taken in eagerly", "", "8", "devoured"}),
+            @Row({"Spy found", "", "5", "plant"}),
+            @Row({"Reject junk", "..f...", "6", "refuse"}),
+            @Row({"Alter coins", "", "6", "change"}),
+            @Row({"Choose tool", "", "4", "pick"}),
+            @Row({"Noble number", ".o...", "5", "count"}),
+            @Row({"Declare complete", "u....", "5", "utter"}),
+            @Row({"Go in record", "e....", "5", "enter"}),
+            @Row({"Lookalike twofold", "", "6", "double"})
     })
-    public void bulkClueTest(String cryticClue, String hint, String answerLength, String answer) {
-        String solvedWord = clue.solve(cryticClue, hint, Integer.parseInt(answerLength));
+    public void bulkClueTest(String crypticClue, String pattern, String answerLength, String answer) {
+        String solvedWord = clue.solve(crypticClue, pattern, Integer.parseInt(answerLength));
 
         assertThat(solvedWord, is(answer));
     }
@@ -96,6 +111,16 @@ public class DoubleDefinitionsClueTest {
     public void correctLengthWordIsReturned() {
         String solvedWord = clue.solve("Expensive expensive", ".e..", 4);
         assertThat(solvedWord, is("dear"));
+    }
+
+    @Test
+    public void invalidWordsDoNotCallApi() {
+        Thesaurus thesaurus = mock(Thesaurus.class);
+        DoubleDefinitionsClue doubleDefinitionClue = new DoubleDefinitionsClue(thesaurus);
+        doubleDefinitionClue.solve("the a", null, 4);
+
+        verify(thesaurus, never()).getAllSynonymsXML("the");
+        verify(thesaurus, never()).getAllSynonymsXML("a");
     }
 
 }
