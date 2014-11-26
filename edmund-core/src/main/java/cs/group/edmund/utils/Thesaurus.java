@@ -3,6 +3,7 @@ package cs.group.edmund.utils;
 
 import cs.group.edmund.fixtures.HttpClient;
 import org.dom4j.Document;
+import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.json.JSONArray;
@@ -47,12 +48,16 @@ public class Thesaurus {
         }
         ArrayList<String> elementList = new ArrayList<>();
         SAXReader reader = new SAXReader();
-        Document document = null;
+        Document document;
         try {
             document = reader.read("http://words.bighugelabs.com/api/2/ecdcfa6e1dd349d1d1f4c0755f8b4d1d/" + word + "/xml");
         } catch (Exception e) {
-            System.out.println("Error parsing xml - synonyms");
-            return elementList;
+            if (e instanceof DocumentException) {
+                return elementList;
+            } else {
+                System.out.println("Error parsing xml - synonyms");
+                return elementList;
+            }
         }
 
         Element root = document.getRootElement();
@@ -62,7 +67,7 @@ public class Thesaurus {
             elementList.add(element.getText());
         }
 
-        if (!elementList.isEmpty()){
+        if (!elementList.isEmpty()) {
             offlineThesaurus.addNewQuery(word, elementList);
         }
 
@@ -106,13 +111,12 @@ public class Thesaurus {
     public List getAllSynonyms(String word) {
         if (offlineThesaurus.hasWord(word)) {
             return offlineThesaurus.results(word);
-        }
-        else {
+        } else {
             List list = new ArrayList<String>();
             list = getSynonyms(SynonymType.VERB, word);
             list.addAll(getSynonyms(SynonymType.ADJECTIVE, word));
             list.addAll(getSynonyms(SynonymType.NOUN, word));
-            if (!list.isEmpty()){
+            if (!list.isEmpty()) {
                 offlineThesaurus.addNewQuery(word, list);
             }
             return list;
@@ -126,8 +130,12 @@ public class Thesaurus {
         try {
             document = reader.read("http://project-shakespeare.herokuapp.com/shakespeare/api/word/" + word);
         } catch (Exception e) {
-            System.out.println("Error parsing xml - related words");
-            return elementList;
+            if (e instanceof DocumentException) {
+                return elementList;
+            } else {
+                System.out.println("Error parsing xml - related words");
+                return elementList;
+            }
         }
 
         Element root = document.getRootElement();
