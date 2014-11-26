@@ -18,6 +18,11 @@ public class DoubleDefinitionsClue implements Clue {
     private boolean matchingWordFound;
     private int hintIndex = 0;
     private char hintLetter = '.';
+    private Thesaurus thesaurus;
+
+    public DoubleDefinitionsClue(Thesaurus thes) {
+        thesaurus = thes;
+    }
 
     @Override
     public String create(String word) {
@@ -74,31 +79,47 @@ public class DoubleDefinitionsClue implements Clue {
 
         putRelatedWordsInTwoLists(splitPhrase);
 
-        compareTheListsOfWords();
+        compareTheListsOfWords(splitPhrase);
 
         return matchingWordFound;
     }
 
     private void putRelatedWordsInTwoLists(String[] splitPhrase) {
-        Thesaurus thesaurus = new Thesaurus();
+        firstElementList = (containsSearchableWords(splitPhrase[0]) ? thesaurus.getAllSynonymsXML(splitPhrase[0]) : firstElementList);
 
-        // get Synonyms and related words for first word
-        firstElementList = thesaurus.getAllSynonymsXML(splitPhrase[0]);
-        firstElementList.addAll(thesaurus.getRelatedWordsXML(splitPhrase[0]));
+        secondElementList = (containsSearchableWords(splitPhrase[1]) ? thesaurus.getAllSynonymsXML(splitPhrase[1]) : secondElementList);
 
-        // get Synonyms and related words for second word
-        secondElementList = thesaurus.getAllSynonymsXML(splitPhrase[1]);
-        secondElementList.addAll(thesaurus.getRelatedWordsXML(splitPhrase[1]));
-
-        leftBackupWordList = thesaurus.getAllSynonymsXML(leftBackupWord);
-        leftBackupWordList.addAll(thesaurus.getRelatedWordsXML(leftBackupWord));
-
-        rightBackupWordList = thesaurus.getAllSynonymsXML(rightBackupWord);
-        rightBackupWordList.addAll(thesaurus.getRelatedWordsXML(rightBackupWord));
+        if (leftBackupWord != null) {
+            leftBackupWordList = (containsSearchableWords(leftBackupWord) ? thesaurus.getAllSynonymsXML(leftBackupWord) : leftBackupWordList);
+        }
+        if (leftBackupWord != null) {
+            rightBackupWordList = (containsSearchableWords(rightBackupWord) ? thesaurus.getAllSynonymsXML(rightBackupWord) : rightBackupWordList);
+        }
     }
 
-    private void compareTheListsOfWords() {
+    private boolean containsSearchableWords(String word) {
+        return !word.equals("the") && !word.equals("a");
+    }
+
+    private void compareTheListsOfWords(String[] splitPhrase) {
         matchingWordFound = false;
+
+        searchLists();
+
+        if (!matchingWordFound) {
+            firstElementList.addAll(thesaurus.getRelatedWordsXML(splitPhrase[0]));
+
+            secondElementList.addAll(thesaurus.getRelatedWordsXML(splitPhrase[1]));
+
+            leftBackupWordList.addAll(thesaurus.getRelatedWordsXML(leftBackupWord));
+
+            rightBackupWordList.addAll(thesaurus.getRelatedWordsXML(rightBackupWord));
+
+            searchLists();
+        }
+    }
+
+    private void searchLists() {
         for (String element : firstElementList) {
             if (secondElementList.contains(element) && answerLength.size() == 0 && matchesHint(element)) {
                 matchingWordFound = true;
@@ -106,15 +127,19 @@ public class DoubleDefinitionsClue implements Clue {
             } else if (secondElementList.contains(element) && element.length() == answerLength.get(0) && matchesHint(element)) {
                 matchingWordFound = true;
                 answer = element;
-            } else if (rightBackupWordList.contains(element) && element.length() == answerLength.get(0) && matchesHint(element)) {
-                matchingWordFound = true;
-                answer = element;
+            } else if (!element.equals(rightBackupWord)) {
+                if (rightBackupWordList.contains(element) && element.length() == answerLength.get(0) && matchesHint(element)) {
+                    matchingWordFound = true;
+                    answer = element;
+                }
             }
         }
         for (String secondListElement : secondElementList) {
-            if (leftBackupWordList.contains(secondListElement) && secondListElement.length() == answerLength.get(0) && matchesHint(secondListElement)) {
-                matchingWordFound = true;
-                answer = secondListElement;
+            if (!secondListElement.equals(leftBackupWord)) {
+                if (leftBackupWordList.contains(secondListElement) && secondListElement.length() == answerLength.get(0) && matchesHint(secondListElement)) {
+                    matchingWordFound = true;
+                    answer = secondListElement;
+                }
             }
         }
     }
@@ -122,4 +147,5 @@ public class DoubleDefinitionsClue implements Clue {
     public boolean matchesHint(String element) {
         return hintLetter == '.' || element.charAt(hintIndex) == hintLetter;
     }
+
 }
