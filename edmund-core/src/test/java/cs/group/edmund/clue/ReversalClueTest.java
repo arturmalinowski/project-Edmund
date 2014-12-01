@@ -10,13 +10,13 @@ public class ReversalClueTest {
 
     @Test
     public void detectsThatClueIsAReversal() {
-        Clue clue = new ContainerClue();
+        Clue clue = new ReversalClue();
         assertThat(clue.isRelevant("Physician brings fish round"), is(true));
     }
 
     @Test
     public void detectsThatClueIsNotAReversal() {
-        Clue clue = new ContainerClue();
+        Clue clue = new ReversalClue();
         assertThat(clue.isRelevant("Crazy flying mammals"), is(false));
     }
 
