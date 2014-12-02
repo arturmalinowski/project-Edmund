@@ -42,4 +42,11 @@ public class OfflineThesaurusTest {
         assertThat(offlineThesaurus.hasWord("potter"), is(true));
     }
 
+    @Test
+    public void checkIfWordWIthNoResultsGetsSavedOfflineTest() {
+        Boolean check = offlineThesaurus.hasWord("sharif");
+
+        assertThat(check, is(false));
+    }
+
 }
