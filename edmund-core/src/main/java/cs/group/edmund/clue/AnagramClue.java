@@ -79,9 +79,12 @@ public class AnagramClue implements Clue {
                     // TODO need to distinguish possible answers, when each word has just 1 result - using synonyms
                     if ((answers != null) && (answers.size() < 2)) {
                         possibleAnswer = answers.get(0);
-                        break;
+                        continue;
                     }
                     // TODO come up with a solution when there is more then one anagram of a word
+                    if (answers == null) {
+                        continue;
+                    }
                     else {
 
                         possibleAnswer = synonymsCheck(answers, clueWords);
@@ -100,6 +103,15 @@ public class AnagramClue implements Clue {
                 }
             }
 
+        }
+        if (possibleAnswer.contains("Possible answers") && hint != null) {
+            String[] possibleAnswers = possibleAnswer.substring(18).replaceAll("[-+.^:,?!'’/]", "").split(" ");
+            for (String answer : possibleAnswers) {
+                if (answer.matches(hint)) {
+                    possibleAnswer = answer;
+                    break;
+                }
+            }
         }
         return possibleAnswer;
     }
