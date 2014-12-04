@@ -16,6 +16,7 @@ public class DoubleDefinitionsClue implements Clue {
     private String leftBackupWord;
     private String rightBackupWord;
     private boolean matchingWordFound;
+    private boolean mustBeTwoWords = false;
     private List<Character> hintLetter = new ArrayList<>();
     private List<Integer> hintIndex = new ArrayList<>();
     private Thesaurus thesaurus;
@@ -70,7 +71,8 @@ public class DoubleDefinitionsClue implements Clue {
         if (answer == null) {
             answer = "Answer not found :(";
         }
-        return answer;
+
+        return answer.replace("-", " ");
     }
 
     public Boolean findMatchingWords(String phrase) {
@@ -131,15 +133,18 @@ public class DoubleDefinitionsClue implements Clue {
     }
 
     private void searchLists() {
+
+        int expectedAnswerLength = checkIfAnswerIsMoreThanOneWord();
+
         for (String element : firstElementList) {
-            if (secondElementList.contains(element) && answerLength.size() == 0 && matchesHint(element)) {
+            if (secondElementList.contains(element) && expectedAnswerLength == 0 && matchesHint(element) && needsToBeTwoWords(mustBeTwoWords, element)) {
                 matchingWordFound = true;
                 answer = element;
-            } else if (secondElementList.contains(element) && element.length() == answerLength.get(0) && matchesHint(element)) {
+            } else if (secondElementList.contains(element) && element.length() == expectedAnswerLength && matchesHint(element) && needsToBeTwoWords(mustBeTwoWords, element)) {
                 matchingWordFound = true;
                 answer = element;
             } else if (!element.equals(rightBackupWord)) {
-                if (rightBackupWordList.contains(element) && element.length() == answerLength.get(0) && matchesHint(element)) {
+                if (rightBackupWordList.contains(element) && element.length() == expectedAnswerLength && matchesHint(element) && needsToBeTwoWords(mustBeTwoWords, element)) {
                     matchingWordFound = true;
                     answer = element;
                 }
@@ -147,7 +152,7 @@ public class DoubleDefinitionsClue implements Clue {
         }
         for (String secondListElement : secondElementList) {
             if (!secondListElement.equals(leftBackupWord)) {
-                if (leftBackupWordList.contains(secondListElement) && secondListElement.length() == answerLength.get(0) && matchesHint(secondListElement)) {
+                if (leftBackupWordList.contains(secondListElement) && secondListElement.length() == expectedAnswerLength && matchesHint(secondListElement) && needsToBeTwoWords(mustBeTwoWords, secondListElement)) {
                     matchingWordFound = true;
                     answer = secondListElement;
                 }
@@ -155,10 +160,27 @@ public class DoubleDefinitionsClue implements Clue {
         }
     }
 
+    private int checkIfAnswerIsMoreThanOneWord() {
+        int expectedAnswerLength = 0;
+        if (answerLength.size() != 0) {
+            expectedAnswerLength = answerLength.get(0);
+            if (answerLength.size() > 1) {
+                expectedAnswerLength = expectedAnswerLength + answerLength.get(1) + 1;
+                mustBeTwoWords = true;
+            }
+
+        }
+        return expectedAnswerLength;
+    }
+
+    private boolean needsToBeTwoWords(boolean mustBeTwoWords, String element) {
+        return !mustBeTwoWords || element.contains("-");
+    }
+
     public boolean matchesHint(String element) {
         boolean matches = false;
         if (hintLetter.isEmpty()) {
-            return false;
+            return true;
         } else {
             int i = 0;
             for (Integer aHintIndex : hintIndex) {
