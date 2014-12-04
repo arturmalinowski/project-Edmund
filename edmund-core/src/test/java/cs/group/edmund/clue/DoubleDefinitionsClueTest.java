@@ -113,11 +113,16 @@ public class DoubleDefinitionsClueTest {
         assertThat(solvedWord, is("dear"));
     }
 
-
     @Test
     public void hintWithMoreThanOneLetterIsAccepted() {
         String solvedWord = clue.solve("Reject junk", "..fu..", 6);
         assertThat(solvedWord, is("refuse"));
+    }
+
+    @Test
+    public void twoWordedAnswerCanBeFound() {
+        String solvedWord = clue.solve("Expensive expensive", null, 6, 3);
+        assertThat(solvedWord, is("dearly won"));
     }
 
     @Test
