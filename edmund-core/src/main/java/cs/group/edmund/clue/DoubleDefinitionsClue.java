@@ -134,7 +134,7 @@ public class DoubleDefinitionsClue implements Clue {
 
     private void searchLists() {
 
-        int expectedAnswerLength = checkIfAnswerIsMoreThanOneWord();
+        int expectedAnswerLength = checkIfAnswerNeedsToBeTwoWords();
 
         for (String element : firstElementList) {
             if (secondElementList.contains(element) && expectedAnswerLength == 0 && matchesHint(element) && needsToBeTwoWords(mustBeTwoWords, element)) {
@@ -160,7 +160,7 @@ public class DoubleDefinitionsClue implements Clue {
         }
     }
 
-    private int checkIfAnswerIsMoreThanOneWord() {
+    private int checkIfAnswerNeedsToBeTwoWords() {
         int expectedAnswerLength = 0;
         if (answerLength.size() != 0) {
             expectedAnswerLength = answerLength.get(0);
