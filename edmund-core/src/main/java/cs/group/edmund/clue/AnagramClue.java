@@ -1,6 +1,7 @@
 package cs.group.edmund.clue;
 
 import cs.group.edmund.fixtures.HttpClient;
+import cs.group.edmund.utils.Helper;
 import cs.group.edmund.utils.Thesaurus;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -9,7 +10,6 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -43,7 +43,7 @@ public class AnagramClue implements Clue {
         String possibleAnswer = "";
         String[] words = phrase.replaceAll("[-+.^:,?!'’/]"," ").toUpperCase().split(" ");
         ArrayList<String> clueWords = new ArrayList<>(Arrays.asList(words));
-        clueWords = removeDuplicates(clueWords);
+        clueWords = Helper.removeDuplicates(clueWords);
         clueWords.removeAll(Arrays.asList("", null));
 
         for (int i = 0; i<answerLength.length; i++) {
@@ -114,14 +114,6 @@ public class AnagramClue implements Clue {
             }
         }
         return possibleAnswer;
-    }
-
-    private ArrayList<String> removeDuplicates(ArrayList<String> list) {
-        HashSet hs = new HashSet();
-        hs.addAll(list);
-        list.clear();
-        list.addAll(hs);
-        return list;
     }
 
     public List findAnagram(String word) {
