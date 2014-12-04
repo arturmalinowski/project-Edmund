@@ -16,8 +16,8 @@ public class DoubleDefinitionsClue implements Clue {
     private String leftBackupWord;
     private String rightBackupWord;
     private boolean matchingWordFound;
-    private int hintIndex = 0;
-    private char hintLetter = '.';
+    private List<Character> hintLetter = new ArrayList<>();
+    private List<Integer> hintIndex = new ArrayList<>();
     private Thesaurus thesaurus;
 
     public DoubleDefinitionsClue(Thesaurus thes) {
@@ -31,7 +31,13 @@ public class DoubleDefinitionsClue implements Clue {
 
     @Override
     public boolean isRelevant(String phrase) {
-        return findMatchingWords(phrase);
+        matchingWordFound = false;
+
+        putRelatedWordsInTwoLists(splitPhrase(phrase));
+
+        checkRelevance();
+
+        return matchingWordFound;
     }
 
     @Override
@@ -50,11 +56,9 @@ public class DoubleDefinitionsClue implements Clue {
             // TODO enable this to work with answers of more than one word
             if (hint.length() == answerLength.get(0)) {
                 for (int i = 0; i < hint.length(); i++) {
-                    if (hint.charAt(i) == '.') {
-                        hintIndex++;
-                    } else {
-                        hintLetter = hint.charAt(i);
-                        i = hint.length();
+                    if (hint.charAt(i) != '.') {
+                        hintLetter.add(hint.charAt(i));
+                        hintIndex.add(i);
                     }
                 }
             }
@@ -70,18 +74,23 @@ public class DoubleDefinitionsClue implements Clue {
     }
 
     public Boolean findMatchingWords(String phrase) {
-        String[] splitPhrase = phrase.split(" ");
-        if (splitPhrase.length > 2) {
-            leftBackupWord = splitPhrase[1];
-            rightBackupWord = splitPhrase[splitPhrase.length - 2];
-            splitPhrase = new String[]{splitPhrase[0], splitPhrase[splitPhrase.length - 1]};
-        }
+        String[] splitPhrase = splitPhrase(phrase);
 
         putRelatedWordsInTwoLists(splitPhrase);
 
         compareTheListsOfWords(splitPhrase);
 
         return matchingWordFound;
+    }
+
+    private String[] splitPhrase(String phrase) {
+        String[] splitPhrase = phrase.split(" ");
+        if (splitPhrase.length > 2) {
+            leftBackupWord = splitPhrase[1];
+            rightBackupWord = splitPhrase[splitPhrase.length - 2];
+            splitPhrase = new String[]{splitPhrase[0], splitPhrase[splitPhrase.length - 1]};
+        }
+        return splitPhrase;
     }
 
     private void putRelatedWordsInTwoLists(String[] splitPhrase) {
@@ -116,6 +125,8 @@ public class DoubleDefinitionsClue implements Clue {
             rightBackupWordList.addAll(thesaurus.getRelatedWordsXML(rightBackupWord));
 
             searchLists();
+
+            // recursively search for synonyms of the related words?
         }
     }
 
@@ -145,7 +156,40 @@ public class DoubleDefinitionsClue implements Clue {
     }
 
     public boolean matchesHint(String element) {
-        return hintLetter == '.' || element.charAt(hintIndex) == hintLetter;
+        boolean matches = false;
+        if (hintLetter.isEmpty()) {
+            return false;
+        } else {
+            int i = 0;
+            for (Integer aHintIndex : hintIndex) {
+                if (element.charAt(aHintIndex) == hintLetter.get(i)) {
+                    matches = true;
+                    i++;
+                }
+            }
+        }
+        return matches;
+    }
+
+    private void checkRelevance() {
+        for (String element : firstElementList) {
+            if (secondElementList.contains(element)) {
+                matchingWordFound = true;
+            } else if (secondElementList.contains(element)) {
+                matchingWordFound = true;
+            } else if (!element.equals(rightBackupWord)) {
+                if (rightBackupWordList.contains(element)) {
+                    matchingWordFound = true;
+                }
+            }
+        }
+        for (String secondListElement : secondElementList) {
+            if (!secondListElement.equals(leftBackupWord)) {
+                if (leftBackupWordList.contains(secondListElement)) {
+                    matchingWordFound = true;
+                }
+            }
+        }
     }
 
 }
