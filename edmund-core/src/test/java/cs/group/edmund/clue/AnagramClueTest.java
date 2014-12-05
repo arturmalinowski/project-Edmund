@@ -101,6 +101,7 @@ public class AnagramClueTest {
         assertThat(clue.possibleAnagrams(list, 7).contains("truerun"), is(true));
     }
 
+    @Ignore
     @Test
     @Table({@Row({"Get cast adrift in boat", "obtain", "6", "null"}),
     @Row({"Lisa mistaken to travel to sea", "sail", "4", "null"}),

@@ -1,6 +1,8 @@
 package cs.group.edmund.clue;
 
 
+import cs.group.edmund.utils.Helper;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,9 +11,7 @@ import static java.util.Arrays.asList;
 
 public class OddEvenClue {
 
-    private final List<String> keyWordsAny;
-    private final List<String> keyWordsOdd;
-    private final List<String> keyWordsEven;
+    private final List<String> keyWordsAny, keyWordsOdd, keyWordsEven;
 
     public OddEvenClue(){
         keyWordsAny = asList("ALTERNATE", "REGULAR", "REGULARLY", "EVERY OTHER");
@@ -37,8 +37,20 @@ public class OddEvenClue {
         String possibleAnswer = "";
         String[] tempWords = phrase.replaceAll("[-+.^:,?!'’/]"," ").toUpperCase().split(" ");
         ArrayList<String> clueWords = new ArrayList<>(Arrays.asList(tempWords));
+        clueWords = Helper.removeDuplicates(clueWords);
+        clueWords.removeAll(Arrays.asList("", null));
 
         for (int i = 0; i<answerLength.length; i++) {
+
+            for(String key : keyWordsAny) {
+                if (phrase.toUpperCase().contains(key)) {
+                    keyWord = key;
+                    if (keyWord.contains(" ")) {
+                        clueWords.remove(keyWord.substring(0, keyWord.indexOf(" ")));
+                        clueWords.remove(keyWord.substring(keyWord.indexOf(" ")+1));
+                    }
+                }
+            }
 
         }
 
