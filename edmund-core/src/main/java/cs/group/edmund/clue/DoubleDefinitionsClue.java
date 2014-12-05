@@ -17,9 +17,8 @@ public class DoubleDefinitionsClue implements Clue {
     private String rightBackupWord;
     private boolean matchingWordFound;
     private boolean mustBeTwoWords = false;
-    private List<Character> hintLetter = new ArrayList<>();
-    private List<Integer> hintIndex = new ArrayList<>();
     private Thesaurus thesaurus;
+    private String hint;
 
     public DoubleDefinitionsClue(Thesaurus thes) {
         thesaurus = thes;
@@ -47,24 +46,14 @@ public class DoubleDefinitionsClue implements Clue {
             this.answerLength.add(value);
         }
 
-        extractHint(hint);
+        this.hint = hint;
+        if (this.hint == null || this.hint.equals("")) {
+            this.hint = ".*";
+        }
 
         return getAnswer(phrase.toLowerCase());
     }
 
-    private void extractHint(String hint) {
-        if (hint != null) {
-            // TODO enable this to work with answers of more than one word
-            if (hint.length() == answerLength.get(0)) {
-                for (int i = 0; i < hint.length(); i++) {
-                    if (hint.charAt(i) != '.') {
-                        hintLetter.add(hint.charAt(i));
-                        hintIndex.add(i);
-                    }
-                }
-            }
-        }
-    }
 
     public String getAnswer(String phrase) {
         findMatchingWords(phrase);
@@ -128,7 +117,6 @@ public class DoubleDefinitionsClue implements Clue {
 
             searchLists();
 
-            // recursively search for synonyms of the related words?
         }
     }
 
@@ -137,14 +125,14 @@ public class DoubleDefinitionsClue implements Clue {
         int expectedAnswerLength = checkIfAnswerNeedsToBeTwoWords();
 
         for (String element : firstElementList) {
-            if (secondElementList.contains(element) && expectedAnswerLength == 0 && matchesHint(element) && needsToBeTwoWords(mustBeTwoWords, element)) {
+            if (secondElementList.contains(element) && expectedAnswerLength == 0 && element.matches(hint) && needsToBeTwoWords(mustBeTwoWords, element)) {
                 matchingWordFound = true;
                 answer = element;
-            } else if (secondElementList.contains(element) && element.length() == expectedAnswerLength && matchesHint(element) && needsToBeTwoWords(mustBeTwoWords, element)) {
+            } else if (secondElementList.contains(element) && element.length() == expectedAnswerLength && element.matches(hint) && needsToBeTwoWords(mustBeTwoWords, element)) {
                 matchingWordFound = true;
                 answer = element;
             } else if (!element.equals(rightBackupWord)) {
-                if (rightBackupWordList.contains(element) && element.length() == expectedAnswerLength && matchesHint(element) && needsToBeTwoWords(mustBeTwoWords, element)) {
+                if (rightBackupWordList.contains(element) && element.length() == expectedAnswerLength && element.matches(hint) && needsToBeTwoWords(mustBeTwoWords, element)) {
                     matchingWordFound = true;
                     answer = element;
                 }
@@ -152,7 +140,7 @@ public class DoubleDefinitionsClue implements Clue {
         }
         for (String secondListElement : secondElementList) {
             if (!secondListElement.equals(leftBackupWord)) {
-                if (leftBackupWordList.contains(secondListElement) && secondListElement.length() == expectedAnswerLength && matchesHint(secondListElement) && needsToBeTwoWords(mustBeTwoWords, secondListElement)) {
+                if (leftBackupWordList.contains(secondListElement) && secondListElement.length() == expectedAnswerLength && secondListElement.matches(hint) && needsToBeTwoWords(mustBeTwoWords, secondListElement)) {
                     matchingWordFound = true;
                     answer = secondListElement;
                 }
@@ -175,22 +163,6 @@ public class DoubleDefinitionsClue implements Clue {
 
     private boolean needsToBeTwoWords(boolean mustBeTwoWords, String element) {
         return !mustBeTwoWords || element.contains("-");
-    }
-
-    public boolean matchesHint(String element) {
-        boolean matches = false;
-        if (hintLetter.isEmpty()) {
-            return true;
-        } else {
-            int i = 0;
-            for (Integer aHintIndex : hintIndex) {
-                if (element.charAt(aHintIndex) == hintLetter.get(i)) {
-                    matches = true;
-                    i++;
-                }
-            }
-        }
-        return matches;
     }
 
     private void checkRelevance() {
