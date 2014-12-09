@@ -55,7 +55,7 @@ public class AnagramClue implements Clue {
 
             for(String word : clueWords) {
                 if (keyWords.contains(word)) {
-                    if (isValidKeyword(tempList, word, answerLength[i])) {
+                    if (isValidKeyword(tempList, word, i)) {
                         keyWord = word;
                         isAnagram = true;
                         break;
@@ -68,7 +68,7 @@ public class AnagramClue implements Clue {
             else {
                 clueWords.remove(keyWord);
 
-                ArrayList<String> matchingWords = Helper.combineWords(clueWords, answerLength[i]);
+                ArrayList<String> matchingWords = Helper.combineWords(clueWords, i);
 
                 for (String word : matchingWords) {
                     List<String> answers = findAnagram(word);
