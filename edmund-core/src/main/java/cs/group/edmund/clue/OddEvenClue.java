@@ -46,9 +46,9 @@ public class OddEvenClue {
 
         for (int i : answerLength) {
 
-            if(findType(keyWordsAny, phrase)) possibleAnswer = solveAny(answerLength[i]);
-            if(findType(keyWordsEven, phrase)) possibleAnswer = solveOddEven(answerLength[i], 1, hint);
-            if(findType(keyWordsOdd, phrase)) possibleAnswer = solveOddEven(answerLength[i], 0, hint);
+            if(findType(keyWordsAny, phrase)) possibleAnswer = solveAny(i);
+            if(findType(keyWordsEven, phrase)) possibleAnswer = solveOddEven(i, 1, hint);
+            if(findType(keyWordsOdd, phrase)) possibleAnswer = solveOddEven(i, 0, hint);
 
         }
 
