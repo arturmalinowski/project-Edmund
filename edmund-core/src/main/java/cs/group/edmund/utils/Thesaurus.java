@@ -50,7 +50,7 @@ public class Thesaurus {
         SAXReader reader = new SAXReader();
         Document document;
         try {
-            document = reader.read("http://words.bighugelabs.com/api/2/054c381b5f80ab41ac446fae4c958cee/" + word + "/xml");
+            document = reader.read("http://words.bighugelabs.com/api/2/054c381b5f80ab41ac446fae4c958cee/" + word.toLowerCase() + "/xml");
         } catch (Exception e) {
             if (e instanceof DocumentException) {
                 offlineThesaurus.addNewQuery(word, elementList);
@@ -127,7 +127,7 @@ public class Thesaurus {
         SAXReader reader = new SAXReader();
         Document document;
         try {
-            document = reader.read("http://project-shakespeare.herokuapp.com/shakespeare/api/word/" + word);
+            document = reader.read("http://project-shakespeare.herokuapp.com/shakespeare/api/word/" + word.toLowerCase());
         } catch (Exception e) {
             if (e instanceof DocumentException) {
                 return elementList;

@@ -1,6 +1,5 @@
 package cs.group.edmund.clue;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -20,13 +19,20 @@ public class ReversalClueTest {
         assertThat(clue.isRelevant("Crazy flying mammals"), is(false));
     }
 
-    @Ignore
     @Test
-    public void reversalClueTestCanBeSolved() {
+    public void simpleReversalClueCanBeSolved() {
         Clue clue = new ReversalClue();
         String solvedWord = clue.solve("Are you an ogre?", null, 4);
 
         assertThat(solvedWord, is("ergo"));
     }
 
+    @Test
+    public void reversalClueCanBeSolved() {
+        Clue clue = new ReversalClue();
+        String solvedWord = clue.solve("Physician brings fish round", null, 3);
+
+        assertThat(solvedWord, is("doc"));
+
+    }
 }
