@@ -31,4 +31,13 @@ public class OddEvenClueTest {
 
         assertThat(answer, is("eat"));
     }
+
+
+    @Test
+    public void secondOddEvenClueCanBeSolved() {
+        clue = new OddEvenClue();
+        String answer = clue.solve("Observe odd characters in scene", null, 3);
+
+        assertThat(answer, is("see"));
+    }
 }
