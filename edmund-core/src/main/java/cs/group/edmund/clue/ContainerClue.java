@@ -5,6 +5,7 @@ import cs.group.edmund.utils.Thesaurus;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import cs.group.edmund.utils.Helper;
 
 import static java.util.Arrays.asList;
 
@@ -12,10 +13,14 @@ public class ContainerClue implements Clue {
 
     private final List<String> keyWords;
     private Thesaurus thesaurus;
+    private Helper helper;
+    private int searchIntensity;
 
     public ContainerClue() {
-        keyWords = asList("CAPTURING", "SURROUNDED", "PUT IN", "KEEPS", "INSIDE", "IN", "CLOTHING", "ABOUT", "ADMIT", "ADMITS", "ADMITTING", "AROUND", "BESIEGE", "BESIEGES", "BESIEGING", "BOX", "BOXES", "BOXING", "BRIDGE", "BRIDGES", "BRIDGING", "CAPTURE", "CAPTURED", "CAPTURES", "CAPTURING", "CATCH", "CATCHES", "CATCHING", "CIRCLE", "CIRCLES", "CIRCLING", "CLUTCH", "CLUTCHES", "CLUTCHING", "CONTAIN", "CONTAINING", "CONTAINS", "COVER", "COVERING", "COVERS", "EMBRACE", "EMBRACES", "EMBRACING", "ENCIRCLE", "ENCIRCLES", "ENCIRCLING", "ENFOLD", "ENFOLDING", "ENFOLDS", "ENVELOP", "ENVELOPING", "ENVELOPS", "EXTERNAL", "FLANK", "FLANKING", "FLANKS", "FRAME", "FRAMED", "FRAMING", "FRAMES", "GRASP", "GRASPING", "GRASPS", "HARBOUR", "HARBOURS", "HARBOURING", "HOLD", "HOLDING", "HOLDS", "HOUSE", "HOUSES", "HOUSING", "OUTSIDE", "RING", "RINGING", "RINGS", "ROUND", "SHELTER", "SHELTERING", "SHELTERS", "SURROUND", "SURROUNDING", "SURROUNDS", "SWALLOW", "SWALLOWING", "SWALLOWS", "TAKE IN", "TAKES IN", "TAKING IN", "WITHOUT", "WRAP", "WRAPPING", "WRAPS");
+        keyWords = asList("CAPTURING", "SURROUNDED", "PUT IN", "KEEPS", "INSIDE", " IN ", "CLOTHING", "ABOUT", "ADMIT", "ADMITS", "ADMITTING", "AROUND", "BESIEGE", "BESIEGES", "BESIEGING", "BOX", "BOXES", "BOXING", "BRIDGE", "BRIDGES", "BRIDGING", "CAPTURE", "CAPTURED", "CAPTURES", "CAPTURING", "CATCH", "CATCHES", "CATCHING", "CIRCLE", "CIRCLES", "CIRCLING", "CLUTCH", "CLUTCHES", "CLUTCHING", "CONTAIN", "CONTAINING", "CONTAINS", "COVER", "COVERING", "COVERS", "EMBRACE", "EMBRACES", "EMBRACING", "ENCIRCLE", "ENCIRCLES", "ENCIRCLING", "ENFOLD", "ENFOLDING", "ENFOLDS", "ENVELOP", "ENVELOPING", "ENVELOPS", "EXTERNAL", "FLANK", "FLANKING", "FLANKS", "FRAME", "FRAMED", "FRAMING", "FRAMES", "GRASP", "GRASPING", "GRASPS", "HARBOUR", "HARBOURS", "HARBOURING", "HOLD", "HOLDING", "HOLDS", "HOUSE", "HOUSES", "HOUSING", "OUTSIDE", "ENTERING", "RINGS", "ROUND", "SHELTER", "SHELTERING", "SHELTERS", "SURROUND", "SURROUNDING", "SURROUNDS", "SWALLOW", "SWALLOWING", "SWALLOWS", "TAKE IN", "TAKES IN", "TAKING IN", "WITHOUT", "WRAP", "WRAPPING", "WRAPS");
         thesaurus = new Thesaurus();
+        helper = new Helper();
+        searchIntensity = 2;
     }
 
     @Override
@@ -40,64 +45,86 @@ public class ContainerClue implements Clue {
         phrase = phrase.toLowerCase();
         String key = getKeyword(phrase);
         if (isRelevant(phrase)) {
-            // Access words to the far left/right of the phrase by using split(), then
-            // Insert synonyms/related words of far left/right words into potentialAnswers, then
-            // Filter out words according to the answer length
             String[] splitPhrase = phrase.split("\\s+");
-            ArrayList<String> potentialAnswers = thesaurus.getAllSynonymsXML(splitPhrase[0]);
-            potentialAnswers.addAll(thesaurus.getAllSynonymsXML(splitPhrase[splitPhrase.length - 1]));
-            potentialAnswers.addAll(thesaurus.getRelatedWordsXML(splitPhrase[0]));
-            potentialAnswers.addAll(thesaurus.getRelatedWordsXML(splitPhrase[splitPhrase.length - 1]));
+
+            ArrayList<String> answers = new ArrayList<String>();
+            answers.add(solveFor(splitPhrase[0], phrase.substring(phrase.indexOf(" ")+1), key, hint, answerLength));
+            answers.add(solveFor(splitPhrase[splitPhrase.length - 1], phrase.substring(0, phrase.lastIndexOf(" ")), key, hint, answerLength));
+
+            for (String answer : answers) {
+                if ((answer != null) && (!answer.contains(","))) {
+                    return answer;
+                }
+            }
+            for (String answer : answers) {
+                if ((answer != null) && (answer.contains(","))) {
+                    return answer;
+                }
+            }
+            // no answer found, last resort
+            searchIntensity = 3;
+            return solve(phrase, hint, answerLength);
+        }
+        return "Answer not found!";
+    }
+
+    public String solveFor(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
+    {
+        ArrayList<String> potentialAnswers = new ArrayList<String>();
+        potentialAnswers.addAll(thesaurus.getAllSynonymsXML(assumedClue));
+        if (searchIntensity > 1)
+            potentialAnswers.addAll(thesaurus.getRelatedWordsXML(assumedClue));
+        if (searchIntensity > 2)
+            potentialAnswers.addAll(getRelatedSynonyms(assumedClue)); //delete
+        if (potentialAnswers != null) {
             potentialAnswers = filterByAnswerLength(potentialAnswers, answerLength);
+            potentialAnswers = filterByHints(potentialAnswers, hint);
+            potentialAnswers = helper.removeDuplicates(potentialAnswers);
+        }
 
-            // Assuming the answer is the word the left side
-            // Get left and right half of phrase by using splitPhrase(), then
-            // Get list of potential cryptic crossword solutions by using getSolutions()
-            String phraseCopy = phrase.substring(phrase.indexOf(" ")+1);
-            ArrayList<String> leftList = getSolutions(phraseCopy, splitPhrase(phraseCopy, key).get(0), splitPhrase(phraseCopy, key).get(1), answerLength);
+        ArrayList<String> solutionsList = null;
+        if (phrase.contains(keyword))
+            solutionsList = getSolutions(splitPhrase(phrase, keyword).get(0), splitPhrase(phrase, keyword).get(1), answerLength);
+        if (solutionsList != null) {
+            solutionsList = filterByAnswerLength(solutionsList, answerLength);
+            solutionsList = filterByHints(solutionsList, hint);
+            solutionsList = helper.removeDuplicates(solutionsList);
+        }
 
-            // Assuming the answer is the word the right side,
-            // Get left and right half of phrase by using splitPhrase(), then
-            // Get list of potential cryptic crossword solutions by using getSolutions()
-            phraseCopy = phrase.substring(0, phrase.lastIndexOf(" "));
-            ArrayList<String> rightList = getSolutions(phraseCopy, splitPhrase(phraseCopy, key).get(0), splitPhrase(phraseCopy, key).get(1), answerLength);
-
-            // Get left and right half of phrase by using splitPhrase(), then
-            // Get list of potential cryptic crossword solutions by using getSolutions(), then
-            // Compare against list of synonyms, and return the result by using compareLists()
-            ArrayList<String> completeList = new ArrayList<>();
-            completeList.addAll(leftList);
-            completeList.addAll(rightList);
-
-            ArrayList<String> finalList = compareLists(potentialAnswers, completeList);
-
-            if (finalList.size() == 1)
-                return finalList.get(0);
+        String answer = compareLists(potentialAnswers, solutionsList);
+        if (answer != null)
+            return answer;
+        else if ((solutionsList == null) || (potentialAnswers == null)) {
             return null;
         }
-        else
-        {
-            // No known keyword is in phrase
+        else if (solutionsList.size() > 1) {
+            String possibleAnswers = "";
+            for (String word : solutionsList) {
+                possibleAnswers = possibleAnswers + word + ", ";
+            }
+            return possibleAnswers;
+        }
+        else {
             return null;
         }
     }
 
     // Compare the list of solutions to the list of synonyms.
     // Return a match, else return possible answers
-    public ArrayList<String> compareLists(ArrayList<String> synonyms, ArrayList<String> solutions)
+    public String compareLists(ArrayList<String> synonyms, ArrayList<String> solutions)
     {
-        // Loop through solutions and synonyms, looking for a matches
-        ArrayList<String> solutionsList = new ArrayList<>();
-        for (String word : solutions) {
-            for (String synonym : synonyms) {
-                if (word.equals(synonym)) {
-                    solutionsList.add(synonym.toLowerCase());
-                    return solutionsList;
+        if ((synonyms != null) && (solutions != null)) {
+            // Loop through solutions and synonyms, looking for a matches
+            for (String word : solutions) {
+                for (String synonym : synonyms) {
+                    if (word.equals(synonym)) {
+                        return word;
+                    }
                 }
             }
         }
         // No match found, so return possible results
-        return solutions;
+        return null;
     }
 
     // Return the keyword used in the phrase, else return null.
@@ -120,7 +147,7 @@ public class ContainerClue implements Clue {
     }
 
     // Return a list of potential solutions given the left and right half of the phrase
-    public ArrayList<String> getSolutions(String phrase, String leftHalf, String rightHalf, int... answerLength)
+    public ArrayList<String> getSolutions(String leftHalf, String rightHalf, int... answerLength)
     {
         ArrayList<String> leftSynonyms = new ArrayList<>();
         ArrayList<String> rightSynonyms = new ArrayList<>();
@@ -130,25 +157,38 @@ public class ContainerClue implements Clue {
         String rightWord = rightSplit[0];
 
         // Add synonyms/related words of left/right most words to arrays (including the word itself), then
-        // Add synonyms/related words of 2 left/right most words to arrays (including the word itself)
+        // Add synonyms/related words of 2 left/right most words to arrays (including the word itself), then
         leftSynonyms.add(leftWord);
         rightSynonyms.add(rightWord);
 
-        if (leftWord != null) {
+        // Find synonyms/related words before mixing them
+        if ((leftSplit.length >= 1) && (rightSplit.length >= 1)) {
             leftSynonyms.addAll(thesaurus.getAllSynonymsXML(leftWord));
-            leftSynonyms.addAll(thesaurus.getRelatedWordsXML(leftWord));
-        }
-        if (rightWord != null) {
             rightSynonyms.addAll(thesaurus.getAllSynonymsXML(rightWord));
-            rightSynonyms.addAll(thesaurus.getRelatedWordsXML(rightWord));
+            if (searchIntensity > 1) {
+                leftSynonyms.addAll(thesaurus.getRelatedWordsXML(leftWord));
+                rightSynonyms.addAll(thesaurus.getRelatedWordsXML(rightWord));
+            }
+            if (searchIntensity > 2) {
+                leftSynonyms.addAll(getRelatedSynonyms(leftWord));
+                rightSynonyms.addAll(getRelatedSynonyms(rightWord));
+            }
         }
+
         if (leftSplit.length >= 2) {
             leftSynonyms.addAll(thesaurus.getAllSynonymsXML(leftSplit[leftSplit.length - 2] + " " + leftSplit[leftSplit.length - 1]));
-            leftSynonyms.addAll(thesaurus.getRelatedWordsXML(leftSplit[leftSplit.length - 2] + " " + leftSplit[leftSplit.length - 1]));
+            if (searchIntensity > 1)
+                leftSynonyms.addAll(thesaurus.getRelatedWordsXML(leftSplit[leftSplit.length - 2] + " " + leftSplit[leftSplit.length - 1]));
+            if (searchIntensity > 2)
+                leftSynonyms.addAll(getRelatedSynonyms(leftSplit[leftSplit.length - 2] + " " + leftSplit[leftSplit.length - 1]));
         }
+
         if (rightSplit.length >= 2) {
             rightSynonyms.addAll(thesaurus.getAllSynonymsXML(rightSplit[0] + " " + rightSplit[1]));
-            rightSynonyms.addAll(thesaurus.getRelatedWordsXML(rightSplit[0] + " " + rightSplit[1]));
+            if (searchIntensity > 1)
+                rightSynonyms.addAll(thesaurus.getRelatedWordsXML(rightSplit[0] + " " + rightSplit[1]));
+            if (searchIntensity > 2)
+                rightSynonyms.addAll(getRelatedSynonyms(rightSplit[0] + " " + rightSplit[1]));
         }
 
         // Calculate list of mixed words by using returnContainedWords(), then
@@ -203,7 +243,22 @@ public class ContainerClue implements Clue {
     // Return a list containing words corresponding with the given hint
     public ArrayList<String> filterByHints(ArrayList<String> originalList, String hint)
     {
-        return null;
+            String[] hintLetters = hint.split("");
+
+            // Loop through possible answers, removing
+            for (Iterator<String> iter = originalList.listIterator(); iter.hasNext(); ) {
+                // Loop through letters in hint, removing the answers which do not conform to the hint
+                String a = iter.next();
+                String[] answerLetters = a.split("");
+
+                for (int i = 1; i < hintLetters.length; i++) {
+                    if ((!hintLetters[i].equals(".")) && (!hintLetters[i].equals(answerLetters[i]))) {
+                        iter.remove();
+                    }
+                }
+            }
+
+        return originalList;
     }
 
     // Return a list containing words corresponding with the given answerLength
@@ -239,5 +294,17 @@ public class ContainerClue implements Clue {
             }
         }
         return originalList;
+    }
+
+    public ArrayList<String> getRelatedSynonyms(String word) {
+        //
+        ArrayList<String> completeList = new ArrayList<>();
+        ArrayList<String> relatedWords = thesaurus.getRelatedWordsXML(word);
+
+        for (String w : relatedWords) {
+            completeList.addAll(thesaurus.getAllSynonymsXML(w));
+        }
+
+        return completeList;
     }
 }
