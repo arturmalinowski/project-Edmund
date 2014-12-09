@@ -142,7 +142,7 @@ public class DeletionClue implements Clue {
     //
     public ArrayList<String> returnBeheadment(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
     {
-        ArrayList<String> possibleSolutions = new ArrayList<String>();
+        ArrayList<String> possibleSolutions = new ArrayList<>();
 
         String leftHalf = splitPhrase(phrase, keyword).get(0);
         String rightHalf = splitPhrase(phrase, keyword).get(1);

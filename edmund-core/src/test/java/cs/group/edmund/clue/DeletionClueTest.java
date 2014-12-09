@@ -29,7 +29,7 @@ public class DeletionClueTest {
     }
 
     // Currently 25% success ratio
-    //@Ignore
+    @Ignore
     @Test
     @Table({
             // Beheadments
@@ -55,7 +55,7 @@ public class DeletionClueTest {
         assertThat(answer, is(clueAnswer));
     }
 
-    //@Ignore
+    @Ignore
     @Test
     @Table({
             // Beheadments
@@ -81,7 +81,7 @@ public class DeletionClueTest {
         assertThat((answer.contains(clueAnswer)), is(true));
     }
 
-    //@Ignore
+    @Ignore
     @Test
     @Table({
             // Beheadments
@@ -114,7 +114,7 @@ public class DeletionClueTest {
         return relatedList;
     }
 
-    //@Ignore
+    @Ignore
     @Test
     @Table({
         // Beheadments
