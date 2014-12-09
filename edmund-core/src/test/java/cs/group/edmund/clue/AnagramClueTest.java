@@ -3,6 +3,7 @@ package cs.group.edmund.clue;
 import com.googlecode.yatspec.junit.Row;
 import com.googlecode.yatspec.junit.Table;
 import com.googlecode.yatspec.junit.TableRunner;
+import cs.group.edmund.utils.Helper;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -80,7 +81,7 @@ public class AnagramClueTest {
     @Test
     public void isValidKeywordTest() {
         clue = new AnagramClue();
-        ArrayList list = new ArrayList<>(Arrays.asList("school", "run", "true", "false"));
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("school", "run", "true", "false"));
 
         assertThat(clue.isValidKeyword(list, "run", 7), is(false));
     }
@@ -88,7 +89,7 @@ public class AnagramClueTest {
     @Test
     public void isValidKeywordSecondTest() {
         clue = new AnagramClue();
-        ArrayList list = new ArrayList<>(Arrays.asList("school", "run", "true", "false"));
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("school", "run", "true", "false"));
 
         assertThat(clue.isValidKeyword(list, "false", 7), is(true));
     }
@@ -96,9 +97,9 @@ public class AnagramClueTest {
     @Test
     public void possibleAnagramsTest() {
         clue = new AnagramClue();
-        ArrayList list = new ArrayList<>(Arrays.asList("school", "run", "true", "false"));
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("school", "run", "true", "false"));
 
-        assertThat(clue.possibleAnagrams(list, 7).contains("truerun"), is(true));
+        assertThat(Helper.combineWords(list, 7).contains("truerun"), is(true));
     }
 
     @Ignore

@@ -58,7 +58,7 @@ public class OfflineThesaurus {
     }
 
     public void readFromFile(){
-        List<String> listOfWords = new ArrayList<>();;
+        List<String> listOfWords = new ArrayList<>();
         try {
             listOfWords = readLines(new File(url));
         } catch (IOException e) {

@@ -73,8 +73,8 @@ public class Thesaurus {
         return elementList;
     }
 
-    public List getSynonyms(SynonymType type, String word) {
-        List list = new ArrayList<String>();
+    public List<String> getSynonyms(SynonymType type, String word) {
+        List<String> list = new ArrayList<>();
         try {
             JSONObject obj = getJSON(word);
             if (obj.has(type.toString())) {
@@ -92,8 +92,8 @@ public class Thesaurus {
         return list;
     }
 
-    public List getRelatedWordsJSON(String word) {
-        List list = new ArrayList<String>();
+    public List<String> getRelatedWordsJSON(String word) {
+        List<String> list = new ArrayList<>();
         JSONObject obj = new JSONObject(HttpClient.makeRequest("http://project-shakespeare.herokuapp.com/shakespeare/api/word/" + word + "?format=json"));
 
         if (obj.has("synonyms")) {
@@ -107,11 +107,11 @@ public class Thesaurus {
         }
     }
 
-    public List getAllSynonyms(String word) {
+    public List<String> getAllSynonyms(String word) {
         if (offlineThesaurus.hasWord(word)) {
             return offlineThesaurus.results(word);
         } else {
-            List list = new ArrayList<String>();
+            List<String> list;
             list = getSynonyms(SynonymType.VERB, word);
             list.addAll(getSynonyms(SynonymType.ADJECTIVE, word));
             list.addAll(getSynonyms(SynonymType.NOUN, word));
