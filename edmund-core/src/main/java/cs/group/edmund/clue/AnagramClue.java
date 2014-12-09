@@ -46,11 +46,11 @@ public class AnagramClue implements Clue {
         clueWords = Helper.removeDuplicates(clueWords);
         clueWords.removeAll(Arrays.asList("", null));
 
-        for (int i = 0; i<answerLength.length; i++) {
+        for (int i : answerLength) {
 
             Boolean isAnagram = false;
 
-            ArrayList<String> tempList = new ArrayList<String>();
+            ArrayList<String> tempList = new ArrayList<>();
             tempList.addAll(clueWords);
 
             for(String word : clueWords) {
@@ -68,11 +68,8 @@ public class AnagramClue implements Clue {
             else {
                 clueWords.remove(keyWord);
 
-                ArrayList<String> matchingWords;
+                ArrayList<String> matchingWords = Helper.combineWords(clueWords, answerLength[i]);
 
-                matchingWords = possibleAnagrams(clueWords, answerLength[i]);
-
-                answerLoop:
                 for (String word : matchingWords) {
                     List<String> answers = findAnagram(word);
 
@@ -82,23 +79,19 @@ public class AnagramClue implements Clue {
                         continue;
                     }
                     // TODO come up with a solution when there is more then one anagram of a word
-                    if (answers == null) {
-                        continue;
-                    }
-                    else {
-
+                    if (answers != null) {
                         possibleAnswer = synonymsCheck(answers, clueWords);
 
                         if (!possibleAnswer.equals("")){
                             break;
                         }
-                        if (answers != null){
-                            for (String answer : answers) {
-                                possibleAnswer = possibleAnswer + ", " + answer;
-                            }
-                            possibleAnswer = possibleAnswer.substring(2);
-                            possibleAnswer = "Possible answers: " + possibleAnswer;
+
+                        for (String answer : answers) {
+                            possibleAnswer = possibleAnswer + ", " + answer;
                         }
+
+                        possibleAnswer = possibleAnswer.substring(2);
+                        possibleAnswer = "Possible answers: " + possibleAnswer;
                     }
                 }
             }
@@ -116,8 +109,8 @@ public class AnagramClue implements Clue {
         return possibleAnswer;
     }
 
-    public List findAnagram(String word) {
-        List anagrams = new ArrayList<String>();
+    public List<String> findAnagram(String word) {
+        List<String> anagrams = new ArrayList<>();
 
         String httpResponse = HttpClient.makeRequest("http://www.solverscrabble.com/words-with-the-letters-" + word);
 
@@ -176,37 +169,6 @@ public class AnagramClue implements Clue {
         return check;
     }
 
-    public ArrayList possibleAnagrams(ArrayList<String> list, int answerLength) {
-        ArrayList<String> wordsList = new ArrayList<>();
-        ArrayList<String> secondList = new ArrayList<>(list);
-        ArrayList<String> thirdList = new ArrayList<>(list);
-
-        for(String word : list) {
-            if (word.length() > answerLength) {
-                continue;
-            }
-            if (word.length() == answerLength) {
-                wordsList.add(word);
-            }
-            secondList.remove(word);
-            for(String secondWord : secondList) {
-                if (word.length() + secondWord.length() == answerLength) {
-                    String newWord = secondWord + word;
-                    wordsList.add(newWord);
-                }
-                thirdList.remove(word);
-                thirdList.remove(secondWord);
-                for(String thirdWord : thirdList) {
-                    if (word.length() + secondWord.length() + thirdWord.length() == answerLength) {
-                        String newWord = thirdWord + secondWord + word;
-                        wordsList.add(newWord);
-                    }
-                }
-            }
-        }
-        return wordsList;
-    }
-
     private String synonymsCheck(List<String> answers, ArrayList<String> possibleSynonyms) {
         Thesaurus thesaurus = new Thesaurus();
         String newAnswer = "";
@@ -217,7 +179,7 @@ public class AnagramClue implements Clue {
 
         twoLoops:
         for(String answer : answers) {
-            List list = thesaurus.getAllSynonymsXML(answer);
+            List<String> list = thesaurus.getAllSynonymsXML(answer);
             for(String checkedWord : possibleSynonyms) {
                 if(list.contains(checkedWord.toLowerCase())) {
                     newAnswer = answer.toLowerCase();
@@ -232,7 +194,7 @@ public class AnagramClue implements Clue {
 
         twoLoops:
         for(String answer : answers) {
-            List list = thesaurus.getRelatedWordsXML(answer);
+            List<String> list = thesaurus.getRelatedWordsXML(answer);
             for(String checkedWord : possibleSynonyms) {
                 if(list.contains(checkedWord.toLowerCase())) {
                     newAnswer = answer.toLowerCase();
@@ -248,7 +210,7 @@ public class AnagramClue implements Clue {
         twoLoops:
         for(String answer : answers) {
             for(String checkedWord : possibleSynonyms) {
-                List list = thesaurus.getRelatedWordsXML(checkedWord.toLowerCase());
+                List<String> list = thesaurus.getRelatedWordsXML(checkedWord.toLowerCase());
                 if(list.contains(answer)) {
                     newAnswer = answer.toLowerCase();
                     break twoLoops;

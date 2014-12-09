@@ -44,33 +44,34 @@ public class OddEvenClue {
         clueWords = Helper.removeDuplicates(clueWords);
         clueWords.removeAll(Arrays.asList("", null));
 
-        for (int i = 0; i<answerLength.length; i++) {
+        for (int i : answerLength) {
 
             if(findType(keyWordsAny, phrase)) possibleAnswer = solveAny(answerLength[i]);
-            if(findType(keyWordsEven, phrase)) possibleAnswer = solveOddEven(answerLength[i], 1);
-            if(findType(keyWordsOdd, phrase)) possibleAnswer = solveOddEven(answerLength[i], 0);
+            if(findType(keyWordsEven, phrase)) possibleAnswer = solveOddEven(answerLength[i], 1, hint);
+            if(findType(keyWordsOdd, phrase)) possibleAnswer = solveOddEven(answerLength[i], 0, hint);
 
-            return possibleAnswer;
         }
 
-        return null;
+        return possibleAnswer;
     }
 
-    private String solveOddEven(int answerLength, int type) {
-        ArrayList<String> tempList = new ArrayList(clueWords);
-        String answer = "";
+    private String solveOddEven(int answerLength, int type, String hint) {
+        ArrayList<String> tempList;
+        tempList = new ArrayList<>(clueWords);
+        String answer;
+        answer = "";
         String multipleAnswer = "Possible answers: ";
         int counter = 0;
 
         for (String word : tempList) {
-            if (word.length() < answerLength+1 || word.length() > answerLength+3) {
+            if (word.length() < answerLength + 1 || word.length() > answerLength + 3) {
                 clueWords.remove(word);
             }
         }
 
         if (clueWords.size() > 1) {
             for (String word : clueWords) {
-                for (int i = 0; i < word.length(); i = i + 2) {
+                for (int i = type; i < word.length(); i = i + 2) {
                     answer = answer + word.charAt(i);
                 }
                 if (dict.validate(answer)) {
@@ -80,7 +81,7 @@ public class OddEvenClue {
             }
         }
         else {
-            for (int i = 0; i < clueWords.get(0).length(); i = i + 2) {
+            for (int i = type; i < clueWords.get(0).length(); i = i + 2) {
                 answer = answer + clueWords.get(0).charAt(i);
             }
         }
@@ -94,6 +95,7 @@ public class OddEvenClue {
     }
 
     private String solveAny(int answerLength) {
+
         return null;
     }
 
