@@ -13,13 +13,11 @@ public class ContainerClue implements Clue {
 
     private final List<String> keyWords;
     private Thesaurus thesaurus;
-    private Helper helper;
     private int searchIntensity;
 
     public ContainerClue() {
         keyWords = asList("CAPTURING", "SURROUNDED", "PUT IN", "KEEPS", "INSIDE", " IN ", "CLOTHING", "ABOUT", "ADMIT", "ADMITS", "ADMITTING", "AROUND", "BESIEGE", "BESIEGES", "BESIEGING", "BOX", "BOXES", "BOXING", "BRIDGE", "BRIDGES", "BRIDGING", "CAPTURE", "CAPTURED", "CAPTURES", "CAPTURING", "CATCH", "CATCHES", "CATCHING", "CIRCLE", "CIRCLES", "CIRCLING", "CLUTCH", "CLUTCHES", "CLUTCHING", "CONTAIN", "CONTAINING", "CONTAINS", "COVER", "COVERING", "COVERS", "EMBRACE", "EMBRACES", "EMBRACING", "ENCIRCLE", "ENCIRCLES", "ENCIRCLING", "ENFOLD", "ENFOLDING", "ENFOLDS", "ENVELOP", "ENVELOPING", "ENVELOPS", "EXTERNAL", "FLANK", "FLANKING", "FLANKS", "FRAME", "FRAMED", "FRAMING", "FRAMES", "GRASP", "GRASPING", "GRASPS", "HARBOUR", "HARBOURS", "HARBOURING", "HOLD", "HOLDING", "HOLDS", "HOUSE", "HOUSES", "HOUSING", "OUTSIDE", "ENTERING", "RINGS", "ROUND", "SHELTER", "SHELTERING", "SHELTERS", "SURROUND", "SURROUNDING", "SURROUNDS", "SWALLOW", "SWALLOWING", "SWALLOWS", "TAKE IN", "TAKES IN", "TAKING IN", "WITHOUT", "WRAP", "WRAPPING", "WRAPS");
         thesaurus = new Thesaurus();
-        helper = new Helper();
         searchIntensity = 2;
     }
 
@@ -76,20 +74,14 @@ public class ContainerClue implements Clue {
             potentialAnswers.addAll(thesaurus.getRelatedWordsXML(assumedClue));
         if (searchIntensity > 2)
             potentialAnswers.addAll(getRelatedSynonyms(assumedClue)); //delete
-        if (potentialAnswers != null) {
-            potentialAnswers = filterByAnswerLength(potentialAnswers, answerLength);
-            potentialAnswers = filterByHints(potentialAnswers, hint);
-            potentialAnswers = helper.removeDuplicates(potentialAnswers);
-        }
+        if (potentialAnswers != null)
+            potentialAnswers = Helper.filterAll(potentialAnswers, hint, answerLength);
 
         ArrayList<String> solutionsList = null;
         if (phrase.contains(keyword))
             solutionsList = getSolutions(splitPhrase(phrase, keyword).get(0), splitPhrase(phrase, keyword).get(1), answerLength);
-        if (solutionsList != null) {
-            solutionsList = filterByAnswerLength(solutionsList, answerLength);
-            solutionsList = filterByHints(solutionsList, hint);
-            solutionsList = helper.removeDuplicates(solutionsList);
-        }
+        if (solutionsList != null)
+            solutionsList = Helper.filterAll(solutionsList, hint, answerLength);
 
         String answer = compareLists(potentialAnswers, solutionsList);
         if (answer != null)
@@ -238,62 +230,6 @@ public class ContainerClue implements Clue {
     // Check if the given string is an actual word
     public boolean isWord(String word) {
         return true;
-    }
-
-    // Return a list containing words corresponding with the given hint
-    public ArrayList<String> filterByHints(ArrayList<String> originalList, String hint)
-    {
-            String[] hintLetters = hint.split("");
-
-            // Loop through possible answers, removing
-            for (Iterator<String> iter = originalList.listIterator(); iter.hasNext(); ) {
-                // Loop through letters in hint, removing the answers which do not conform to the hint
-                String a = iter.next();
-                String[] answerLetters = a.split("");
-
-                for (int i = 1; i < hintLetters.length; i++) {
-                    if ((!hintLetters[i].equals(".")) && (!hintLetters[i].equals(answerLetters[i]))) {
-                        iter.remove();
-                    }
-                }
-            }
-
-        return originalList;
-    }
-
-    // Return a list containing words corresponding with the given answerLength
-    public ArrayList<String> filterByAnswerLength(ArrayList<String> originalList, int... answerLength) {
-        if (originalList.size() >= 1) {
-            if (answerLength.length == 1) {
-                // AnswerLength is only 1
-                for (Iterator<String> iter = originalList.listIterator(); iter.hasNext(); ) {
-                    String a = iter.next();
-                    if ((a.length() != answerLength[0]) || (a.contains(" ")))
-                        // Incorrect word length, remove from array
-                        iter.remove();
-                }
-            } else if (answerLength.length > 1) {
-                // answerLength is greater than 1
-                for (Iterator<String> iter = originalList.listIterator(); iter.hasNext(); ) {
-                    String a = iter.next();
-                    String[] splitString = a.split("\\s+");
-
-                    if (splitString.length != answerLength.length) {
-                        // Incorrect amount of words, remove from array
-                        iter.remove();
-                    } else {
-                        // Check each word for length
-                        for (int i = 0; i < splitString.length; i++) {
-                            if (splitString[i].length() != answerLength[i]) {
-                                // Incorrect word length, remove from array
-                                iter.remove();
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return originalList;
     }
 
     public ArrayList<String> getRelatedSynonyms(String word) {
