@@ -2,6 +2,9 @@ package cs.group.edmund.utils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class Helper {
 
@@ -42,5 +45,23 @@ public class Helper {
             }
         }
         return wordsList;
+    }
+
+    // Filter methods
+    public static ArrayList<String> filterByHint(ArrayList<String> list, String hint) {
+        for (Iterator<String> iter = list.listIterator(); iter.hasNext(); ) {
+            String word = iter.next();
+
+            Pattern pattern = Pattern.compile(hint);
+            Matcher matcher = pattern.matcher(word);
+
+            String group = "";
+            while (matcher.find()) {
+                group = matcher.group();
+            }
+            if (group.equals(""))
+                iter.remove();
+        }
+        return list;
     }
 }

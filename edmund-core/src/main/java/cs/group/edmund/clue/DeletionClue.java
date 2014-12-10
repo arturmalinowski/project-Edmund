@@ -3,7 +3,6 @@ package cs.group.edmund.clue;
 import cs.group.edmund.utils.Helper;
 import cs.group.edmund.utils.Thesaurus;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,9 +11,8 @@ import static java.util.Arrays.asList;
 
 public class DeletionClue implements Clue {
 
-    private final List<String> keyWordsHead, keyWordsTail, keyWordsBoth, keyWordsMiddle, keyWords;
+    private final List<String> keyWordsHead, keyWordsTail, keyWordsBoth, keyWordsMiddle, keyWordsSpecific, keyWords;
     private Thesaurus thesaurus;
-    private Helper helper;
     private int searchIntensity;
 
     public DeletionClue() {
@@ -22,9 +20,14 @@ public class DeletionClue implements Clue {
         keyWordsTail = asList("ENDLESSLY", "ENDLESS", "BACKING AWAY", "ABRIDGED", "ALMOST", "BACK OFF", "CLIPPED", "CURTAILED", "CUT SHORT", "DETAILED", "EARLY CLOSING", "FALLING SHORT", "FINISH OFF", "FOR THE MOST PART", "INCOMPLETE", "INTERMINABLE", "LACKING FINISH", "MISSING THE LAST", "MOST", "MOSTLY", "NEARLY", "NOT COMPLETELY", "NOT FULLY", "NOT QUITE", "SHORT", "SHORTENING", "TAILLESS", "UNENDING", "UNFINISHED", "WITHOUT END");
         keyWordsBoth = asList("EDGES AWAY", "LACKING WINGS", "LIMITLESS", "LOSING MARGINS", "SHELLED", "SIDES SPLITTING", "TRIMMED", "UNLIMITED", "WINGLESS", "WITHOUT LIMITS");
         keyWordsMiddle = asList("HEARTLESSLY", "HEARTLESS", "DISHEARTENED", "LOSING HEART", "HOLLOW", "CORED", "EMPTIED", "EMPTY", "EVACUATED", "FILLETED", "GUTTED", "HOLLOW", "UNCENTERED");
-        keyWords = asList("AFTER COMMENCEMENT", "BEGINNING TO GO", "BEHEADED", "BEHEADING", "DECAPITATED", "FIRST OFF", "HEADLESS", "HEAD OFF", "INITIALLY LACKING", "LEADERLESS", "LOSING OPENER", "MISSING THE FIRST", "NEEDING NO INTRODUCTION", "NOT BEGINNING", "NOT COMMENCING", "NOT STARTING", "START OFF", "START TO GO", "SCRATCH THE HEAD", "STRIKE THE HEAD", "UNINITIATED", "UNSTARTED", "WITHOUT ORIGIN", "ABRIDGED", "ALMOST", "BACK OFF", "CLIPPED", "CURTAILED", "CUT SHORT", "DETAILED", "EARLY CLOSING", "ENDLESS", "FALLING SHORT", "FINISH OFF", "FOR THE MOST PART", "INCOMPLETE", "INTERMINABLE", "LACKING FINISH", "MISSING THE LAST", "MOST", "MOSTLY", "NEARLY", "NOT COMPLETELY", "NOT FULLY", "NOT QUITE", "SHORT", "SHORTENING", "TAILLESS", "UNENDING", "UNFINISHED", "WITHOUT END", "EDGES AWAY", "LACKING WINGS", "LIMITLESS", "LOSING MARGINS", "SHELLED", "SIDES SPLITTING", "TRIMMED", "UNLIMITED", "WINGLESS", "WITHOUT LIMITS", "CORED", "DISHEARTENED", "EMPTIED", "EMPTY", "EVACUATED", "FILLETED", "GUTTED", "HEARTLESS", "HOLLOW", "LOSING HEART", "UNCENTERED");
+        keyWordsSpecific = asList("CUTTING", "ERASED", "GOES OUT OF", "LEAVES", "MISSING", "NOT", "NO", "REMOVED", "SHORT OF", "STRUCK", "WITHOUT");
+        keyWords = new ArrayList<>();
+        keyWords.addAll(keyWordsHead);
+        keyWords.addAll(keyWordsTail);
+        keyWords.addAll(keyWordsBoth);
+        keyWords.addAll(keyWordsMiddle);
+        keyWords.addAll(keyWordsSpecific);
         thesaurus = new Thesaurus();
-        helper = new Helper();
         searchIntensity = 2;
     }
 
@@ -53,7 +56,7 @@ public class DeletionClue implements Clue {
         if(isRelevant(phrase)) {
             String[] splitPhrase = phrase.split("\\s+");
 
-            ArrayList<String> answers = new ArrayList<String>();
+            ArrayList<String> answers = new ArrayList<>();
             if (phrase.substring(phrase.indexOf(" ")+1).contains(key))
                 answers.add(solveFor(splitPhrase[0], phrase.substring(phrase.indexOf(" ")+1), key, hint, answerLength));
             if (phrase.substring(0, phrase.lastIndexOf(" ")).contains(key))
@@ -83,20 +86,20 @@ public class DeletionClue implements Clue {
     //
     public String solveFor(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
     {
-        ArrayList<String> potentialAnswers = new ArrayList<String>();
+        ArrayList<String> potentialAnswers = new ArrayList<>();
         potentialAnswers.addAll(thesaurus.getAllSynonymsXML(assumedClue));
         if (searchIntensity > 1)
             potentialAnswers.addAll(thesaurus.getRelatedWordsXML(assumedClue));
         if (searchIntensity > 2)
             potentialAnswers.addAll(getRelatedWordSynonyms(thesaurus.getAllSynonymsXML(assumedClue)));
         if (potentialAnswers != null) {
+            potentialAnswers = Helper.removeDuplicates(potentialAnswers);
             potentialAnswers = filterByAnswerLength(potentialAnswers, answerLength);
-            potentialAnswers = filterByHints(potentialAnswers, hint);
-            potentialAnswers = helper.removeDuplicates(potentialAnswers);
+            potentialAnswers = Helper.filterByHint(potentialAnswers, hint);
         }
 
         // Deduce which deletion clue type it is, and solve for that type
-        ArrayList<String> solutionsList = null;
+        ArrayList<String> solutionsList = new ArrayList<>();
         String deletionType = getDeletionType(phrase);
 
         if (deletionType.equals("head")) {
@@ -127,7 +130,7 @@ public class DeletionClue implements Clue {
             return likelyAnswers;
         }
         // No matches found
-        else if((answerList.size() == 0) && (solutionsList.size() > 0)) {
+        else if(answerList.size() == 0) {
             String possibleAnswers = "";
             for (String word : solutionsList) {
                 possibleAnswers = possibleAnswers + word + ", ";
@@ -190,9 +193,9 @@ public class DeletionClue implements Clue {
             }
         }
 
+        possibleSolutions = Helper.removeDuplicates(possibleSolutions);
         possibleSolutions = filterByAnswerLength(possibleSolutions, answerLength);
-        possibleSolutions = filterByHints(possibleSolutions, hint);
-        possibleSolutions = helper.removeDuplicates(possibleSolutions);
+        possibleSolutions = Helper.filterByHint(possibleSolutions, hint);
 
         return possibleSolutions;
     }
@@ -200,7 +203,7 @@ public class DeletionClue implements Clue {
     //
     public ArrayList<String> returnCurtailmentDeletion(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
     {
-        ArrayList<String> possibleSolutions = new ArrayList<String>();
+        ArrayList<String> possibleSolutions = new ArrayList<>();
 
         String leftHalf = splitPhrase(phrase, keyword).get(0);
         String rightHalf = splitPhrase(phrase, keyword).get(1);
@@ -247,9 +250,9 @@ public class DeletionClue implements Clue {
             }
         }
 
+        possibleSolutions = Helper.removeDuplicates(possibleSolutions);
         possibleSolutions = filterByAnswerLength(possibleSolutions, answerLength);
-        possibleSolutions = filterByHints(possibleSolutions, hint);
-        possibleSolutions = helper.removeDuplicates(possibleSolutions);
+        possibleSolutions = Helper.filterByHint(possibleSolutions, hint);
 
         return possibleSolutions;
     }
@@ -304,9 +307,9 @@ public class DeletionClue implements Clue {
             }
         }
 
+        possibleSolutions = Helper.removeDuplicates(possibleSolutions);
         possibleSolutions = filterByAnswerLength(possibleSolutions, answerLength);
-        possibleSolutions = filterByHints(possibleSolutions, hint);
-        possibleSolutions = helper.removeDuplicates(possibleSolutions);
+        possibleSolutions = Helper.filterByHint(possibleSolutions, hint);
 
         return possibleSolutions;
     }
@@ -335,7 +338,7 @@ public class DeletionClue implements Clue {
     // Return a match, else return possible answers
     public ArrayList<String> compareLists(ArrayList<String> synonyms, ArrayList<String> solutions)
     {
-        ArrayList<String> possibleAnswers = new ArrayList<String>();
+        ArrayList<String> possibleAnswers = new ArrayList<>();
 
         if ((synonyms != null) && (solutions != null)) {
             // Loop through solutions and synonyms, looking for a matches
@@ -386,34 +389,11 @@ public class DeletionClue implements Clue {
 
     // Return synonyms of related words
     public ArrayList<String> getRelatedWordSynonyms(ArrayList<String> synonyms) {
-        ArrayList<String> relatedList = new ArrayList<String>();
+        ArrayList<String> relatedList = new ArrayList<>();
         for (String word : synonyms) {
             relatedList.addAll(thesaurus.getRelatedWordsXML(word));
         }
         return relatedList;
-    }
-
-    // Filter Methods
-
-    // Return a list containing words corresponding with the given hint
-    public ArrayList<String> filterByHints(ArrayList<String> originalList, String hint)
-    {
-        String[] hintLetters = hint.split("");
-
-        // Loop through possible answers, removing
-        for (Iterator<String> iter = originalList.listIterator(); iter.hasNext(); ) {
-            // Loop through letters in hint, removing the answers which do not conform to the hint
-            String a = iter.next();
-            String[] answerLetters = a.split("");
-
-            for (int i = 1; i < hintLetters.length; i++) {
-                if ((!hintLetters[i].equals(".")) && (!hintLetters[i].equals(answerLetters[i]))) {
-                    iter.remove();
-                }
-            }
-        }
-
-        return originalList;
     }
 
     // Return a list containing words corresponding with the given answerLength
