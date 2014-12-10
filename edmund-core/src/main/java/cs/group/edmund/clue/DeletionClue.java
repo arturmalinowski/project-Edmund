@@ -92,11 +92,8 @@ public class DeletionClue implements Clue {
             potentialAnswers.addAll(thesaurus.getRelatedWordsXML(assumedClue));
         if (searchIntensity > 2)
             potentialAnswers.addAll(getRelatedWordSynonyms(thesaurus.getAllSynonymsXML(assumedClue)));
-        if (potentialAnswers != null) {
-            potentialAnswers = Helper.removeDuplicates(potentialAnswers);
-            potentialAnswers = filterByAnswerLength(potentialAnswers, answerLength);
-            potentialAnswers = Helper.filterByHint(potentialAnswers, hint);
-        }
+        if (potentialAnswers != null)
+            potentialAnswers = Helper.filterAll(potentialAnswers, hint, answerLength);
 
         // Deduce which deletion clue type it is, and solve for that type
         ArrayList<String> solutionsList = new ArrayList<>();
@@ -193,11 +190,9 @@ public class DeletionClue implements Clue {
             }
         }
 
-        possibleSolutions = Helper.removeDuplicates(possibleSolutions);
-        possibleSolutions = filterByAnswerLength(possibleSolutions, answerLength);
-        possibleSolutions = Helper.filterByHint(possibleSolutions, hint);
-
-        return possibleSolutions;
+        //possibleSolutions = Helper.filterAll(possibleSolutions, hint, answerLength);
+        //return possibleSolutions;
+        return Helper.filterAll(possibleSolutions, hint, answerLength);
     }
 
     //
@@ -250,11 +245,9 @@ public class DeletionClue implements Clue {
             }
         }
 
-        possibleSolutions = Helper.removeDuplicates(possibleSolutions);
-        possibleSolutions = filterByAnswerLength(possibleSolutions, answerLength);
-        possibleSolutions = Helper.filterByHint(possibleSolutions, hint);
-
-        return possibleSolutions;
+        //possibleSolutions = Helper.filterAll(possibleSolutions, hint, answerLength);
+        //return possibleSolutions;
+        return Helper.filterAll(possibleSolutions, hint, answerLength);
     }
 
     //
@@ -307,11 +300,9 @@ public class DeletionClue implements Clue {
             }
         }
 
-        possibleSolutions = Helper.removeDuplicates(possibleSolutions);
-        possibleSolutions = filterByAnswerLength(possibleSolutions, answerLength);
-        possibleSolutions = Helper.filterByHint(possibleSolutions, hint);
-
-        return possibleSolutions;
+        //possibleSolutions = Helper.filterAll(possibleSolutions, hint, answerLength);
+        //return possibleSolutions;
+        return Helper.filterAll(possibleSolutions, hint, answerLength);
     }
 
     // Return the given word, gutting every possible inner letter

@@ -8,14 +8,6 @@ import java.util.regex.Matcher;
 
 public class Helper {
 
-    public static ArrayList<String> removeDuplicates(ArrayList<String> list) {
-        HashSet<String> hs = new HashSet<>();
-        hs.addAll(list);
-        list.clear();
-        list.addAll(hs);
-        return list;
-    }
-
     public static ArrayList<String> combineWords(ArrayList<String> list, int answerLength) {
         ArrayList<String> wordsList = new ArrayList<>();
         ArrayList<String> secondList = new ArrayList<>(list);
@@ -48,6 +40,28 @@ public class Helper {
     }
 
     // Filter methods
+
+    public static ArrayList<String> removeDuplicates(ArrayList<String> list) {
+        HashSet<String> hs = new HashSet<>();
+        hs.addAll(list);
+        list.clear();
+        list.addAll(hs);
+        return list;
+    }
+
+    public static ArrayList<String> filterByAnswerLength(ArrayList<String> list, int... answerLength) {
+        if (list.size() > 0) {
+            if (answerLength.length == 1) {
+                for (Iterator<String> iter = list.listIterator(); iter.hasNext(); ) {
+                    String word = iter.next();
+                    if ((word.length() != answerLength[0]) || (word.contains(" ")))
+                        iter.remove();
+                }
+            }
+        }
+        return list;
+    }
+
     public static ArrayList<String> filterByHint(ArrayList<String> list, String hint) {
         for (Iterator<String> iter = list.listIterator(); iter.hasNext(); ) {
             String word = iter.next();
@@ -62,6 +76,15 @@ public class Helper {
             if (group.equals(""))
                 iter.remove();
         }
+        return list;
+    }
+
+    public static ArrayList<String> filterAll(ArrayList<String> list, String hint, int... answerLength) {
+
+        list = removeDuplicates(list);
+        list = filterByAnswerLength(list, answerLength);
+        list = filterByHint(list, hint);
+
         return list;
     }
 }

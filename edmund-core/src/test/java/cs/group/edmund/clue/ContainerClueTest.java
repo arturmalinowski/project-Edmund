@@ -104,21 +104,4 @@ public class ContainerClueTest {
 
         assertThat("linnet", is(clue.compareLists(synonyms, solutions)));
     }
-
-    @Test
-    public void testFilterByHints() {
-        String hint = "...g..";
-        ArrayList<String> preFilterList = new ArrayList<>();
-        preFilterList.add("hello");
-        preFilterList.add("flight");
-        preFilterList.add("felger");
-        preFilterList.add("harpys");
-        preFilterList.add("kantar");
-
-        ArrayList<String> postFilterList = new ArrayList<>();
-        postFilterList.add("flight");
-        postFilterList.add("felger");
-
-        assertThat(postFilterList, is(clue.filterByHints(preFilterList, hint)));
-    }
 }

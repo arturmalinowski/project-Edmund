@@ -21,10 +21,26 @@ public class HelperTest {
     }
 
     @Test
-    public void filterByHint() {
+    public void filterByAnswerLengthTest() {
+        ArrayList<String> list = new ArrayList<>(asList("hello", "world", "welcome", "wereld"));
+        ArrayList<String> filteredList = new ArrayList<>(asList("hello", "world"));
+
+        assertThat(filteredList, is(Helper.filterByAnswerLength(list, new int[]{5})));
+    }
+
+    @Test
+    public void filterByHintTest() {
         ArrayList<String> list = new ArrayList<>(asList("hello", "world", "hallo", "wereld"));
         ArrayList<String> filteredList = new ArrayList<>(asList("hello", "hallo"));
 
         assertThat(filteredList, is(Helper.filterByHint(list, "h...o")));
+    }
+
+    @Test
+    public void filterAllTest() {
+        ArrayList<String> list = new ArrayList<>(asList("hello", "world", "welcome", "wereld"));
+        ArrayList<String> filteredList = new ArrayList<>(asList("hello"));
+
+        assertThat(filteredList, is(Helper.filterAll(list, "h...o", new int[]{5})));
     }
 }
