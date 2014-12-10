@@ -3,6 +3,7 @@ package cs.group.edmund.clue;
 import cs.group.edmund.utils.Helper;
 import cs.group.edmund.utils.Thesaurus;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,7 +21,7 @@ public class DeletionClue implements Clue {
         keyWordsHead = asList("WITHOUT FIRST", "DROPPING INTRODUCTION", "AFTER COMMENCEMENT", "BEGINNING TO GO", "BEHEADED", "BEHEADING", "DECAPITATED", "FIRST OFF", "HEADLESS", "HEAD OFF", "INITIALLY LACKING", "LEADERLESS", "LOSING OPENER", "MISSING THE FIRST", "NEEDING NO INTRODUCTION", "NOT BEGINNING", "NOT COMMENCING", "NOT STARTING", "START OFF", "START TO GO", "SCRATCH THE HEAD", "STRIKE THE HEAD", "UNINITIATED", "UNSTARTED", "WITHOUT ORIGIN");
         keyWordsTail = asList("ENDLESSLY", "ENDLESS", "BACKING AWAY", "ABRIDGED", "ALMOST", "BACK OFF", "CLIPPED", "CURTAILED", "CUT SHORT", "DETAILED", "EARLY CLOSING", "FALLING SHORT", "FINISH OFF", "FOR THE MOST PART", "INCOMPLETE", "INTERMINABLE", "LACKING FINISH", "MISSING THE LAST", "MOST", "MOSTLY", "NEARLY", "NOT COMPLETELY", "NOT FULLY", "NOT QUITE", "SHORT", "SHORTENING", "TAILLESS", "UNENDING", "UNFINISHED", "WITHOUT END");
         keyWordsBoth = asList("EDGES AWAY", "LACKING WINGS", "LIMITLESS", "LOSING MARGINS", "SHELLED", "SIDES SPLITTING", "TRIMMED", "UNLIMITED", "WINGLESS", "WITHOUT LIMITS");
-        keyWordsMiddle = asList("HOLLOW", "CORED", "DISHEARTENED", "EMPTIED", "EMPTY", "EVACUATED", "FILLETED", "GUTTED", "HEARTLESS", "HOLLOW", "LOSING HEART", "UNCENTERED");
+        keyWordsMiddle = asList("HEARTLESSLY", "HEARTLESS", "DISHEARTENED", "LOSING HEART", "HOLLOW", "CORED", "EMPTIED", "EMPTY", "EVACUATED", "FILLETED", "GUTTED", "HOLLOW", "UNCENTERED");
         keyWords = asList("AFTER COMMENCEMENT", "BEGINNING TO GO", "BEHEADED", "BEHEADING", "DECAPITATED", "FIRST OFF", "HEADLESS", "HEAD OFF", "INITIALLY LACKING", "LEADERLESS", "LOSING OPENER", "MISSING THE FIRST", "NEEDING NO INTRODUCTION", "NOT BEGINNING", "NOT COMMENCING", "NOT STARTING", "START OFF", "START TO GO", "SCRATCH THE HEAD", "STRIKE THE HEAD", "UNINITIATED", "UNSTARTED", "WITHOUT ORIGIN", "ABRIDGED", "ALMOST", "BACK OFF", "CLIPPED", "CURTAILED", "CUT SHORT", "DETAILED", "EARLY CLOSING", "ENDLESS", "FALLING SHORT", "FINISH OFF", "FOR THE MOST PART", "INCOMPLETE", "INTERMINABLE", "LACKING FINISH", "MISSING THE LAST", "MOST", "MOSTLY", "NEARLY", "NOT COMPLETELY", "NOT FULLY", "NOT QUITE", "SHORT", "SHORTENING", "TAILLESS", "UNENDING", "UNFINISHED", "WITHOUT END", "EDGES AWAY", "LACKING WINGS", "LIMITLESS", "LOSING MARGINS", "SHELLED", "SIDES SPLITTING", "TRIMMED", "UNLIMITED", "WINGLESS", "WITHOUT LIMITS", "CORED", "DISHEARTENED", "EMPTIED", "EMPTY", "EVACUATED", "FILLETED", "GUTTED", "HEARTLESS", "HOLLOW", "LOSING HEART", "UNCENTERED");
         thesaurus = new Thesaurus();
         helper = new Helper();
@@ -99,16 +100,16 @@ public class DeletionClue implements Clue {
         String deletionType = getDeletionType(phrase);
 
         if (deletionType.equals("head")) {
-            solutionsList = returnBeheadment(assumedClue, phrase, keyword, hint, answerLength);
+            solutionsList = returnBeheadmentDeletion(assumedClue, phrase, keyword, hint, answerLength);
         }
         if (deletionType.equals("tail")) {
-            solutionsList = returnCurtailment(assumedClue, phrase, keyword, hint, answerLength);
+            solutionsList = returnCurtailmentDeletion(assumedClue, phrase, keyword, hint, answerLength);
         }
         if (deletionType.equals("both")) {
 
         }
         if (deletionType.equals("middle")) {
-
+            solutionsList = returnInternalDeletion(assumedClue, phrase, keyword, hint, answerLength);
         }
 
         ArrayList<String> answerList = compareLists(potentialAnswers, solutionsList);
@@ -140,7 +141,7 @@ public class DeletionClue implements Clue {
     }
 
     //
-    public ArrayList<String> returnBeheadment(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
+    public ArrayList<String> returnBeheadmentDeletion(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
     {
         ArrayList<String> possibleSolutions = new ArrayList<>();
 
@@ -197,7 +198,7 @@ public class DeletionClue implements Clue {
     }
 
     //
-    public ArrayList<String> returnCurtailment(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
+    public ArrayList<String> returnCurtailmentDeletion(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
     {
         ArrayList<String> possibleSolutions = new ArrayList<String>();
 
@@ -251,6 +252,74 @@ public class DeletionClue implements Clue {
         possibleSolutions = helper.removeDuplicates(possibleSolutions);
 
         return possibleSolutions;
+    }
+
+    //
+    public ArrayList<String> returnInternalDeletion(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
+    {
+        ArrayList<String> possibleSolutions = new ArrayList<>();
+
+        String leftHalf = splitPhrase(phrase, keyword).get(0);
+        String rightHalf = splitPhrase(phrase, keyword).get(1);
+        String[] leftSplit = leftHalf.split("\\s+");
+        String[] rightSplit = rightHalf.split("\\s+");
+        String leftWord = leftSplit[leftSplit.length - 1];
+        String rightWord = rightSplit[0];
+
+        if (leftWord.length() > 2)
+            possibleSolutions.addAll(gutMiddle(leftWord));
+        if (rightWord.length() > 2)
+            possibleSolutions.addAll(gutMiddle(rightWord));
+
+        ArrayList<String> leftSynonyms = thesaurus.getAllSynonymsXML(leftWord);
+        for (String word : leftSynonyms) {
+            if (word.length() > 3)
+                possibleSolutions.addAll(gutMiddle(word));
+        }
+        ArrayList<String> rightSynonyms = thesaurus.getAllSynonymsXML(rightWord);
+        for (String word : rightSynonyms) {
+            if (word.length() > 3)
+                possibleSolutions.addAll(gutMiddle(word));
+        }
+
+        if (searchIntensity > 1) {
+            for (String word : thesaurus.getRelatedWordsXML(leftWord)) {
+                if (word.length() > 1)
+                    possibleSolutions.addAll(gutMiddle(word));
+            }
+            for (String word : thesaurus.getRelatedWordsXML(rightWord)) {
+                if (word.length() > 1)
+                    possibleSolutions.addAll(gutMiddle(word));
+            }
+        }
+
+        if (searchIntensity > 2) {
+            for (String word : getRelatedWordSynonyms(leftSynonyms)) {
+                if (word.length() > 1)
+                    possibleSolutions.addAll(gutMiddle(word));
+            }
+            for (String word : getRelatedWordSynonyms(rightSynonyms)) {
+                if (word.length() > 1)
+                    possibleSolutions.addAll(gutMiddle(word));
+            }
+        }
+
+        possibleSolutions = filterByAnswerLength(possibleSolutions, answerLength);
+        possibleSolutions = filterByHints(possibleSolutions, hint);
+        possibleSolutions = helper.removeDuplicates(possibleSolutions);
+
+        return possibleSolutions;
+    }
+
+    // Return the given word, gutting every possible inner letter
+    public ArrayList<String> gutMiddle(String word)
+    {
+        ArrayList<String> guttedWords = new ArrayList<>();
+
+        for (int i = 1; i < word.length() - 1; i++) {
+            guttedWords.add(word.substring(0, i) + word.substring(i+1));
+        }
+        return guttedWords;
     }
 
     // Return a list containing the left and right half of the phrase, split on the keyword
