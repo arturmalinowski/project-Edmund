@@ -19,4 +19,12 @@ public class HelperTest {
         list = Helper.removeDuplicates(list);
         assertThat(list.size(), is(2));
     }
+
+    @Test
+    public void filterByHint() {
+        ArrayList<String> list = new ArrayList<>(asList("hello", "world", "hallo", "wereld"));
+        ArrayList<String> filteredList = new ArrayList<>(asList("hello", "hallo"));
+
+        assertThat(filteredList, is(Helper.filterByHint(list, "h...o")));
+    }
 }
