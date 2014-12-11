@@ -45,7 +45,7 @@ public class ContainerClue implements Clue {
         if (isRelevant(phrase)) {
             String[] splitPhrase = phrase.split("\\s+");
 
-            ArrayList<String> answers = new ArrayList<String>();
+            ArrayList<String> answers = new ArrayList<>();
             answers.add(solveFor(splitPhrase[0], phrase.substring(phrase.indexOf(" ")+1), key, hint, answerLength));
             answers.add(solveFor(splitPhrase[splitPhrase.length - 1], phrase.substring(0, phrase.lastIndexOf(" ")), key, hint, answerLength));
 
@@ -54,28 +54,31 @@ public class ContainerClue implements Clue {
                     return answer;
                 }
             }
-            for (String answer : answers) {
-                if ((answer != null) && (answer.contains(","))) {
-                    return answer;
+            if (searchIntensity != 3) {
+                // no answer found, last resort
+                searchIntensity = 3;
+                return solve(phrase, hint, answerLength);
+            }
+            else {
+                for (String answer : answers) {
+                    if ((answer != null) && (answer.contains(","))) {
+                        return answer;
+                    }
                 }
             }
-            // no answer found, last resort
-            searchIntensity = 3;
-            return solve(phrase, hint, answerLength);
         }
         return "Answer not found!";
     }
 
     public String solveFor(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
     {
-        ArrayList<String> potentialAnswers = new ArrayList<String>();
+        ArrayList<String> potentialAnswers = new ArrayList<>();
         potentialAnswers.addAll(thesaurus.getAllSynonymsXML(assumedClue));
         if (searchIntensity > 1)
             potentialAnswers.addAll(thesaurus.getRelatedWordsXML(assumedClue));
         if (searchIntensity > 2)
             potentialAnswers.addAll(getRelatedSynonyms(assumedClue)); //delete
-        if (potentialAnswers != null)
-            potentialAnswers = Helper.filterAll(potentialAnswers, hint, answerLength);
+        potentialAnswers = Helper.filterAll(potentialAnswers, hint, answerLength);
 
         ArrayList<String> solutionsList = null;
         if (phrase.contains(keyword))
@@ -232,6 +235,7 @@ public class ContainerClue implements Clue {
         return true;
     }
 
+    //
     public ArrayList<String> getRelatedSynonyms(String word) {
         //
         ArrayList<String> completeList = new ArrayList<>();

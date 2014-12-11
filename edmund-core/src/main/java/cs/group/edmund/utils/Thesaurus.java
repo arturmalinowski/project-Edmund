@@ -146,4 +146,22 @@ public class Thesaurus {
 
         return elementList;
     }
+
+    public ArrayList<String> getSynonymsOfRelatedWordsXML(String word) {
+        ArrayList<String> relatedList = getRelatedWordsXML(word);
+        ArrayList<String> synonymsList = new ArrayList<>();
+        for (String w : relatedList) {
+            synonymsList.addAll(getAllSynonymsXML(w));
+        }
+        return synonymsList;
+    }
+
+    public ArrayList<String> getRelatedWordsOfSynonyms(String word) {
+        ArrayList<String> synonymsList = getAllSynonymsXML(word);
+        ArrayList<String> relatedList = new ArrayList<>();
+        for (String w : synonymsList) {
+            relatedList.addAll(getRelatedWordsXML(w));
+        }
+        return relatedList;
+    }
 }

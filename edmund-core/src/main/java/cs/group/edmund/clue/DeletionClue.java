@@ -91,7 +91,7 @@ public class DeletionClue implements Clue {
         if (searchIntensity > 1)
             potentialAnswers.addAll(thesaurus.getRelatedWordsXML(assumedClue));
         if (searchIntensity > 2)
-            potentialAnswers.addAll(getRelatedWordSynonyms(thesaurus.getAllSynonymsXML(assumedClue)));
+            potentialAnswers.addAll(thesaurus.getSynonymsOfRelatedWordsXML(assumedClue));
         if (potentialAnswers != null)
             potentialAnswers = Helper.filterAll(potentialAnswers, hint, answerLength);
 
@@ -190,8 +190,6 @@ public class DeletionClue implements Clue {
             }
         }
 
-        //possibleSolutions = Helper.filterAll(possibleSolutions, hint, answerLength);
-        //return possibleSolutions;
         return Helper.filterAll(possibleSolutions, hint, answerLength);
     }
 
@@ -245,8 +243,6 @@ public class DeletionClue implements Clue {
             }
         }
 
-        //possibleSolutions = Helper.filterAll(possibleSolutions, hint, answerLength);
-        //return possibleSolutions;
         return Helper.filterAll(possibleSolutions, hint, answerLength);
     }
 
@@ -300,8 +296,6 @@ public class DeletionClue implements Clue {
             }
         }
 
-        //possibleSolutions = Helper.filterAll(possibleSolutions, hint, answerLength);
-        //return possibleSolutions;
         return Helper.filterAll(possibleSolutions, hint, answerLength);
     }
 
@@ -385,40 +379,5 @@ public class DeletionClue implements Clue {
             relatedList.addAll(thesaurus.getRelatedWordsXML(word));
         }
         return relatedList;
-    }
-
-    // Return a list containing words corresponding with the given answerLength
-    public ArrayList<String> filterByAnswerLength(ArrayList<String> originalList, int... answerLength) {
-        if (originalList.size() >= 1) {
-            if (answerLength.length == 1) {
-                // AnswerLength is only 1
-                for (Iterator<String> iter = originalList.listIterator(); iter.hasNext(); ) {
-                    String a = iter.next();
-                    if ((a.length() != answerLength[0]) || (a.contains(" ")))
-                        // Incorrect word length, remove from array
-                        iter.remove();
-                }
-            } else if (answerLength.length > 1) {
-                // answerLength is greater than 1
-                for (Iterator<String> iter = originalList.listIterator(); iter.hasNext(); ) {
-                    String a = iter.next();
-                    String[] splitString = a.split("\\s+");
-
-                    if (splitString.length != answerLength.length) {
-                        // Incorrect amount of words, remove from array
-                        iter.remove();
-                    } else {
-                        // Check each word for length
-                        for (int i = 0; i < splitString.length; i++) {
-                            if (splitString[i].length() != answerLength[i]) {
-                                // Incorrect word length, remove from array
-                                iter.remove();
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return originalList;
     }
 }
