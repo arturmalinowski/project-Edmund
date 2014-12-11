@@ -3,15 +3,13 @@ package cs.group.edmund.clue;
 import com.googlecode.yatspec.junit.Row;
 import com.googlecode.yatspec.junit.Table;
 import com.googlecode.yatspec.junit.TableRunner;
-import cs.group.edmund.utils.Thesaurus;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import cs.group.edmund.utils.Helper;
-
 import java.util.ArrayList;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -19,13 +17,10 @@ import static org.hamcrest.core.Is.is;
 public class ContainerClueTest {
 
     private ContainerClue clue;
-    private Thesaurus thesaurus;
-    private Helper helper;
 
     @Before
     public void setup() {
         clue = new ContainerClue();
-        thesaurus = new Thesaurus();
     }
 
     // Current success rate 30%
@@ -67,40 +62,21 @@ public class ContainerClueTest {
     }
 
     @Test
-    public void detectsThatClueIsNotAContainer() {
-        System.out.println(clue.isRelevant("Crazy flying mammals"));
-        assertThat(clue.isRelevant("Crazy flying mammals"), is(true));
-    }
-
-    @Test
     public void testGetKeyword() {
         assertThat(clue.getKeyword("bird allowed outside tavern"), is("outside"));
     }
 
     @Test
     public void testSplitPhrase() {
-        String phrase = "bird allowed outside tavern";
-        String keyword = "outside";
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("bird allowed");
-        list.add("tavern");
+        ArrayList<String> list = new ArrayList<>(asList("bird allowed", "tavern"));
 
-        assertThat(clue.splitPhrase(phrase,keyword), is(list));
+        assertThat(clue.splitPhrase("bird allowed outside tavern", "outside"), is(list));
     }
 
     @Test
     public void testCompareLists() {
-        ArrayList<String> synonyms = new ArrayList<String>();
-        ArrayList<String> solutions = new ArrayList<String>();
-
-        synonyms.add("ROBIN");
-        synonyms.add("linnet");
-        synonyms.add("OWL");
-        synonyms.add("PIGEON");
-
-        solutions.add("linnet");
-        solutions.add("LEINNT");
-        solutions.add("LETINN");
+        ArrayList<String> synonyms = new ArrayList<>(asList("robin", "linnet", "owl", "pigeon"));
+        ArrayList<String> solutions = new ArrayList<>(asList("linnet", "leinnt", "letinn"));
 
         assertThat("linnet", is(clue.compareLists(synonyms, solutions)));
     }

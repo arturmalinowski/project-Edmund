@@ -26,7 +26,7 @@ public class DeletionClueTest {
     }
 
     // Currently 30% success ratio
-    @Ignore
+    //@Ignore
     @Test
     @Table({
             // Beheadments

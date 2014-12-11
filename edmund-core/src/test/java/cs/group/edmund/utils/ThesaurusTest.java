@@ -1,6 +1,7 @@
 package cs.group.edmund.utils;
 
 
+import org.hamcrest.CoreMatchers;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.BeforeClass;
@@ -86,5 +87,25 @@ public class ThesaurusTest {
         List list = thesaurus.getRelatedWordsXML("nurture");
 
         assertThat(list.contains("school"), is(true));
+    }
+
+    @Test
+    public void getSynonymsRelatedWordsXMLTest() {
+        ArrayList<String> relatedWordsList = thesaurus.getRelatedWordsXML("bird");
+        ArrayList<String> synonymsRelatedWordsList = thesaurus.getSynonymsOfRelatedWordsXML("bird");
+
+        assertThat(true, is(relatedWordsList.size() < synonymsRelatedWordsList.size()));
+    }
+
+    @Test
+    public void getRelatedWordsOfSynonymsXMLTest() {
+        ArrayList<String> synonymsList = thesaurus.getAllSynonymsXML("hard");
+        ArrayList<String> relatedWordsSynonymsList = thesaurus.getRelatedWordsOfSynonyms("hard");
+
+        System.out.println(synonymsList);
+        System.out.println(relatedWordsSynonymsList);
+
+
+        assertThat(true, is(relatedWordsSynonymsList.size() > synonymsList.size()));
     }
 }
