@@ -25,8 +25,8 @@ public class ThesaurusTest {
 
     @Test
     public void xmlTest() {
-        ArrayList list = thesaurus.getAllSynonymsXML("fork");
-        assertThat(list.toString(), containsString("cutlery"));
+        ArrayList list = thesaurus.getAllSynonymsXML("face");
+        assertThat(list.toString(), containsString("grimace"));
     }
 
     @Test
@@ -100,7 +100,7 @@ public class ThesaurusTest {
     @Test
     public void getRelatedWordsOfSynonymsXMLTest() {
         ArrayList<String> synonymsList = thesaurus.getAllSynonymsXML("hard");
-        ArrayList<String> relatedWordsSynonymsList = thesaurus.getRelatedWordsOfSynonyms("hard");
+        ArrayList<String> relatedWordsSynonymsList = thesaurus.getRelatedWordsOfSynonymsXML("hard");
 
         System.out.println(synonymsList);
         System.out.println(relatedWordsSynonymsList);
