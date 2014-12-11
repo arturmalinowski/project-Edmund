@@ -156,7 +156,7 @@ public class Thesaurus {
         return synonymsList;
     }
 
-    public ArrayList<String> getRelatedWordsOfSynonyms(String word) {
+    public ArrayList<String> getRelatedWordsOfSynonymsXML(String word) {
         ArrayList<String> synonymsList = getAllSynonymsXML(word);
         ArrayList<String> relatedList = new ArrayList<>();
         for (String w : synonymsList) {
