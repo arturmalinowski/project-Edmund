@@ -12,10 +12,13 @@ public class ReversalClue implements Clue {
 
 
     private final List<String> keyWords;
-    private List<String> answersList = new ArrayList<>();
+
     private boolean answerFound = false;
+    private int firstCandidatePosition;
     private String candidateWord;
     private ArrayList<String> otherSynonymAndRelatedWords = new ArrayList<>();
+    private List<String> answersList = new ArrayList<>();
+    private String hint;
 
     public ReversalClue() {
         keyWords = asList("ABOUT", "AROUND", "ASCENDING", "BACK", "BACKED", "BACKING", "BACK-TO-FRONT", "BACKWARD", "BROUGHTABOUT", "BROUGHTUP", "CASTUP", "CLIMBING", "COMINGBACK", "COMINGUP", "COUNTER", "FLIPPED", "FLIPPING", "FROMTHEBOTTOM", "FROMTHEEAST", "FROMTHERIGHT", "FROMTHESOUTH", "GOINGBACK", "GOINGNORTH", "GOINGROUND", "GOINGUP", "GOINGWEST", "LIFTED", "LOOKINGBACK", "LOOKINGUP", "NORTHBOUND", "OVER", "OVERTURNED", "RAISED", "RAISING", "RETREAT", "RETREATING", "RETROGRADE", "RETROSPECTIVE", "REVERSED", "REVERSING", "REVOLUTIONARY", "RISING", "ROUND", "SENTBACK", "SENTUP", "SHOWNUP", "TAKENUP", "TURN", "TURNED", "TURNING", "TURNS", "UP", "UPENDED", "UPSET", "UPWARDLYMOBILE", "WESTBOUND", "WRITTENUP");
@@ -44,43 +47,24 @@ public class ReversalClue implements Clue {
             clueWords[i] = clueWords[i].replaceAll("[,?!]", "");
         }
 
-        quickSearch(clueWords, answerLength[0]);
+        this.hint = hint;
+        if (this.hint == null || this.hint.equals("")) {
+            this.hint = ".*";
+        }
 
-        // get a candidate word
         for (int i = 0; i < clueWords.length; i++) {
             for (String keyword : keyWords) {
                 if (clueWords[i].equals(keyword.toLowerCase())) {
                     candidateWord = clueWords[i - 1];
                     clueWords[i] = "";
                     removeCandidateFromList(clueWords);
+                    firstCandidatePosition = i;
                 }
             }
         }
+        searchMatchesForCandidate(clueWords, answerLength[0], candidateWord);
 
-        // search synonyms and related words for candidate
-        Thesaurus thesaurus = new Thesaurus();
-        List<String> candidateSynonymAndRelatedWords = thesaurus.getAllSynonymsXML(candidateWord);
-        candidateSynonymAndRelatedWords.addAll(thesaurus.getRelatedWordsXML(candidateWord));
-
-        for (String clueWord : clueWords) {
-            otherSynonymAndRelatedWords.addAll(thesaurus.getAllSynonymsXML(clueWord));
-            otherSynonymAndRelatedWords.addAll(thesaurus.getRelatedWordsXML(clueWord));
-        }
-
-
-        for (int i = 0; i < candidateSynonymAndRelatedWords.size(); i++) {
-            if (candidateSynonymAndRelatedWords.get(i).length() == answerLength[0]) {
-                for (String word : otherSynonymAndRelatedWords) {
-                    String reversedWord = new StringBuilder(candidateSynonymAndRelatedWords.get(i)).reverse().toString();
-                    if (word.equals(reversedWord)) {
-                        answersList.add(reversedWord);
-                        answerFound = true;
-                    }
-                }
-
-
-            }
-        }
+        searchOtherSideKeyWord(clueWords, answerLength);
 
         ArrayList<String> answer = Helper.removeDuplicates(new ArrayList<>((answersList)));
 
@@ -91,6 +75,42 @@ public class ReversalClue implements Clue {
         }
     }
 
+    private void searchOtherSideKeyWord(String[] clueWords, int[] answerLength) {
+        if (!answerFound) {
+            candidateWord = clueWords[firstCandidatePosition + 1];
+            clueWords[firstCandidatePosition + 1] = "";
+            searchMatchesForCandidate(clueWords, answerLength[0], candidateWord);
+        }
+    }
+
+    private void searchMatchesForCandidate(String[] clueWords, int i, String possibleWord) {
+        Thesaurus thesaurus = new Thesaurus();
+        List<String> candidateSynonymAndRelatedWords = thesaurus.getAllSynonymsXML(possibleWord);
+        candidateSynonymAndRelatedWords.addAll(thesaurus.getRelatedWordsXML(possibleWord));
+
+        for (String clueWord : clueWords) {
+            if (clueWord != null && !clueWord.equals("")) {
+                otherSynonymAndRelatedWords.addAll(thesaurus.getAllSynonymsXML(clueWord));
+                otherSynonymAndRelatedWords.addAll(thesaurus.getRelatedWordsXML(clueWord));
+            }
+        }
+
+
+        for (String candidateSynonymAndRelatedWord : candidateSynonymAndRelatedWords) {
+            if (candidateSynonymAndRelatedWord.length() == i) {
+                for (String word : otherSynonymAndRelatedWords) {
+                    String reversedWord = new StringBuilder(candidateSynonymAndRelatedWord).reverse().toString();
+                    if (word.equals(reversedWord) && reversedWord.matches(hint)) {
+                        answersList.add(reversedWord);
+                        answerFound = true;
+                    }
+                }
+
+
+            }
+        }
+    }
+
 
     private void removeCandidateFromList(String[] clueWords) {
         for (int i = 0; i < clueWords.length; i++) {
@@ -98,16 +118,6 @@ public class ReversalClue implements Clue {
                 clueWords[i] = null;
                 break;
             }
-        }
-    }
-
-    private void quickSearch(String[] words, int i) {
-        for (String word : words) {
-            if (word.length() == i) {
-                answersList.add(new StringBuilder(word).reverse().toString());
-                answerFound = true;
-            }
-
         }
     }
 
