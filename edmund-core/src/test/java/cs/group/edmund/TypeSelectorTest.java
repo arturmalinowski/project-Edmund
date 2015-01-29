@@ -1,12 +1,12 @@
-package cs.group.edmund.type_selector;
+package cs.group.edmund;
 
 import cs.group.edmund.clue.AnagramClue;
 import cs.group.edmund.clue.Clue;
+import cs.group.edmund.type_selector.Selector;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
-
 
 public class TypeSelectorTest {
 
