@@ -40,7 +40,11 @@ public class ReversalClueTest {
             @Row({"Physician brings fish round", "", "3", "doc"}),
             @Row({"Going round stronghold, take a look", "p...", "4", "peek"}),
             @Row({"Containers for drinks taken back to bar", "", "4", "stop"}),
-            @Row({"Animal going round a shopping precinct", "", "4", "llama"}),
+            @Row({"Animal going round a shopping precinct", "", "5", "llama"}),
+            @Row({"Serve up a drink, fit for a king", "", "5", "regal"}),
+            @Row({"Stop the flow in crazy get-up", "", "3", "dam"}),
+            @Row({"An elevating kipling poem", "", "2", "na"}),
+            @Row({"Rising star, nonsense", "", "2", "rats"}),
             @Row({"Bambi for example, overturned a plant", "", "4", "deer"})
     })
     public void bulkClueTest(String clue, String hint, String length, String answer) {

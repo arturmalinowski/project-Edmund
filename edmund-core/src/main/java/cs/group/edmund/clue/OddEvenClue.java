@@ -10,7 +10,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
-public class OddEvenClue {
+public class OddEvenClue implements Clue{
 
     private final List<String> keyWordsAny, keyWordsOdd, keyWordsEven;
     private String keyWord = null;
@@ -21,6 +21,11 @@ public class OddEvenClue {
         keyWordsAny = asList("ALTERNATE", "REGULAR", "REGULARLY", "EVERY OTHER");
         keyWordsEven = asList("EVEN", "EVENLY", "EVERY SECOND");
         keyWordsOdd = asList("ODD", "ODDS");
+    }
+
+    @Override
+    public String create(String word) {
+        return null;
     }
 
     public boolean isRelevant(String phrase) {
