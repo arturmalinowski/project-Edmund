@@ -13,6 +13,7 @@ public class ReversalClue implements Clue {
 
     private final List<String> keyWords;
 
+    private Thesaurus thesaurus;
     private boolean answerFound = false;
     private int firstCandidatePosition;
     private String candidateWord;
@@ -20,7 +21,8 @@ public class ReversalClue implements Clue {
     private List<String> answersList = new ArrayList<>();
     private String hint;
 
-    public ReversalClue() {
+    public ReversalClue(Thesaurus thesaurus) {
+        this.thesaurus = thesaurus;
         keyWords = asList("ABOUT", "AROUND", "ASCENDING", "BACK", "BACKED", "BACKING", "BACK-TO-FRONT", "BACKWARD", "BROUGHTABOUT", "BROUGHTUP", "CASTUP", "CLIMBING", "COMINGBACK", "COMINGUP", "COUNTER", "FLIPPED", "FLIPPING", "FROMTHEBOTTOM", "FROMTHEEAST", "FROMTHERIGHT", "FROMTHESOUTH", "GOINGBACK", "GOINGNORTH", "GOINGROUND", "GOINGUP", "GOINGWEST", "LIFTED", "LOOKINGBACK", "LOOKINGUP", "NORTHBOUND", "OVER", "OVERTURNED", "RAISED", "RAISING", "RETREAT", "RETREATING", "RETROGRADE", "RETROSPECTIVE", "REVERSED", "REVERSING", "REVOLUTIONARY", "RISING", "ROUND", "SENTBACK", "SENTUP", "SHOWNUP", "TAKENUP", "TURN", "TURNED", "TURNING", "TURNS", "UP", "UPENDED", "UPSET", "UPWARDLYMOBILE", "WESTBOUND", "WRITTENUP");
     }
 
@@ -84,7 +86,6 @@ public class ReversalClue implements Clue {
     }
 
     private void searchMatchesForCandidate(String[] clueWords, int i, String possibleWord) {
-        Thesaurus thesaurus = new Thesaurus();
         List<String> candidateSynonymAndRelatedWords = thesaurus.getAllSynonymsXML(possibleWord);
         candidateSynonymAndRelatedWords.addAll(thesaurus.getRelatedWordsXML(possibleWord));
 

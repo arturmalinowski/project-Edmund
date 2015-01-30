@@ -7,23 +7,24 @@ import cs.group.edmund.utils.Thesaurus;
 public class Selector {
 
     public String retrieveAnswer(String input, String hint, int answerLength) throws Exception {
+        Thesaurus thesaurus = new Thesaurus();
         String answer;
 
-        AnagramClue anagramClue = new AnagramClue();
+        AnagramClue anagramClue = new AnagramClue(thesaurus);
         answer = anagramClue.solve(input, hint, answerLength);
 
         if (answer.equals("Answer not found")) {
-            ContainerClue containerClue = new ContainerClue();
+            ContainerClue containerClue = new ContainerClue(thesaurus);
             containerClue.solve(input, hint, answerLength);
         }
 
         if (answer.equals("Answer not found")) {
-            DeletionClue deletionClue = new DeletionClue();
+            DeletionClue deletionClue = new DeletionClue(thesaurus);
             deletionClue.solve(input, hint, answerLength);
         }
 
         if (answer.equals("Answer not found")) {
-            DoubleDefinitionsClue doubleDefinitionsClue = new DoubleDefinitionsClue(new Thesaurus());
+            DoubleDefinitionsClue doubleDefinitionsClue = new DoubleDefinitionsClue(thesaurus);
             doubleDefinitionsClue.solve(input, hint, answerLength);
         }
 
@@ -33,7 +34,7 @@ public class Selector {
         }
 
         if (answer.equals("Answer not found")) {
-            ReversalClue reversalClue = new ReversalClue();
+            ReversalClue reversalClue = new ReversalClue(thesaurus);
             reversalClue.solve(input, hint, answerLength);
         }
 
