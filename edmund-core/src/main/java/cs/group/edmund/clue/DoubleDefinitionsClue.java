@@ -20,8 +20,8 @@ public class DoubleDefinitionsClue implements Clue {
     private Thesaurus thesaurus;
     private String hint;
 
-    public DoubleDefinitionsClue(Thesaurus thes) {
-        thesaurus = thes;
+    public DoubleDefinitionsClue(Thesaurus thesaurus) {
+        this.thesaurus = thesaurus;
     }
 
     @Override

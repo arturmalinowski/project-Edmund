@@ -3,6 +3,8 @@ package cs.group.edmund.clue;
 import com.googlecode.yatspec.junit.Row;
 import com.googlecode.yatspec.junit.Table;
 import com.googlecode.yatspec.junit.TableRunner;
+import cs.group.edmund.utils.Thesaurus;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,21 +15,28 @@ import static org.hamcrest.core.Is.is;
 @RunWith(TableRunner.class)
 public class ReversalClueTest {
 
+    private Thesaurus thesaurus;
+
+    @Before
+    public void setup() {
+        thesaurus = new Thesaurus();
+    }
+
     @Test
     public void detectsThatClueIsAReversal() {
-        Clue clue = new ReversalClue();
+        Clue clue = new ReversalClue(thesaurus);
         assertThat(clue.isRelevant("Physician brings fish round"), is(true));
     }
 
     @Test
     public void detectsThatClueIsNotAReversal() {
-        Clue clue = new ReversalClue();
+        Clue clue = new ReversalClue(thesaurus);
         assertThat(clue.isRelevant("Crazy flying mammals"), is(false));
     }
 
     @Test
     public void reversalClueCanBeSolved() {
-        Clue clue = new ReversalClue();
+        Clue clue = new ReversalClue(thesaurus);
         String solvedWord = clue.solve("Physician brings fish round", null, 3);
 
         assertThat(solvedWord, is("doc"));
@@ -48,7 +57,7 @@ public class ReversalClueTest {
             @Row({"Bambi for example, overturned a plant", "", "4", "deer"})
     })
     public void bulkClueTest(String clue, String hint, String length, String answer) {
-        Clue reversalClue = new ReversalClue();
+        Clue reversalClue = new ReversalClue(thesaurus);
         String solvedWord = reversalClue.solve(clue, hint, Integer.parseInt(length));
 
         assertThat(solvedWord, is(answer));

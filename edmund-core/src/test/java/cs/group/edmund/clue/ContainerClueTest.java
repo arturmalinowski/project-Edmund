@@ -3,6 +3,7 @@ package cs.group.edmund.clue;
 import com.googlecode.yatspec.junit.Row;
 import com.googlecode.yatspec.junit.Table;
 import com.googlecode.yatspec.junit.TableRunner;
+import cs.group.edmund.utils.Thesaurus;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -20,7 +21,7 @@ public class ContainerClueTest {
 
     @Before
     public void setup() {
-        clue = new ContainerClue();
+        clue = new ContainerClue(new Thesaurus());
     }
 
     // Current success rate 30%

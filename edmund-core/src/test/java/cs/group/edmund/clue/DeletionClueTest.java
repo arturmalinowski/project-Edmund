@@ -21,7 +21,7 @@ public class DeletionClueTest {
 
     @Before
     public void setup() {
-        clue = new DeletionClue();
+        clue = new DeletionClue(thesaurus);
         thesaurus = new Thesaurus();
     }
 
