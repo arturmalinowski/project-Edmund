@@ -63,7 +63,7 @@ public class AnagramClue implements Clue {
                 }
             }
             if (!isAnagram) {
-                return "Could not solve this clue. Very likely this isn't an anagram type of a clue.";
+                return "Answer not found";
             }
             else {
                 clueWords.remove(keyWord);

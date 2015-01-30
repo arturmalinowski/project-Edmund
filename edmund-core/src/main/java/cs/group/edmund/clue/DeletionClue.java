@@ -4,7 +4,6 @@ import cs.group.edmund.utils.Helper;
 import cs.group.edmund.utils.Thesaurus;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -80,7 +79,7 @@ public class DeletionClue implements Clue {
                 }
             }
         }
-        return "Answer not found!";
+        return "Answer not found";
     }
 
     //

@@ -58,7 +58,7 @@ public class DoubleDefinitionsClue implements Clue {
     public String getAnswer(String phrase) {
         findMatchingWords(phrase);
         if (answer == null) {
-            answer = "Answer not found :(";
+            answer = "Answer not found";
         }
 
         return answer.replace("-", " ");

@@ -9,6 +9,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
@@ -104,7 +107,7 @@ public class DoubleDefinitionsClueTest {
     public void handlesWhenNoMatchingWordIsFound() {
         String solvedWord = clue.solve("Bird allowed outside tavern", null, 4);
 
-        assertThat(solvedWord, is("Answer not found :("));
+        assertThat(solvedWord, is("Answer not found"));
     }
 
     @Test
@@ -121,7 +124,11 @@ public class DoubleDefinitionsClueTest {
 
     @Test
     public void twoWordedAnswerCanBeFound() {
+        ArrayList<String> returnedValues = new ArrayList<>(Arrays.asList("dearly-won", "dear", "invalid-twoWords"));
+        when(mock(Thesaurus.class).getAllSynonymsXML("expensive")).thenReturn(returnedValues);
+
         String solvedWord = clue.solve("Expensive expensive", null, 6, 3);
+
         assertThat(solvedWord, is("dearly won"));
     }
 
