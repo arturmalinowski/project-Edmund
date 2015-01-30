@@ -1,11 +1,11 @@
 package cs.group.edmund.clue;
 
+import cs.group.edmund.utils.Helper;
 import cs.group.edmund.utils.Thesaurus;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import cs.group.edmund.utils.Helper;
 
 import static java.util.Arrays.asList;
 
@@ -67,7 +67,7 @@ public class ContainerClue implements Clue {
                 }
             }
         }
-        return "Answer not found!";
+        return "Answer not found";
     }
 
     public String solveFor(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
