@@ -9,8 +9,13 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @RunWith(TableRunner.class)
 public class ReversalClueTest {
@@ -36,6 +41,16 @@ public class ReversalClueTest {
 
     @Test
     public void reversalClueCanBeSolved() {
+        ArrayList<String> firstReturnedValues = new ArrayList<>(Arrays.asList("doc", "doctor", "invalid-twoWords", "medical"));
+        ArrayList<String> secondReturnedValues = new ArrayList<>(Arrays.asList("serve", "servant", "invalid-twoWords", "pulls"));
+        ArrayList<String> thirdReturnedValues = new ArrayList<>(Arrays.asList("carp", "cod", "invalid-twoWords", "sea"));
+        ArrayList<String> forthReturnedValues = new ArrayList<>(Arrays.asList("circle", "outside", "invalid-twoWords", "loop"));
+
+        when(mock(Thesaurus.class).getAllSynonymsXML("physician")).thenReturn(firstReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("brings")).thenReturn(secondReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("fish")).thenReturn(thirdReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("around")).thenReturn(forthReturnedValues);
+
         Clue clue = new ReversalClue(thesaurus);
         String solvedWord = clue.solve("Physician brings fish round", null, 3);
 
