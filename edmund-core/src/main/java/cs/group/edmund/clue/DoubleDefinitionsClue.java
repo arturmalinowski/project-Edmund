@@ -98,7 +98,7 @@ public class DoubleDefinitionsClue implements Clue {
     }
 
     private boolean containsSearchableWords(String word) {
-        return !word.equals("the") && !word.equals("a");
+        return !word.equals("the") && !word.equals("a") && !word.equals("in");
     }
 
     private void compareTheListsOfWords(String[] splitPhrase) {
