@@ -70,6 +70,12 @@ public class DoubleDefinitionsClueTest {
 
     @Test
     public void correctWordIsFoundInListViaAHint() {
+        ArrayList<String> firstReturnedValues = new ArrayList<>(Arrays.asList("dearly-won", "dear", "invalid-twoWords", "mail"));
+        ArrayList<String> secondReturnedValues = new ArrayList<>(Arrays.asList("expensive", "royal", "invalid-twoWords", "mail"));
+
+        when(mock(Thesaurus.class).getAllSynonymsXML("armour")).thenReturn(firstReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("post")).thenReturn(secondReturnedValues);
+
         String solvedWord = clue.solve("Armor in the post", "m...", 4);
 
         assertThat(solvedWord, is("mail"));
@@ -77,6 +83,16 @@ public class DoubleDefinitionsClueTest {
 
     @Test
     public void limitedDoubleDefinitionClueCanBeSolved() {
+        ArrayList<String> firstReturnedValues = new ArrayList<>(Arrays.asList("dearly-won", "dear", "invalid-twoWords", "mail"));
+        ArrayList<String> secondReturnedValues = new ArrayList<>(Arrays.asList("taste", "sour", "invalid-twoWords", "charming"));
+        ArrayList<String> thirdReturnedValues = new ArrayList<>(Arrays.asList("yellow", "rich", "invalid-twoWords", "jewelry"));
+        ArrayList<String> forthReturnedValues = new ArrayList<>(Arrays.asList("expensive", "dear", "invalid-twoWords", "mail"));
+
+        when(mock(Thesaurus.class).getAllSynonymsXML("expensive")).thenReturn(firstReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("sweet")).thenReturn(secondReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("golden")).thenReturn(thirdReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("honey")).thenReturn(forthReturnedValues);
+
         String solvedWord = clue.solve("Expensive sweet golden honey", ".e..", 4);
 
         assertThat(solvedWord, is("dear"));
@@ -84,6 +100,16 @@ public class DoubleDefinitionsClueTest {
 
     @Test
     public void doubleDefinitionClueWithClueWordNotAtTheLeftEndOfTheClueCanBeSolved() {
+        ArrayList<String> firstReturnedValues = new ArrayList<>(Arrays.asList("taste", "sour", "invalid-twoWords", "charming"));
+        ArrayList<String> secondReturnedValues = new ArrayList<>(Arrays.asList("dearly-won", "dear", "invalid-twoWords", "mail"));
+        ArrayList<String> thirdReturnedValues = new ArrayList<>(Arrays.asList("yellow", "rich", "invalid-twoWords", "jewelry"));
+        ArrayList<String> forthReturnedValues = new ArrayList<>(Arrays.asList("expensive", "dear", "invalid-twoWords", "mail"));
+
+        when(mock(Thesaurus.class).getAllSynonymsXML("sweet")).thenReturn(firstReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("expensive")).thenReturn(secondReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("golden")).thenReturn(thirdReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("honey")).thenReturn(forthReturnedValues);
+
         String solvedWord = clue.solve("Sweet expensive golden honey", ".e..", 4);
 
         assertThat(solvedWord, is("dear"));
@@ -91,6 +117,16 @@ public class DoubleDefinitionsClueTest {
 
     @Test
     public void doubleDefinitionClueWithClueWordNotAtTheRightEndOfTheClueCanBeSolved() {
+        ArrayList<String> firstReturnedValues = new ArrayList<>(Arrays.asList("dearly-won", "dear", "invalid-twoWords", "mail"));
+        ArrayList<String> secondReturnedValues = new ArrayList<>(Arrays.asList("taste", "sour", "invalid-twoWords", "charming"));
+        ArrayList<String> thirdReturnedValues = new ArrayList<>(Arrays.asList("expensive", "dear", "invalid-twoWords", "mail"));
+        ArrayList<String> forthReturnedValues = new ArrayList<>(Arrays.asList("yellow", "rich", "invalid-twoWords", "jewelry"));
+
+        when(mock(Thesaurus.class).getAllSynonymsXML("expensive")).thenReturn(firstReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("sweet")).thenReturn(secondReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("honey")).thenReturn(thirdReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("golden")).thenReturn(forthReturnedValues);
+
         String solvedWord = clue.solve("Expensive sweet honey golden", ".e..", 4);
 
         assertThat(solvedWord, is("dear"));
@@ -98,6 +134,14 @@ public class DoubleDefinitionsClueTest {
 
     @Test
     public void moreComplexDoubleDefinitionClueCanBeSolved() {
+        ArrayList<String> firstReturnedValues = new ArrayList<>(Arrays.asList("quick", "hunger", "invalid-twoWords", "slow"));
+        ArrayList<String> secondReturnedValues = new ArrayList<>(Arrays.asList("express", "tracks", "invalid-twoWords", "late"));
+        ArrayList<String> thirdReturnedValues = new ArrayList<>(Arrays.asList("speak", "express", "invalid-twoWords", "talk"));
+
+        when(mock(Thesaurus.class).getAllSynonymsXML("fast")).thenReturn(firstReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("train")).thenReturn(secondReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("say")).thenReturn(thirdReturnedValues);
+
         String solvedWord = clue.solve("A fast train, say", "e......", 7);
 
         assertThat(solvedWord, is("express"));
@@ -105,6 +149,16 @@ public class DoubleDefinitionsClueTest {
 
     @Test
     public void handlesWhenNoMatchingWordIsFound() {
+        ArrayList<String> firstReturnedValues = new ArrayList<>(Arrays.asList("fly", "feathers", "invalid-twoWords", "chicken"));
+        ArrayList<String> secondReturnedValues = new ArrayList<>(Arrays.asList("entry", "access", "invalid-twoWords", "permitted"));
+        ArrayList<String> thirdReturnedValues = new ArrayList<>(Arrays.asList("nature", "seasons", "invalid-twoWords", "air"));
+        ArrayList<String> forthReturnedValues = new ArrayList<>(Arrays.asList("pub", "drink", "invalid-twoWords", "inn"));
+
+        when(mock(Thesaurus.class).getAllSynonymsXML("bird")).thenReturn(firstReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("allowed")).thenReturn(secondReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("outside")).thenReturn(thirdReturnedValues);
+        when(mock(Thesaurus.class).getAllSynonymsXML("tavern")).thenReturn(forthReturnedValues);
+
         String solvedWord = clue.solve("Bird allowed outside tavern", null, 4);
 
         assertThat(solvedWord, is("Answer not found"));
@@ -112,12 +166,20 @@ public class DoubleDefinitionsClueTest {
 
     @Test
     public void correctLengthWordIsReturned() {
+        ArrayList<String> returnedValues = new ArrayList<>(Arrays.asList("dearly-won", "dear", "invalid-twoWords"));
+
+        when(mock(Thesaurus.class).getAllSynonymsXML("expensive")).thenReturn(returnedValues);
+
         String solvedWord = clue.solve("Expensive expensive", ".e..", 4);
         assertThat(solvedWord, is("dear"));
     }
 
     @Test
     public void hintWithMoreThanOneLetterIsAccepted() {
+        ArrayList<String> returnedValues = new ArrayList<>(Arrays.asList("dearly-won", "dear", "invalid-twoWords", "refuse"));
+
+        when(mock(Thesaurus.class).getAllSynonymsXML(any(String.class))).thenReturn(returnedValues);
+
         String solvedWord = clue.solve("Reject junk", "..fu..", 6);
         assertThat(solvedWord, is("refuse"));
     }
@@ -125,6 +187,7 @@ public class DoubleDefinitionsClueTest {
     @Test
     public void twoWordedAnswerCanBeFound() {
         ArrayList<String> returnedValues = new ArrayList<>(Arrays.asList("dearly-won", "dear", "invalid-twoWords"));
+
         when(mock(Thesaurus.class).getAllSynonymsXML("expensive")).thenReturn(returnedValues);
 
         String solvedWord = clue.solve("Expensive expensive", null, 6, 3);
