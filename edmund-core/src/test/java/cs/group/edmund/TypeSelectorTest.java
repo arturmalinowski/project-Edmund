@@ -20,10 +20,10 @@ public class TypeSelectorTest {
     public void edmundReturnsTheCorrectAnswerForNonSpecifiedClue() {
         String answer = "";
         try {
-            answer = selector.retrieveAnswer("Times when things appear obscure?", "", 6);
+            answer = selector.retrieveAnswer("Physician brings fish around", "", 3);
         } catch (Exception e) {
         }
 
-        assertThat(answer, is("nights"));
+        assertThat(answer, is("doc"));
     }
 }
