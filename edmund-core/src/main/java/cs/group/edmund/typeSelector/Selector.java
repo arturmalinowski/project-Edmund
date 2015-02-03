@@ -4,44 +4,32 @@ package cs.group.edmund.typeSelector;
 import cs.group.edmund.clue.*;
 import cs.group.edmund.utils.Thesaurus;
 
+import java.util.List;
+
+import static java.util.Arrays.asList;
+
 public class Selector {
 
-    public String retrieveAnswer(String input, String hint, int answerLength) throws Exception {
-        Thesaurus thesaurus = new Thesaurus();
-        String answer;
+    private final Thesaurus thesaurus = new Thesaurus();
+    private final List<Clue> clues = asList(new AnagramClue(thesaurus),
+            new DoubleDefinitionsClue(thesaurus),
+            new ContainerClue(thesaurus),
+            new DeletionClue(thesaurus),
+            new OddEvenClue(),
+            new ReversalClue(thesaurus));
 
-        AnagramClue anagramClue = new AnagramClue(thesaurus);
-        answer = anagramClue.solve(input, hint, answerLength);
+    public String retrieveAnswer(String phrase, String hint, int answerLength) throws Exception {
 
-        if (answer.equals("Answer not found")) {
-            ContainerClue containerClue = new ContainerClue(thesaurus);
-            containerClue.solve(input, hint, answerLength);
+        for (Clue clue : clues) {
+            if (clue.isRelevant(phrase)) {
+                String answer = clue.solve(phrase, hint, answerLength);
+                if (!answer.equals("Answer not found")) {
+                    return answer;
+                }
+            }
         }
+        throw new IllegalArgumentException("Clue could not be solved");
 
-        if (answer.equals("Answer not found")) {
-            DeletionClue deletionClue = new DeletionClue(thesaurus);
-            deletionClue.solve(input, hint, answerLength);
-        }
 
-        if (answer.equals("Answer not found")) {
-            DoubleDefinitionsClue doubleDefinitionsClue = new DoubleDefinitionsClue(thesaurus);
-            doubleDefinitionsClue.solve(input, hint, answerLength);
-        }
-
-        if (answer.equals("Answer not found")) {
-            OddEvenClue oddEvenClue = new OddEvenClue();
-            oddEvenClue.solve(input, hint, answerLength);
-        }
-
-        if (answer.equals("Answer not found")) {
-            ReversalClue reversalClue = new ReversalClue(thesaurus);
-            reversalClue.solve(input, hint, answerLength);
-        }
-
-        if (answer.equals("Answer not found")) {
-            throw new Exception("No answer found for clue");
-        } else {
-            return answer;
-        }
     }
 }
