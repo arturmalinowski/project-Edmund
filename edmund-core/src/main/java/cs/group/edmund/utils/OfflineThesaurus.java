@@ -50,11 +50,11 @@ public class OfflineThesaurus {
     }
 
     public ArrayList<String> results(String word){
-        return words.get(word);
+        return words.get(word.toLowerCase());
     }
 
     public boolean hasWord(String word){
-        return words.containsKey(word);
+        return words.containsKey(word.toLowerCase());
     }
 
     public void readFromFile(){
@@ -66,7 +66,7 @@ public class OfflineThesaurus {
         }
         for(String word : listOfWords) {
             String arrayNew = word.substring(word.indexOf(":")+1, word.length());
-            words.put(word.substring(0, word.indexOf(":")), new ArrayList<>(Arrays.asList(arrayNew.split(","))));
+            words.put(word.substring(0, word.indexOf(":")).toLowerCase(), new ArrayList<>(Arrays.asList(arrayNew.split(","))));
         }
     }
 }
