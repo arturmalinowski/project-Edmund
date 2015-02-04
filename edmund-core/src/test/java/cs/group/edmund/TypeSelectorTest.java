@@ -17,7 +17,7 @@ public class TypeSelectorTest {
     }
 
     @Test
-    public void edmundReturnsTheCorrectAnswerForNonSpecifiedClue() {
+    public void edmundReturnsTheCorrectAnswerForAReversalClue() {
         String answer = "";
         try {
             answer = selector.retrieveAnswer("Physician brings fish around", "", 3);
@@ -25,5 +25,16 @@ public class TypeSelectorTest {
         }
 
         assertThat(answer, is("doc"));
+    }
+
+    @Test
+    public void edmundReturnsTheCorrectAnswerForAnAnagramClue() {
+        String answer = "";
+        try {
+            answer = selector.retrieveAnswer("Times when things appear obscure?", "", 6);
+        } catch (Exception e) {
+        }
+
+        assertThat(answer, is("nights"));
     }
 }

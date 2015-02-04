@@ -11,12 +11,12 @@ import static java.util.Arrays.asList;
 public class Selector {
 
     private final Thesaurus thesaurus = new Thesaurus();
-    private final List<Clue> clues = asList(new AnagramClue(thesaurus),
+    private final List<Clue> clues = asList(new ReversalClue(thesaurus),
             new DoubleDefinitionsClue(thesaurus),
             new ContainerClue(thesaurus),
             new DeletionClue(thesaurus),
             new OddEvenClue(),
-            new ReversalClue(thesaurus));
+            new AnagramClue(thesaurus));
 
     public String retrieveAnswer(String phrase, String hint, int answerLength) throws Exception {
 
