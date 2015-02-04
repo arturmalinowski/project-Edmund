@@ -37,4 +37,26 @@ public class TypeSelectorTest {
 
         assertThat(answer, is("nights"));
     }
+
+    @Test
+    public void edmundReturnsTheCorrectAnswerForAnOddEvenClue() {
+        String answer = "";
+        try {
+            answer = selector.retrieveAnswer("Observe odd characters in scene", "", 3);
+        } catch (Exception e) {
+        }
+
+        assertThat(answer, is("see"));
+    }
+
+    @Test
+    public void edmundReturnsTheCorrectAnswerForAContainerClue() {
+        String answer = "";
+        try {
+            answer = selector.retrieveAnswer("We surrounded strike snowy", "w....", 5);
+        } catch (Exception e) {
+        }
+
+        assertThat(answer, is("white"));
+    }
 }
