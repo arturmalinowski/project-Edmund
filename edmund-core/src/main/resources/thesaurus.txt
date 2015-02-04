@@ -7383,3 +7383,456 @@ yes indeed:
 yes indeedy:
 yes sir:
 yes sirree:
+Physician:
+brings:
+Going:
+stronghold:
+look:
+taken:
+Containers:
+drinks:
+going:
+Animal:
+shopping:
+precinct:
+Serve:
+drink:
+king:
+Stop:
+flow:
+get-up:
+An:
+elevating:
+kipling:
+poem:
+Rising:
+nonsense:
+example:
+Bambi:
+around:about,approximately,close to,just about,some,roughly,more or less,or so,round
+fish:Pisces,Fish,Pisces the Fishes,aquatic vertebrate,food,house,individual,mansion,mortal,person,planetary house,sign,sign of the zodiac,solid food,somebody,someone,soul,star sign,angle,catch,grab,look for,search,seek,take hold of
+physician:doctor,doc,MD,Dr.,medico,medical man,medical practitioner
+fish:Pisces,Fish,Pisces the Fishes,aquatic vertebrate,food,house,individual,mansion,mortal,person,planetary house,sign,sign of the zodiac,solid food,somebody,someone,soul,star sign,angle,catch,grab,look for,search,seek,take hold of
+brings fish:
+around:about,approximately,close to,just about,some,roughly,more or less,or so,round
+physician:doctor,doc,MD,Dr.,medico,medical man,medical practitioner
+Doctor of Medicine:Doctor of Medicine,MD,doctor's degree,doctorate
+GP:general practitioner,GP,doc,doctor,Dr.,MD,medico,physician
+MD:mendelevium,Mv,atomic number 101,doctor,doc,physician,Md,Dr.,medico,Maryland,Old Line State,Free State,Doctor of Medicine,American state,chemical element,doctor's degree,doctorate,element,medical man,medical practitioner
+Md:mendelevium,Mv,atomic number 101,doctor,doc,physician,Md,Dr.,medico,Maryland,Old Line State,Free State,Doctor of Medicine,American state,chemical element,doctor's degree,doctorate,element,medical man,medical practitioner
+allopath:
+allopathist:
+attending physician:
+bones:castanets,clappers,finger cymbals,maraca,percussion instrument,percussive instrument
+coroner:medical examiner,investigator
+country doctor:general practitioner,GP
+croaker:saltwater fish,sciaenid,sciaenid fish
+doc:doctor,physician,MD,Dr.,medico,Department of Commerce,Commerce Department,Commerce,DoC,executive department,medical man,medical practitioner
+doctor:doc,physician,MD,Dr.,medico,Doctor of the Church,Doctor,bookman,child's play,medical man,medical practitioner,play,scholar,scholarly person,student,theologian,theologiser,theologist,theologizer,sophisticate,doctor up,repair,mend,fix,bushel,furbish up,restore,touch on,adulterate,ameliorate,amend,better,care for,debase,dilute,improve,meliorate,stretch,treat,break
+family doctor:general practitioner,GP
+general practitioner:GP,doc,doctor,Dr.,MD,medico,physician
+house physician:resident,resident physician,doc,doctor,Dr.,MD,medico,physician
+leech:bloodsucker,hirudinean,parasite,sponge,sponger,annelid,annelid worm,follower,segmented worm,bleed,phlebotomize,phlebotomise,care for,treat
+medic:medick,trefoil,medical officer,herb,herbaceous plant,medical man,medical practitioner
+medical:aesculapian,Greco-Roman deity,surgical,Graeco-Roman deity,learned profession,checkup,medical checkup,medical examination,medical exam,health check,examination,scrutiny
+medical attendant:
+medical examiner:coroner,investigator
+medical man:medical practitioner,caregiver,health care provider,health professional
+medical practitioner:medical man,caregiver,health care provider,health professional
+medico:medical student,doctor,doc,physician,MD,Dr.,educatee,medical man,medical practitioner,pupil,student
+physician in ordinary:
+practitioner:practician,professional,professional person
+resident:nonmigratory,migratory,nonresident,occupant,occupier,house physician,resident physician,denizen,doc,doctor,Dr.,dweller,habitant,indweller,inhabitant,MD,medico,physician,nonresident
+resident physician:house physician,resident,doc,doctor,Dr.,MD,medico,physician
+sawbones:surgeon,operating surgeon,doc,doctor,Dr.,MD,medico,physician
+specialist:specializer,specialiser,medical specialist,doc,doctor,Dr.,expert,MD,medico,physician,generalist
+surgeon:operating surgeon,sawbones,doc,doctor,Dr.,MD,medico,physician
+fish:Pisces,Fish,Pisces the Fishes,aquatic vertebrate,food,house,individual,mansion,mortal,person,planetary house,sign,sign of the zodiac,solid food,somebody,someone,soul,star sign,angle,catch,grab,look for,search,seek,take hold of
+C:hundred,one hundred,100,cardinal,degree centigrade,degree Celsius,speed of light,light speed,C,deoxycytidine monophosphate,cytosine,carbon,atomic number 6,hundred,coulomb,ampere-second,coke,blow,nose candy,snow,100,alphabetic character,centred,century,charge unit,chemical element,cocain,cocaine,constant,degree,element,keynote,large integer,letter,letter c,letter of the alphabet,nucleotide,one C,programing language,programming language,pyrimidine,quantity unit,speed,tonic,velocity
+C-note:hundred dollar bill,bank bill,bank note,banker's bill,banknote,bill,Federal Reserve note,government note,greenback,note
+Chinook salmon:chinook,king salmon,quinnat salmon,Oncorhynchus tshawytscha,salmon
+G:gram,gramme,gm,guanine,G,deoxyguanosine monophosphate,thousand,one thousand,gee,g-force,gigabyte,GB,gravitational constant,universal gravitational constant,constant of gravitation,1000,alphabetic character,chiliad,computer memory unit,constant,force unit,grand,K,large integer,letter,letter g,letter of the alphabet,M,metric weight unit,nucleotide,purine,thou,weight unit,yard
+G-note:
+Loch Ness monster:Loch Ness monster,Nessie,legendary creature
+Sunapee trout:
+aerial torpedo:torpedo
+albacore:long-fin tunny,Thunnus alalunga,tuna,tuna fish,tunny
+alevin:
+alewife:Alosa pseudoharengus,Pomolobus pseudoharengus,clupeid,clupeid fish,fish
+alligator gar:
+amber jack:
+anchovy:fish,malacopterygian,soft-finned fish
+angel fish:
+angle:slant,Angle,European,point of view,space,stand,standpoint,viewpoint,lean,tilt,tip,slant,fish,weight,bend,bias,flex,go,locomote,look for,move,predetermine,search,seek,travel,lean against,lean on,tip over
+anguille:
+archerfish:Toxotes jaculatrix,percoid,percoid fish,percoidean
+argusfish:
+babe:baby,infant,child,kid
+bait the hook:
+bangalore torpedo:torpedo
+barbel:feeler,tentacle
+barn door skate:
+barracuda:acanthopterygian,spiny-finned fish
+basking shark:Cetorhinus maximus,mackerel shark
+bass:deep,low,low-pitched,bass part,basso,sea bass,freshwater bass,bass voice,freshwater fish,instrument,musical instrument,part,percoid,percoid fish,percoidean,pitch,saltwater fish,singer,singing voice,vocaliser,vocalist,vocalizer,voice
+benthon:
+benthos:benthic division,benthonic zone,being,biogeographical region,organism
+black bass:black sea bass,Centropistes striata,centrarchid,sea bass,sunfish
+black sea bass:black bass,Centropistes striata,sea bass
+blackfish:tautog,Tautoga onitis,pilot whale,black whale,common blackfish,Globicephala melaena,dolphin,salmon,wrasse
+bleak:black,dim,bare,barren,desolate,stark,cutting,raw,cold,hopeless,inhospitable
+blind fish:
+blue fish:
+blue shark:great blue shark,Prionace glauca,requiem shark
+bluegill:Lepomis macrochirus,bream,freshwater bream
+bob:British shilling,shilling,bobsled,bobsleigh,bobber,cork,bobfloat,bobtail,dock,British monetary unit,coif,coiffure,float,hair style,hairdo,hairstyle,inclination,inclining,sled,sledge,sleigh,tail,weight,bobsled,dock,tail,curtsy,arrange,coif,coiffe,coiffure,cut,do,dress,greet,move,recognise,recognize,set,sled,sleigh
+bonito:oceanic bonito,Katsuwonus pelamis,scombroid,scombroid fish,tuna,tuna fish,tunny
+bowfin:grindle,dogfish,Amia calva,ganoid,ganoid fish
+bream:freshwater bream,sea bream,centrarchid,freshwater fish,percoid,percoid fish,percoidean,saltwater fish,sunfish,clean,make clean
+brook trout:speckled trout,Salvelinus fontinalis,freshwater fish,trout
+brown trout:salmon trout,Salmo trutta,trout
+buffalo fish:buffalofish,sucker
+bullhead:catfish,sculpin,siluriform fish
+burbot:eelpout,ling,cusk,Lota lota,cod,codfish
+butterfish:stromateid fish,stromateid,rock gunnel,Pholis gunnellus,bracketed blenny,gunnel,percoid,percoid fish,percoidean,saltwater fish
+candlefish:
+capelin:capelan,caplin,smelt
+carp:cyprinid,cyprinid fish,freshwater fish,cavil,chicane,object
+cartwheel:silver dollar,acrobatic feat,acrobatic stunt,dollar,wheel,wheel,wheel around
+catfish:mudcat,wolffish,wolf fish,siluriform fish,blennioid,blennioid fish,freshwater fish,malacopterygian,soft-finned fish
+caviar:caviare,hard roe,roe
+cent:penny,centime,coin,fractional monetary unit,rupee,Sri Lanka rupee,subunit
+century:hundred,100,C,centred,large integer,one C,period,period of time,time period
+cetacean:cetaceous,animal order,cetacean mammal,blower,aquatic mammal
+channel bass:red drum,redfish,Sciaenops ocellatus,drum,drumfish
+char:charwoman,cleaning woman,cleaning lady,woman,charr,atomic number 6,C,carbon,cleaner,salmonid,coal,blacken,sear,scorch,burn,combust
+chimaera:Chimera,Chimaera,holocephalan,imagery,imagination,imaging,mental imagery,mythical creature,mythical monster
+chub:Leuciscus cephalus,cyprinid,cyprinid fish
+chump:fool,gull,mark,patsy,fall guy,sucker,soft touch,mug,dupe,victim
+cichlid:cichlid fish,percoid,percoid fish,percoidean
+cinch:breeze,picnic,snap,duck soup,child's play,pushover,walkover,piece of cake,girth,all fours,high-low-jack,labor,project,saddlery,stable gear,tack,task,undertaking,girth,ascertain,assure,check,control,ensure,fasten,fix,insure,master,secure,see,see to it
+cisco:lake herring,Coregonus artedi,whitefish
+clam:dollar,dollar bill,one dollar bill,buck,bank bill,bank note,banker's bill,banknote,bill,bivalve,Federal Reserve note,government note,greenback,lamellibranch,note,pelecypod,shellfish,collect,garner,gather,pull together
+cobia:Rachycentron canadum,sergeant fish,percoid,percoid fish,percoidean
+cod:collect,due,owed,C.O.D.,COD,cash on delivery,pod,seedcase,codfish,gadoid,gadoid fish,husk,saltwater fish,gull,dupe,slang,befool,fool,put on,take in,put one over,put one across,tease,razz,rag,tantalize,tantalise,bait,taunt,twit,rally,ride,bemock,betray,deceive,lead astray,mock
+codfish:cod,gadoid,gadoid fish,saltwater fish
+coelacanth:Latimeria chalumnae,crossopterygian,lobe-finned fish,lobefin
+conger:conger eel,eel
+conger eel:conger,eel
+copper:Cu,atomic number 29,bull,cop,fuzz,pig,copper color,burnt sienna,cent,centime,conductor,lycaenid,lycaenid butterfly,metal,metallic element,officer,penny,police officer,policeman,reddish brown,sepia,Venetian red,coat,surface
+crappie:centrarchid,sunfish
+credulous person:
+croaker:saltwater fish,sciaenid,sciaenid fish
+cull:reject,deciding,decision making,pick,pluck,collect,garner,gather,get rid of,pull together,remove,cull out,pick off,pick over,pick up
+cutlass fish:
+cutthroat trout:
+dace:Leuciscus leuciscus,cyprinid,cyprinid fish
+dap:
+darter:snakebird,anhinga,animal,animate being,beast,brute,creature,fauna,pelecaniform seabird
+devilfish:grey whale,gray whale,Eschrichtius gibbosus,Eschrichtius robustus,octopus,manta,manta ray,baleen whale,octopod,ray,whalebone whale
+dib:
+dibble:dibber,hand tool,dig,dig out,plant,set
+dime:dime bag,coin,deck
+doctor fish:
+dogfish:bowfin,grindle,Amia calva,ganoid,ganoid fish,shark
+dollar:dollar bill,one dollar bill,buck,clam,dollar mark,dollar sign,bank bill,bank note,banker's bill,banknote,bill,coin,Federal Reserve note,government note,greenback,monetary unit,note,symbol
+dollar bill:dollar,one dollar bill,buck,clam,bank bill,bank note,banker's bill,banknote,bill,Federal Reserve note,government note,greenback,note
+dolphin:dolphinfish,mahimahi,percoid,percoid fish,percoidean,toothed whale
+dorado:Dorado,constellation
+dragon fish:
+drum:membranophone,tympan,barrel,metal drum,brake drum,drumfish,cylinder,percussion instrument,percussive instrument,sciaenid,sciaenid fish,sound,vessel,beat,thrum,cram,grind away,bone up,swot,get up,mug up,swot up,bone,go,hit the books,play,sound,study
+drumfish:drum,sciaenid,sciaenid fish
+easy mark:sitting duck,dupe,victim
+easy pickings:
+eel:fish,malacopterygian,soft-finned fish
+eelpout:pout,burbot,ling,cusk,Lota lota,blennioid,blennioid fish,cod,codfish
+electric ray:crampfish,numbfish,torpedo,ray
+fall guy:chump,fool,gull,mark,patsy,sucker,soft touch,mug,dupe,victim
+fifty cents:
+filefish:plectognath,plectognath fish
+fin:five,5,V,cinque,quint,quintet,fivesome,quintuplet,pentad,Phoebe,Little Phoebe,tail fin,tailfin,louver,louvre,flipper,appendage,decoration,digit,extremity,figure,member,ornament,ornamentation,shoe,slat,spline,stabiliser,stabilizer,break water,equip,fit,fit out,outfit,swim
+fingerling:fish
+fish:Pisces,Fish,Pisces the Fishes,aquatic vertebrate,food,house,individual,mansion,mortal,person,planetary house,sign,sign of the zodiac,solid food,somebody,someone,soul,star sign,angle,catch,grab,look for,search,seek,take hold of
+fish eggs:
+five cents:
+five hundred dollars:
+five-dollar bill:
+five-hundred-dollar bill:
+five-spot:fiver,five dollar bill,Nemophila maculata,bank bill,bank note,banker's bill,banknote,bill,dice,die,domino,Federal Reserve note,government note,greenback,nemophila,note,spot
+fiver:five-spot,five dollar bill,bank bill,bank note,banker's bill,banknote,bill,Federal Reserve note,government note,greenback,note
+flame tetra:
+flounder:flatfish,stagger,fight,struggle,walk
+fluke:good luck,good fortune,flue,trematode,trematode worm,barb,flatworm,fortune,luck,platyhelminth,projection,tail
+fly-fish:flyfish,angle
+fool:sap,saphead,muggins,tomfool,chump,gull,mark,patsy,fall guy,sucker,soft touch,mug,jester,motley fool,buffoon,clown,dupe,merry andrew,simple,simpleton,victim,gull,befool,fritter,frivol away,dissipate,shoot,fritter away,fool away,dupe,slang,cod,put on,take in,put one over,put one across,horse around,arse around,fool around,betray,consume,cozen,deceive,delude,jest,joke,lead astray,lead on,play,squander,ware,waste
+four bits:
+frogskin:
+fry:Roger Fry,Roger Eliot Fry,Christopher Fry,child,kid,youngster,minor,shaver,nipper,small fry,tike,tyke,Fry,nestling,art critic,dramatist,juvenile,juvenile person,painter,playwright,toddler,electrocute,cook,heat,heat up,hot up,kill
+game fish:sport fish,fish
+gar:garfish,garpike,billfish,Lepisosteus osseus,needlefish,ganoid,ganoid fish,teleost,teleost fish,teleostan
+globefish:puffer,pufferfish,blowfish,plectognath,plectognath fish
+go fishing:Go Fish,card game,cards
+goatfish:red mullet,surmullet,Mullus surmuletus,mullet
+gobe-mouches:
+goby:gudgeon,percoid,percoid fish,percoidean
+goldfish:Carassius auratus,cyprinid,cyprinid fish
+greener:
+greenhorn:cub,rookie,beginner,initiate,novice,tiro,tyro
+greeny:
+grig:
+grilse:
+grouper:saltwater fish,sea bass
+grunt:oink,noise,percoid,percoid fish,percoidean,unskilled person,emit,let loose,let out,utter
+guddle:
+gull:chump,fool,mark,patsy,fall guy,sucker,soft touch,mug,seagull,sea gull,dupe,larid,victim,fool,befool,dupe,slang,cod,put on,take in,put one over,put one across,betray,cozen,deceive,delude,lead astray,lead on
+haddock:Melanogrammus aeglefinus,fish,gadoid,gadoid fish
+hake:fish,gadoid,gadoid fish
+half G:
+half a C:
+half dollar:fifty-cent piece,coin
+half grand:
+halibut:holibut,flatfish
+herring:Clupea harangus,clupeid,clupeid fish,food fish,saltwater fish
+hippocampus:Hippocampus,genus Hippocampus,fish genus,neural structure
+hogfish:hog snapper,Lachnolaimus maximus,pigfish,Orthopristis chrysopterus,grunt,wrasse
+homing torpedo:torpedo
+horse mackerel:bluefin,bluefin tuna,Thunnus thynnus,saurel,Trachurus trachurus,jack mackerel,Spanish mackerel,Trachurus symmetricus,scad,tuna,tunny
+hundred-dollar bill:
+innocent:guiltless,clean-handed,innocuous,impeccant,sinless,ingenuous,barren,destitute,devoid,unacquainted,guilty,exculpatory,righteous,absolved,acquitted,blameless,clear,cleared,empty,exculpated,exonerated,harmless,inculpable,irreproachable,naif,naive,not guilty,unconscious,unimpeachable,uninformed,vindicated,virtuous,inexperienced person,individual,mortal,person,somebody,someone,soul
+iron man:ironman,adult male,man
+jack:mariner,seaman,tar,Jack-tar,Jack,old salt,seafarer,gob,sea dog,laborer,manual laborer,labourer,jackfruit,jak,jackstones,knave,jackass,ass,ball,carangid,carangid fish,court card,crewman,edible fruit,electrical device,face card,flag,game equipment,picture card,sailor,tool,working man,working person,workingman,workman,jack up,jacklight,bring up,elevate,get up,hunt,hunt down,lift,raise,run,track down
+jacklight:light,light source,jack,hunt,hunt down,run,track down
+jewfish:mulloway,Sciaena antarctica,Mycteroperca bonaci,grouper,sciaenid,sciaenid fish
+jig:gigue,ballroom music,dance music,danceroom music,device,fish lure,fisherman's lure,folk dance,folk dancing,dance,trip the light fantastic,trip the light fantastic toe
+kingfish:cero,pintado,Scomberomorus regalis,white croaker,chenfish,Genyonemus lineatus,Seriola grandis,croaker,jack,saltwater fish,Spanish mackerel,whiting
+kipper:kippered herring,herring
+kippered salmon:salmon
+lake trout:salmon trout,Salvelinus namaycush,freshwater fish,trout
+lamprey:lamprey eel,lamper eel,agnathan,jawless fish,jawless vertebrate
+lantern fish:
+leadpipe cinch:
+ling:ling ko,Trapa bicornis,heather,Scots heather,broom,Calluna vulgaris,Molva molva,burbot,eelpout,cusk,Lota lota,caltrop,cod,codfish,gadoid,gadoid fish,hake,heath,water chestnut,water chestnut plant
+loach:cypriniform fish
+lung fish:
+mackerel:saltwater fish,scombroid,scombroid fish
+mako shark:mako,mackerel shark
+man-eater:cannibal,anthropophagus,anthropophagite,great white shark,white shark,man-eating shark,Carcharodon carcharias,barbarian,mackerel shark,savage
+man-eating shark:great white shark,white shark,man-eater,Carcharodon carcharias,mackerel shark
+manta:manta ray,devilfish,blanket,cover,ray
+marine animal:marine creature,sea animal,sea creature,animal,animate being,beast,brute,creature,fauna
+marlin:billfish
+menhaden:Brevoortia tyrannis,clupeid,clupeid fish
+mill:factory,manufacturing plant,manufactory,Mill,James Mill,John Mill,John Stuart Mill,grinder,milling machinery,grind,pulverization,pulverisation,compaction,crunch,crush,economic expert,economist,industrial plant,machinery,philosopher,plant,works,mill about,mill around,bray,comminute,crunch,grind,groove,mash,move,roll,roll out
+minnow:Phoxinus phoxinus,cyprinid,cyprinid fish
+minny:
+monkey:imp,scamp,rascal,rapscallion,scalawag,scallywag,child,fry,kid,minor,nestling,nipper,primate,shaver,small fry,tike,toddler,tyke,youngster,tamper,fiddle,putter,mess around,potter,tinker,monkey around,muck about,muck around,manipulate,work
+moray eel:moray,eel
+mudfish:
+muskellunge:Esox masquinongy,pike
+nekton:being,organism
+net:nett,final,last,gross,clear,take-home,ultimate,internet,cyberspace,net income,net profit,lucre,profit,profits,earnings,network,mesh,meshing,meshwork,cloth,computer network,fabric,game equipment,goal,income,material,textile,trap,sack,sack up,clear,web,nett,bear,benefit,catch,gain,grab,pay,profit,take hold of,tissue,weave,yield
+nickel:Ni,atomic number 28,nickel note,coin,five dollar bill,five-spot,fiver,metal,metallic element,plate
+oquassa:
+paddlefish:duckbill,Polyodon spathula,ganoid,ganoid fish
+panfish:fish
+papagallo:
+patsy:chump,fool,gull,mark,fall guy,sucker,soft touch,mug,dupe,victim
+penny:cent,centime,coin,fractional monetary unit,subunit
+perch:rod,pole,area unit,freshwater fish,linear unit,percoid,percoid fish,percoidean,place,seat,square measure,support,roost,rest,alight,light,land,lay,place,pose,position,put,set,set down,sit,sit down
+permit:license,licence,permission,Trachinotus falcatus,authorisation,authorization,empowerment,instrument,legal document,legal instrument,official document,pompano,permit,allow,let,countenance,tolerate,accept,consent,go for,disallow,forbid,prevent
+pickerel:pike
+pike:expressway,freeway,motorway,state highway,superhighway,throughway,thruway,arm,freshwater fish,highway,main road,percoid,percoid fish,percoidean,point,weapon,weapon system
+pike perch:pike-perch,perch
+pilchard:sardine,Sardina pilchardus,clupeid,clupeid fish,saltwater fish
+pilot fish:
+piranha:marauder,predator,vulture,pirana,caribe,aggressor,assailant,assaulter,attacker,characid,characin,characin fish
+plaice:Pleuronectes platessa,flounder,righteye flounder,righteyed flounder
+plankton:being,organism
+poisson:
+pollack:Sydney Pollack,Pollack,pollock,Pollachius pollachius,film maker,film producer,filmmaker,gadoid,gadoid fish,movie maker,saltwater fish
+pompano:carangid,carangid fish,saltwater fish
+porbeagle:Lamna nasus,mackerel shark
+porgy:scup,bream,saltwater fish,sea bream
+porpoise:dolphin
+prize sap:
+puffer:blowfish,sea squab,pufferfish,globefish,plectognath,plectognath fish,saltwater fish
+pushover:cinch,breeze,picnic,snap,duck soup,child's play,walkover,piece of cake,flunkey,flunky,labor,project,stooge,task,undertaking,yes-man
+rainbow trout:Salmo gairdneri,trout
+ray:beam,beam of light,light beam,ray of light,shaft,shaft of light,irradiation,electron beam,re,elasmobranch,electromagnetic radiation,electromagnetic wave,light,nonparticulate radiation,pedicel,pedicle,selachian,solfa syllable,spine,vector,visible light,visible radiation,radiate,irradiate,emit,extend,give off,give out,go,lead,pass,process,run,treat
+red cent:darn,hoot,shucks,ineptitude,worthlessness
+red herring:smoked herring,preliminary prospectus,course catalog,course catalogue,deflection,deflexion,deviation,digression,divagation,diversion,herring,prospectus
+redfin:
+redfish:rosefish,ocean perch,red drum,channel bass,Sciaenops ocellatus,drum,drumfish,rockfish,salmon
+roach:R-2,Mexican valium,rophy,rope,roofy,forget me drug,circle,cockroach,Rutilus rutilus,butt,coif,coiffure,cyprinid,cyprinid fish,dictyopterous insect,flunitrazepan,hair style,hairdo,hairstyle,Rohypnol,stub,chop off,comb,cut off,lop off
+rocket torpedo:
+roe:hard roe,egg,seafood,spawn
+roosterfish:
+salmon:pink-orange,pinkish-orange,chromatic,Salmon,Salmon River,fish,food fish,river,salmonid
+salmon trout:sea trout,lake trout,Salvelinus namaycush,brown trout,Salmo trutta,trout
+sap:fool,saphead,muggins,tomfool,blackjack,cosh,bludgeon,simple,simpleton,solution,run down,exhaust,play out,tire,cave,consume,deplete,eat,eat up,run through,undermine,use up,wipe out
+saphead:fool,sap,muggins,tomfool,simple,simpleton
+sardine:pilchard,sard,sardius,Sardina pilchardus,calcedony,chalcedony,clupeid,clupeid fish,food fish,saltwater fish
+sawbuck:sawhorse,horse,buck,frame,framework,framing
+sawfish:ray
+schlemiel:shlemiel,simple,simpleton
+scup:porgy,southern porgy,southern scup,Stenotomus aculeatus,northern porgy,northern scup,Stenotomus chrysops,saltwater fish
+sea bass:bass,food fish,saltwater fish,serranid,serranid fish
+sea horse:walrus,seahorse,needlefish,pinnatiped,pinniped,pinniped mammal,pipefish
+sea monster:
+sea pig:
+sea serpent:legendary creature
+sea snake:ophidian,serpent,snake
+seafood:food,solid food
+seine:Seine River,Seine,fishing net,fishnet,river,fish
+sergeant fish:cobia,Rachycentron canadum,percoid,percoid fish,percoidean
+shark:elasmobranch,expert,offender,selachian,wrongdoer,cheat,chisel,fish
+shiner:black eye,mouse,common mackerel,Scomber scombrus,bruise,contusion,cyprinid,cyprinid fish,mackerel,object,physical object
+shrimp:runt,peewee,half-pint,prawn,decapod,decapod crustacean,seafood,small person,fish
+silver dollar:cartwheel,honesty,money plant,satin flower,satinpod,Lunaria annua,dollar,herb,herbaceous plant
+sitting duck:easy mark,dupe,victim
+skate:ray,sports equipment,glide
+smacker:blow,smack,smooch
+smelt:fish,malacopterygian,soft-finned fish,create,make,produce
+smoked herring:red herring,herring
+smolt:
+snapper:center,cracker,cracker bonbon,Chrysophrys auratus,common snapping turtle,Chelydra serpentina,favor,favour,food fish,lineman,party favor,party favour,percoid,percoid fish,percoidean,saltwater fish,snapping turtle,sparid,sparid fish
+snook:robolo
+sole:exclusive,lone,lonesome,only,solitary,single,unshared,fillet of sole,area,bottom,flatfish,food fish,region,underside,undersurface,resole,bushel,doctor,fix,furbish up,mend,repair,restore,touch on
+spar torpedo:
+speckled trout:brook trout,Salvelinus fontinalis,freshwater fish,trout
+spin:twirl,twist,twisting,whirl,tailspin,acrobatics,aerobatics,drive,gyration,interpretation,rendering,rendition,revolution,ride,rotary motion,rotation,stunt flying,stunting,spin around,whirl,reel,gyrate,birl,twirl,spin out,circumvolve,cook up,create from raw material,create from raw stuff,distort,draw out,extend,fabricate,go around,invent,lay out,make up,manufacture,present,prolong,protract,represent,revolve,rotate,stream,twine,twist,well out
+sponge:quick study,leech,parasite,sponger,poriferan,parazoan,absorbent,absorbent material,assimilator,follower,invertebrate,learner,scholar,mooch,bum,cadge,grub,collect,efface,erase,garner,gather,mop,mop up,obtain,pass over,pull together,rub out,score out,wipe,wipe off,wipe up
+sprat:brisling,Clupea sprattus,herring,sardine
+steelhead:
+stickleback:prickleback,acanthopterygian,spiny-finned fish
+still-fish:fish
+striped bass:striper,Roccus saxatilis,rockfish,bass,sea bass
+sturgeon:ganoid,ganoid fish
+submarine torpedo:torpedo
+sucker:chump,fool,gull,mark,patsy,fall guy,soft touch,mug,lollipop,all-day sucker,candy,catostomid,confect,drinker,dupe,freshwater fish,organ,shoot,victim
+sunfish:ocean sunfish,mola,headfish,centrarchid,freshwater fish,percoid,percoid fish,percoidean,plectognath,plectognath fish
+swordfish:Xiphias gladius,saltwater fish,scombroid,scombroid fish
+tarpon:Tarpon atlanticus,malacopterygian,soft-finned fish
+ten cents:
+ten-spot:spot
+tenner:ten,10,X,decade,ten dollar bill,bank bill,bank note,banker's bill,banknote,bill,Federal Reserve note,government note,greenback,large integer,note
+thornback ray:
+thousand dollars:
+thousand-dollar bill:
+thresher:thrasher,threshing machine,thresher shark,fox shark,Alopius vulpinus,farm machine,shark
+toadfish:Opsanus tau,acanthopterygian,spiny-finned fish
+tope:stupa,shrine,drink,habituate,use
+torch:common mullein,great mullein,Aaron's rod,flannel mullein,woolly mullein,Verbascum thapsus,flashlight,blowtorch,blowlamp,burner,electric lamp,flannel leaf,light,light source,mullein,velvet plant,burn,burn down,fire
+torpedo fish:
+trawl:trawl line,spiller,setline,trotline,dragnet,trawl net,fishing line,fishing net,fishnet,fish
+triggerfish:plectognath,plectognath fish
+troll:round,trolling,angling,fish lure,fisherman's lure,mythical creature,mythical monster,partsong,angle,circle,circulate,mouth,praise,roll,sing,speak,talk,utter,verbalise,verbalize,wheel
+tropical fish:
+trout:fish,food fish,salmonid
+trusting soul:
+tuna:Opuntia tuna,tuna fish,tunny,Anguilla sucklandii,eel,food fish,prickly pear,prickly pear cactus,saltwater fish,scombroid,scombroid fish
+tunny:tuna,tuna fish,food fish,saltwater fish,scombroid,scombroid fish
+turbot:Psetta maxima,flounder,lefteye flounder,lefteyed flounder
+twenty-dollar bill:
+twenty-five cents:
+two bits:
+two-dollar bill:
+two-spot:
+veiltail:
+victim:dupe,individual,mortal,person,somebody,someone,soul,unfortunate,unfortunate person
+wahoo:strawberry bush,Euonymus americanus,burning bush,Euonymus atropurpureus,Acanthocybium solandri,bush,mackerel,shrub
+walleye:divergent strabismus,exotropia,walleyed pike,jack salmon,dory,Stizostedion vitreum,pike perch,pike-perch,squint,strabismus
+walleyed pike:walleye,jack salmon,dory,Stizostedion vitreum,pike perch,pike-perch
+weakfish:Cynoscion regalis,saltwater fish,sea trout
+whale:giant,hulk,heavyweight,blower,cetacean,cetacean mammal,large person,hunt,hunt down,run,track down
+whitefish:food fish,freshwater fish,malacopterygian,seafood,soft-finned fish
+whiting:silver hake,Merluccius bilinearis,Merlangus merlangus,Gadus merlangus,gadoid,gadoid fish,hake,percoid,percoid fish,percoidean,saltwater fish,sciaenid,sciaenid fish
+yellowtail:yellowtail snapper,Ocyurus chrysurus,Seriola dorsalis,jack,snapper
+brings fish:
+around:about,approximately,close to,just about,some,roughly,more or less,or so,round
+alive:live,animated,active,alert,awake,dead,unanimated,animate,active,aware,cognisant,cognizant,enlivened,existent,existing,full of life,liveborn,lively,reanimated,revived,sensitive,spirited,viable,vital
+all about:
+all over:complete,concluded,ended,terminated,over,finished,over,everywhere,everyplace
+all round:
+all through:
+along toward:
+anticlockwise:counterclockwise,contraclockwise,clockwise,sinistral,left-handed,levorotary,levorotatory,counterclockwise,clockwise
+any which way:
+anyhow:anyway,in any case,at any rate,in any event
+anywise:
+at close quarters:
+at hand:imminent,impendent,impending,close at hand,close
+at random:randomly,indiscriminately,haphazardly,willy-nilly,arbitrarily,every which way
+backward:feebleminded,forward,regressive,retrospective,timid,backswept,bashful,blate,cacuminal,converse,inverse,rearward,receding,reflexive,regardant,retarded,retracted,retral,retroflex,retroflexed,retrograde,returning,reverse,reversed,reversive,self-referent,sweptback,transposed,back,backwards,rearward,rearwards,ahead,forward
+circa:
+close about:
+close at hand:imminent,impendent,impending,at hand,close
+close by:
+close upon:
+counterclockwise:anticlockwise,contraclockwise,clockwise,sinistral,left-handed,levorotary,levorotatory,anticlockwise,clockwise
+encircling:skirting,peripheral
+enclosing:enclosure,envelopment,inclosure,insertion,introduction,intromission
+encompassing:across-the-board,all-embracing,all-encompassing,all-inclusive,broad,extensive,panoptic,wide,circumferent,blanket,surrounding,close,comprehensive
+enveloping:close
+every which way:randomly,indiscriminately,haphazardly,willy-nilly,arbitrarily,at random,helter-skelter
+everywhence:
+everywhere:everyplace,all over
+everywhither:
+existent:existing,real,actual,nonexistent,potential,unreal,concrete,echt,extant,genuine,realistic,sincere,actual,active,actualised,actualized,alive,effective,factual,historical
+existing:existent,nonexistent,extant,active,alive,present
+far and wide:far and near
+fast by:
+from every quarter:
+haphazard:hit-or-miss,slapdash,slipshod,sloppy,careless,random,haphazardly
+haphazardly:randomly,indiscriminately,willy-nilly,arbitrarily,at random,every which way,haphazard
+hard by:
+head over heels:heels over head,topsy-turvy,topsy-turvily,in great confusion
+heels over head:head over heels,topsy-turvy,topsy-turvily,in great confusion
+helter-skelter:chaotic,pell-mell,disorganised,disorganized,hurried,every which way
+here and there:
+hereabout:hereabouts
+hereabouts:hereabout
+in a circle:in circles
+in a spin:
+in a whirl:
+in all directions:
+in circles:in a circle
+in every quarter:
+in reverse:
+in spitting distance:
+in the neighborhood:
+in the vicinity:
+living:surviving,people,absolute,extant,live,realistic,life,animation,aliveness,support,keep,livelihood,bread and butter,sustenance,being,beingness,existence,experience,people,resource,dead
+near at hand:
+near enough to:
+near upon:
+nearabouts:
+nearby:close,near,nigh
+nigh about:
+not far:shortly
+on all sides:
+on every side:
+only a step:
+passing by:
+passing through:
+random:nonrandom,ergodic,haphazard,hit-or-miss,stochastic,unselected
+randomly:indiscriminately,haphazardly,willy-nilly,arbitrarily,at random,every which way
+roughly:approximately,about,close to,just about,some,more or less,around,or so,rough
+round about:
+round and round:
+somewhere about:
+surrounding:circumferent,encompassing,close
+thereabout:thereabouts
+thereabouts:thereabout
+throughout:end-to-end,passim
+upwards of:
+via:
+widdershins:
+within call:
+within earshot:
+within hearing:
+within reach:
+fish:Pisces,Fish,Pisces the Fishes,aquatic vertebrate,food,house,individual,mansion,mortal,person,planetary house,sign,sign of the zodiac,solid food,somebody,someone,soul,star sign,angle,catch,grab,look for,search,seek,take hold of
+Times:multiplication,arithmetic operation,period,period of time,time period
+obscure?:
+times:multiplication,arithmetic operation,period,period of time,time period
