@@ -38,7 +38,7 @@ public class Thesaurus {
     }
 
     public JSONObject getJSON(String word) {
-        String url = "http://words.bighugelabs.com/api/2/054c381b5f80ab41ac446fae4c958cee/" + word + "/json";
+        String url = "http://words.bighugelabs.com/api/2/ecdcfa6e1dd349d1d1f4c0755f8b4d1d/" + word + "/json";
         return new JSONObject(HttpClient.makeRequest(url));
     }
 
@@ -50,7 +50,7 @@ public class Thesaurus {
         SAXReader reader = new SAXReader();
         Document document;
         try {
-            document = reader.read("http://words.bighugelabs.com/api/2/054c381b5f80ab41ac446fae4c958cee/" + word.toLowerCase() + "/xml");
+            document = reader.read("http://words.bighugelabs.com/api/2/ecdcfa6e1dd349d1d1f4c0755f8b4d1d/" + word.toLowerCase() + "/xml");
         } catch (Exception e) {
             if (e instanceof DocumentException) {
                 offlineThesaurus.addNewQuery(word, elementList);
