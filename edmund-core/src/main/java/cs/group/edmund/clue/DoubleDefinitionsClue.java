@@ -3,6 +3,7 @@ package cs.group.edmund.clue;
 import cs.group.edmund.utils.Thesaurus;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DoubleDefinitionsClue implements Clue {
@@ -166,6 +167,9 @@ public class DoubleDefinitionsClue implements Clue {
     }
 
     private void checkRelevance() {
+        firstElementList.removeAll(Collections.singleton(""));
+        secondElementList.removeAll(Collections.singleton(""));
+
         for (String element : firstElementList) {
             if (secondElementList.contains(element)) {
                 matchingWordFound = true;
