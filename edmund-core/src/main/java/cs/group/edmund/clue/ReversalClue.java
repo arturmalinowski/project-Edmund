@@ -56,7 +56,7 @@ public class ReversalClue implements Clue {
 
         for (int i = 0; i < clueWords.length; i++) {
             for (String keyword : keyWords) {
-                if (clueWords[i].equals(keyword.toLowerCase())) {
+                if (clueWords[i].equals(keyword.toLowerCase()) && (i != 0)) {
                     candidateWord = clueWords[i - 1];
                     clueWords[i] = "";
                     removeCandidateFromList(clueWords);
@@ -64,7 +64,8 @@ public class ReversalClue implements Clue {
                 }
             }
         }
-        searchMatchesForCandidate(clueWords, answerLength[0], candidateWord);
+
+        if (candidateWord != null) searchMatchesForCandidate(clueWords, answerLength[0], candidateWord);
 
         searchOtherSideKeyWord(clueWords, answerLength);
 
