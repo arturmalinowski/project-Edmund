@@ -31,7 +31,6 @@ public class TypeSelectorTest {
         assertThat(answer, is("nights"));
     }
 
-    //@Ignore
     @Test
     public void edmundReturnsTheCorrectAnswerForAnOddEvenClue() throws Exception {
         String answer = selector.retrieveAnswer("Observe odd characters in scene", "", 3);
@@ -44,5 +43,20 @@ public class TypeSelectorTest {
         String answer = selector.retrieveAnswer("We surrounded strike snowy", "w....", 5);
 
         assertThat(answer, is("white"));
+    }
+
+    @Ignore
+    @Test
+    public void edmundReturnsTheCorrectAnswerForADeletionClue() throws Exception {
+        String answer = selector.retrieveAnswer("First off mobilize supporter", "a...", 4);
+
+        assertThat(answer, is("ally"));
+    }
+
+    @Test
+    public void edmundReturnsTheCorrectAnswerForADoubleDefinitionClue() throws Exception {
+        String answer = selector.retrieveAnswer("Armor in the post", "m...", 4);
+
+        assertThat(answer, is("mail"));
     }
 }
