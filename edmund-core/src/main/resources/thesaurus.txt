@@ -3228,3 +3228,1006 @@ eths:
 hest:
 hets:heated,heated up,het up,hot
 hows:
+tenant:renter,bearer,holder,occupant,occupier,payer,remunerator,resident,inhabit,occupy
+other:early,former,same,separate,another,different,else,new,opposite,otherwise,past,some other,strange,unusual
+carrying:conveyance,transfer,transferral,transportation,transport,carry,pack,take,conduct,transmit,convey,channel,express,hold,bear,contain,extend,behave,acquit,deport,comport,stock,stockpile,run,dribble,persuade,sway,post,have a bun in the oven,gestate,expect,act,act upon,advance,appropriate,birth,boost,booze,bring,broadcast,capture,circularise,circularize,circulate,communicate,compensate,conquer,continue,correct,counterbalance,deliver,diffuse,disperse,displace,disseminate,distribute,do,drink,effect,encourage,even off,even out,even up,execute,farm,feature,follow,fuddle,further,give birth,go,grow,have,have got,hit,hold up,impel,imply,include,influence,intercommunicate,involve,keep,locomote,maintain,make up,move,nourish,nurture,obtain,pass,pass along,pass around,pass on,perform,produce,promote,propagate,propel,put across,raise,range,seize,shift,spread,support,sustain,transfer,travel,win,work
+flustered,:
+compartment:room,storage space
+i:one,1,ane,cardinal,iodine,iodin,atomic number 53,one,1,ace,single,unity,I,alphabetic character,chemical element,digit,element,figure,halogen,letter,letter i,letter of the alphabet
+chilly:chill,cool,unemotional,unfriendly,chili,chili pepper,chilli,chile,hot pepper
+shaken:jolted,agitated
+who's:
+display:show,exhibit,showing,presentation,video display,communication,demo,demonstration,disclosure,electronic device,representation,revealing,revelation,expose,exhibit,communicate,court,pass,pass along,pass on,put across,reveal,romance,show,solicit,woo
+who's:
+display:show,exhibit,showing,presentation,video display,communication,demo,demonstration,disclosure,electronic device,representation,revealing,revelation,expose,exhibit,communicate,court,pass,pass along,pass on,put across,reveal,romance,show,solicit,woo
+who's:
+display?:
+shaken:jolted,agitated
+forgiveness:pardon,benignity,kindness,mercifulness,mercy
+answer:reply,response,solution,result,resolution,solvent,pleading,reaction,statement,question,reply,respond,resolve,suffice,do,serve,agree,be,check,correspond,figure out,fill,fit,fulfil,fulfill,gibe,jibe,lick,live up to,match,meet,puzzle out,react,rebut,refute,satisfy,say,solve,state,tally,tell,work,work out
+second-rate:mediocre,inferior
+al:aluminum,aluminium,atomic number 13,Alabama,Heart of Dixie,Camellia State,Al,American state,metal,metallic element
+cakes:bar,patty,baked goods,block,dish,coat,cover,spread over
+cries:
+claries:
+eclairs:chou,cream puff
+scalier:
+it:information technology,IT,applied science,engineering,engineering science,technology
+revolves:go around,rotate,orb,orbit,roll,circle,circulate,displace,move,turn,revolve around
+either:
+somerset?:
+language:linguistic communication,speech,speech communication,spoken communication,spoken language,voice communication,oral communication,lyric,words,linguistic process,terminology,nomenclature,auditory communication,communication,faculty,higher cognitive process,mental faculty,module,text,textual matter,word
+somerset:somersault,Somerset,summersault,summerset,somersaulting,flip,county,tumble
+language:linguistic communication,speech,speech communication,spoken communication,spoken language,voice communication,oral communication,lyric,words,linguistic process,terminology,nomenclature,auditory communication,communication,faculty,higher cognitive process,mental faculty,module,text,textual matter,word
+greater:lesser
+sure!:
+than:
+:
+greater:lesser
+than:
+zero:0,set,cardinal,no,ordinal,nothing,nil,nix,nada,null,aught,cipher,cypher,goose egg,naught,zilch,zip,zippo,0,nought,zero point,digit,figure,numerical quantity,relative quantity,zero in,adjust,correct,set
+fidget:fidgetiness,restlessness,agitation,move
+talented:gifted,untalented
+terribly,:
+begin:Begin,Menachem Begin,national leader,solon,statesman,get down,get,start out,start,set about,set out,commence,lead off,accomplish,achieve,act,attain,be,mouth,move,reach,speak,talk,utter,verbalise,verbalize,end
+surprised:unsurprised,amazed,astonied,astonished,astounded,dumbfounded,dumbstricken,dumbstruck,dumfounded,flabbergasted,gobsmacked,goggle-eyed,jiggered,openmouthed,popeyed,startled,stunned,stupefied,thunderstruck
+hide:fell,pelt,skin,animal skin,body covering,conceal,hide out,shroud,enshroud,cover,obscure,blot out,obliterate,veil,alter,change,enclose,enfold,envelop,enwrap,modify,wrap,show
+southern:southerly,northern,austral,Confederate,gray,grey,meridional,rebel,south,south-central
+southern:southerly,northern,austral,Confederate,gray,grey,meridional,rebel,south,south-central
+more:more than,fewer,less,more than,many,more,much,to a greater extent,less,More,Thomas More,Sir Thomas More,author,national leader,solon,statesman,writer
+instruction:direction,education,teaching,pedagogy,didactics,educational activity,command,statement,program line,activity,code,computer code,content,message,subject matter,substance
+journalist:diarist,diary keeper,author,writer
+journalist:diarist,diary keeper,author,writer
+journalist:diarist,diary keeper,author,writer
+anchorman:anchor,anchorperson,television newscaster,television reporter,TV newsman,TV reporter
+broadcaster:spreader,communicator,mechanical device
+city editor:newspaper editor
+columnist:editorialist,journalist
+commentator:observer,reviewer,author,expert,writer
+copy chief:
+copy editor:copyreader,text editor,editor,editor in chief
+copyman:
+copyreader:copy editor,text editor,editor,editor in chief
+correspondent:analogous,similar,letter writer,newspaperman,newspaperwoman,newswriter,pressman,communicator,journalist
+cub reporter:
+diaskeuast:
+editor:editor in chief,editor program,application,application program,applications programme,skilled worker,skilled workman,trained worker
+editorial writer:
+feature editor:
+foreign correspondent:correspondent,newspaperman,newspaperwoman,newswriter,pressman
+gazetteer:dictionary,journalist,lexicon
+hack:drudge,hacker,machine politician,ward-heeler,political hack,hack writer,literary hack,cab,taxi,taxicab,jade,nag,plug,author,auto,automobile,car,Equus caballus,horse,machine,motorcar,mount,pol,political leader,politician,politico,riding horse,saddle horse,tool,unskilled person,writer,chop,cut,hack on,cut up,whoop,contend,cope,cough,deal,edit,foul,get by,grapple,make do,make out,manage,program,programme,redact,chop down,chop off,chop up
+interviewer:asker,enquirer,inquirer,querier,questioner
+leader writer:
+leg man:
+managing editor:editor,editor in chief
+news editor:
+newscaster:announcer
+newsman:reporter,newsperson,communicator
+newsmonger:gossip,gossiper,gossipmonger,rumormonger,rumourmonger,communicator
+newspaperman:correspondent,newspaperwoman,newswriter,pressman,journalist
+newspaperwoman:correspondent,newspaperman,newswriter,pressman,journalist
+newswriter:correspondent,newspaperman,newspaperwoman,pressman,journalist
+own correspondent:
+paragrapher:author,writer
+paragraphist:
+pressman:printer,correspondent,newspaperman,newspaperwoman,newswriter,journalist,skilled worker,skilled workman,trained worker
+publicist:publicizer,publiciser,communicator
+reader:subscriber,reviewer,referee,proofreader,lector,lecturer,bookman,clergyman,client,critic,customer,educator,Holy Order,literate,literate person,man of the cloth,Order,pedagog,pedagogue,pressman,printer,reverend,scholar,scholarly person,school text,schoolbook,student,text,text edition,textbook,book
+reporter:newsman,newsperson,communicator
+reviser:redact,redactor,rewriter,rewrite man,editor,editor in chief
+rewrite man:redact,redactor,reviser,rewriter,editor,editor in chief
+rewriter:redact,redactor,reviser,rewrite man,editor,editor in chief
+scribe:Augustin Eugene Scribe,Scribe,scribbler,penman,copyist,scrivener,scriber,scratch awl,awl,dramatist,employee,journalist,playwright,mark,nock,score
+slotman:
+sob sister:journalist
+special correspondent:
+sports editor:newspaper editor
+stringer:brace,bracing,participant,player,timber,worker
+subeditor:editor,editor in chief
+war correspondent:correspondent,newspaperman,newspaperwoman,newswriter,pressman
+:
+against:
+as far as:
+en route to:
+headed for:
+in consideration of:
+in contemplation of:
+in order to:
+in passage to:
+in transit to:
+into:
+on route to:
+over against:
+so:thus,thusly,then,and so,and then,indeed,sol,soh,solfa syllable
+so as to:
+so that:
+till:boulder clay,public treasury,trough,cashbox,money box,deedbox,dirt,exchequer,soil,strongbox,treasury,process,work,work on
+toward:
+towards:
+until:
+unto:
+up to:capable,adequate to,equal to,adequate,busy
+upon:
+versus:
+to have:
+bs:Bachelor of Science,BS,SB,baccalaureate,bachelor's degree
+bronx cocktail:
+bull shot:
+cuba libre:
+dubonnet cocktail:
+green dragon:dragon arum,Dracunculus vulgaris,Arisaema dracontium,aroid,arum
+guggenheim:Guggenheim,Solomon Guggenheim,Meyer Guggenheim,altruist,industrialist,philanthropist
+harvey wallbanger:Harvey Wallbanger,cocktail
+irish coffee:Irish coffee,coffee,java
+john barleycorn:liquor,spirits,booze,hard drink,hard liquor,John Barleycorn,strong drink,alcohol,alcoholic beverage,inebriant,intoxicant
+mai-tai:
+manhattan:Manhattan,borough,cocktail
+mickey:Paddy,Mick,Mickey,Irishman
+mickey finn:Mickey Finn,knockout drops
+rob roy:MacGregor,Robert MacGregor,Rob Roy,criminal,crook,felon,malefactor,manhattan,outlaw
+sazerac:Sazerac,cocktail
+ade:fruit drink,beverage,drink,drinkable,potable
+adsorb:sorb,take up
+alcohol:alcoholic beverage,intoxicant,inebriant,beverage,drink,drinkable,drug of abuse,liquid,potable,street drug
+alcoholic beverage:alcohol,intoxicant,inebriant,beverage,drink,drinkable,drug of abuse,potable,street drug
+alcoholic drink:
+ambrosia:beebread,ragweed,bitterweed,nectar,afters,composition,dainty,delicacy,dessert,goody,kickshaw,sweet,treat,weed
+aperitif:alcohol,alcoholic beverage,inebriant,intoxicant
+aqua vitae:ardent spirits,booze,hard drink,hard liquor,John Barleycorn,liquor,spirits,strong drink
+ardent spirits:aqua vitae,booze,hard drink,hard liquor,John Barleycorn,liquor,spirits,strong drink
+beef tea:Bovril,extract,infusion
+belt:knock,bash,bang,smash,swath,rap,whack,whang,accessory,accouterment,accoutrement,blow,bump,course,loop,part,path,region,track,belt out,fasten,fix,hit,secure,sing,unbelt
+beverage:drink,drinkable,potable,food,liquid,nutrient
+bib:napkin,piece of cloth,piece of material,serviette,table napkin,tipple,booze,drink,fuddle
+big drink:
+birch beer:soft drink
+bishop:chess piece,chessman,mulled wine,priest
+blot:smudge,spot,daub,smear,smirch,slur,stain,blemish,defect,error,fault,mar,mistake,spot,fleck,blob,absorb,change surface,draw,imbibe,soak up,sop up,suck,suck up,take in,take up
+blot up:
+blue:bluish,blueish,gloomy,grim,depressed,dispirited,downcast,downhearted,down in the mouth,low,low-spirited,blasphemous,profane,gamy,gamey,juicy,naughty,racy,risque,spicy,aristocratic,aristocratical,blue-blooded,gentle,patrician,puritanic,puritanical,dark,dingy,disconsolate,dismal,sorry,drab,drear,dreary,depressing,dispiriting,down,puritan,cheerless,chromatic,dejected,dirty,noble,nonindulgent,northern,sexy,strict,uncheerful,blueness,blue sky,blue air,wild blue yonder,bluing,blueing,amobarbital sodium,blue angel,blue devil,Amytal,amobarbital,article of clothing,chromatic color,chromatic colour,clothing,dye,dyestuff,habiliment,lycaenid,lycaenid butterfly,organisation,organization,sky,spectral color,spectral colour,vesture,wear,wearable,color,colour,discolor,discolour
+blue water:
+booze:liquor,spirits,hard drink,hard liquor,John Barleycorn,strong drink,alcohol,alcoholic beverage,inebriant,intoxicant,drink,fuddle,consume,have,ingest,take,take in
+bouillon:broth
+bowle:
+brandy alexander:
+brandy and soda:
+brandy smash:
+brew:brewage,alcohol,alcoholic beverage,inebriant,intoxicant,create from raw material,create from raw stuff,imbue,soak
+brine:seawater,saltwater,H2O,solution,water,fresh water,douse,dowse,drench,soak,sop,souse
+briny:brackish,salty,main,body of water,water
+bumper:abundant,drinking glass,glass,mechanical device
+buttered rum:
+buttermilk:milk
+carouse:carousal,bender,toot,booze-up,revel,revelry,roister,riot,jollify,make happy,make merry,make whoopie,racket,revel,wassail,whoop it up
+champagne cocktail:
+chaser:pursuer,drink,follower
+chemisorb:sorb,take up
+chemosorb:
+chicory:chicory root,succory,chicory plant,Cichorium intybus,curly endive,coffee substitute,herb,herbaceous plant,root,salad green,salad greens
+chocolate milk:milk
+chug-a-lug:
+church parade:
+cider:cyder,beverage,drink,drinkable,potable
+cobbler:shoemaker,deep-dish pie,highball,maker,pie,shaper
+cocktail:appetiser,appetizer,mixed drink,starter
+cocoa:chocolate,hot chocolate,drinking chocolate,beverage,drink,drinkable,food product,foodstuff,potable
+coffee:java,coffee tree,coffee bean,coffee berry,chocolate,deep brown,umber,burnt umber,beverage,brown,brownness,drink,drinkable,potable,seed,tree
+coffee royale:
+cola:genus Cola,Cola,dope,dilleniid dicot genus,soft drink
+collins:Wilkie Collins,William Wilkie Collins,Collins,Tom Collins,author,highball,writer
+cooler:ice chest,tank,beverage,cell,drink,drinkable,icebox,jail cell,potable,prison cell,refrigerator
+deep:bass,rich,thick,cryptic,cryptical,inscrutable,mysterious,mystifying,abstruse,recondite,shallow,unfathomable,thick,abysmal,abyssal,artful,big,bottomless,broad,colorful,colourful,deep-water,distant,esoteric,heavy,in depth,incomprehensible,inexplicable,intense,large,low,low-pitched,profound,sound,unfathomable,unfathomed,unplumbed,unsounded,wakeless,walk-in,wide,deeply,late,trench,oceanic abyss,depression,middle,natural depression,ocean
+devour:down,consume,go through,guttle,raven,pig,bask,destroy,eat,enjoy,relish,ruin,savor,savour
+doch-an-dorrach:
+draft:bill of exchange,order of payment,draught,rough drawing,potation,tipple,draft copy,conscription,muster,selective service,gulp,swig,drawing,air current,current of air,deglutition,depth,dose,drink,militarisation,militarization,mobilisation,mobilization,negotiable instrument,pull,pulling,regulator,sketch,study,swallow,text,textual matter,wind,outline,enlist,muster in,blueprint,draught,compose,design,enrol,enroll,enter,indite,inscribe,pen,plan,recruit,write,discharge
+drag:retarding force,puff,pull,article of clothing,aspiration,balk,baulk,breathing in,check,clothing,deterrent,habiliment,handicap,hinderance,hindrance,impediment,inhalation,inspiration,pulling,resistance,tediousness,tedium,tiresomeness,vesture,wear,wearable,haul,hale,cart,embroil,tangle,sweep,sweep up,drag in,trail,get behind,hang back,drop behind,puff,draw,scuff,dredge,drag on,drag out,breathe in,dawdle,displace,fall back,fall behind,force,go,inhale,inspire,involve,lag,locomote,look for,move,persuade,proceed,pull,scuffle,search,seek,shamble,shuffle,travel,drag in
+drain the cup:drink up,drink,imbibe
+dram:drachm,drachma,apothecaries' unit,apothecaries' weight,Armenian monetary unit,avoirdupois unit
+draught:draft,potation,tipple,gulp,swig,drawing,air current,current of air,deglutition,depth,dose,drink,pull,pulling,swallow,wind,blueprint,draft,design,plan
+draw:drawing card,attraction,attractor,attracter,standoff,tie,lot,hook,hooking,draw play,draw poker,haul,haulage,entertainer,finish,golf shot,golf stroke,gully,object,physical object,playing card,poker,poker game,pull,pulling,run,running,running game,running play,swing,pull,draw,force,reap,trace,line,describe,delineate,make,pull out,get out,take out,depict,puff,drag,withdraw,draw off,cast,get,quarter,draw and quarter,absorb,suck,imbibe,soak up,sop up,suck up,take in,take up,attract,pull in,draw in,string,thread,pull back,guide,run,pass,tie,disembowel,eviscerate,alter,arouse,arrange,ask,be,breathe in,call for,change,change form,change shape,choose,close,compose,create,create by mental act,create mentally,deform,demand,derive,displace,effect,effectuate,elicit,enkindle,equal,equalise,equalize,equate,evoke,exposit,expound,fire,form,gain,go,indite,infuse,inhale,inspire,interpret,involve,kill,kindle,localise,localize,locomote,mark,match,modify,move,necessitate,need,pen,pick out,postulate,provoke,raise,remove,represent,require,select,set forth,set up,shape,shut,steep,stretch,take,take away,thin,travel,write,deposit,push,repel,pull out,pull in,draw in,pull back,draw out,draw up,pass around,pass over,pull along,pull down,pull off,pull up,suck in
+drench:swamp,imbrue,douse,dowse,soak,sop,souse,cater,flood,impregnate,ply,provide,saturate,supply,wet
+drink bottoms-up:
+drink deep:
+drink hard:
+drink in:drink,absorb,engross,engulf,immerse,plunge,soak up,steep
+drink off:
+drink to:
+drink up:drain the cup,drink,imbibe
+drinkable:potable,undrinkable,beverage,drink,potable,food,liquid,nutrient
+dry martini:
+eat:eat,feed,eat on,consume,eat up,use up,deplete,exhaust,run through,wipe out,corrode,rust,damage,drop,expend,have,ingest,spend,take,take in,vex,worry,eat up,eat in,eat out
+egg cream:soft drink
+eggnog:punch
+engorge:gorge,ingurgitate,overindulge,glut,englut,stuff,overgorge,overeat,gormandize,gormandise,gourmandize,binge,pig out,satiate,scarf out,eat
+engross:steep,immerse,engulf,plunge,absorb,soak up,engage,occupy,center,centre,concentrate,focus,interest,pore,rivet
+engulf:steep,immerse,plunge,engross,absorb,soak up,center,centre,concentrate,enclose,enfold,envelop,enwrap,focus,pore,rivet,wrap
+espresso:coffee,java
+eye-opener:
+filter in:
+finger:fingerbreadth,finger's breadth,digit,covering,dactyl,extremity,linear unit,thumb,feel,indicate,look for,point,search,seek,show,touch
+firewater:booze,hard drink,hard liquor,John Barleycorn,liquor,spirits,strong drink
+fizz:beverage,drink,drinkable,potable,foam,froth,effervesce,sparkle,bubble
+flip:impudent,insolent,snotty-nosed,disrespectful,somersault,somerset,summersault,summerset,somersaulting,toss,pass,dive,diving,mixed drink,throw,tumble,toss,throw,switch,flick,thumb,riffle,leaf,riff,twitch,sky,pitch,flip over,turn over,flip out,interchange,tack,alternate,flip-flop,change,change by reversal,engage,fling,impel,lock,mesh,move,operate,peruse,propel,reverse,turn
+fluid:unstable,runny,fluent,liquid,smooth,mobile,liquid,changeable,changeful,disposable,graceful,matter,substance
+fluid extract:
+fluid mechanics:hydraulics,mechanics
+follow strong drink:
+frappe:ice,drink,frozen dessert,milk shake,milkshake,shake
+frosted:opaque,speckled
+frosted shake:
+fruit juice:fruit crush,beverage,drink,drinkable,potable
+gargle:mouthwash,solution,sound,rinse,emit,lave,let loose,let out,utter,wash
+gimlet:auger,screw auger,wimble,cocktail,drill
+gin and tonic:highball
+gin fizz:
+ginger ale:ginger pop,soft drink
+ginger beer:beverage,drink,drinkable,potable
+glass:drinking glass,glassful,field glass,spyglass,methamphetamine,methamphetamine hydrochloride,Methedrine,meth,deoxyephedrine,chalk,chicken feed,crank,ice,shabu,trash,looking glass,amphetamine,container,containerful,controlled substance,glassware,glasswork,mirror,pep pill,refracting telescope,solid,speed,upper,glaze,glass in,glass over,glaze over,change,close in,enclose,furnish,inclose,insert,introduce,provide,put in,render,scan,shut in,stick in,supply
+gobble:cry,bolt,eat,emit,let loose,let out,utter,gobble up
+grape juice:fruit crush,fruit juice
+grapefruit juice:fruit crush,fruit juice
+grasshopper:hopper,cocktail,orthopteran,orthopteron,orthopterous insect
+grog:rum
+gulp:draft,draught,swig,gulping,deglutition,drink,inborn reflex,innate reflex,instinctive reflex,physiological reaction,reflex,swallow,unconditioned reflex,quaff,swig,drink,imbibe,mouth,speak,talk,utter,verbalise,verbalize
+gulp down:
+guzzle:drink,imbibe
+hard liquor:liquor,spirits,booze,hard drink,John Barleycorn,strong drink,alcohol,alcoholic beverage,inebriant,intoxicant
+hard stuff:
+high sea:international waters,body of water,water,territorial waters
+high seas:international waters,body of water,water,territorial waters
+highball:mixed drink
+hooch:hootch,alcohol,alcoholic beverage,inebriant,intoxicant
+hot buttered rum:
+hot toddy:toddy,mixed drink
+hydraulics:fluid mechanics,mechanics
+hydrogeology:
+hydrosphere:layer
+ice-cream soda:ice-cream float,float,drink
+iced coffee:ice coffee,coffee,java
+iced tea:ice tea,tea
+imbibe:absorb,suck,soak up,sop up,suck up,draw,take in,take up,assimilate,drink,consume,have,ingest,take,draw in,drink down,drink up,suck in
+indulge:gratify,pander,luxuriate,pamper,featherbed,cosset,cocker,baby,coddle,mollycoddle,spoil,cater,consume,deplete,do by,eat,eat up,exhaust,handle,ply,provide,run through,supply,treat,use up,wipe out
+inebriant:alcohol,alcoholic beverage,intoxicant,beverage,drink,drinkable,drug of abuse,potable,street drug
+infiltrate:penetrate,pass through,fall in,filter,get together,go across,go through,join,pass,percolate,permeate,sink in
+ingest:consume,take in,take,have,absorb,assimilate,acquire,larn,learn,abstain,take up
+ingurgitate:gorge,overindulge,glut,englut,stuff,engorge,overgorge,overeat,gormandize,gormandise,gourmandize,binge,pig out,satiate,scarf out,eat
+intoxicant:intoxicating,alcoholic,alcohol,alcoholic beverage,inebriant,beverage,drink,drinkable,drug,drug of abuse,potable,street drug
+intoxicating liquor:
+jolt:jar,jounce,jerk,jerking,saccade,blow,bump,motility,motion,move,movement,jar,disturb,move,trouble,upset
+juice:succus,bodily fluid,body fluid,current,electric current,energy,food product,foodstuff,humor,humour,liquid body substance,vim,vitality
+julep:mint julep,highball
+knock back:set back,put back,be,cost
+knockout drops:chloral hydrate
+koumiss:kumis,alcohol,alcoholic beverage,inebriant,intoxicant
+lap:lap covering,overlap,circle,circuit,lick,area,arena,cloth covering,domain,field,flap,locomotion,orbit,sphere,thigh,touch,touching,travel,lick,swish,swosh,swoosh,lap up,lave,wash,drink,flow,fondle,go,imbibe,lie,sound,stroke
+lap up:lap,lick,drink,imbibe
+latex:latex paint,rubber-base paint,exudate,exudation,water-base paint
+lemonade:ade,fruit drink
+libation:drink,helping,portion,religious ceremony,religious ritual,serving
+limeade:ade,fruit drink
+liquid extract:
+liquor:spirits,booze,hard drink,hard liquor,John Barleycorn,strong drink,pot liquor,pot likker,alcohol,alcoholic beverage,broth,inebriant,intoxicant,liquid,stock
+little brown jug:
+main:independent,chief,primary,principal,dependent,important,intense,of import,briny,body of water,pipage,pipe,piping,water
+main sea:
+malt:malted,malted milk,malt liquor,cereal,food grain,grain,lager,lager beer,milk shake,milkshake,shake,convert,process,treat
+martini:cocktail
+milk:Milk,Milk River,aliment,alimentation,beverage,bodily fluid,body fluid,dairy product,drink,drinkable,food product,foodstuff,humor,humour,liquid body substance,nourishment,nutriment,nutrition,potable,river,sustenance,victuals,add,draw,exploit,take out,tap
+mineral water:drinking water
+mint julep:julep,highball
+mixed drink:alcohol,alcoholic beverage,inebriant,intoxicant
+mocha:coffee,flavorer,flavoring,flavourer,flavouring,java,leather,seasoner,seasoning
+nectar:ambrosia,dainty,delicacy,fruit crush,fruit juice,goody,kickshaw,secretion,treat
+negus:mulled wine
+nightcap:cap,drink,game
+nip:shot,Jap,Nip,relish,flavor,flavour,sapidity,savor,savour,smack,tang,chilliness,coolness,piquance,piquancy,piquantness,tanginess,zest,pinch,bite,chomp,clip,clipping,cold,coldness,frigidity,frigidness,gustatory perception,gustatory sensation,Japanese,low temperature,Nipponese,small indefinite amount,small indefinite quantity,snip,spice,spicery,spiciness,taste,taste perception,taste sensation,pinch,squeeze,twinge,tweet,twitch,nip off,clip,snip,snip off,bite,cut,grip,seize with teeth
+ocean:sea,body of water,large indefinite amount,large indefinite quantity,water
+ocean depths:
+ocean main:
+ocean sea:
+old-fashioned:antique,demode,ex,outmoded,passe,passee,old-hat,unfashionable,unstylish
+orangeade:ade,fruit drink
+osmose:
+parting cup:
+peg:nog,pin,stick,wooden leg,leg,pegleg,thole,tholepin,rowlock,oarlock,holder,mark,marker,marking,prosthesis,prosthetic device,regulator,nail down,nail,peg down,attach,bring home the bacon,come through,deliver the goods,pierce,stabilise,stabilize,succeed,thrust,win,peg down
+percolate in:
+phosphate:orthophosphate,inorganic phosphate,salt,soft drink
+pint:dry pint,British capacity unit,Imperial capacity unit,United States dry unit,United States liquid unit
+pledge:toast,assurance,commitment,dedication,drink,member,security interest,plight,subscribe,toast,drink,salute,wassail,assure,bind,charge,consign,donate,hold,honor,honour,obligate,oblige,promise,reward
+pop:popular,nonclassical,dad,dada,daddy,pa,papa,pappa,soda,soda pop,soda water,tonic,popping,pop music,begetter,father,male parent,popular music,popular music genre,soft drink,sound,start,protrude,pop out,bulge,bulge out,bug out,come out,crop up,pop up,toss off,bolt down,belt down,pour down,down,drink down,kill,appear,break open,burst,change form,change shape,collapse,deform,discharge,drink,fire,go,hit,imbibe,inject,let go,let go of,release,relinquish,sound,split,throw,thrust
+portion:part,component part,component,parcel,share,percentage,fortune,destiny,fate,luck,lot,circumstances,dowry,dowery,dower,helping,serving,allocation,allotment,apportioning,apportionment,assets,assignation,condition,gift,object,parceling,parcelling,physical object,relation,small indefinite amount,small indefinite quantity,assign,allot,administer,deal,deal out,dish out,dispense,distribute,dole out,lot,mete out,parcel out,shell out
+posset:drink
+potable:drinkable,undrinkable,beverage,drink,drinkable,food,liquid,nutrient
+potation:draft,draught,tipple,drink,drinking,imbibing,imbibition
+potion:beverage,drink,drinkable,potable,medicine
+pousse-cafe:cordial,liqueur
+pub-crawl:bar hop,booze,drink,fuddle
+pull:pulling,clout,wrench,twist,puff,drag,actuation,advantage,aspiration,breathing in,device,effort,elbow grease,exertion,force,harm,hurt,inhalation,injury,inspiration,propulsion,sweat,trauma,travail,vantage,pull,draw,force,attract,pull in,draw in,perpetrate,commit,pull out,get out,take out,overstretch,rend,rip,rive,pluck,tear,deplume,deplumate,displume,extract,pull up,draw out,act,back,bust,displace,drive,endorse,hit,indorse,injure,move,plump for,plunk for,rein,rein in,remove,root,row,rupture,side,snap,strip,support,take,take away,withdraw,wound,push,repel,pull in,pull out,pull up,pull along,pull back,pull down,pull off
+punch:clout,poke,lick,biff,puncher,blow,mixed drink,tool,plug,perforate,hit,pierce,thrust
+punch bowl:bowl
+purl:purl stitch,knitting stitch,thread,yarn,eddy,whirlpool,swirl,whirl,broider,course,embroider,feed,flow,knit,make noise,noise,resound,run
+quaff:draft,draught,potation,tipple,gulp,swig,drink,imbibe
+rickey:mixed drink
+root beer:soft drink
+root beer float:float,ice-cream float,ice-cream soda
+round:circular,orotund,rotund,pear-shaped,square,rounded,pear-shaped,apple-shaped,ball-shaped,barrel-shaped,bulb-shaped,bulblike,bulbous,capitate,coccoid,cumuliform,disc-shaped,disclike,discoid,discoidal,disk-shaped,disklike,full,global,globose,globular,goblet-shaped,inexact,moon-round,moonlike,nutlike,orbicular,pancake-like,pinwheel-shaped,ringlike,roundish,spheric,spherical,wheel-like,around,unit of ammunition,one shot,cycle,rhythm,beat,round of golf,daily round,turn,bout,round of drinks,troll,rung,stave,circle,ammo,ammunition,applause,call,clapping,course,crosspiece,cut of beef,golf,golf game,habitude,hand clapping,helping,interval,itinerary,partsong,path,period of play,play,playing period,portion,rotating mechanism,route,serving,time interval,track,round out,round off,labialize,labialise,attack,assail,lash out,snipe,assault,polish,polish up,brush up,round down,flesh out,fill out,alter,articulate,bear,carry,change,circle,contain,criticise,criticize,encircle,enounce,enunciate,environ,form,gain,go,hold,hone,knock,locomote,modify,move,perfect,pick apart,pronounce,put on,ring,say,shape,sound out,surround,travel
+round of drinks:round,helping,portion,serving
+rum:curious,funny,odd,peculiar,queer,rummy,singular,strange,unusual,rummy,booze,card game,cards,hard drink,hard liquor,John Barleycorn,liquor,spirits,strong drink
+rum punch:
+salt sea:
+salt water:
+salute:salutation,military greeting,credit,greeting,recognition,toast,drink,pledge,wassail,present,greet,honor,honour,praise,recognise,recognize,reward,smell
+sangria:sangaree,drink
+sap:fool,saphead,muggins,tomfool,blackjack,cosh,bludgeon,simple,simpleton,solution,run down,exhaust,play out,tire,cave,consume,deplete,eat,eat up,run through,undermine,use up,wipe out
+schnapps:schnaps,booze,hard drink,hard liquor,John Barleycorn,liquor,spirits,strong drink
+schooner:drinking glass,glass,sailing ship,sailing vessel
+screwdriver:cocktail,hand tool
+sea:air,land,deep-sea,oceangoing,oceanic,offshore,oversea,overseas,seafaring,seagoing,shipboard,subocean,suboceanic,ocean,body of water,large indefinite amount,large indefinite quantity,turbulent flow,water
+seep in:
+seltzer:soda water,carbonated water,club soda,sparkling water,drinking water,mineral water
+semiliquid:liquid
+shake:shingle,milkshake,milk shake,trill,handshake,handshaking,handclasp,tremble,shiver,wag,waggle,acknowledgement,acknowledgment,agitation,building material,drink,inborn reflex,innate reflex,instinctive reflex,musical note,note,physiological reaction,reflex,tone,unconditioned reflex,agitate,didder,judder,rock,sway,stimulate,shake up,excite,stir,shake off,throw off,escape from,alter,arouse,break loose,change,elicit,enkindle,escape,evoke,fire,gesticulate,gesture,get away,kindle,modify,motion,move,move back and forth,move involuntarily,move reflexively,provoke,raise,vibrate,weaken,stir up
+shot:changeable,chatoyant,iridescent,colorful,colourful,shooting,pellet,stroke,crack,shooter,scene,injection,nip,shaft,slam,dig,barb,jibe,gibe,guess,guesswork,guessing,dead reckoning,snapshot,snap,stab,blastoff,actuation,approximation,attempt,blow,burster,bursting charge,chance,charge,comment,effort,endeavor,endeavour,estimate,estimation,expert,explosive charge,exposure,idea,maneuver,manoeuvre,medical aid,medical care,missile,opportunity,photo,photograph,pic,play,projectile,propulsion,remark,rocket firing,rocket launching,small indefinite amount,small indefinite quantity,sports equipment,try
+sidecar:cocktail,conveyance,transport
+sip:deglutition,drink,swallow,drink,imbibe
+sling:slingshot,catapult,slingback,scarf bandage,triangular bandage,arm,bandage,highball,patch,plaything,shoe,toy,weapon,weapon system,catapult,cast,hurl,hurtle
+slosh:splash,splosh,slush,squelch,squish,slop,slosh around,slush around,footslog,go,pad,plash,plod,slog,sound,spatter,splatter,swash,tramp,trudge
+slug:bullet,sluggard,bum,do-nothing,gastropod,idler,layabout,loafer,missile,projectile,univalve,slog,swig,idle,laze,stagnate,hit,work
+slurp:eat
+slurp up:
+smash:smashingly,knock,bash,bang,belt,smash-up,overhead,crash,hit,smasher,strike,blow,bump,collision,hitting,return,striking,success,nail,boom,blast,dash,bankrupt,ruin,break,crush,demolish,bang up,smash up,abase,chagrin,clash,collide,come apart,damage,destroy,fall apart,hit,humble,humiliate,impoverish,mortify,separate,split up,strike
+snifter:brandy snifter,brandy glass,drinking glass,glass
+soak:soakage,soaking,action,activity,lavation,natural action,natural process,wash,washing,overcharge,surcharge,gazump,fleece,plume,pluck,rob,hook,drench,douse,dowse,sop,souse,pawn,hock,intoxicate,inebriate,hit it up,imbue,affect,beat,beat up,booze,charge,cheat,chisel,consign,drink,fuddle,heat,heat up,immerse,impregnate,plunge,rip off,saturate,wet,work over,undercharge
+soak in:
+soak up:absorb,suck,imbibe,sop up,suck up,draw,take in,take up,steep,immerse,engulf,plunge,engross,center,centre,concentrate,focus,pore,rivet,draw in,suck in
+social lubricant:
+soda:sodium carbonate,washing soda,sal soda,soda ash,pop,soda pop,soda water,tonic,salt,soft drink
+soda pop:pop,soda,soda water,tonic,soft drink
+soda water:carbonated water,club soda,seltzer,sparkling water,pop,soda,soda pop,tonic,drinking water,soft drink
+soft drink:beverage,drink,drinkable,potable
+sorb:sorb apple,edible fruit,take up,change state,turn
+spirits:liquor,booze,hard drink,hard liquor,John Barleycorn,strong drink,alcohol,alcoholic beverage,inebriant,intoxicant
+sponge:quick study,leech,parasite,sponger,poriferan,parazoan,absorbent,absorbent material,assimilator,follower,invertebrate,learner,scholar,mooch,bum,cadge,grub,collect,efface,erase,garner,gather,mop,mop up,obtain,pass over,pull together,rub out,score out,wipe,wipe off,wipe up
+spot:topographic point,place,point,smudge,blot,daub,smear,smirch,slur,speckle,dapple,patch,fleck,maculation,position,post,berth,office,billet,situation,touch,bit,pip,spotlight,stain,attack,blemish,business,business establishment,characteristic,defect,error,fault,job,lamp,line,line of work,mar,mark,marker,marking,mistake,occupation,place of business,playing card,section,small indefinite amount,small indefinite quantity,subdivision,descry,espy,spy,blemish,fleck,blob,blot,begrime,bemire,change,change surface,colly,dirty,grime,mark,sight,soil
+spring water:ground water,well water,H2O,water
+stirrup cup:drink
+strong drink:liquor,spirits,booze,hard drink,hard liquor,John Barleycorn,alcohol,alcoholic beverage,inebriant,intoxicant
+strong waters:
+suck:sucking,suction,consumption,ingestion,intake,uptake,suck in,absorb,imbibe,soak up,sop up,suck up,draw,take in,take up,breastfeed,suckle,nurse,wet-nurse,lactate,give suck,bottle-feed,drink,feed,give,take out,bottlefeed,suck in,draw in
+suck in:take in,sop up,take up,suck,draw in,absorb,consume,core out,have,hollow,hollow out,ingest,take
+suckle:breastfeed,suck,nurse,wet-nurse,lactate,give suck,bottle-feed,eat,feed,give,bottlefeed
+sundowner:drifter,drink,floater,vagabond,vagrant
+sup:swallow,mouthful,taste,consume,have,ingest,take,take in
+swallow:sup,drink,deglutition,consumption,ingestion,intake,mouthful,oscine,oscine bird,taste,uptake,get down,immerse,swallow up,bury,eat up,take back,unsay,withdraw,accept,live with,abide,bear,believe,brook,close in,consume,demolish,destroy,digest,enclose,endure,have,inclose,ingest,mouth,put up,renounce,repress,repudiate,shut in,speak,stand,stick out,stomach,suffer,support,suppress,take,take in,talk,tolerate,utter,verbalise,verbalize
+swig:gulp,draft,draught,deglutition,drink,swallow,slug,slog,gulp,quaff,drink,hit,imbibe
+swill:slop,slops,pigswill,pigwash,feed,provender,slop,swill down,drink,feed,give,imbibe
+swill down:swill,drink,imbibe
+swill up:
+take up:latch on,fasten on,hook on,seize on,start,adopt,borrow,take over,assume,take,strike,sorb,scoop,scoop out,lift out,scoop up,take in,absorb,suck,imbibe,soak up,sop up,suck up,draw,suck in,resume,accept,change,change state,consume,embark,embrace,enter,espouse,fill,have,ingest,move,occupy,receive,remove,sweep up,take away,turn,withdraw,suck in,draw in
+taste:taste sensation,gustatory sensation,taste perception,gustatory perception,preference,penchant,predilection,appreciation,discernment,perceptiveness,mouthful,gustation,sense of taste,gustatory modality,tasting,aesthesis,discrimination,esthesis,experience,exteroception,liking,modality,perception,secernment,sensation,sense datum,sense experience,sense impression,sense modality,sensing,sensory system,small indefinite amount,small indefinite quantity,taste,savor,savour,sample,try,try out,smack,comprehend,consume,experience,have,identify,ingest,know,live,perceive,take,take in
+tea:afternoon tea,teatime,Camellia sinensis,tea leaf,beverage,bush,drink,drinkable,herb,meal,potable,reception,repast,shrub
+thalassa:
+the demon rum:
+the bottle:
+the bounding main:
+the brine:
+the briny:
+the briny deep:
+the cup:
+the deep:
+the deep sea:
+the flowing bowl:
+the luscious liquor:
+the ruddy cup:
+the seven seas:
+the vasty deep:
+tide:lunar time period,fluctuation,period,period of time,periodic event,recurrent event,time period,variation,surge,be adrift,blow,course,drift,feed,float,flow,run,ebb,tide over
+tipple:draft,draught,potation,drink,bib,booze,drink,fuddle
+tisane:herb tea,herbal,herbal tea
+toast:goner,pledge,bread,breadstuff,celebrity,desperate,drink,famous person,staff of life,crispen,crisp,drink,pledge,salute,wassail,heat,heat up,honor,honour,reward
+toddy:hot toddy,mixed drink
+tonic:tonal,accented,bracing,brisk,fresh,refreshing,refreshful,energising,energizing,tenseness,tension,tensity,atonic,pitch,tautness,tonal,invigorating,tonic water,quinine water,pop,soda,soda pop,soda water,keynote,restorative,medicament,medication,medicinal drug,medicine,musical note,note,soft drink,tone
+tope:stupa,shrine,drink,habituate,use
+toss:flip,pass,motility,motion,move,movement,throw,flip,sky,pitch,chuck,convulse,thresh,thresh about,thrash,thrash about,slash,jactitate,discard,fling,toss out,toss away,chuck out,cast aside,dispose,throw out,cast out,throw away,cast away,put away,agitate,commove,disturb,get rid of,raise up,remove,shake,shake up,stir up,throw,turn,vex
+toss down:
+toss off:dash off,scratch off,knock off,fling off,pop,bolt down,belt down,pour down,down,drink down,kill,compose,drink,imbibe,indite,pen,write
+toxicant:poisonous,toxic,poison,poisonous substance,matter,substance
+wash down:flush down,eat,flush
+wassail:punch,revel,racket,make whoopie,make merry,make happy,whoop it up,jollify,toast,drink,pledge,salute,celebrate,fete,honor,honour,reward
+water:H2O,body of water,water system,water supply,urine,piss,pee,piddle,weewee,binary compound,body waste,element,excrement,excreta,excretion,excretory product,facility,food,installation,liquid,nutrient,thing,irrigate,fill,fill up,furnish,provide,release,render,secrete,supply,wet
+water of life:
+wee doch-an-dorrach:
+wet:lactating,besotted,blind drunk,blotto,crocked,cockeyed,fuddled,loaded,pie-eyed,pissed,pixilated,plastered,slopped,sloshed,smashed,soaked,soused,sozzled,squiffy,stiff,tight,potty,tiddley,tiddly,tipsy,dry,soaked,soused,alcoholic,bedewed,besprent,boggy,clammy,damp,dampish,dank,dewy,drenched,dripping,drippy,drizzly,drunk,dunked,fresh,humid,inebriated,intoxicated,marshy,miry,misty,moist,mucky,muddy,muggy,perspiring,quaggy,rainy,reeking,rheumy,saturated,showery,sloppy,sloughy,soaking,sodden,soggy,sopping,soppy,sprinkled,squashy,steaming,steamy,sticky,swampy,sweating,sweaty,tacky,undried,washed,waterlogged,watery,moisture,wetness,alter,change,make,make water,micturate,modify,pass water,pee,pee-pee,piddle,piss,puddle,relieve oneself,spend a penny,take a leak,urinate,wee,wee-wee,dry
+whey:milk whey,blood serum,dairy product,serum
+wolf down:wolf,eat
+journalist:diarist,diary keeper,author,writer
+anchorman:anchor,anchorperson,television newscaster,television reporter,TV newsman,TV reporter
+broadcaster:spreader,communicator,mechanical device
+city editor:newspaper editor
+columnist:editorialist,journalist
+commentator:observer,reviewer,author,expert,writer
+copy chief:
+copy editor:copyreader,text editor,editor,editor in chief
+copyman:
+copyreader:copy editor,text editor,editor,editor in chief
+correspondent:analogous,similar,letter writer,newspaperman,newspaperwoman,newswriter,pressman,communicator,journalist
+cub reporter:
+diaskeuast:
+editor:editor in chief,editor program,application,application program,applications programme,skilled worker,skilled workman,trained worker
+editorial writer:
+feature editor:
+foreign correspondent:correspondent,newspaperman,newspaperwoman,newswriter,pressman
+gazetteer:dictionary,journalist,lexicon
+hack:drudge,hacker,machine politician,ward-heeler,political hack,hack writer,literary hack,cab,taxi,taxicab,jade,nag,plug,author,auto,automobile,car,Equus caballus,horse,machine,motorcar,mount,pol,political leader,politician,politico,riding horse,saddle horse,tool,unskilled person,writer,chop,cut,hack on,cut up,whoop,contend,cope,cough,deal,edit,foul,get by,grapple,make do,make out,manage,program,programme,redact,chop down,chop off,chop up
+interviewer:asker,enquirer,inquirer,querier,questioner
+leader writer:
+leg man:
+managing editor:editor,editor in chief
+news editor:
+newscaster:announcer
+newsman:reporter,newsperson,communicator
+newsmonger:gossip,gossiper,gossipmonger,rumormonger,rumourmonger,communicator
+newspaperman:correspondent,newspaperwoman,newswriter,pressman,journalist
+newspaperwoman:correspondent,newspaperman,newswriter,pressman,journalist
+newswriter:correspondent,newspaperman,newspaperwoman,pressman,journalist
+own correspondent:
+paragrapher:author,writer
+paragraphist:
+pressman:printer,correspondent,newspaperman,newspaperwoman,newswriter,journalist,skilled worker,skilled workman,trained worker
+publicist:publicizer,publiciser,communicator
+reader:subscriber,reviewer,referee,proofreader,lector,lecturer,bookman,clergyman,client,critic,customer,educator,Holy Order,literate,literate person,man of the cloth,Order,pedagog,pedagogue,pressman,printer,reverend,scholar,scholarly person,school text,schoolbook,student,text,text edition,textbook,book
+reporter:newsman,newsperson,communicator
+reviser:redact,redactor,rewriter,rewrite man,editor,editor in chief
+rewrite man:redact,redactor,reviser,rewriter,editor,editor in chief
+rewriter:redact,redactor,reviser,rewrite man,editor,editor in chief
+scribe:Augustin Eugene Scribe,Scribe,scribbler,penman,copyist,scrivener,scriber,scratch awl,awl,dramatist,employee,journalist,playwright,mark,nock,score
+slotman:
+sob sister:journalist
+special correspondent:
+sports editor:newspaper editor
+stringer:brace,bracing,participant,player,timber,worker
+subeditor:editor,editor in chief
+war correspondent:correspondent,newspaperman,newspaperwoman,newswriter,pressman
+against:
+as far as:
+en route to:
+headed for:
+in consideration of:
+in contemplation of:
+in order to:
+in passage to:
+in transit to:
+into:
+on route to:
+over against:
+so:thus,thusly,then,and so,and then,indeed,sol,soh,solfa syllable
+so as to:
+so that:
+till:boulder clay,public treasury,trough,cashbox,money box,deedbox,dirt,exchequer,soil,strongbox,treasury,process,work,work on
+toward:
+towards:
+until:
+unto:
+up to:capable,adequate to,equal to,adequate,busy
+upon:
+versus:
+to have:
+hotchpotch:odds and ends,oddments,melange,farrago,ragbag,mishmash,mingle-mangle,hodgepodge,gallimaufry,omnium-gatherum,assortment,miscellanea,miscellany,mixed bag,mixture,motley,potpourri,salmagundi,smorgasbord,stew,variety
+makes:brand,shuffle,shuffling,form,kind,reordering,sort,variety,make,do,get,create,induce,stimulate,cause,have,produce,draw,gain,take in,clear,earn,realize,realise,pull in,bring in,form,constitute,reach,get to,progress to,construct,build,name,nominate,attain,hit,arrive at,lay down,establish,hold,throw,give,make up,take,stool,defecate,work,cook,fix,ready,prepare,seduce,score,pretend,make believe,urinate,piddle,puddle,micturate,piss,pee,pee-pee,make water,relieve oneself,take a leak,spend a penny,wee,wee-wee,pass water,accomplish,achieve,acquire,act,add up,alter,amount,appear,appoint,approximate,assemble,assure,be,become,behave,change,charge,clean up,come,commit,comprise,consider,create by mental act,create from raw material,create from raw stuff,create mentally,develop,direct,egest,eliminate,ensure,estimate,excrete,execute,gather,gauge,get together,go across,go through,grow,guarantee,guess,head,insure,judge,look,modify,neaten,number,pass,perform,perpetrate,persuade,play,pull,rack up,reckon,regard,represent,secure,see,seem,square away,straighten,straighten out,tally,tidy,tidy up,total,view,break,unmake,make up,make over
+fag:fagot,faggot,fairy,nance,pansy,queen,queer,poof,poove,pouf,cigarette,cigaret,coffin nail,butt,gay man,roll of tobacco,shirtlifter,smoke,labor,labour,toil,travail,grind,drudge,dig,moil,tire,wear upon,tire out,wear,weary,jade,wear out,outwear,wear down,fag out,fatigue,assist,attend,attend to,do work,indispose,serve,wait on,work,refresh
+paper:composition,report,theme,newspaper,newspaper publisher,article,essay,material,medium,press,product,production,public press,publisher,publishing company,publishing firm,publishing house,stuff,wallpaper,cover
+musician:instrumentalist,player,artist,creative person,performer,performing artist
+money:currency,medium of exchange,monetary system,wealth
+by:past,aside,away
+iris:flag,fleur-de-lis,sword lily,iris diaphragm,diaphragm,iridaceous plant,membrane,stop,tissue layer
+american:American,dry land,earth,ground,land,North American country,solid ground,North American nation,terra firma,American,American English,American language,denizen,dweller,English,English language,habitant,indweller,inhabitant
+american:American,dry land,earth,ground,land,North American country,solid ground,North American nation,terra firma,American,American English,American language,denizen,dweller,English,English language,habitant,indweller,inhabitant
+iris:flag,fleur-de-lis,sword lily,iris diaphragm,diaphragm,iridaceous plant,membrane,stop,tissue layer
+turns:bend,crook,twist,turning,play,turn of events,go,spell,tour,bout,round,act,routine,number,bit,good turn,activity,change of course,change of direction,curve,curved shape,development,duty period,favor,favour,motion,movement,performance,period of play,playing period,public presentation,reorientation,rotary motion,rotation,shift,walk,work shift,turn,change state,become,change by reversal,reverse,move around,grow,release,turn over,plow,plough,twist,sprain,wrench,wrick,rick,flex,bend,deform,call on,sour,ferment,work,acquire,age,aim,alter,appeal,change,change form,change shape,channel,channelise,channelize,color,colour,control,direct,discolor,discolour,displace,do,form,get,get on,go,injure,invoke,locomote,maturate,mature,metamorphose,modify,move,operate,perform,send,senesce,shape,take,take aim,till,train,transfer,transform,transmit,transmute,transport,travel,wound,unbend,turn around,turn away,turn back,turn off,turn on,turn to
+american:American,dry land,earth,ground,land,North American country,solid ground,North American nation,terra firma,American,American English,American language,denizen,dweller,English,English language,habitant,indweller,inhabitant
+iris:flag,fleur-de-lis,sword lily,iris diaphragm,diaphragm,iridaceous plant,membrane,stop,tissue layer
+turns:bend,crook,twist,turning,play,turn of events,go,spell,tour,bout,round,act,routine,number,bit,good turn,activity,change of course,change of direction,curve,curved shape,development,duty period,favor,favour,motion,movement,performance,period of play,playing period,public presentation,reorientation,rotary motion,rotation,shift,walk,work shift,turn,change state,become,change by reversal,reverse,move around,grow,release,turn over,plow,plough,twist,sprain,wrench,wrick,rick,flex,bend,deform,call on,sour,ferment,work,acquire,age,aim,alter,appeal,change,change form,change shape,channel,channelise,channelize,color,colour,control,direct,discolor,discolour,displace,do,form,get,get on,go,injure,invoke,locomote,maturate,mature,metamorphose,modify,move,operate,perform,send,senesce,shape,take,take aim,till,train,transfer,transform,transmit,transmute,transport,travel,wound,unbend,turn around,turn away,turn back,turn off,turn on,turn to
+american:American,dry land,earth,ground,land,North American country,solid ground,North American nation,terra firma,American,American English,American language,denizen,dweller,English,English language,habitant,indweller,inhabitant
+muscular:mesomorphic,brawny,hefty,powerful,sinewy,contractile organ,ectomorphic,endomorphic,contractor,powerful,athletic,strong
+perhaps:possibly,perchance,maybe,mayhap,peradventure
+pain:hurting,painfulness,pain sensation,painful sensation,pain in the neck,nuisance,annoyance,bother,botheration,infliction,pain in the ass,disagreeable person,feeling,negative stimulus,somaesthesia,somatesthesia,somatic sensation,somesthesia,symptom,unpleasant person,pleasure,trouble,ail,anguish,hurt,afflict,discomfit,discompose,disconcert,untune,upset
+it,:
+gets:return,get,acquire,become,go,let,have,receive,find,obtain,incur,arrive,come,bring,convey,fetch,experience,pay back,pay off,fix,make,induce,stimulate,cause,catch,capture,grow,develop,produce,contract,take,drive,aim,arrest,scram,buzz off,bugger off,get under one's skin,draw,perplex,vex,stick,puzzle,mystify,baffle,beat,pose,bewilder,flummox,stupefy,nonplus,gravel,amaze,dumbfound,get down,begin,start out,start,set about,set out,commence,suffer,sustain,beget,engender,father,mother,sire,generate,bring forth,ache,alter,annoy,attract,bedevil,befuddle,bother,buy,chafe,change,change state,channel,channelise,channelize,clutch,come down,communicate,confound,confuse,create,destroy,devil,discombobulate,draw in,effect,effectuate,fox,fuddle,get at,get back,get even,get to,go away,go forth,hear,hit,hurt,intend,intercommunicate,irritate,leave,mean,modify,nark,nettle,prehend,pull,pull in,purchase,rack up,rag,reproduce,rile,ruin,score,seize,set up,sicken,stir,tally,throw,touch,transfer,transmit,transport,turn,undergo,understand,end,leave,take away,get ahead,get along,get on,get over,puzzle out,puzzle over
+trouble:problem,fuss,bother,hassle,difficulty,worry,anxiety,disturbance,effort,elbow grease,exertion,gestation,happening,maternity,natural event,occurrence,occurrent,perturbation,pregnancy,sweat,travail,disturb,upset,trouble,put out,inconvenience,disoblige,discommode,incommode,bother,perturb,unhinge,disquiet,cark,distract,disorder,trouble oneself,inconvenience oneself,ail,pain,affect,afflict,bear on,bear upon,hurt,impact,impress,move,reach,strain,strike,strive,touch,touch on
+boats:gravy boat,gravy holder,sauceboat,dish,vessel,watercraft,ride
+gets:return,get,acquire,become,go,let,have,receive,find,obtain,incur,arrive,come,bring,convey,fetch,experience,pay back,pay off,fix,make,induce,stimulate,cause,catch,capture,grow,develop,produce,contract,take,drive,aim,arrest,scram,buzz off,bugger off,get under one's skin,draw,perplex,vex,stick,puzzle,mystify,baffle,beat,pose,bewilder,flummox,stupefy,nonplus,gravel,amaze,dumbfound,get down,begin,start out,start,set about,set out,commence,suffer,sustain,beget,engender,father,mother,sire,generate,bring forth,ache,alter,annoy,attract,bedevil,befuddle,bother,buy,chafe,change,change state,channel,channelise,channelize,clutch,come down,communicate,confound,confuse,create,destroy,devil,discombobulate,draw in,effect,effectuate,fox,fuddle,get at,get back,get even,get to,go away,go forth,hear,hit,hurt,intend,intercommunicate,irritate,leave,mean,modify,nark,nettle,prehend,pull,pull in,purchase,rack up,rag,reproduce,rile,ruin,score,seize,set up,sicken,stir,tally,throw,touch,transfer,transmit,transport,turn,undergo,understand,end,leave,take away,get ahead,get along,get on,get over,puzzle out,puzzle over
+trouble:problem,fuss,bother,hassle,difficulty,worry,anxiety,disturbance,effort,elbow grease,exertion,gestation,happening,maternity,natural event,occurrence,occurrent,perturbation,pregnancy,sweat,travail,disturb,upset,trouble,put out,inconvenience,disoblige,discommode,incommode,bother,perturb,unhinge,disquiet,cark,distract,disorder,trouble oneself,inconvenience oneself,ail,pain,affect,afflict,bear on,bear upon,hurt,impact,impress,move,reach,strain,strike,strive,touch,touch on
+boats:gravy boat,gravy holder,sauceboat,dish,vessel,watercraft,ride
+tramline:tramway,streetcar track,track
+new:fresh,novel,raw,unexampled,newfangled,New,Modern,young,old,worn,fresh,modern,current,fresh,novel,young,bran-new,brand-new,early,hot,inexperienced,inexperient,late,new-sprung,newborn,newfound,original,other,parvenu,parvenue,radical,recent,red-hot,refreshing,revolutionary,rising,spic-and-span,spick-and-span,sunrise,unaccustomed,unprecedented,untested,untried,unused,unweathered,virgin,newly,freshly,fresh,recently
+managed:
+kidnappers:kidnaper,abductor,snatcher,captor,capturer,criminal,crook,felon,malefactor,outlaw
+managed:
+drug:agent,dose,do drugs,consume,have,ingest,medicate,medicine,take,take in
+trip:slip,head trip,tripper,trip-up,stumble,misstep,bloomer,blooper,blunder,boner,boo-boo,botch,bungle,catch,experience,flub,foul-up,hallucination,journey,journeying,misadventure,mischance,mishap,pratfall,step,stop,stumble,trip up,travel,jaunt,actuate,trigger,activate,set off,spark off,spark,trigger off,touch off,trip out,turn on,get off,initiate,move,pioneer
+arctic:north-polar,Arctic,frigid,gelid,glacial,icy,polar,Frigid Zone,polar zone,polar region,polar,cold,Arctic Zone,North Frigid Zone,Arctic,galosh,golosh,rubber,gumshoe,Frigid Zone,overshoe,polar region,polar zone
+drug:agent,dose,do drugs,consume,have,ingest,medicate,medicine,take,take in
+trip:slip,head trip,tripper,trip-up,stumble,misstep,bloomer,blooper,blunder,boner,boo-boo,botch,bungle,catch,experience,flub,foul-up,hallucination,journey,journeying,misadventure,mischance,mishap,pratfall,step,stop,stumble,trip up,travel,jaunt,actuate,trigger,activate,set off,spark off,spark,trigger off,touch off,trip out,turn on,get off,initiate,move,pioneer
+arctic:north-polar,Arctic,frigid,gelid,glacial,icy,polar,Frigid Zone,polar zone,polar region,polar,cold,Arctic Zone,North Frigid Zone,Arctic,galosh,golosh,rubber,gumshoe,Frigid Zone,overshoe,polar region,polar zone
+soldiers:enlisted person,worker,pass,spend
+united:joined,combined,concerted,conjunct,conjunctive,cooperative,divided,collective,integrated,joint,agreed,allied,amalgamate,amalgamated,coalesced,coalescent,coalescing,cohesive,confederate,confederative,conjugate,conjugated,conjunct,consolidated,coupled,federate,federated,fused,in agreement,in league,incorporate,incorporated,integrated,joint,married,merged,nonsegmental,one,suprasegmental,tied,undivided,unified,unitary,unpartitioned,unsegmented
+nations:state,country,land,commonwealth,res publica,body politic,Nation,Carry Nation,Carry Amelia Moore Nation,confederacy,confederation,dry,federation,people,political entity,political unit,prohibitionist
+coming:approaching,forthcoming,upcoming,future day,future,approach,approaching,advent,orgasm,climax,sexual climax,arrival,consummation,motion,move,movement,reaching,timing
+city:metropolis,urban center,administrative district,administrative division,municipality,territorial division
+centre:center,Centre,middle,heart,eye,midpoint,nerve center,nerve centre,area,building,confection,country,edifice,French region,neural structure,place,point,property,sweet,center,concentrate,focus,pore,rivet,cerebrate,cogitate,displace,move,think,center on
+soldiers:enlisted person,worker,pass,spend
+united:joined,combined,concerted,conjunct,conjunctive,cooperative,divided,collective,integrated,joint,agreed,allied,amalgamate,amalgamated,coalesced,coalescent,coalescing,cohesive,confederate,confederative,conjugate,conjugated,conjunct,consolidated,coupled,federate,federated,fused,in agreement,in league,incorporate,incorporated,integrated,joint,married,merged,nonsegmental,one,suprasegmental,tied,undivided,unified,unitary,unpartitioned,unsegmented
+nations:state,country,land,commonwealth,res publica,body politic,Nation,Carry Nation,Carry Amelia Moore Nation,confederacy,confederation,dry,federation,people,political entity,political unit,prohibitionist
+coming:approaching,forthcoming,upcoming,future day,future,approach,approaching,advent,orgasm,climax,sexual climax,arrival,consummation,motion,move,movement,reaching,timing
+city:metropolis,urban center,administrative district,administrative division,municipality,territorial division
+centre:center,Centre,middle,heart,eye,midpoint,nerve center,nerve centre,area,building,confection,country,edifice,French region,neural structure,place,point,property,sweet,center,concentrate,focus,pore,rivet,cerebrate,cogitate,displace,move,think,center on
+centre:center,Centre,middle,heart,eye,midpoint,nerve center,nerve centre,area,building,confection,country,edifice,French region,neural structure,place,point,property,sweet,center,concentrate,focus,pore,rivet,cerebrate,cogitate,displace,move,think,center on
+city:metropolis,urban center,administrative district,administrative division,municipality,territorial division
+queen:queen regnant,female monarch,king,world-beater,fagot,faggot,fag,fairy,nance,pansy,queer,poof,poove,pouf,queen mole rat,tabby,challenger,chess piece,chessman,competition,competitor,contender,court card,domestic cat,face card,Felis catus,Felis domesticus,female aristocrat,gay man,house cat,insect,naked mole rat,personification,picture card,rival,shirtlifter,king,male monarch,promote
+love:passion,beloved,dear,dearest,honey,sexual love,erotic love,lovemaking,making love,love life,concupiscence,emotion,eros,loved one,lover,object,physical attraction,score,sex,sex activity,sexual activity,sexual desire,sexual practice,hate,amour,love,enjoy,roll in the hay,make out,make love,sleep with,get laid,have sex,know,do it,be intimate,have intercourse,have it away,have it off,screw,jazz,eff,hump,lie with,bed,have a go at it,bang,get it on,bonk,copulate,couple,like,mate,pair,hate
+by:past,aside,away
+it's:
+initially:ab initio,at first,at the start
+daft,:
+crazy,:
+negligent:diligent,careless,inattentive,careless,delinquent,derelict,hit-and-run,inattentive,lax,neglectful,remiss,slack
+negligent:diligent,careless,inattentive,careless,delinquent,derelict,hit-and-run,inattentive,lax,neglectful,remiss,slack
+negligent:diligent,careless,inattentive,careless,delinquent,derelict,hit-and-run,inattentive,lax,neglectful,remiss,slack
+apathetic:indifferent,spiritless,uninterested
+approximative:approximate,rough,inexact
+ataractic:ataraxic,sedative,tranquilizing,tranquilising,depressant,tranquilizer,tranquillizer,tranquilliser,antianxiety agent,ataractic drug,ataractic agent,psychotropic agent,sedative-hypnotic,sedative-hypnotic drug
+beat-up:battered,beaten-up,damaged
+bedraggled:draggled,broken-down,derelict,dilapidated,ramshackle,tatterdemalion,tumble-down,damaged,dirty,soiled,unclean
+behindhand:unpunctual,behind,in arrears
+blase:worldly,bored,sophisticated,unconcerned,uninterested
+blowzy:blowsy,slatternly,sluttish,untidy
+botched:bungled,unskilled
+bungled:botched,unskilled
+butchered:meatman,slaughterer,bungler,blunderer,fumbler,bumbler,stumbler,sad sack,botcher,incompetent,incompetent person,liquidator,manslayer,merchandiser,merchant,murderer,skilled worker,skilled workman,trained worker,slaughter,kill
+careless:regardless,careful,imprudent,inattentive,incautious,negligent,superficial,unconcerned,artless,casual,cursory,haphazard,heedless,incautious,negligent,offhand,offhanded,passing,perfunctory,reckless,slapdash,slipshod,sloppy,thoughtless,unheeding
+chintzy:bum,cheap,cheesy,crummy,punk,sleazy,tinny,chinchy,inferior,stingy,ungenerous,thrifty
+culpably negligent:
+devil-may-care:carefree,freewheeling,happy-go-lucky,harum-scarum,slaphappy,raffish,rakish,irresponsible,unconventional
+dilapidated:bedraggled,broken-down,derelict,ramshackle,tatterdemalion,tumble-down,damaged
+disinterested:fair,impartial
+dispassionate:cold-eyed,fair,impartial
+disregardant:
+disregardful:
+distracted:distrait,brainsick,crazy,demented,disturbed,mad,sick,unbalanced,unhinged,inattentive,insane
+distrait:distracted,inattentive
+drabbletailed:
+draggled:bedraggled,dirty,soiled,unclean
+draggletailed:
+easy:easygoing,leisurely,gentle,soft,comfortable,prosperous,well-fixed,well-heeled,well-off,well-situated,well-to-do,light,loose,promiscuous,sluttish,wanton,lenient,difficult,uneasy,soft,comfortable,effortless,relaxed,simple,undemanding,easygoing,soft,comfortable,light,abundant,available,casual,comfy,cushy,effortless,elementary,gradual,hands-down,impressible,impressionable,painless,pleasing,rich,simple,simplified,smooth,unchaste,uncomplicated,undemanding,unhurried,unproblematic,user-friendly,easily,slowly,slow,tardily,soft,quickly
+easygoing:easy,leisurely,cushy,soft,calm,placid,easy,content,contented,undemanding,unhurried
+feckless:inept,incompetent,irresponsible
+frowzy:frowsy,slovenly,untidy
+frumpish:dowdy,frumpy,unfashionable,unstylish
+frumpy:dowdy,frumpish,unfashionable,unstylish
+fumbled:
+grasshopper:hopper,cocktail,orthopteran,orthopteron,orthopterous insect
+grubby:begrimed,dingy,grimy,grungy,raunchy,larva,dirty,soiled,unclean,Myxocephalus aenaeus,sculpin
+happy-go-lucky:carefree,devil-may-care,freewheeling,harum-scarum,slaphappy,irresponsible
+heedless:unheeding,reckless,thoughtless,heedful,careless,deaf,indifferent,regardless
+ill-advised:unadvised,well-advised,foolish,imprudent
+ill-considered:ill-judged,improvident,shortsighted,imprudent
+ill-contrived:
+ill-devised:
+ill-done:
+ill-executed:
+ill-managed:
+impolitic:politic,foolish,inexpedient,inexpedient,unwise
+impotent:potent,infertile,powerless,sterile,unfertile,impuissant,ineffective,ineffectual,unable
+improvident:ill-considered,ill-judged,shortsighted,provident,imprudent,wasteful,shortsighted,imprudent,myopic,prodigal,short,thriftless,unforesightful,unforethoughtful
+in rags:
+inadvertent:accidental,unintended
+inattentive:neglectful,attentive,careless,forgetful,negligent,oblivious,absent,absentminded,abstracted,distracted,distrait,dreamy,drowsy,forgetful,moony,negligent,oblivious,oscitant,scatty,woolgathering,yawning
+inconsiderate:unconsidered,considerate,selfish,tactless,thoughtless,untactful,thoughtless,uncaring,unthinking
+inconstant:constant,changeable,changeful,unfaithful,unstable,variable,volatile,false,fickle,untrue,volatile
+incorrect:wrong,correct,right,false,improper,inaccurate,erroneous,fallacious,false,inaccurate,mistaken
+incurious:curious,uninquiring,uninquisitive,uninterested
+indifferent:apathetic,immaterial,inert,neutral,unbiased,unbiassed,deaf,so-so,fair,heedless,impartial,inferior,moderate,ordinary,thoughtless,unconcerned,unheeding,unimportant,uninterested,unreactive
+inexcitable:
+informal:loose,cozy,intimate,formal,informal,unrhetorical,casual,colloquial,common,conversational,epistolary,epistolatory,everyday,folksy,free-and-easy,friendly,nonliterary,slangy,subliterary,unceremonial,unceremonious,unliterary,unofficial,vernacular,vulgar
+inobservant:
+insouciant:casual,nonchalant,unconcerned
+lackadaisical:dreamy,languid,languorous,idle,lethargic,unergetic
+laissez-faire:individualistic,capitalist,capitalistic
+lax:slack,loose,flaccid,limp,tense,loose,slack,loose,drooping,droopy,floppy,loose-jointed,negligent,regular,relaxed,sagging,tensionless,unconstipated,weak
+lenient:indulgent,soft,easy,clement,permissive,undemanding
+listless:dispirited,lethargic,spiritless,unergetic
+loose:informal,free,liberal,lax,unaffixed,slack,open,idle,escaped,easy,light,promiscuous,sluttish,wanton,at large,on the loose,affixed,compact,tight,lax,free,lax,light,baggy,coarse,flyaway,friable,harsh,inexact,insecure,irresponsible,loose-fitting,phlegmy,regular,sandy,shifting,silty,sloppy,unbound,unchaste,unconsolidated,unconstipated,uncontrolled,unfirm,unofficial,unpackaged,free,free,liberate,release,unloose,unloosen,unleash,let loose,loosen,relax,alter,change,let go,let go of,modify,relinquish,weaken,confine,stiffen
+messy:mussy,untidy
+mindless:unmindful,forgetful,asinine,fatuous,inane,vacuous,reasonless,senseless,mindful,amnesiac,amnesic,foolish,meaningless,nonintellectual,nonmeaningful,unreasonable
+misconducted:wrongdoing,wrongful conduct,actus reus,activity,direction,management,misbehave,misdemean,mismanage,mishandle,act,care,deal,handle,manage,move,behave
+misdirected:corrupt,pervert,subvert,demoralize,demoralise,debauch,debase,profane,vitiate,deprave,mislead,misguide,lead astray,misaddress,address,alter,change,conduct,direct,guide,lead,modify,take
+misguided:ill-conceived,mistaken,foolish,wrong
+mismanaged:
+muffed:fumble,bloomer,blooper,blunder,boner,boo-boo,botch,bungle,flub,foul-up,hand wear,handwear,pratfall,botch,bodge,bumble,fumble,botch up,blow,flub,screw up,ball up,spoil,muck up,bungle,fluff,bollix,bollix up,bollocks,bollocks up,bobble,mishandle,louse up,foul up,mess up,fail,go wrong,miscarry,neglect
+murdered:dead
+mussy:messy,untidy
+neglectful:inattentive,derelict,delinquent,remiss,negligent
+neglecting:disregard,disuse,negligence,neglectfulness,carelessness,nonperformance,declination,decline,inattention,mistreatment,nonaccomplishment,nonachievement,sloppiness,pretermit,omit,drop,miss,leave out,overlook,overleap,fail,ignore,disregard,attend to
+nonadherent:
+nonchalant:casual,insouciant,unconcerned
+noncompliant:defiant,compliant,difficult,disobedient,insubordinate,intractable,unmanageable,unwilling,insubordinate,obstreperous,recalcitrant,resistant,resistive,balker,baulker,individual,mortal,person,somebody,someone,soul
+nonconforming:nonconformist,unorthodox
+noninterfering:
+nonobservant:irreligious
+nonrestrictive:unrestrictive
+off-guard:napping,off his guard,off her guard,off your guard,off guard,off one's guard,unready
+out of line:
+out of plumb:
+out of square:
+out of true:untrue,uneven
+overindulgent:indulgent
+overly permissive:
+overpermissive:
+perfunctory:casual,cursory,pro forma,passing,careless,formal
+permissive:preventive,unpermissive,bailable,indulgent,lenient,soft
+pococurante:
+poky:dilatory,laggard,pokey,jerkwater,one-horse,provincial,slow,jail,jailhouse,gaol,clink,slammer,pokey,correctional institution
+procrastinating:
+ragged:tired,uneven,worn
+raggedy:
+reckless:foolhardy,heady,rash,heedless,bold,careless
+regardless:careless,heedless,thoughtless,unheeding,irrespective,disregardless,no matter,disregarding
+relaxed:tense,easy,unagitated,degage,laid-back,lax,mellow,unstrained
+remiss:derelict,delinquent,neglectful,negligent
+ruinous:catastrophic,blasting,destructive,harmful
+scamping:imp,monkey,rascal,rapscallion,scalawag,scallywag,child,fry,kid,minor,nestling,nipper,shaver,small fry,tike,toddler,tyke,youngster,do,execute,perform
+scraggly:untidy
+seedy:scruffy,ailing,indisposed,sickly,unwell,under the weather,seamy,sleazy,sordid,squalid,peaked,poorly,seedless,black-seeded,disreputable,ill,multi-seeded,one-seed,one-seeded,seeded,several-seeded,sick,single-seeded,small-seeded,three-seeded,white-seeded,worn
+shabby:moth-eaten,ratty,tatty,dishonorable,dishonourable,worn
+shiftless:ambitionless,unambitious
+shoddy:cheapjack,tawdry,jerry-built,deceptive,misleading,dishonest,dishonorable,inferior,weak,wool
+skimping:scant,scrimp,stint,furnish,provide,render,restrict,save,supply,work,skimp over
+slatternly:blowsy,blowzy,sluttish,untidy
+slighting:belittling,deprecating,deprecative,deprecatory,depreciative,depreciatory,uncomplimentary
+slipshod:haphazard,slapdash,sloppy,careless
+sloppy:boggy,marshy,miry,mucky,muddy,quaggy,sloughy,soggy,squashy,swampy,waterlogged,baggy,loose-fitting,overemotional,haphazard,slapdash,slipshod,careless,emotional,loose,untidy,wet
+slovenly:frowsy,frowzy,untidy
+slurring:
+sluttish:blowsy,blowzy,slatternly,easy,light,loose,promiscuous,wanton,unchaste,untidy
+soft:delicate,voiced,sonant,piano,diffuse,diffused,indulgent,lenient,gentle,easy,flabby,flaccid,cushy,easygoing,balmy,mild,subdued,forte,hard,hardened,loud,unvoiced,quiet,tender,warmhearted,gentle,easy,flaccid,mild,subdued,brushed,cheeselike,clement,compressible,conciliative,conciliatory,continuant,cottony,cushioned,cushiony,demulcent,downlike,downy,dull,emollient,euphonious,falling,fleecy,flocculent,flossy,fluffy,fricative,hushed,light,little,low,low-toned,mellow,muffled,murmuring,murmurous,mushy,muted,napped,overstuffed,padded,palatal,palatalised,palatalized,permissive,pianissimo,pianissimo assai,qualitative,quiet,rustling,salving,semisoft,sibilant,small,soft-footed,soft-spoken,softened,softening,softish,soughing,spirant,spongelike,spongy,squashy,squeezable,squishy,strident,susurrant,susurrous,tender,unfit,untoughened,velvet,velvety,whispering,woolly,wooly,yielding,easy
+sordid:seamy,seedy,sleazy,squalid,dirty,flyblown,dirty,acquisitive,corrupt,disreputable,soiled,unclean
+spoiled:spoilt,bad,ill-natured,stale
+squalid:seamy,seedy,sleazy,sordid,flyblown,dirty,disreputable,soiled,unclean
+tacky:brassy,cheap,flash,flashy,garish,gaudy,gimcrack,loud,meretricious,tatty,tawdry,trashy,tasteless,wet
+tattered:tatterdemalion,shattered,destroyed,worn
+thoughtless:uncaring,unthinking,heedless,unheeding,heedful,thoughtful,inconsiderate,unthinking,careless,deaf,inconsiderate,indifferent,regardless,unconsidered,unreflective,unthoughtful
+thriftless:improvident
+turned-off:
+unanxious:
+uncircumspect:
+uncompliant:
+unconcerned:concerned,careless,untroubled,blase,blithe,casual,degage,detached,indifferent,insouciant,nonchalant,uninvolved,untroubled
+unconforming:
+undiscriminating:indiscriminating,discriminating,indiscriminate,indiscriminate,scattershot,unperceptive,unselective
+uneconomical:wasteful,uneconomic,wasteful,inefficient
+unfaithful:faithless,traitorous,treasonable,treasonous,faithful,inconstant,untrustworthy,untrusty,adulterous,apostate,cheating,disloyal,inaccurate,perfidious,punic,treacherous,two-timing,untrue
+unguarded:unwary,vulnerable
+unheedful:
+unheeding:heedless,thoughtless,heedful,careless,deaf,indifferent,regardless
+uninterested:interested,apathetic,benumbed,blase,bored,dismissive,dulled,incurious,indifferent
+unkempt:uncombed,ungroomed,untidy
+unloyal:
+unmarking:
+unmindful:forgetful,mindless,oblivious,mindful,amnesiac,amnesic,incognizant,unaware
+unneat:
+unnoticing:
+unnoting:
+unobservant:unseeing,unperceiving,unperceptive
+unobserving:
+unprecise:
+unproviding:
+unremarking:
+unrestrained:delirious,excited,frantic,mad,flamboyant,restrained,free,uncontrolled,uninhibited,unreserved,colorful,colourful,excessive,extravagant,exuberant,freewheeling,highflying,overweening,unbridled,unbuttoned,unchecked,uncurbed,ungoverned,unhampered,unhindered,unlaced,wild
+unrigorous:
+unsightly:ugly
+unsolicitous:
+unthinking:unreflective,unthoughtful,thoughtless,uncaring,lumpish,lumpen,thoughtless,inconsiderate,stupid,thoughtlessly,unthinkingly,thoughtfully
+unthrifty:
+untidy:tidy,dirty,soiled,unclean,unfastidious,ungroomed,blowsy,blowzy,cluttered,disheveled,dishevelled,disorderly,frowsy,frowzled,frowzy,higgledy-piggledy,hugger-mugger,jumbled,littered,messy,mussy,rumpled,scraggly,slatternly,sloppy,slouchy,slovenly,sluttish,sprawling,straggling,straggly,topsy-turvy,tousled,unkempt
+unwary:wary,gullible,unguarded
+unwatchful:
+weak:watery,washy,unaccented,light,fallible,frail,imperfect,decrepit,debile,feeble,infirm,rickety,sapless,weakly,faint,strong,delicate,powerless,tender,untoughened,fallible,frail,feeble,faint,adynamic,anaemic,anemic,asthenic,debilitated,dilute,diluted,down,enervated,flaccid,flimsy,fragile,gutless,human,jerry-built,lame,lax,limp,namby-pamby,pale,pallid,perceptible,powerless,puny,regular,shoddy,sick,slack,slight,spineless,stupid,tenuous,thin,unskilled,unstressed,vulnerable,wan,weakened,wishy-washy
+:
+sisyphean labor:
+waterloo:Waterloo,Battle of Waterloo,defeat,licking,pitched battle,town
+also-ran:loser,contestant,winner
+arrear:
+arrearage:
+arrears:debt,financial obligation,indebtedness,liability
+atrocity:atrociousness,barbarity,barbarousness,heinousness,inhumanity,cruelty,inhuman treatment,inhumaneness
+bad habit:
+bafflement:bewilderment,obfuscation,puzzlement,befuddlement,mystification,bemusement,confusedness,confusion,disarray,mental confusion,muddiness
+bankrupt:belly-up,insolvent,insolvent,failure,loser,nonstarter,unsuccessful person,ruin,break,smash,impoverish
+bankruptcy:failure,insolvency,legal proceeding,proceeding,proceedings
+baseness:sordidness,contemptibility,despicableness,despicability,unworthiness
+beating:pulsating,pulsing,rhythmic,rhythmical,whipping,thrashing,licking,drubbing,lacing,trouncing,whacking,combat,corporal punishment,fight,fighting,scrap
+besetting sin:
+betrayed hope:
+blasted expectation:
+blemish:defect,mar,appearance,visual aspect,deface,disfigure,spot,flaw,begrime,bemire,colly,damage,deflower,dirty,grime,impair,mar,soil,spoil,vitiate
+blighted hope:
+bootlessness:
+botch:blunder,blooper,bloomer,bungle,pratfall,foul-up,flub,boner,boo-boo,error,fault,mistake,bodge,bumble,fumble,botch up,muff,blow,flub,screw up,ball up,spoil,muck up,bungle,fluff,bollix,bollix up,bollocks,bollocks up,bobble,mishandle,louse up,foul up,mess up,fail,go wrong,miscarry
+bouncing check:
+breach:rupture,break,severance,rift,falling out,breakup,detachment,failure,gap,opening,separation,transgress,offend,infract,violate,go against,break,gap,disrespect,open,open up,keep
+breakdown:dislocation,crack-up,equipment failure,partitioning,analysis,analytic thinking,collapse,disruption,failure,perturbation
+buffet:counter,sideboard,snack bar,snack counter,article of furniture,bar,furniture,meal,piece of furniture,repast,knock about,batter,buff,hit,strike
+bug:glitch,hemipterous insect,hemipteran,hemipteron,microbe,germ,defect,fault,flaw,insect,micro-organism,microorganism,microphone,mike,tease,badger,pester,beleaguer,wiretap,tap,intercept,bedevil,crucify,dun,eavesdrop,frustrate,listen in,rag,torment
+bust:broke,skint,stone-broke,stony-broke,poor,flop,fizzle,female chest,tear,binge,bout,chest,failure,pectus,revel,revelry,sculpture,thorax,break,raid,tear,rupture,snap,wear,wear out,fall apart,burst,assail,attack,come apart,crumble,decay,delapidate,destroy,disunite,divide,part,ruin,separate,split up,repair,break apart,break away,break down,break off,break up,bust up,tear apart,tear down,tear up,wear away,wear off
+clerical error:
+collapse:flop,crash,descent,happening,illness,malady,misadventure,mischance,mishap,natural event,occurrence,occurrent,sickness,unwellness,fall in,cave in,give,give way,break,founder,break down,crumble,crumple,tumble,burst,crack up,crack,crock up,break up,change,change integrity,fold,fold up,get,have,suffer,sustain,turn up,weaken
+comedown:abasement,humiliation
+conquering:conquest,subjection,subjugation,capture,gaining control,seizure
+conquest:conquering,subjection,subjugation,seduction,capture,gaining control,seizure,success
+corrigendum:error,mistake
+counterproductiveness:
+counterproductivity:
+crack:ace,A-one,first-rate,super,tiptop,topnotch,fantastic,tops,superior,cleft,crevice,fissure,scissure,gap,cranny,chap,cracking,snap,shot,wisecrack,sally,quip,tornado,fling,go,pass,whirl,offer,fracture,attempt,blemish,break,breakage,breaking,chance,cocain,cocaine,comment,defect,depression,effort,endeavor,endeavour,impression,imprint,mar,noise,opening,opportunity,remark,try,crack,check,break,snap,break through,crack up,crock up,break up,collapse,alter,break down,change,come apart,decompose,fall apart,get,go,go across,go through,have,hit,modify,narrate,pass,recite,recount,separate,sound,split up,suffer,sustain,tell
+crash:clang,clangor,clangour,clangoring,clank,clash,wreck,collapse,smash,accident,happening,hit,hitting,misadventure,mischance,mishap,natural event,noise,occurrence,occurrent,striking,ram,break up,break apart,barge in,gate-crash,dash,go down,doss,doss down,bed down,break,break down,bunk down,cast,change,clash,collide,come down,conk out,descend,die,disintegrate,fail,fall,give out,give way,go,go across,go bad,go through,hurl,hurtle,intrude,irrupt,lodge in,move,occupy,pass,reside
+crime:law-breaking,evildoing,transgression
+crime against humanity:
+cruel disappointment:
+culpa:
+culpable negligence:criminal negligence,carelessness,neglect,negligence,nonperformance
+dash:elan,flair,panache,style,sprint,hyphen,dah,bolt,elegance,haste,hurry,punctuation,punctuation mark,radiotelegraphic signal,run,running,rush,rushing,telegraphic signal,track event,dart,scoot,scud,flash,shoot,smash,crash,daunt,scare off,pall,frighten off,scare away,frighten away,scare,baffle,belt along,bilk,break,bucket along,cannonball along,cast,cross,foil,frustrate,hasten,hie,hotfoot,hurl,hurtle,intimidate,mix,mix in,pelt along,queer,race,restrain,rush,rush along,scotch,speed,spoil,thwart,flash back
+dashed hope:
+dead duck:failure
+deadly sin:mortal sin,sin,sinning,venial sin
+dearth:famine,shortage,paucity,deficiency,lack,scarceness,scarcity,want
+deathblow:coup de grace,kill,killing,putting to death
+debacle:fiasco,thrashing,walloping,drubbing,slaughter,trouncing,whipping,alluvion,collapse,defeat,deluge,flood,inundation,licking
+debasement:adulteration,degradation,change of state,impureness,impurity
+debilitation:enervation,enfeeblement,exhaustion,weakening
+decadence:degeneracy,degeneration,decadency,abasement,abjection,degradation
+decadency:degeneracy,degeneration,decadence,abasement,abjection,degradation
+decay:decline,decomposition,radioactive decay,disintegration,action,activity,decrease,decrement,natural action,natural process,nuclear reaction,organic phenomenon,unsoundness,disintegrate,decompose,crumble,change,change integrity,delapidate
+declension:deterioration,decline in quality,worsening,descent,declivity,fall,decline,declination,downslope,category,class,diminution,family,incline,inflection,inflexion,side,slope,ascent
+declination:decline,descent,declivity,fall,declension,downslope,celestial latitude,dec,regrets,acknowledgement,acknowledgment,angular distance,condition,incline,refusal,side,slope,status,ascent,improvement
+defalcation:embezzlement,peculation,misapplication,misappropriation,amount,amount of money,larceny,stealing,sum,sum of money,theft,thievery,thieving
+default:nonpayment,nonremittal,default option,absence,alternative,choice,failure,financial loss,option,payment,default on,fail,neglect,pay up
+defeat:licking,frustration,conclusion,disappointment,ending,failure,finish,letdown,victory,get the better of,overcome,kill,shoot down,vote down,vote out,blackball,negative,veto
+defect:shortcoming,fault,flaw,blemish,mar,appearance,disadvantage,imperfection,imperfectness,visual aspect,desert,flee,fly,take flight
+defection:desertion,abandonment,apostasy,renunciation,rejection,withdrawal
+defectiveness:faultiness,imperfection,imperfectness
+deficiency:lack,want,insufficiency,inadequacy,amount,demand,need,adequacy,sufficiency
+deficit:shortage,shortfall,deficiency,inadequacy,insufficiency,lack,liabilities,score,want,lead
+deformation:distortion,contortion,alteration,change,change of shape,damage,harm,impairment,modification
+degeneracy:degeneration,decadence,decadency,corruption,depravation,depravity,putrefaction,abasement,abjection,degradation,immorality
+degenerateness:
+degeneration:devolution,degeneracy,decadence,decadency,retrogression,abasement,abjection,degradation,physical process,process,shift,transformation,transmutation,evolution
+degradation:debasement,abasement,abjection,change of state,humiliation
+delinquency:dereliction,willful neglect,juvenile delinquency,default,misbehavior,misbehaviour,misdeed,neglect,neglectfulness,negligence,nonpayment,nonremittal
+demotion:change,promotion
+depravation:corruption,degeneracy,depravity,putrefaction,immorality
+depravedness:
+depreciation:wear and tear,disparagement,derogation,decrease,diminution,discourtesy,disrespect,financial loss,non-cash expense,reduction,step-down,appreciation
+dereliction:delinquency,willful neglect,actus reus,carelessness,misconduct,neglect,neglectfulness,negligence,nonperformance,wrongdoing,wrongful conduct
+derogation:disparagement,depreciation,abrogation,annulment,discourtesy,disrespect,repeal
+descent:origin,extraction,line of descent,lineage,filiation,declivity,fall,decline,declination,declension,downslope,line,bloodline,blood line,blood,pedigree,ancestry,parentage,stemma,stock,change of location,derivation,family relationship,family tree,genealogy,incline,kinship,motion,move,movement,relationship,side,slope,travel,ascent
+destruction:devastation,demolition,wipeout,end,death,conclusion,ending,finish,state,termination
+deterioration:impairment,decline in quality,declension,worsening,decay,decline,diminution
+devolution:degeneration,devolvement,delegating,delegation,deputation,physical process,process,relegating,relegation,evolution
+disappointment:letdown,dashing hopes,dissatisfaction,failure
+discomfiture:discomposure,disconcertion,disconcertment,anxiety,embarrassment
+disconformity:
+discontinuance:discontinuation,conclusion,ending,termination,continuance,continuation
+disillusionment:disenchantment,disillusion,edification,sophistication
+disregard:neglect,inattention,mistreatment,ignore,snub,cut,dismiss,brush aside,brush off,discount,push aside,neglect,do by,handle,reject,treat
+dissatisfaction:discontent,discontentedness,discontentment,satisfaction
+downfall:ruin,ruination,precipitation,fall,atmospheric condition,failure,weakening,weather,weather condition,rise
+downtrend:
+downturn:downswing,worsening
+downward mobility:
+downward trend:
+drawback:disadvantage
+drubbing:thrashing,walloping,debacle,slaughter,trouncing,whipping,beating,licking,lacing,whacking,corporal punishment,defeat
+dud:unloaded,flop,washout,misfire,turkey,bomb,breakdown,bust,equipment failure,failure,fizzle,loser,nonstarter,unsuccessful person
+dying:anxious,nascent,eager,last,moribund,death,demise,end,ending,birth
+ebbing:ebb,wane,decline,diminution
+effeteness:
+endless task:
+enfeeblement:debilitation,enervation,exhaustion,weakening
+enormity:outrageousness,atrocity,enormousness,grandness,greatness,immenseness,immensity,indecency,inhumanity,nefariousness,sizeableness,ugliness,vastness,vileness,wickedness,wideness
+erratum:misprint,typographical error,typo,literal error,literal,error,mistake
+error:mistake,fault,erroneousness,erroneous belief,misplay,wrongdoing,computer error,evil,evilness,failure,happening,incorrectness,misconception,misstatement,natural event,nonaccomplishment,nonachievement,occurrence,occurrent,wrongness
+evil:vicious,malefic,malevolent,malign,harmful,injurious,good,bad,immoral,offensive,unrighteous,wicked,wrong,malign,atrocious,bad,black,corruptive,dark,demonic,despicable,devilish,diabolic,diabolical,evil-minded,fiendish,flagitious,grievous,heinous,hellish,immoral,infernal,maleficent,mephistophelean,mephistophelian,monstrous,perversive,pestiferous,satanic,sinister,slimy,ugly,unholy,unworthy,vile,wicked,worthless,wretched,immorality,wickedness,iniquity,evilness,bad,badness,evildoing,transgression,good,goodness
+exhaustion:debilitation,enervation,enfeeblement,depletion,fatigue,tiredness,weakening,weariness
+fading:attenuation,weakening
+failing:failed,unsatisfactory,unsuccessful,weakness,flunk,failure,imperfection,imperfectness,passing
+failure of nerve:
+fallen countenance:
+falling short:
+falling-off:
+false alarm:warning
+fatuity:absurdity,fatuousness,silliness,folly,foolishness,unwiseness
+fault:mistake,error,defect,flaw,demerit,faulting,geological fault,shift,fracture,break,breakdown,cleft,crack,crevice,equipment failure,fissure,imperfection,imperfectness,nonaccomplishment,nonachievement,responsibility,responsibleness,scissure,serve,service,worth,merit,blame,accuse,charge,absolve
+faute:
+felony:crime,law-breaking
+fewness:figure,number
+fiasco:debacle,collapse
+fizzle:hiss,hissing,hushing,sibilation,flop,bust,failure,noise,taper off,peter out,fizzle out,discontinue
+flagging:drooping,tired,accumulation,aggregation,assemblage,collection,paseo,walk,walkway
+flaw:defect,fault,failing,imperfection,imperfectness,weakness,blemish,damage
+foible:idiosyncrasy,mannerism,distinctiveness,part,peculiarity,portion,speciality,specialness,specialty
+foiling:frustration,thwarting,hinderance,hindrance,interference
+folding:foldable,foldaway,collapsable,collapsible,protein folding,fold,biological process,change of shape,geologic process,geological process,organic process
+forlorn hope:endeavor,endeavour,enterprise
+frailty:infirmity,debility,feebleness,frailness,valetudinarianism,vice,bad condition,evil,evilness,poor shape,softness,unfitness
+frustration:defeat,thwarting,foiling,annoyance,chafe,disappointment,hinderance,hindrance,interference,letdown,vexation
+futility:inutility,unusefulness,uselessness
+genocide:race murder,racial extermination,kill,killing,putting to death
+guilty act:
+hash:hashish,hasheesh,haschisch,dish,soft drug,chop,chop up
+heavy sin:
+hiding:concealment,concealing,activity
+hole:golf hole,hollow,fix,jam,mess,muddle,pickle,kettle of fish,trap,cakehole,maw,yap,gob,defect,depression,difficulty,fault,flaw,gap,mouth,natural depression,opening,oral cavity,oral fissure,period of play,play,playing period,rima oris,space,hole out,core out,hit,hollow,hollow out
+hope deferred:
+human error:
+imperfection:imperfectness,state,perfection
+impropriety:improperness,indecency,familiarity,indecorum,liberty,behavior,behaviour,condition,conduct,demeanor,demeanour,deportment,misbehavior,misbehaviour,misdeed,status,properness,propriety
+inadequacy:insufficiency,deficiency,inadequateness,amount,failing,unsatisfactoriness,weakness,adequacy,sufficiency
+inadvertence:oversight,unmindfulness,heedlessness,inadvertency,attentiveness,omission,heedfulness,mindfulness
+inadvertency:unmindfulness,heedlessness,inadvertence,attentiveness,heedfulness,mindfulness
+inanity:senselessness,mindlessness,vacuity,pointlessness,meaninglessness
+inattention:basic cognitive process,attention
+incompetence:incompetency,disease,inability,unfitness,competence
+incompetent:bungling,clumsy,fumbling,unskilled,incapable,unequal to,competent,unqualified,unskilled,incapable,inefficient,unqualified,unskilled,incapable,bad,feckless,inadequate,ineffective,inefficient,inept,unworkmanlike,incompetent person,unskilled person
+indifference:emotionlessness,impassivity,impassiveness,phlegm,stolidity,unemotionality,apathy,numbness,spiritlessness,nonchalance,unconcern,carefreeness,passiveness,passivity
+indiscretion:injudiciousness,peccadillo,folly,foolishness,misbehavior,misbehaviour,misdeed,unwiseness
+ineffectiveness:ineffectualness,ineffectuality,impotence,impotency,powerlessness,effectiveness
+ineffectuality:ineffectiveness,ineffectualness,impotence,impotency,powerlessness,effectiveness
+ineffectualness:ineffectiveness,ineffectuality,impotence,impotency,powerlessness,effectiveness
+inefficaciousness:inefficacy,ineffectiveness,ineffectuality,ineffectualness,efficacy
+inefficacy:inefficaciousness,ineffectiveness,ineffectuality,ineffectualness,efficacy
+inexecution:
+inexpiable sin:
+inferiority:lower status,lower rank,low quality,unfavorable position,caliber,calibre,disadvantage,low status,lowliness,lowness,quality,high quality,superiority
+infirmity:frailty,debility,feebleness,frailness,valetudinarianism,bad condition,poor shape,softness,unfitness
+iniquity:wickedness,darkness,dark,evil,immorality,injustice,unfairness,shabbiness,actus reus,condition,evildoing,misconduct,status,transgression,wrongdoing,wrongful conduct
+injury:hurt,harm,trauma,accidental injury,wound,combat injury,accident,actus reus,health problem,ill health,loss,misconduct,personnel casualty,unhealthiness,wrongdoing,wrongful conduct
+injustice:unfairness,iniquity,shabbiness,unjustness,actus reus,misconduct,unrighteousness,wrongdoing,wrongful conduct,justice
+inobservance:
+insolvency:economic condition,financial condition,solvency
+insolvent:solvent,bankrupt,belly-up,bankrupt,failure,loser,nonstarter,unsuccessful person
+insolvent debtor:
+insufficiency:inadequacy,deficiency,amount,failing,inability,unfitness,weakness,adequacy,sufficiency
+insufficient funds:
+invalidity:invalidness,illogic,illogicality,illogicalness,inconsequence
+involution:elaborateness,elaboration,intricacy,engagement,participation,involvement,exponentiation,enfolding,biological process,change of shape,complexity,complexness,construction,expression,grammatical construction,group action,mathematical operation,mathematical process,operation,organic process,non-engagement,non-involvement,nonparticipation
+kink:crick,rick,wrick,twist,twirl,bend,cramp,crease,crimp,difficulty,flexure,fold,idea,individual,mortal,muscle spasm,person,plication,somebody,someone,soul,spasm,thought,crimp,crape,frizzle,frizz,kink up,curl,curve,change surface,wave
+kited check:
+laches:
+lack:deficiency,want,demand,need,miss,have
+laissez-faire:individualistic,capitalist,capitalistic
+lambasting:cane,flog,lambaste,call on the carpet,take to task,rebuke,rag,trounce,reproof,lecture,reprimand,jaw,dress down,call down,scold,chide,berate,bawl out,remonstrate,chew out,chew up,have words,beat,beat up,criticise,criticize,knock,pick apart,work over
+lame duck:elected official
+lapse:oversight,backsliding,lapsing,relapse,relapsing,reversion,reverting,break,error,failure,fault,intermission,interruption,mistake,pause,suspension,sink,pass,backslide,relapse,recidivate,regress,retrogress,fall back,elapse,slip by,glide by,slip away,go by,slide by,go along,advance,cease,drop away,drop off,end,fall away,finish,forfeit,forgo,give up,go on,march on,move,move on,pass on,progress,retrovert,return,revert,slip,stop,terminate,throw overboard,turn back,waive
+lathering:soapsuds,suds,fret,stew,sweat,swither,agitation,foam,froth,working man,working person,workingman,workman,flog,welt,whip,lash,slash,strap,trounce,soap,beat,beat up,clean,cleanse,cover,effervesce,fizz,foam,froth,sparkle,work over
+laxity:laxness,remissness,slackness,condition,neglect,neglectfulness,negligence,status
+laxness:laxity,remissness,slackness,condition,neglect,neglectfulness,negligence,status
+lemon:gamboge,lemon yellow,maize,lemon tree,Citrus limon,stinker,artefact,artifact,citrous fruit,citrus,citrus fruit,citrus tree,flavor,flavour,nip,relish,sapidity,savor,savour,smack,tang,yellow,yellowness
+letdown:disappointment,dissatisfaction
+licking:defeat,beating,thrashing,drubbing,lacing,trouncing,whacking,conclusion,corporal punishment,ending,failure,finish,victory
+little problem:
+littleness:smallness,pettiness,closeness,meanness,minginess,niggardliness,niggardness,parsimoniousness,parsimony,size,tightfistedness,tightness,weakness,bigness,largeness
+loose ends:unfinished business,work
+looseness:diarrhea,diarrhoea,looseness of the bowels,play,profligacy,dissipation,dissolution,licentiousness,inaccuracy,intemperance,intemperateness,movability,movableness,self-indulgence,symptom,unrestraint,fixedness,tightness
+loser:also-ran,failure,nonstarter,unsuccessful person,contestant,gambler,unfortunate,unfortunate person,achiever,winner
+loss:deprivation,red ink,red,personnel casualty,passing,departure,exit,expiration,going,release,amount,amount of money,casualty,death,decease,decline,diminution,disadvantage,experience,expiry,failure,sum,sum of money,transferred possession,transferred property,gain
+loss of tone:
+maladroitness:awkwardness,clumsiness,ineptness,ineptitude,slowness,unskillfulness
+tennis:lawn tennis,court game
+times:multiplication,arithmetic operation,period,period of time,time period
+obscure:
+appear:look,seem,come out,come along,be,do,execute,happen,materialise,materialize,perform,disappear
+observe:detect,find,discover,notice,note,mention,remark,take note,respect,honor,honour,abide by,celebrate,keep,watch,follow,watch over,keep an eye on,maintain,accept,check,check into,check out,check over,check up on,go over,look into,say,sight,state,suss out,tell,break,disrespect
+scene:view,aspect,prospect,vista,panorama,shot,picture,fit,tantrum,conniption,setting,scenery,area,bad temper,country,dramatic composition,dramatic work,environment,environs,exposure,graphic art,ill temper,incident,photo,photograph,pic,set,situation,stage set,state of affairs,surround,surroundings,visual image,visual percept
+observe:detect,find,discover,notice,note,mention,remark,take note,respect,honor,honour,abide by,celebrate,keep,watch,follow,watch over,keep an eye on,maintain,accept,check,check into,check out,check over,check up on,go over,look into,say,sight,state,suss out,tell,break,disrespect
+characters:fictional character,fictitious character,quality,lineament,fiber,fibre,role,theatrical role,part,persona,eccentric,type,case,reference,character reference,grapheme,graphic symbol,adult,attribute,characterization,dimension,enactment,good word,grownup,imaginary being,imaginary creature,personation,portrayal,printed symbol,property,recommendation,reputation,repute,testimonial,trait,written symbol,engrave,grave,inscribe,scratch
+scene:view,aspect,prospect,vista,panorama,shot,picture,fit,tantrum,conniption,setting,scenery,area,bad temper,country,dramatic composition,dramatic work,environment,environs,exposure,graphic art,ill temper,incident,photo,photograph,pic,set,situation,stage set,state of affairs,surround,surroundings,visual image,visual percept
+odd characters:
+scene:view,aspect,prospect,vista,panorama,shot,picture,fit,tantrum,conniption,setting,scenery,area,bad temper,country,dramatic composition,dramatic work,environment,environs,exposure,graphic art,ill temper,incident,photo,photograph,pic,set,situation,stage set,state of affairs,surround,surroundings,visual image,visual percept
+surrounded:encircled,enclosed
+surrounded:encircled,enclosed
+:
+train,:
+tennis:lawn tennis,court game
+face:human face,expression,look,aspect,facial expression,side,grimace,font,fount,typeface,boldness,nerve,brass,cheek,aggressiveness,appearance,countenance,external body part,facial gesture,front,individual,mortal,person,position,somebody,someone,soul,status,surface,type,vertical surface,visage,visual aspect,confront,face up,front,look,present,approach,be,cover,disclose,encounter,expose,go about,lie,line,meet,play,set about,take on,turn,avoid,back,face off
+stable:static,unchanging,unstable,constant,lasting,permanent,steady,balanced,firm,lasting,sound,stabile,stabilised,stabilized,steady,unchangeable,unfluctuating,unreactive,stalls,horse barn,farm building,shelter
+hard:difficult,knockout,severe,arduous,backbreaking,grueling,gruelling,heavy,laborious,operose,punishing,toilsome,unvoiced,voiceless,surd,concentrated,intemperate,strong,tough,easy,soft,voiced,difficult,hard,tough,demanding,effortful,insensitive,merciless,unmerciful,arduous,strong,tough,adamantine,al dente,alcoholic,ambitious,awkward,bad,baffling,calculating,calculative,case-hardened,catchy,challenging,conniving,corneous,delicate,effortful,embarrassing,erect,firm,fractious,granitelike,granitic,hard-boiled,hard-fought,hardened,herculean,hornlike,horny,indulgent,knotty,lignified,nasty,ossified,petrified,petrous,problematic,problematical,rocklike,rocky,rough,rugged,scheming,semihard,serious,set,shrewd,solid,stale,steely,sticky,stonelike,stony,tall,thorny,ticklish,tight,touchy,tricky,troublesome,trying,tumid,unenviable,unyielding,velar,vexed,whispered,woody,firmly,severely,heavily,intemperately,lightly
+hard:difficult,knockout,severe,arduous,backbreaking,grueling,gruelling,heavy,laborious,operose,punishing,toilsome,unvoiced,voiceless,surd,concentrated,intemperate,strong,tough,easy,soft,voiced,difficult,hard,tough,demanding,effortful,insensitive,merciless,unmerciful,arduous,strong,tough,adamantine,al dente,alcoholic,ambitious,awkward,bad,baffling,calculating,calculative,case-hardened,catchy,challenging,conniving,corneous,delicate,effortful,embarrassing,erect,firm,fractious,granitelike,granitic,hard-boiled,hard-fought,hardened,herculean,hornlike,horny,indulgent,knotty,lignified,nasty,ossified,petrified,petrous,problematic,problematical,rocklike,rocky,rough,rugged,scheming,semihard,serious,set,shrewd,solid,stale,steely,sticky,stonelike,stony,tall,thorny,ticklish,tight,touchy,tricky,troublesome,trying,tumid,unenviable,unyielding,velar,vexed,whispered,woody,firmly,severely,heavily,intemperately,lightly
+bronx cheer:boo,hoot,Bronx cheer,hiss,raspberry,razzing,razz,snort,bird,call,cry,outcry,shout,vociferation,yell
+jane:
+atomic warhead:nuclear warhead,thermonuclear warhead,nuke,load,payload,warhead
+avifauna:fauna,zoology
+baby bird:nestling,young bird
+bastard:
+biddy:hen,chick,chicken,Gallus gallus,young bird
+bird of jove:eagle,bird of Jove,bird of prey,raptor,raptorial bird
+bird of juno:peafowl,bird of Juno,pheasant
+bird of minerva:owl,bird of Minerva,bird of night,hooter,bird of prey,raptor,raptorial bird
+bird of night:owl,bird of Minerva,hooter,bird of prey,raptor,raptorial bird
+bird of passage:wanderer,roamer,rover,bird,traveler,traveller
+bird of prey:raptor,raptorial bird,bird
+birdie:shuttlecock,bird,shuttle,badminton equipment,score,shoot
+birdlife:
+birdy:
+boo:hoot,Bronx cheer,hiss,raspberry,razzing,razz,snort,bird,call,cry,outcry,shout,vociferation,yell,hiss,condemn,applaud
+broad:wide,across-the-board,all-embracing,all-encompassing,all-inclusive,encompassing,extensive,panoptic,unspecific,unsubtle,spacious,large-minded,liberal,tolerant,blanket,full,narrow,comprehensive,thick,beamy,big,bird's-eye,broad-brimmed,broad-minded,clear,comprehensive,deep,fanlike,general,high,large,noticeable,panoramic,sweeping,wide-screen,adult female,woman
+bugger:sodomite,sodomist,sod,degenerate,deviant,deviate,pervert,sodomize,sodomise,copulate,couple,mate,pair
+cage bird:
+cat:true cat,guy,hombre,bozo,kat,khat,qat,quat,Arabian tea,African tea,cat-o'-nine-tails,Caterpillar,big cat,computerized tomography,computed tomography,CT,computerized axial tomography,computed axial tomography,CAT,adult female,adult male,excitant,felid,feline,gossip,gossiper,gossipmonger,man,newsmonger,rumormonger,rumourmonger,stimulant,stimulant drug,tracked vehicle,whip,woman,X-radiation,X-raying,vomit,vomit up,purge,cast,sick,be sick,disgorge,regorge,retch,puke,barf,spew,spue,chuck,upchuck,honk,regurgitate,throw up,egest,eliminate,excrete,flog,lash,lather,pass,slash,strap,trounce,welt,whip,keep down
+catcall:call,cry,outcry,shout,vociferation,yell,deride
+chap:fellow,feller,fella,lad,gent,blighter,cuss,crevice,cranny,crack,fissure,cleft,depression,impression,imprint,leg covering,legging,legin,male,male person,scissure,crack
+character:fictional character,fictitious character,quality,lineament,fiber,fibre,role,theatrical role,part,persona,eccentric,type,case,reference,character reference,grapheme,graphic symbol,adult,attribute,characterization,dimension,enactment,good word,grownup,imaginary being,imaginary creature,personation,portrayal,printed symbol,property,recommendation,reputation,repute,testimonial,trait,written symbol,engrave,grave,inscribe,scratch
+chick:biddy,dame,doll,wench,skirt,bird,chicken,fille,Gallus gallus,girl,miss,missy,young bird,young lady,young woman
+cygnet:swan,young bird
+dame:doll,wench,skirt,chick,bird,madam,ma'am,lady,gentlewoman,adult female,fille,girl,miss,missy,woman,young lady,young woman
+diving bird:
+doll:dolly,dame,wench,skirt,chick,bird,fille,girl,miss,missy,plaything,toy,young lady,young woman
+dove:peacenik,Columba,Dove,squab,allegory,constellation,disarmer,emblem,pacificist,pacifist,pigeon,poultry,hawk
+eagle:bird of Jove,allegory,bird of prey,coin,emblem,raptor,raptorial bird,score,hit,rack up,score,tally
+eaglet:bird of Jove,eagle,young bird
+feller:lumberman,lumberjack,logger,faller,chap,fellow,fella,lad,gent,blighter,cuss,jack,laborer,labourer,male,male person,manual laborer
+fish-eating bird:
+fledgling:unfledged,callow,fledgeling,fledged,inexperienced,inexperient,mature,newcomer,fledgeling,starter,neophyte,freshman,newbie,entrant,beginner,initiate,novice,tiro,tyro,young bird
+flightless bird:ratite,ratite bird,bird,carinate
+fowl:domestic fowl,poultry,bird,gallinacean,gallinaceous bird,meat,hunt,hunt down,run,track down
+fruit-eating bird:
+fulmar:fulmar petrel,Fulmarus glacialis,petrel
+game bird:gallinacean,gallinaceous bird,game
+guided missile:missile
+hen:biddy,bird,chicken,female,Gallus gallus,poulet,volaille
+hiss:hissing,hushing,fizzle,sibilation,boo,hoot,Bronx cheer,raspberry,razzing,razz,snort,bird,call,cry,noise,outcry,shout,vociferation,yell,siss,sizz,sibilate,whoosh,boo,condemn,emit,go,let loose,let out,locomote,mouth,move,speak,talk,travel,utter,verbalise,verbalize,applaud
+insect-eating bird:
+jasper:opaque gem
+joker:jokester,turkey,article,clause,comedian,comic,disagreeable person,playing card,unpleasant person
+lad:chap,fellow,feller,fella,gent,blighter,cuss,cub,laddie,sonny,sonny boy,boy,male,male child,male person
+migrant:migratory,unsettled,migrator,traveler,traveller
+migratory bird:
+minx:coquette,flirt,vamp,vamper,tease,prickteaser,adult female,woman
+missile:projectile,arm,rocket,weapon,weapon system
+nestling:baby bird,child,kid,youngster,minor,shaver,nipper,small fry,tike,tyke,fry,juvenile,juvenile person,toddler,young bird
+nuclear warhead:atomic warhead,thermonuclear warhead,nuke,load,payload,warhead
+oscine bird:oscine,passeriform bird,passerine
+owl:bird of Minerva,bird of night,hooter,bird of prey,raptor,raptorial bird
+passerine bird:
+payload:warhead,load,cargo,lading,freight,loading,shipment,consignment,explosive,merchandise,product,ware
+peacock:peacock butterfly,Inachis io,bird of Juno,brush-footed butterfly,four-footed butterfly,nymphalid,nymphalid butterfly,peafowl
+peafowl:bird of Juno,pheasant
+peahen:bird of Juno,peafowl
+perching bird:Insessores,order Insessores,percher,animal order
+pigeon:columbiform bird
+pooh:
+pooh-pooh:reject,spurn,freeze off,scorn,disdain,turn down,decline,express,give tongue to,refuse,utter,verbalise,verbalize
+ratite:ratite bird,flightless bird,bird,carinate
+razz:boo,hoot,Bronx cheer,hiss,raspberry,razzing,snort,bird,call,cry,outcry,shout,vociferation,yell,tease,rag,cod,tantalize,tantalise,bait,taunt,twit,rally,ride,bemock,mock
+rocket:projectile,rocket engine,roquette,garden rocket,rocket salad,arugula,Eruca sativa,Eruca vesicaria sativa,skyrocket,firework,herb,herbaceous plant,jet engine,pyrotechnic,vehicle,visual signal,skyrocket,arise,come up,go up,impel,lift,move up,propel,rise,uprise
+sea bird:seabird,seafowl,aquatic bird
+seed-eating bird:
+shore bird:shorebird,limicoline bird,wader,wading bird
+skirt:dame,doll,wench,chick,bird,cloth covering,fille,garment,girl,miss,missy,young lady,young woman,hedge,fudge,evade,put off,circumvent,parry,elude,dodge,duck,sidestep,surround,border,adjoin,avoid,bound,contact,go by,go past,meet,pass,pass by,surpass,touch,travel by
+songbird:songster,oscine,oscine bird
+squab:squabby,short,dove,couch,lounge,pigeon,poultry,sofa
+storm petrel:petrel
+stormy petrel:northern storm petrel,Hydrobates pelagicus,storm petrel
+stud:he-man,macho-man,rivet,scantling,studhorse,stud poker,adult male,decoration,entire,man,ornament,ornamentation,poker,poker game,stallion,upright,vertical,dot,constellate,add,continue,cover,extend
+swan:aquatic bird,affirm,verify,assert,avow,aver,swear,roll,wander,stray,tramp,roam,cast,ramble,rove,range,drift,vagabond,declare,go,locomote,move,sail,sweep,travel
+thermonuclear warhead:atomic warhead,nuclear warhead,nuke,load,payload,warhead
+tomato:love apple,tomato plant,Lycopersicon esculentum,herb,herbaceous plant,solanaceous vegetable
+torpedo:gunman,gunslinger,hired gun,gun,gun for hire,triggerman,hit man,hitman,shooter,bomber,grinder,hero,hero sandwich,hoagie,hoagy,Cuban sandwich,Italian sandwich,poor boy,sub,submarine,submarine sandwich,wedge,zep,electric ray,crampfish,numbfish,alarm,alarum,alert,armament,explosive device,firework,liquidator,manslayer,murderer,pyrotechnic,ray,sandwich,warning signal,assail,attack
+wading bird:wader,aquatic bird
+war rocket:
+warbler:oscine,oscine bird,singer,vocaliser,vocalist,vocalizer
+warhead:payload,load,explosive
+water bird:waterfowl,waterbird,aquatic bird
+waterfowl:water bird,waterbird,aquatic bird
+wench:dame,doll,skirt,chick,bird,fille,girl,miss,missy,young lady,young woman,fornicate
+wildfowl:bird,fowl
+stable:shelter,static,unchanging,stalls,horse barn,farm building
