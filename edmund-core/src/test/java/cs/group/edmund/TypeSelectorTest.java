@@ -31,7 +31,7 @@ public class TypeSelectorTest {
         assertThat(answer, is("nights"));
     }
 
-    @Ignore
+    //@Ignore
     @Test
     public void edmundReturnsTheCorrectAnswerForAnOddEvenClue() throws Exception {
         String answer = selector.retrieveAnswer("Observe odd characters in scene", "", 3);

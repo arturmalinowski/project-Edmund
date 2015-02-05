@@ -24,7 +24,7 @@ public class ContainerClueTest {
         clue = new ContainerClue(new Thesaurus());
     }
 
-    // Current success rate 30%
+    // Current success rate 33%
     @Ignore
     @Test
     @Table({
@@ -43,7 +43,6 @@ public class ContainerClueTest {
             @Row({"Outlaw in gangs carrying equipment", "brigands", "b.......", "8"}), //"outlaws" does not return "brigand", but "outlaw" does
 
             @Row({"Object when put into torn clothing", "raiment", "r......", "7"}), //"clothing" does not return "raiment"
-            @Row({"Kid keeps near this evening", "tonight", "t......", "7"}),  //"tot" -> "nigh" = "tonight", "evening" does not return "tonight"
             @Row({"Points out lion in tropical islands", "indicates", "i........", "9"}), //"cat" -> "indies" = "indicates", "points out" does not return "indicates"
             @Row({"Apostle's friend outside of university", "paul", "p...", "4"}), //"pal" -> "u" = "paul", "apostle" does not return "paul"
             @Row({"Everyone in wager on dancing performance", "ballet", "b.....", "6"}), // "all" -> "bet" = "ballet", "dancing" or "performance" does not return "ballet"
