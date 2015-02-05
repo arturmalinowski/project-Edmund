@@ -9,6 +9,7 @@ import org.dom4j.io.SAXReader;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 public class Thesaurus {
 
     private OfflineThesaurus offlineThesaurus = new OfflineThesaurus();
+    public static final String BIG_HUGE_LABS_API_KEY = "4dc4530e78ea832bb937f3e12563b9f7";
 
     public enum SynonymType {
         NOUN {
@@ -38,7 +40,7 @@ public class Thesaurus {
     }
 
     public JSONObject getJSON(String word) {
-        String url = "http://words.bighugelabs.com/api/2/4dc4530e78ea832bb937f3e12563b9f7/" + word.toLowerCase() + "/json";
+        String url = "http://words.bighugelabs.com/api/2/" + BIG_HUGE_LABS_API_KEY + "/" + word.toLowerCase() + "/json";
         return new JSONObject(HttpClient.makeRequest(url));
     }
 
@@ -49,26 +51,29 @@ public class Thesaurus {
         ArrayList<String> elementList = new ArrayList<>();
         SAXReader reader = new SAXReader();
         Document document;
-        try {
-            document = reader.read("http://words.bighugelabs.com/api/2/4dc4530e78ea832bb937f3e12563b9f7/" + word.toLowerCase() + "/xml");
-        } catch (Exception e) {
-            if (e instanceof DocumentException) {
+        String url = "http://words.bighugelabs.com/api/2/" + BIG_HUGE_LABS_API_KEY + "/" + word.toLowerCase() + "/xml";
+        String response = HttpClient.makeRequest(url);
+
+        if (HttpClient.responseCode() == 404) {
+            offlineThesaurus.addNewQuery(word, elementList);
+            return elementList;
+        }
+
+        if (HttpClient.responseCode() == 200) {
+            try {
+                document = reader.read(new StringReader(response));
+                Element root = document.getRootElement();
+
+                for (Iterator i = root.elementIterator("w"); i.hasNext(); ) {
+                    Element element = (Element) i.next();
+                    elementList.add(element.getText());
+                }
                 offlineThesaurus.addNewQuery(word, elementList);
-                return elementList;
-            } else {
-                System.out.println("Error parsing xml - synonyms");
-                return elementList;
+
+            } catch (DocumentException e) {
+                e.printStackTrace();
             }
         }
-
-        Element root = document.getRootElement();
-
-        for (Iterator i = root.elementIterator("w"); i.hasNext(); ) {
-            Element element = (Element) i.next();
-            elementList.add(element.getText());
-        }
-
-        offlineThesaurus.addNewQuery(word, elementList);
 
         return elementList;
     }
