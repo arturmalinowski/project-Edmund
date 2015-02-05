@@ -11,6 +11,7 @@ import org.jsoup.select.Elements;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Arrays.asList;
 
@@ -40,7 +41,7 @@ public class AnagramClue implements Clue {
     }
 
     @Override
-    public String solve(String phrase, String hint, int... answerLength) {
+    public Optional<String> solve(String phrase, String hint, int... answerLength) {
         String keyWord = null;
         String possibleAnswer = "";
         String[] words = phrase.replaceAll("[-+.^:,?!'’/]", " ").toUpperCase().split(" ");
@@ -65,7 +66,7 @@ public class AnagramClue implements Clue {
                 }
             }
             if (!isAnagram) {
-                return "Answer not found";
+                return Optional.empty();
             } else {
                 clueWords.remove(keyWord);
 
@@ -107,7 +108,7 @@ public class AnagramClue implements Clue {
                 }
             }
         }
-        return possibleAnswer;
+        return Optional.of(possibleAnswer);
     }
 
     public List<String> findAnagram(String word) {

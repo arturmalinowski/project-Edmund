@@ -5,6 +5,7 @@ import cs.group.edmund.utils.Thesaurus;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class DoubleDefinitionsClue implements Clue {
 
@@ -42,7 +43,7 @@ public class DoubleDefinitionsClue implements Clue {
     }
 
     @Override
-    public String solve(String phrase, String hint, int... answerLength) {
+    public Optional<String> solve(String phrase, String hint, int... answerLength) {
         for (int value : answerLength) {
             this.answerLength.add(value);
         }
@@ -56,13 +57,13 @@ public class DoubleDefinitionsClue implements Clue {
     }
 
 
-    public String getAnswer(String phrase) {
+    public Optional<String> getAnswer(String phrase) {
         findMatchingWords(phrase);
         if (answer == null) {
-            answer = "Answer not found";
+            return Optional.empty();
         }
 
-        return answer.replace("-", " ");
+        return Optional.of(answer.replace("-", " "));
     }
 
     public Boolean findMatchingWords(String phrase) {
