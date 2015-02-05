@@ -1,8 +1,6 @@
 package cs.group.edmund.utils;
 
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -28,34 +26,6 @@ public class ThesaurusTest {
         assertThat(list.toString(), containsString("grimace"));
     }
 
-    @Test
-    public void jsonTest() {
-        JSONObject answer = thesaurus.getJSON("monkey");
-        JSONArray array = answer.getJSONObject("noun").getJSONArray("syn");
-
-        assertThat(array.toString(), containsString("primate"));
-    }
-
-    @Test
-    public void nounTest() {
-        List list = thesaurus.getSynonyms(Thesaurus.SynonymType.NOUN, "future");
-        assertThat(list.contains("hereafter"), is(true));
-        assertThat(list.contains("time to come"), is(true));
-    }
-
-    @Test
-    public void adjectiveTest() {
-        List list = thesaurus.getSynonyms(Thesaurus.SynonymType.ADJECTIVE, "future");
-        assertThat(list.contains("next"), is(true));
-        assertThat(list.contains("later"), is(true));
-    }
-
-    @Test
-    public void verbTest() {
-        List list = thesaurus.getSynonyms(Thesaurus.SynonymType.VERB, "time");
-        assertThat(list.contains("clock"), is(true));
-        assertThat(list.contains("schedule"), is(true));
-    }
 
     @Test
     public void allSynonymsTest() {
