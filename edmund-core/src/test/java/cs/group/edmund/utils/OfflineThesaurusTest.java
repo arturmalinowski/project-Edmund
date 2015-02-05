@@ -32,14 +32,14 @@ public class OfflineThesaurusTest {
 
     @Test
     public void displayResultsTest() {
-        List list = offlineThesaurus.results("potter");
+        List list = offlineThesaurus.results("retards");
 
-        assertThat(list.contains("thrower"), is(true));
+        assertThat(list.contains("idiot"), is(true));
     }
 
     @Test
     public void hasWordTest() {
-        assertThat(offlineThesaurus.hasWord("potter"), is(true));
+        assertThat(offlineThesaurus.hasWord("retards"), is(true));
     }
 
     @Test
