@@ -35,14 +35,14 @@ public class OfflineThesaurus {
             }
             line = line.substring(1);
             try {
-                FileUtils.writeStringToFile(new File(url), queryWord + ":" + line + "\n", "utf8", true);
+                FileUtils.writeStringToFile(new File(url), queryWord.toLowerCase() + ":" + line + "\n", "utf8", true);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         else {
             try {
-                FileUtils.writeStringToFile(new File(url), queryWord + ":\n", "utf8", true);
+                FileUtils.writeStringToFile(new File(url), queryWord.toLowerCase() + ":\n", "utf8", true);
             } catch (IOException e) {
                 e.printStackTrace();
             }

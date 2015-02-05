@@ -5,6 +5,7 @@ import com.googlecode.yatspec.junit.Table;
 import com.googlecode.yatspec.junit.TableRunner;
 import cs.group.edmund.utils.Helper;
 import cs.group.edmund.utils.Thesaurus;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +25,7 @@ public class AnagramClueTest {
     private AnagramClue clue;
     private Thesaurus thesaurus;
 
-    @Test
+    @Before
     public void setup() {
         thesaurus = new Thesaurus();
     }

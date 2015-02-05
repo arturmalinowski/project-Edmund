@@ -17,7 +17,7 @@ import static java.util.Arrays.asList;
 public class AnagramClue implements Clue {
 
     private final List<String> keyWords;
-    private final Thesaurus thesaurus;
+    private Thesaurus thesaurus;
 
     public AnagramClue(Thesaurus thesaurus) {
         this.thesaurus = thesaurus;
