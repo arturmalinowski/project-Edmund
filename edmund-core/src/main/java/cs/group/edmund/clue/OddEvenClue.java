@@ -7,6 +7,7 @@ import cs.group.edmund.utils.Helper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Arrays.asList;
 
@@ -41,7 +42,7 @@ public class OddEvenClue implements Clue{
         return false;
     }
 
-    public String solve(String phrase, String hint, int... answerLength){
+    public Optional<String> solve(String phrase, String hint, int... answerLength){
         keyWord = null;
         String possibleAnswer = "";
         String[] tempWords = phrase.replaceAll("[-+.^:,?!'’/]"," ").toUpperCase().split(" ");
@@ -57,7 +58,7 @@ public class OddEvenClue implements Clue{
 
         }
 
-        return possibleAnswer;
+        return Optional.of(possibleAnswer);
     }
 
     private String solveOddEven(int answerLength, int type, String hint) {

@@ -9,6 +9,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -52,8 +53,8 @@ public class ContainerClueTest {
             @Row({"Russet bears are raised", "reared", "r.....", "6"}) //"raised" does not return "reared"
     })
     public void bulkClueTest(String crosswordClue, String clueAnswer, String hint, String answerLength) {
-        String answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
-        assertThat(answer, is(clueAnswer));
+        Optional<String> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
+        assertThat(answer.get(), is(clueAnswer));
     }
 
     @Test
