@@ -5,6 +5,7 @@ import cs.group.edmund.utils.Thesaurus;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Arrays.asList;
 
@@ -43,7 +44,7 @@ public class ReversalClue implements Clue {
     }
 
     @Override
-    public String solve(String phrase, String hint, int... answerLength) {
+    public Optional<String> solve(String phrase, String hint, int... answerLength) {
         String[] clueWords = phrase.split("\\s+");
         for (int i = 0; i < clueWords.length; i++) {
             clueWords[i] = clueWords[i].replaceAll("[,?!]", "");
@@ -72,9 +73,9 @@ public class ReversalClue implements Clue {
         ArrayList<String> answer = Helper.removeDuplicates(new ArrayList<>((answersList)));
 
         if (answerFound) {
-            return answer.get(0);
+            return Optional.of(answer.get(0));
         } else {
-            return "Answer not found";
+            return Optional.empty();
         }
     }
 

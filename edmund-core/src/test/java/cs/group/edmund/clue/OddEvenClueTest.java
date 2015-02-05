@@ -4,6 +4,8 @@ package cs.group.edmund.clue;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.Optional;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -27,17 +29,17 @@ public class OddEvenClueTest {
     @Test
     public void firstOddEvenClueCanBeSolved() {
         clue = new OddEvenClue();
-        String answer = clue.solve("Have a meal with every other tenant", null, 3);
+        Optional<String> answer = clue.solve("Have a meal with every other tenant", null, 3);
 
-        assertThat(answer, is("eat"));
+        assertThat(answer.get(), is("eat"));
     }
 
 
     @Test
     public void secondOddEvenClueCanBeSolved() {
         clue = new OddEvenClue();
-        String answer = clue.solve("Observe odd characters in scene", null, 3);
+        Optional<String> answer = clue.solve("Observe odd characters in scene", null, 3);
 
-        assertThat(answer, is("see"));
+        assertThat(answer.get(), is("see"));
     }
 }

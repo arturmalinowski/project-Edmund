@@ -6,6 +6,7 @@ import cs.group.edmund.utils.Thesaurus;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Arrays.asList;
 
@@ -35,7 +36,7 @@ public class ContainerClue implements Clue {
     }
 
     @Override
-    public String solve(String phrase, String hint, int... answerLength)
+    public Optional<String> solve(String phrase, String hint, int... answerLength)
     {
         // Check if any known keyword is in phrase
         phrase = phrase.toLowerCase();
@@ -47,7 +48,7 @@ public class ContainerClue implements Clue {
             answers.add(solveFor(splitPhrase[0], phrase.substring(phrase.indexOf(" ")+1), key, hint, answerLength)); // assuming hint is first word
             for (String answer : answers) {
                 if (answer != null) {
-                    return answer;
+                    return Optional.of(answer);
                 }
             }
 
@@ -55,11 +56,11 @@ public class ContainerClue implements Clue {
             answers.add(solveFor(splitPhrase[splitPhrase.length - 1], phrase.substring(0, phrase.lastIndexOf(" ")), key, hint, answerLength)); // assuming hint is last word
             for (String answer : answers) {
                 if (answer != null) {
-                    return answer;
+                    return Optional.of(answer);
                 }
             }
         }
-        return "Answer not found";
+        return Optional.empty();
     }
 
     public String solveFor(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
