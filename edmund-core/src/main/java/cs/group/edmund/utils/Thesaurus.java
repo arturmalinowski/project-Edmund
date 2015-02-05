@@ -19,31 +19,6 @@ public class Thesaurus {
     private OfflineThesaurus offlineThesaurus = new OfflineThesaurus();
     public static final String BIG_HUGE_LABS_API_KEY = "4dc4530e78ea832bb937f3e12563b9f7";
 
-    public enum SynonymType {
-        NOUN {
-            public String toString() {
-                return "noun";
-            }
-        },
-
-        ADJECTIVE {
-            public String toString() {
-                return "adjective";
-            }
-        },
-
-        VERB {
-            public String toString() {
-                return "verb";
-            }
-        }
-    }
-
-    public JSONObject getJSON(String word) {
-        String url = "http://words.bighugelabs.com/api/2/" + BIG_HUGE_LABS_API_KEY + "/" + word.toLowerCase() + "/json";
-        return new JSONObject(HttpClient.makeRequest(url));
-    }
-
     public ArrayList<String> getAllSynonymsXML(String word) {
         if (offlineThesaurus.hasWord(word)) {
             return offlineThesaurus.results(word);
@@ -78,25 +53,6 @@ public class Thesaurus {
         return elementList;
     }
 
-    public List<String> getSynonyms(SynonymType type, String word) {
-        List<String> list = new ArrayList<>();
-        try {
-            JSONObject obj = getJSON(word);
-            if (obj.has(type.toString())) {
-                JSONArray arr = obj.getJSONObject(type.toString()).getJSONArray("syn");
-                for (int i = 0; i < arr.length(); i++) {
-                    list.add(arr.getString(i));
-                }
-                return list;
-            } else {
-                return list;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
     public List<String> getRelatedWordsJSON(String word) {
         List<String> list = new ArrayList<>();
         JSONObject obj = new JSONObject(HttpClient.makeRequest("http://project-shakespeare.herokuapp.com/shakespeare/api/word/" + word + "?format=json"));
@@ -108,21 +64,6 @@ public class Thesaurus {
             }
             return list;
         } else {
-            return list;
-        }
-    }
-
-    public List<String> getAllSynonyms(String word) {
-        if (offlineThesaurus.hasWord(word)) {
-            return offlineThesaurus.results(word);
-        } else {
-            List<String> list;
-            list = getSynonyms(SynonymType.VERB, word);
-            list.addAll(getSynonyms(SynonymType.ADJECTIVE, word));
-            list.addAll(getSynonyms(SynonymType.NOUN, word));
-            if (!list.isEmpty()) {
-                offlineThesaurus.addNewQuery(word, list);
-            }
             return list;
         }
     }
