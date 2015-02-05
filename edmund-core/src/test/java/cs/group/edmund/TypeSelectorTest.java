@@ -18,47 +18,30 @@ public class TypeSelectorTest {
     }
 
     @Test
-    public void edmundReturnsTheCorrectAnswerForAReversalClue() {
-        String answer = "";
-        try {
-            answer = selector.retrieveAnswer("Physician brings fish around", "", 3);
-        } catch (Exception e) {
-        }
+    public void edmundReturnsTheCorrectAnswerForAReversalClue() throws Exception {
+        String answer = selector.retrieveAnswer("Physician brings fish around", "", 3);
 
         assertThat(answer, is("doc"));
     }
 
     @Test
-    public void edmundReturnsTheCorrectAnswerForAnAnagramClue() {
-        String answer = "";
-        try {
-            answer = selector.retrieveAnswer("Times when things appear obscure?", "", 6);
-        } catch (Exception e) {
-        }
+    public void edmundReturnsTheCorrectAnswerForAnAnagramClue() throws Exception {
+        String answer = selector.retrieveAnswer("Times when things appear obscure?", "", 6);
 
         assertThat(answer, is("nights"));
     }
 
     @Ignore
     @Test
-    public void edmundReturnsTheCorrectAnswerForAnOddEvenClue() {
-        String answer = "";
-        try {
-            answer = selector.retrieveAnswer("Observe odd characters in scene", "", 3);
-        } catch (Exception e) {
-        }
+    public void edmundReturnsTheCorrectAnswerForAnOddEvenClue() throws Exception {
+        String answer = selector.retrieveAnswer("Observe odd characters in scene", "", 3);
 
         assertThat(answer, is("see"));
     }
 
-    @Ignore
     @Test
-    public void edmundReturnsTheCorrectAnswerForAContainerClue() {
-        String answer = "";
-        try {
-            answer = selector.retrieveAnswer("We surrounded strike snowy", "w....", 5);
-        } catch (Exception e) {
-        }
+    public void edmundReturnsTheCorrectAnswerForAContainerClue() throws Exception {
+        String answer = selector.retrieveAnswer("We surrounded strike snowy", "w....", 5);
 
         assertThat(answer, is("white"));
     }
