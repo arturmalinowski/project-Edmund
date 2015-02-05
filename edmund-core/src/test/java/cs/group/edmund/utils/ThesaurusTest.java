@@ -26,15 +26,6 @@ public class ThesaurusTest {
         assertThat(list.toString(), containsString("grimace"));
     }
 
-
-    @Test
-    public void allSynonymsTest() {
-        List list = thesaurus.getAllSynonyms("stable");
-        assertThat(list.contains("static"), is(true));
-        assertThat(list.contains("stalls"), is(true));
-        assertThat(list.contains("shelter"), is(true));
-    }
-
     @Test
     public void allSynonymsXmlTest() {
 
