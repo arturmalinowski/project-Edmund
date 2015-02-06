@@ -16,10 +16,11 @@ public class OfflineThesaurus {
 
     private HashMap<String, ArrayList<String>> words = new HashMap<>();
     private URI url;
+    private File file;
 
     public OfflineThesaurus() {
         try {
-            url = ClassLoader.getSystemResource("thesaurus.txt").toURI();
+            file = new File("edmund-core/src/main/resources/thesaurus.txt");
             readFromFile();
         } catch (Exception e) {
             e.printStackTrace();
@@ -35,14 +36,14 @@ public class OfflineThesaurus {
             }
             line = line.substring(1);
             try {
-                FileUtils.writeStringToFile(new File(url), queryWord.toLowerCase() + ":" + line + "\n", "utf8", true);
+                FileUtils.writeStringToFile(file, queryWord.toLowerCase() + ":" + line + "\n", "utf8", true);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         else {
             try {
-                FileUtils.writeStringToFile(new File(url), queryWord.toLowerCase() + ":\n", "utf8", true);
+                FileUtils.writeStringToFile(file, queryWord.toLowerCase() + ":\n", "utf8", true);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -60,7 +61,7 @@ public class OfflineThesaurus {
     public void readFromFile(){
         List<String> listOfWords = new ArrayList<>();
         try {
-            listOfWords = readLines(new File(url));
+            listOfWords = readLines(file);
         } catch (IOException e) {
             e.printStackTrace();
         }
