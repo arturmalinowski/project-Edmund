@@ -26,7 +26,7 @@ public class Thesaurus {
         ArrayList<String> elementList = new ArrayList<>();
         SAXReader reader = new SAXReader();
         Document document;
-        String url = "http://words.bighugelabs.com/api/2/" + BIG_HUGE_LABS_API_KEY + "/" + word.toLowerCase() + "/xml";
+        String url = "http://words.bighugelabs.com/api/2/" + BIG_HUGE_LABS_API_KEY + "/" + word.toLowerCase().replace(" ", "-") + "/xml";
         String response = HttpClient.makeRequest(url);
 
         if (HttpClient.responseCode() == 404) {
