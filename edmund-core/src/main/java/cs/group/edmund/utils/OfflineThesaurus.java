@@ -20,7 +20,7 @@ public class OfflineThesaurus {
 
     public OfflineThesaurus() {
         try {
-            file = new File("edmund-core/src/main/resources/thesaurus.txt");
+            file = new File(ClassLoader.getSystemResource("thesaurus.txt").toURI());
             readFromFile();
         } catch (Exception e) {
             e.printStackTrace();

@@ -4231,3 +4231,5 @@ waterfowl:water bird,waterbird,aquatic bird
 wench:dame,doll,skirt,chick,bird,fille,girl,miss,missy,young lady,young woman,fornicate
 wildfowl:bird,fowl
 stable:shelter,static,unchanging,stalls,horse barn,farm building
+tennis:lawn tennis,court game
+tennis:lawn tennis,court game
