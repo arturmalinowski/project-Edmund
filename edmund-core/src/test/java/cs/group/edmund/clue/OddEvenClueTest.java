@@ -1,14 +1,18 @@
 package cs.group.edmund.clue;
 
 
-import org.junit.Ignore;
+import com.googlecode.yatspec.junit.Row;
+import com.googlecode.yatspec.junit.Table;
+import com.googlecode.yatspec.junit.TableRunner;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
+@RunWith(TableRunner.class)
 public class OddEvenClueTest {
 
     private OddEvenClue clue;
@@ -25,7 +29,6 @@ public class OddEvenClueTest {
         assertThat(clue.isRelevant("Times when things appear obscure?"), is(false));
     }
 
-    @Ignore
     @Test
     public void firstOddEvenClueCanBeSolved() {
         clue = new OddEvenClue();
@@ -41,5 +44,19 @@ public class OddEvenClueTest {
         Optional<String> answer = clue.solve("Observe odd characters in scene", null, 3);
 
         assertThat(answer.get(), is("see"));
+    }
+
+
+    @Test
+    @Table({@Row({"Sprout evenly in plant container", "pot", "3", "null"}),
+            @Row({"Odd oratress has rows", "oars", "4", "null"}),
+            //@Row({"Fern-owls itch regularly in play", "frolic", "6", "null"}),
+            //@Row({"Regulars in hard gang few saw", "adage", "5", "null"}),
+            @Row({"Conduct uneven wrangle", "wage", "4", "null"})})
+    public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength, String hint) {
+        clue = new OddEvenClue();
+        Optional<String> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
+
+        assertThat(answer.get(), is(clueAnswer));
     }
 }
