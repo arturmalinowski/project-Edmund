@@ -7,6 +7,7 @@ import com.googlecode.yatspec.junit.TableRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -32,18 +33,18 @@ public class OddEvenClueTest {
     @Test
     public void firstOddEvenClueCanBeSolved() {
         clue = new OddEvenClue();
-        Optional<String> answer = clue.solve("Have a meal with every other tenant", null, 3);
+        Optional<List<String>> answer = clue.solve("Have a meal with every other tenant", null, 3);
 
-        assertThat(answer.get(), is("eat"));
+        assertThat(answer.get().get(0), is("eat"));
     }
 
 
     @Test
     public void secondOddEvenClueCanBeSolved() {
         clue = new OddEvenClue();
-        Optional<String> answer = clue.solve("Observe odd characters in scene", null, 3);
+        Optional<List<String>> answer = clue.solve("Observe odd characters in scene", null, 3);
 
-        assertThat(answer.get(), is("see"));
+        assertThat(answer.get().get(0), is("see"));
     }
 
 
@@ -55,8 +56,8 @@ public class OddEvenClueTest {
             @Row({"Conduct uneven wrangle", "wage", "4", "null"})})
     public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength, String hint) {
         clue = new OddEvenClue();
-        Optional<String> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
+        Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
 
-        assertThat(answer.get(), is(clueAnswer));
+        assertThat(answer.get().get(0), is(clueAnswer));
     }
 }

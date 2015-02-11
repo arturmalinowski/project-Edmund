@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -52,9 +53,9 @@ public class ReversalClueTest {
                 .thenReturn(new ArrayList<>(Arrays.asList("circle", "outside", "invalid-twoWords", "loop")));
 
         Clue clue = new ReversalClue(thesaurus);
-        Optional<String> solvedWord = clue.solve("Physician brings fish round", null, 3);
+        Optional<List<String>> solvedWord = clue.solve("Physician brings fish round", null, 3);
 
-        assertThat(solvedWord.get(), is("doc"));
+        assertThat(solvedWord.get().get(0), is("doc"));
     }
 
     // Currently 2/5 passing, need to find more examples and improve success ratio
@@ -73,7 +74,7 @@ public class ReversalClueTest {
     })
     public void bulkClueTest(String clue, String hint, String length, String answer) {
         Clue reversalClue = new ReversalClue(thesaurus);
-        Optional<String> solvedWord = reversalClue.solve(clue, hint, Integer.parseInt(length));
+        Optional<List<String>> solvedWord = reversalClue.solve(clue, hint, Integer.parseInt(length));
 
         assertThat(solvedWord.get(), is(answer));
     }

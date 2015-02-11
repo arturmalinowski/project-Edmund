@@ -46,17 +46,17 @@ public class AnagramClueTest {
     @Test
     public void anagramClueTestCanBeSolved() {
         clue = new AnagramClue(thesaurus);
-        Optional<String> solvedWord = clue.solve("Times when things appear obscure?", null, 6);
+        Optional<List<String>> solvedWord = clue.solve("Times when things appear obscure?", null, 6);
 
-        assertThat(solvedWord.get(), is("nights"));
+        assertThat(solvedWord.get().get(0), is("nights"));
     }
 
     @Test
     public void secondAnagramClueCanBeSolved() {
         clue = new AnagramClue(new Thesaurus());
-        Optional<String> answer = clue.solve("School run - true/false", null, 7);
+        Optional<List<String>> answer = clue.solve("School run - true/false", null, 7);
 
-        assertThat(answer.get(), is("nurture"));
+        assertThat(answer.get().get(0), is("nurture"));
     }
 
     @Ignore
@@ -140,7 +140,7 @@ public class AnagramClueTest {
             @Row({"Who's shaken up the display?", "show", "4", "null"})})
     public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength, String hint) {
         clue = new AnagramClue(thesaurus);
-        Optional<String> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
+        Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
 
         assertThat(answer.get(), is(clueAnswer));
     }

@@ -1,6 +1,6 @@
 package cs.group.edmund.utils;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -13,14 +13,14 @@ public class OfflineThesaurusTest {
 
     private static OfflineThesaurus offlineThesaurus;
 
-    @BeforeClass
-    public static void setup() {
+    @Before
+    public void setup() {
         offlineThesaurus = new OfflineThesaurus();
     }
 
     @Test
-    public void addNewQueryTest(){
-        offlineThesaurus.addNewQuery("tennis", new ArrayList<String>(){{
+    public void addNewQueryTest() {
+        offlineThesaurus.addNewQuery("tennis", new ArrayList<String>() {{
             add("lawn tennis");
             add("court game");
         }});

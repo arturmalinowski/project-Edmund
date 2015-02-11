@@ -9,6 +9,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static java.util.Arrays.asList;
@@ -53,7 +54,7 @@ public class ContainerClueTest {
             @Row({"Russet bears are raised", "reared", "r.....", "6"}) //"raised" does not return "reared"
     })
     public void bulkClueTest(String crosswordClue, String clueAnswer, String hint, String answerLength) {
-        Optional<String> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
+        Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
         assertThat(answer.get(), is(clueAnswer));
     }
 

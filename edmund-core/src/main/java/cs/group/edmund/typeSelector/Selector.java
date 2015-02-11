@@ -11,7 +11,7 @@ import static java.util.Arrays.asList;
 
 public class Selector {
 
-    public Optional<String> retrieveAnswer(String phrase, String hint, int answerLength, Thesaurus thesaurus) throws Exception {
+    public String retrieveAnswer(String phrase, String hint, int answerLength, Thesaurus thesaurus) throws Exception {
 
         List<Clue> clues = asList(new ReversalClue(thesaurus),
                 new DoubleDefinitionsClue(thesaurus),
@@ -22,9 +22,9 @@ public class Selector {
 
         for (Clue clue : clues) {
             if (clue.isRelevant(phrase)) {
-                Optional<String> answer = clue.solve(phrase, hint, answerLength);
-                if (answer.isPresent()) {
-                    return answer;
+                Optional<List<String>> answer = clue.solve(phrase, hint, answerLength);
+                if (answer.isPresent() && answer.get().size() == 1) {
+                    return answer.get().get(0);
                 }
             }
         }
