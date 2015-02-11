@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import cs.group.edmund.utils.Helper;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -54,7 +55,7 @@ public class DeletionClueTest {
             //@Row({"State a lie goes out of estrangement", "nation", "6", "n.....", "specific"}) // "estrangement" -> "alienation" - "a lie"
     })
     public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength, String hint, String deletionType) {
-        Optional<String> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
+        Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
         assertThat(answer.get(), is(clueAnswer));
     }
 
@@ -81,7 +82,7 @@ public class DeletionClueTest {
             //@Row({"Dull speeches hollow assurances", "proses", "5", ".......", "middle"}) // "assurances" -> "promises"
     })
     public void bulkClueCloseTest(String crosswordClue, String clueAnswer, String answerLength, String hint, String deletionType) {
-        Optional<String> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
+        Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
         assertThat((answer.get().contains(clueAnswer)), is(true));
     }
 

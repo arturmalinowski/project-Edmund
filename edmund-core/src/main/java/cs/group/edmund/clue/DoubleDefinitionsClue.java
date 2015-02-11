@@ -43,7 +43,7 @@ public class DoubleDefinitionsClue implements Clue {
     }
 
     @Override
-    public Optional<String> solve(String phrase, String hint, int... answerLength) {
+    public Optional<List<String>> solve(String phrase, String hint, int... answerLength) {
         for (int value : answerLength) {
             this.answerLength.add(value);
         }
@@ -57,13 +57,15 @@ public class DoubleDefinitionsClue implements Clue {
     }
 
 
-    public Optional<String> getAnswer(String phrase) {
+    public Optional<List<String>> getAnswer(String phrase) {
         findMatchingWords(phrase);
         if (answer == null) {
             return Optional.empty();
         }
 
-        return Optional.of(answer.replace("-", " "));
+        List<String> finalAnswers = new ArrayList<>();
+        finalAnswers.add(answer.replace("-", " "));
+        return Optional.of(finalAnswers);
     }
 
     public Boolean findMatchingWords(String phrase) {

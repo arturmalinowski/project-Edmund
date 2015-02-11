@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -65,7 +66,7 @@ public class DoubleDefinitionsClueTest {
             @Row({"Lookalike twofold", "", "6", "double"})
     })
     public void bulkClueTest(String crypticClue, String pattern, String answerLength, String answer) {
-        Optional<String> solvedWord = clue.solve(crypticClue, pattern, Integer.parseInt(answerLength));
+        Optional<List<String>> solvedWord = clue.solve(crypticClue, pattern, Integer.parseInt(answerLength));
 
         assertThat(solvedWord.get(), is(answer));
     }
@@ -78,9 +79,9 @@ public class DoubleDefinitionsClueTest {
         when(mock(Thesaurus.class).getAllSynonymsXML("armour")).thenReturn(firstReturnedValues);
         when(mock(Thesaurus.class).getAllSynonymsXML("post")).thenReturn(secondReturnedValues);
 
-        Optional<String> solvedWord = clue.solve("Armor in the post", "m...", 4);
+        Optional<List<String>> solvedWord = clue.solve("Armor in the post", "m...", 4);
 
-        assertThat(solvedWord.get(), is("mail"));
+        assertThat(solvedWord.get().get(0), is("mail"));
     }
 
     @Test
@@ -95,9 +96,9 @@ public class DoubleDefinitionsClueTest {
         when(mock(Thesaurus.class).getAllSynonymsXML("golden")).thenReturn(thirdReturnedValues);
         when(mock(Thesaurus.class).getAllSynonymsXML("honey")).thenReturn(forthReturnedValues);
 
-        Optional<String> solvedWord = clue.solve("Expensive sweet golden honey", ".e..", 4);
+        Optional<List<String>> solvedWord = clue.solve("Expensive sweet golden honey", ".e..", 4);
 
-        assertThat(solvedWord.get(), is("dear"));
+        assertThat(solvedWord.get().get(0), is("dear"));
     }
 
     @Test
@@ -112,9 +113,9 @@ public class DoubleDefinitionsClueTest {
         when(mock(Thesaurus.class).getAllSynonymsXML("golden")).thenReturn(thirdReturnedValues);
         when(mock(Thesaurus.class).getAllSynonymsXML("honey")).thenReturn(forthReturnedValues);
 
-        Optional<String> solvedWord = clue.solve("Sweet expensive golden honey", ".e..", 4);
+        Optional<List<String>> solvedWord = clue.solve("Sweet expensive golden honey", ".e..", 4);
 
-        assertThat(solvedWord.get(), is("dear"));
+        assertThat(solvedWord.get().get(0), is("dear"));
     }
 
     @Test
@@ -129,9 +130,9 @@ public class DoubleDefinitionsClueTest {
         when(mock(Thesaurus.class).getAllSynonymsXML("honey")).thenReturn(thirdReturnedValues);
         when(mock(Thesaurus.class).getAllSynonymsXML("golden")).thenReturn(forthReturnedValues);
 
-        Optional<String> solvedWord = clue.solve("Expensive sweet honey golden", ".e..", 4);
+        Optional<List<String>> solvedWord = clue.solve("Expensive sweet honey golden", ".e..", 4);
 
-        assertThat(solvedWord.get(), is("dear"));
+        assertThat(solvedWord.get().get(0), is("dear"));
     }
 
     @Test
@@ -144,9 +145,9 @@ public class DoubleDefinitionsClueTest {
         when(mock(Thesaurus.class).getAllSynonymsXML("train")).thenReturn(secondReturnedValues);
         when(mock(Thesaurus.class).getAllSynonymsXML("say")).thenReturn(thirdReturnedValues);
 
-        Optional<String> solvedWord = clue.solve("A fast train, say", "e......", 7);
+        Optional<List<String>> solvedWord = clue.solve("A fast train, say", "e......", 7);
 
-        assertThat(solvedWord.get(), is("express"));
+        assertThat(solvedWord.get().get(0), is("express"));
     }
 
     @Test
@@ -161,7 +162,7 @@ public class DoubleDefinitionsClueTest {
         when(mock(Thesaurus.class).getAllSynonymsXML("outside")).thenReturn(thirdReturnedValues);
         when(mock(Thesaurus.class).getAllSynonymsXML("tavern")).thenReturn(forthReturnedValues);
 
-        Optional<String> solvedWord = clue.solve("Bird allowed outside tavern", null, 4);
+        Optional<List<String>> solvedWord = clue.solve("Bird allowed outside tavern", null, 4);
 
         assertTrue(!solvedWord.isPresent());
     }
@@ -172,8 +173,8 @@ public class DoubleDefinitionsClueTest {
 
         when(mock(Thesaurus.class).getAllSynonymsXML("expensive")).thenReturn(returnedValues);
 
-        Optional<String> solvedWord = clue.solve("Expensive expensive", ".e..", 4);
-        assertThat(solvedWord.get(), is("dear"));
+        Optional<List<String>> solvedWord = clue.solve("Expensive expensive", ".e..", 4);
+        assertThat(solvedWord.get().get(0), is("dear"));
     }
 
     @Test
@@ -182,8 +183,8 @@ public class DoubleDefinitionsClueTest {
 
         when(mock(Thesaurus.class).getAllSynonymsXML(any(String.class))).thenReturn(returnedValues);
 
-        Optional<String> solvedWord = clue.solve("Reject junk", "..fu..", 6);
-        assertThat(solvedWord.get(), is("refuse"));
+        Optional<List<String>> solvedWord = clue.solve("Reject junk", "..fu..", 6);
+        assertThat(solvedWord.get().get(0), is("refuse"));
     }
 
     @Test
@@ -192,9 +193,9 @@ public class DoubleDefinitionsClueTest {
 
         when(mock(Thesaurus.class).getAllSynonymsXML("expensive")).thenReturn(returnedValues);
 
-        Optional<String> solvedWord = clue.solve("Expensive expensive", null, 6, 3);
+        Optional<List<String>> solvedWord = clue.solve("Expensive expensive", null, 6, 3);
 
-        assertThat(solvedWord.get(), is("dearly won"));
+        assertThat(solvedWord.get().get(0), is("dearly won"));
     }
 
     @Test

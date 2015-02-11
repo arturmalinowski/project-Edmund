@@ -12,6 +12,7 @@ import static java.util.Arrays.asList;
 public class DeletionClue implements Clue {
 
     private final List<String> keyWordsHead, keyWordsTail, keyWordsBoth, keyWordsMiddle, keyWordsSpecific, keyWords;
+    private List<String> finalAnswers = new ArrayList<>();
     private Thesaurus thesaurus;
     private int searchIntensity;
 
@@ -47,7 +48,7 @@ public class DeletionClue implements Clue {
     }
 
     @Override
-    public Optional<String> solve(String phrase, String hint, int... answerLength) {
+    public Optional<List<String>> solve(String phrase, String hint, int... answerLength) {
 
         // Check if any known keyword is in phrase
         phrase = phrase.toLowerCase();
@@ -65,7 +66,8 @@ public class DeletionClue implements Clue {
             // Return definitive answer
             for (String answer : answers) {
                 if ((answer != null) && (!answer.contains(","))) {
-                    return Optional.of(answer);
+                    finalAnswers.add(answer);
+                    return Optional.of(finalAnswers);
                 }
             }
             // Last resort, try synonyms of related words
@@ -76,7 +78,8 @@ public class DeletionClue implements Clue {
             // Return Possible answers
             for (String answer : answers) {
                 if ((answer != null) && (answer.contains(","))) {
-                    return Optional.of(answer);
+                    finalAnswers.add(answer);
+                    return Optional.of(finalAnswers);
                 }
             }
         }

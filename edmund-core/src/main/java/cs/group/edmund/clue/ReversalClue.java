@@ -44,7 +44,7 @@ public class ReversalClue implements Clue {
     }
 
     @Override
-    public Optional<String> solve(String phrase, String hint, int... answerLength) {
+    public Optional<List<String>> solve(String phrase, String hint, int... answerLength) {
         String[] clueWords = phrase.split("\\s+");
         for (int i = 0; i < clueWords.length; i++) {
             clueWords[i] = clueWords[i].replaceAll("[,?!]", "");
@@ -70,10 +70,10 @@ public class ReversalClue implements Clue {
 
         searchOtherSideKeyWord(clueWords, answerLength);
 
-        ArrayList<String> answer = Helper.removeDuplicates(new ArrayList<>((answersList)));
+        List<String> answer = Helper.removeDuplicates(new ArrayList<>((answersList)));
 
         if (answerFound) {
-            return Optional.of(answer.get(0));
+            return Optional.of(answer);
         } else {
             return Optional.empty();
         }

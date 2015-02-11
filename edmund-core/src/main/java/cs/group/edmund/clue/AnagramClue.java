@@ -41,7 +41,7 @@ public class AnagramClue implements Clue {
     }
 
     @Override
-    public Optional<String> solve(String phrase, String hint, int... answerLength) {
+    public Optional<List<String>> solve(String phrase, String hint, int... answerLength) {
         String keyWord = null;
         String possibleAnswer = "";
         String[] words = phrase.replaceAll("[-+.^:,?!'’/]", " ").toUpperCase().split(" ");
@@ -108,7 +108,9 @@ public class AnagramClue implements Clue {
                 }
             }
         }
-        return Optional.of(possibleAnswer);
+        List<String> finalAnswers = new ArrayList<>();
+        finalAnswers.add(possibleAnswer);
+        return Optional.of(finalAnswers);
     }
 
     public List<String> findAnagram(String word) {

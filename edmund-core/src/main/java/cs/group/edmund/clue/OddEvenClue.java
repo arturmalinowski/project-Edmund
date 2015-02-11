@@ -11,14 +11,14 @@ import java.util.Optional;
 
 import static java.util.Arrays.asList;
 
-public class OddEvenClue implements Clue{
+public class OddEvenClue implements Clue {
 
     private final List<String> keyWordsAny, keyWordsOdd, keyWordsEven;
     private String keyWord = null;
     private ArrayList<String> clueWords;
     private Dictionary dict = new Dictionary();
 
-    public OddEvenClue(){
+    public OddEvenClue() {
         keyWordsAny = asList("ALTERNATE", "REGULAR", "REGULARLY", "EVERY OTHER");
         keyWordsEven = asList("EVEN", "EVENLY", "EVERY SECOND");
         keyWordsOdd = asList("ODD", "ODDS", "UNEVEN");
@@ -42,23 +42,25 @@ public class OddEvenClue implements Clue{
         return false;
     }
 
-    public Optional<String> solve(String phrase, String hint, int... answerLength){
+    public Optional<List<String>> solve(String phrase, String hint, int... answerLength) {
         keyWord = null;
         String possibleAnswer = "";
-        String[] tempWords = phrase.replaceAll("[-+.^:,?!'’/]"," ").toUpperCase().split(" ");
+        String[] tempWords = phrase.replaceAll("[-+.^:,?!'’/]", " ").toUpperCase().split(" ");
         clueWords = new ArrayList<>(Arrays.asList(tempWords));
         clueWords = Helper.removeDuplicates(clueWords);
         clueWords.removeAll(Arrays.asList("", null));
 
         for (int i : answerLength) {
 
-            if(findType(keyWordsAny, phrase)) possibleAnswer = solveAny(i, hint);
-            if(findType(keyWordsEven, phrase)) possibleAnswer = solveOddEven(i, 1, hint);
-            if(findType(keyWordsOdd, phrase)) possibleAnswer = solveOddEven(i, 0, hint);
+            if (findType(keyWordsAny, phrase)) possibleAnswer = solveAny(i, hint);
+            if (findType(keyWordsEven, phrase)) possibleAnswer = solveOddEven(i, 1, hint);
+            if (findType(keyWordsOdd, phrase)) possibleAnswer = solveOddEven(i, 0, hint);
 
         }
 
-        return Optional.of(possibleAnswer);
+        List<String> finalAnswers = new ArrayList<>();
+        finalAnswers.add(possibleAnswer);
+        return Optional.of(finalAnswers);
     }
 
     private String solveOddEven(int answerLength, int type, String hint) {
@@ -86,8 +88,7 @@ public class OddEvenClue implements Clue{
                 }
                 answer = "";
             }
-        }
-        else {
+        } else {
             for (int i = type; i < clueWords.get(0).length(); i = i + 2) {
                 answer = answer + clueWords.get(0).charAt(i);
             }
@@ -100,13 +101,11 @@ public class OddEvenClue implements Clue{
                     if (singleAnswer.matches(hint)) {
                         answer = singleAnswer;
                     }
-                }
-                else {
+                } else {
 
                 }
             }
-        }
-        else {
+        } else {
             answer = possibleAnswers.get(0);
         }
         return answer.toLowerCase();
@@ -117,19 +116,18 @@ public class OddEvenClue implements Clue{
         String possibleAnswer = "";
         String answer = "";
         for (String word : clueWords) {
-            if (word.length() == answerLength*2){
+            if (word.length() == answerLength * 2) {
                 for (int i = 0; i < word.length(); i = i + 2) {
                     possibleAnswer = possibleAnswer + word.toLowerCase().charAt(i);
                 }
-                if (dict.validate(possibleAnswer)){
+                if (dict.validate(possibleAnswer)) {
                     possibleAnswers.add(possibleAnswer);
-                }
-                else {
+                } else {
                     possibleAnswer = "";
                     for (int i = 1; i < word.length(); i = i + 2) {
                         possibleAnswer = possibleAnswer + word.toLowerCase().charAt(i);
                     }
-                    if (dict.validate(possibleAnswer)){
+                    if (dict.validate(possibleAnswer)) {
                         possibleAnswers.add(possibleAnswer);
                     }
                 }
@@ -141,8 +139,7 @@ public class OddEvenClue implements Clue{
                     answer = possibleAnswer;
                     break;
                 }
-            }
-            else {
+            } else {
                 answer = possibleAnswers.get(0);
             }
         }
@@ -150,18 +147,17 @@ public class OddEvenClue implements Clue{
     }
 
     private boolean findType(List<String> keyWords, String phrase) {
-        for(String key : keyWords) {
+        for (String key : keyWords) {
             if (phrase.toUpperCase().startsWith(key)) {
-                if (phrase.toUpperCase().matches(".*"+ key+".*")) {
+                if (phrase.toUpperCase().matches(".*" + key + ".*")) {
                     keyWord = key;
                     if (keyWord.contains(" ")) {
                         clueWords.remove(keyWord.substring(0, keyWord.indexOf(" ")));
-                        clueWords.remove(keyWord.substring(keyWord.indexOf(" ")+1));
+                        clueWords.remove(keyWord.substring(keyWord.indexOf(" ") + 1));
                     }
                     return true;
                 }
-            }
-            else {
+            } else {
                 if (phrase.toUpperCase().matches(".*" + " " + key + ".*")) {
                     keyWord = key;
                     if (keyWord.contains(" ")) {

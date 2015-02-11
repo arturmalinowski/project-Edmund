@@ -13,6 +13,7 @@ import static java.util.Arrays.asList;
 public class ContainerClue implements Clue {
 
     private final List<String> keyWords;
+    private List<String> finalAnswers = new ArrayList<>();
     private Thesaurus thesaurus;
 
     public ContainerClue(Thesaurus thesaurus) {
@@ -36,7 +37,7 @@ public class ContainerClue implements Clue {
     }
 
     @Override
-    public Optional<String> solve(String phrase, String hint, int... answerLength)
+    public Optional<List<String>> solve(String phrase, String hint, int... answerLength)
     {
         // Check if any known keyword is in phrase
         phrase = phrase.toLowerCase();
@@ -48,7 +49,8 @@ public class ContainerClue implements Clue {
             answers.add(solveFor(splitPhrase[0], phrase.substring(phrase.indexOf(" ")+1), key, hint, answerLength)); // assuming hint is first word
             for (String answer : answers) {
                 if (answer != null) {
-                    return Optional.of(answer);
+                    finalAnswers.add(answer);
+                    return Optional.of(finalAnswers);
                 }
             }
 
@@ -56,7 +58,8 @@ public class ContainerClue implements Clue {
             answers.add(solveFor(splitPhrase[splitPhrase.length - 1], phrase.substring(0, phrase.lastIndexOf(" ")), key, hint, answerLength)); // assuming hint is last word
             for (String answer : answers) {
                 if (answer != null) {
-                    return Optional.of(answer);
+                    finalAnswers.add(answer);
+                    return Optional.of(finalAnswers);
                 }
             }
         }
