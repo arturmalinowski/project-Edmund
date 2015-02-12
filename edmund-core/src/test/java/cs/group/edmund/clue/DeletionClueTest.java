@@ -24,8 +24,9 @@ public class DeletionClueTest {
 
     @Before
     public void setup() {
-        clue = new DeletionClue(thesaurus);
         thesaurus = new Thesaurus();
+        clue = new DeletionClue(thesaurus);
+
     }
 
     // Currently 30% success ratio
@@ -56,9 +57,17 @@ public class DeletionClueTest {
     })
     public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength, String hint, String deletionType) {
         Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
-        assertThat(answer.get(), is(clueAnswer));
+        ArrayList<String> answerList = new ArrayList<>();
+        answerList.add(clueAnswer);
+        assertThat(answer.get(), is(answerList));
     }
 
+    @Test
+    public void delete()
+    {
+        System.out.println(thesaurus.getAllSynonymsXML("jam"));
+        System.out.println(thesaurus.getRelatedWordsXML("jam"));
+    }
 
     @Ignore
     @Test
