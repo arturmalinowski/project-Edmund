@@ -62,13 +62,6 @@ public class DeletionClueTest {
         assertThat(answer.get(), is(answerList));
     }
 
-    @Test
-    public void delete()
-    {
-        System.out.println(thesaurus.getAllSynonymsXML("jam"));
-        System.out.println(thesaurus.getRelatedWordsXML("jam"));
-    }
-
     @Ignore
     @Test
     @Table({
