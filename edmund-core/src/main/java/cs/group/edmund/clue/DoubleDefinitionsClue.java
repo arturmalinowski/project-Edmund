@@ -14,7 +14,7 @@ public class DoubleDefinitionsClue implements Clue {
     private List<String> leftBackupWordList = new ArrayList<>();
     private List<String> rightBackupWordList = new ArrayList<>();
     private List<Integer> answerLength = new ArrayList<>();
-    private String answer;
+    private List<String> answer = new ArrayList<>();
     private String leftBackupWord;
     private String rightBackupWord;
     private boolean matchingWordFound;
@@ -59,13 +59,21 @@ public class DoubleDefinitionsClue implements Clue {
 
     public Optional<List<String>> getAnswer(String phrase) {
         findMatchingWords(phrase);
-        if (answer == null) {
+        if (answer == null || answer.size() == 0) {
             return Optional.empty();
         }
 
-        List<String> finalAnswers = new ArrayList<>();
-        finalAnswers.add(answer.replace("-", " "));
-        return Optional.of(finalAnswers);
+        removeDashesFromAnswers();
+
+        return Optional.of(answer);
+    }
+
+    private void removeDashesFromAnswers() {
+        for (int i = 0; i < answer.size(); i++) {
+            String ans = answer.get(i).replace("-", " ");
+            answer.remove(i);
+            answer.add(i, ans);
+        }
     }
 
     public Boolean findMatchingWords(String phrase) {
@@ -131,14 +139,14 @@ public class DoubleDefinitionsClue implements Clue {
         for (String element : firstElementList) {
             if (secondElementList.contains(element) && expectedAnswerLength == 0 && element.matches(hint) && needsToBeTwoWords(mustBeTwoWords, element)) {
                 matchingWordFound = true;
-                answer = element;
+                answer.add(element);
             } else if (secondElementList.contains(element) && element.length() == expectedAnswerLength && element.matches(hint) && needsToBeTwoWords(mustBeTwoWords, element)) {
                 matchingWordFound = true;
-                answer = element;
+                answer.add(element);
             } else if (!element.equals(rightBackupWord)) {
                 if (rightBackupWordList.contains(element) && element.length() == expectedAnswerLength && element.matches(hint) && needsToBeTwoWords(mustBeTwoWords, element)) {
                     matchingWordFound = true;
-                    answer = element;
+                    answer.add(element);
                 }
             }
         }
@@ -146,7 +154,7 @@ public class DoubleDefinitionsClue implements Clue {
             if (!secondListElement.equals(leftBackupWord)) {
                 if (leftBackupWordList.contains(secondListElement) && secondListElement.length() == expectedAnswerLength && secondListElement.matches(hint) && needsToBeTwoWords(mustBeTwoWords, secondListElement)) {
                     matchingWordFound = true;
-                    answer = secondListElement;
+                    answer.add(secondListElement);
                 }
             }
         }
