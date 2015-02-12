@@ -62,10 +62,6 @@ public class ThesaurusTest {
         ArrayList<String> synonymsList = thesaurus.getAllSynonymsXML("hard");
         ArrayList<String> relatedWordsSynonymsList = thesaurus.getRelatedWordsOfSynonymsXML("hard");
 
-        System.out.println(synonymsList);
-        System.out.println(relatedWordsSynonymsList);
-
-
         assertThat(true, is(relatedWordsSynonymsList.size() > synonymsList.size()));
     }
 }
