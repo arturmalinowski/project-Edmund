@@ -7,7 +7,9 @@ import cs.group.edmund.utils.Thesaurus;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import static cs.group.edmund.utils.Helper.removeDuplicates;
 import static java.util.Arrays.asList;
 
 public class Selector {
@@ -23,32 +25,39 @@ public class Selector {
                 new OddEvenClue(),
                 new AnagramClue(thesaurus));
 
-        for (Clue clue : clues) {
-            if (clue.isRelevant(phrase)) {
-                Optional<List<String>> answer = clue.solve(phrase, hint, answerLength);
-                if (answer.isPresent()) {
-                    allPossibleAnswers.add(answer.get());
-                }
-            }
-        }
+        // go through each clue solver with the phrase
+        retrievePossibleAnswers(phrase, hint, answerLength, clues);
+
         if (allPossibleAnswers.size() == 1) {
+            // when there is only one answer, return it
             return allPossibleAnswers.get(0).get(0);
         }
+
         if (allPossibleAnswers.size() > 1) {
-            List<String> combinedAnswers = new ArrayList<>();
+            ArrayList<String> combinedAnswers = new ArrayList<>();
             for (List<String> possibleAnswer : allPossibleAnswers) {
                 if (possibleAnswer.size() == 1) {
+                    // when there is only one clue returning a list of answers, return that list
                     return possibleAnswer.get(0);
                 } else {
-                    for (String answer : possibleAnswer) {
-                        combinedAnswers.add(answer);
-                    }
+                    // when more than one clue comes back with more than one answer, merge the lists and return that list
+                    combinedAnswers.addAll(possibleAnswer.stream().collect(Collectors.toList()));
+                    removeDuplicates(combinedAnswers);
                 }
             }
             return combinedAnswers.toString();
         }
 
+        // when no answers are returned, throw
         throw new IllegalArgumentException("Clue could not be solved");
 
+    }
+
+    private void retrievePossibleAnswers(String phrase, String hint, int answerLength, List<Clue> clues) {
+        clues.stream().filter(clue -> clue.isRelevant(phrase)).forEach(clue -> {
+                    Optional<List<String>> answer = clue.solve(phrase, hint, answerLength);
+                    if (answer.isPresent()) allPossibleAnswers.add(answer.get());
+                }
+        );
     }
 }
