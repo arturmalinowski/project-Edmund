@@ -3,7 +3,6 @@ package cs.group.edmund;
 import cs.group.edmund.typeSelector.Selector;
 import cs.group.edmund.utils.Thesaurus;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -48,12 +47,11 @@ public class TypeSelectorTest {
         assertThat(answer, is("white"));
     }
 
-    @Ignore
     @Test
     public void edmundReturnsTheCorrectAnswerForADeletionClue() throws Exception {
-        String answer = selector.retrieveAnswer("First off mobilize supporter", "a...", 4, thesaurus);
+        String answer = selector.retrieveAnswer("Challenging sweetheart heartlessly", "d.....", 6, thesaurus);
 
-        assertThat(answer, is("ally"));
+        assertThat(answer, is("daring"));
     }
 
     @Test
