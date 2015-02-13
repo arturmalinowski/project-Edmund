@@ -108,6 +108,10 @@ public class AnagramClue implements Clue {
                 }
             }
         }
+        if (possibleAnswer.equals("")) {
+            return Optional.empty();
+        }
+
         List<String> finalAnswers = new ArrayList<>();
         finalAnswers.add(possibleAnswer);
         return Optional.of(finalAnswers);

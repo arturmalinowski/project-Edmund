@@ -72,6 +72,12 @@ public class ReversalClue implements Clue {
 
         List<String> answer = Helper.removeDuplicates(new ArrayList<>((answersList)));
 
+        for (int i = 0; i < answer.size(); i++) {
+            if (answer.get(i).equals("")) {
+                answer.remove(i);
+            }
+        }
+
         if (answerFound) {
             return Optional.of(answer);
         } else {

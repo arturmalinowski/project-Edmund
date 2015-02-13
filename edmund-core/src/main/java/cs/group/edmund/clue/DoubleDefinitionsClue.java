@@ -7,6 +7,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import static cs.group.edmund.utils.Helper.removeDuplicates;
+
 public class DoubleDefinitionsClue implements Clue {
 
     private List<String> firstElementList = new ArrayList<>();
@@ -14,7 +16,7 @@ public class DoubleDefinitionsClue implements Clue {
     private List<String> leftBackupWordList = new ArrayList<>();
     private List<String> rightBackupWordList = new ArrayList<>();
     private List<Integer> answerLength = new ArrayList<>();
-    private List<String> answer = new ArrayList<>();
+    private ArrayList<String> answer = new ArrayList<>();
     private String leftBackupWord;
     private String rightBackupWord;
     private boolean matchingWordFound;
@@ -33,13 +35,7 @@ public class DoubleDefinitionsClue implements Clue {
 
     @Override
     public boolean isRelevant(String phrase) {
-        matchingWordFound = false;
-
-        putRelatedWordsInTwoLists(splitPhrase(phrase));
-
-        checkRelevance();
-
-        return matchingWordFound;
+        return true;
     }
 
     @Override
@@ -64,6 +60,7 @@ public class DoubleDefinitionsClue implements Clue {
         }
 
         removeDashesFromAnswers();
+        removeDuplicates(answer);
 
         return Optional.of(answer);
     }

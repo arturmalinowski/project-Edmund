@@ -16,21 +16,27 @@ public class Selector {
 
     private List<List<String>> allPossibleAnswers = new ArrayList<>();
 
-    public String retrieveAnswer(String phrase, String hint, int answerLength, Thesaurus thesaurus) throws Exception {
+    public List<String> retrieveAnswer(String phrase, String hint, int answerLength, Thesaurus thesaurus) throws Exception {
 
-        List<Clue> clues = asList(new ReversalClue(thesaurus),
-                new DoubleDefinitionsClue(thesaurus),
+        List<Clue> clues = asList(
+                new ReversalClue(thesaurus),
                 new ContainerClue(thesaurus),
                 new DeletionClue(thesaurus),
+                new AnagramClue(thesaurus),
                 new OddEvenClue(),
-                new AnagramClue(thesaurus));
+                new DoubleDefinitionsClue(thesaurus));
 
         // go through each clue solver with the phrase
         retrievePossibleAnswers(phrase, hint, answerLength, clues);
 
         if (allPossibleAnswers.size() == 1) {
-            // when there is only one answer, return it
-            return allPossibleAnswers.get(0).get(0);
+            if (allPossibleAnswers.get(0).size() == 1) {
+                // when there is only one answer, return it
+                return new ArrayList<>(asList(allPossibleAnswers.get(0).get(0)));
+            } else {
+                // otherwise return the first answer from the first list
+                return allPossibleAnswers.get(0);
+            }
         }
 
         if (allPossibleAnswers.size() > 1) {
@@ -38,14 +44,14 @@ public class Selector {
             for (List<String> possibleAnswer : allPossibleAnswers) {
                 if (possibleAnswer.size() == 1) {
                     // when there is only one clue returning a list of answers, return that list
-                    return possibleAnswer.get(0);
+                    return new ArrayList<>(asList(possibleAnswer.get(0)));
                 } else {
                     // when more than one clue comes back with more than one answer, merge the lists and return that list
                     combinedAnswers.addAll(possibleAnswer.stream().collect(Collectors.toList()));
                     removeDuplicates(combinedAnswers);
                 }
             }
-            return combinedAnswers.toString();
+            return combinedAnswers;
         }
 
         // when no answers are returned, throw
@@ -54,10 +60,13 @@ public class Selector {
     }
 
     private void retrievePossibleAnswers(String phrase, String hint, int answerLength, List<Clue> clues) {
-        clues.stream().filter(clue -> clue.isRelevant(phrase)).forEach(clue -> {
-                    Optional<List<String>> answer = clue.solve(phrase, hint, answerLength);
-                    if (answer.isPresent()) allPossibleAnswers.add(answer.get());
+        for (Clue clue : clues) {
+            if (clue.isRelevant(phrase)) {
+                Optional<List<String>> answer = clue.solve(phrase, hint, answerLength);
+                if (answer.isPresent()) {
+                    allPossibleAnswers.add(answer.get());
                 }
-        );
+            }
+        }
     }
 }

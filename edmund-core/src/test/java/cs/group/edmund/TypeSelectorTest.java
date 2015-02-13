@@ -5,6 +5,9 @@ import cs.group.edmund.utils.Thesaurus;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
+import static cs.group.edmund.matchers.ContainsExpectedWords.containsWords;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -21,43 +24,50 @@ public class TypeSelectorTest {
 
     @Test
     public void edmundReturnsTheCorrectAnswerForAReversalClue() throws Exception {
-        String answer = selector.retrieveAnswer("Physician brings fish around", "", 3, thesaurus);
+        List<String> answer = selector.retrieveAnswer("Physician brings fish around", "", 3, thesaurus);
 
-        assertThat(answer, is("doc"));
+        assertThat(answer.get(0), is("doc"));
     }
 
     @Test
     public void edmundReturnsTheCorrectAnswerForAnAnagramClue() throws Exception {
-        String answer = selector.retrieveAnswer("Times when things appear obscure?", "", 6, thesaurus);
+        List<String> answer = selector.retrieveAnswer("Times when things appear obscure?", "", 6, thesaurus);
 
-        assertThat(answer, is("nights"));
+        assertThat(answer.get(0), is("nights"));
     }
 
     @Test
     public void edmundReturnsTheCorrectAnswerForAnOddEvenClue() throws Exception {
-        String answer = selector.retrieveAnswer("Observe odd characters in scene", "", 3, thesaurus);
+        List<String> answer = selector.retrieveAnswer("Observe odd characters in scene", "", 3, thesaurus);
 
-        assertThat(answer, is("see"));
+        assertThat(answer.get(0), is("see"));
     }
 
     @Test
     public void edmundReturnsTheCorrectAnswerForAContainerClue() throws Exception {
-        String answer = selector.retrieveAnswer("We surrounded strike snowy", "w....", 5, thesaurus);
+        List<String> answer = selector.retrieveAnswer("We surrounded strike snowy", "w....", 5, thesaurus);
 
-        assertThat(answer, is("white"));
+        assertThat(answer.get(0), is("white"));
     }
 
     @Test
     public void edmundReturnsTheCorrectAnswerForADeletionClue() throws Exception {
-        String answer = selector.retrieveAnswer("Challenging sweetheart heartlessly", "d.....", 6, thesaurus);
+        List<String> answer = selector.retrieveAnswer("Challenging sweetheart heartlessly", "d.....", 6, thesaurus);
 
-        assertThat(answer, is("daring"));
+        assertThat(answer.get(0), is("daring"));
     }
 
     @Test
     public void edmundReturnsTheCorrectAnswerForADoubleDefinitionClue() throws Exception {
-        String answer = selector.retrieveAnswer("Armor in the post", "m...", 4, thesaurus);
+        List<String> answer = selector.retrieveAnswer("Armor in the post", "m...", 4, thesaurus);
 
-        assertThat(answer, is("mail"));
+        assertThat(answer.get(0), is("mail"));
+    }
+
+    @Test
+    public void edmundCanReturnMultiplePossibleAnswers() throws Exception {
+        List<String> answer = selector.retrieveAnswer("Reject junk", "......", 6, thesaurus);
+
+        assertThat(answer.toString(), containsWords("jetsam, refuse"));
     }
 }
