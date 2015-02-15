@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Project Edmund</title>
+    <link rel=stylesheet type="text/css" href="../css/home.css">
+
+    <script type="text/javascript">
+
+    	function importCrosswordClues(clueArray) {
+    		// Example clues
+			var temp = [
+				{"clueDirection":"across", "clueNumber":"1", "clueText":"His work is often framed", "clueLength":"6", "startPos":"(0,0)", "endPos":"(6,0)"},
+				{"clueDirection":"across", "clueNumber":"5", "clueText":"Its mother's first to lactate", "clueLength":"6", "startPos":"(9,0)", "endPos":"(14,0)"},
+				{"clueDirection":"across", "clueNumber":"9", "clueText":"Tall thin person training runners", "clueLength":"8", "startPos":"(0,2)", "endPos":"(7,2)"},
+				{"clueDirection":"across", "clueNumber":"10", "clueText":"Astronaut found in the local, drinking", "clueLength":"6", "startPos":"(9,2)", "endPos":"(14,2)"},
+				{"clueDirection":"across", "clueNumber":"17", "clueText":"Subdued sound of cattle", "clueLength":"3", "startPos":"(12,7)", "endPos":"(14,7)"},
+				{"clueDirection":"across", "clueNumber":"19", "clueText":"Dismissed when on strike", "clueLength":"3", "startPos":"(0,9)", "endPos":"(2,9)"},
+				{"clueDirection":"across", "clueNumber":"20", "clueText":"Contributory funds one put on daily account", "clueLength":"10", "startPos":"(5,9)", "endPos":"(14,9)"},
+				{"clueDirection":"across", "clueNumber":"26", "clueText":"Listener following close win", "clueLength":"6", "startPos":"(0,12)", "endPos":"(5,12)"},
+				{"clueDirection":"across", "clueNumber":"27", "clueText":"Furtive sort of hat style", "clueLength":"8", "startPos":"(7,12)", "endPos":"(14,12)"},
+				{"clueDirection":"across", "clueNumber":"28", "clueText":"Bearing a flower in March or April?", "clueLength":"6", "startPos":"(0,14)", "endPos":"(5,14)"},
+				{"clueDirection":"across", "clueNumber":"29", "clueText":"Girl with two articles to stow away safely", "clueLength":"7", "startPos":"(8,14)", "endPos":"(14,14)"},
+				{"clueDirection":"down", "clueNumber":"1", "clueText":"Jeer? I beg to differ!", "clueLength":"4", "startPos":"(0,0)", "endPos":"(0,3)"},
+				{"clueDirection":"down", "clueNumber":"2", "clueText":"Open with a shock", "clueLength":"4", "startPos":"(2,0)", "endPos":"(2,3)"},
+				{"clueDirection":"down", "clueNumber":"3", "clueText":"Understood devil comes to a lawful end", "clueLength":"8", "startPos":"(4,0)", "endPos":"(4,7)"},
+				{"clueDirection":"down", "clueNumber":"4", "clueText":"Australian football is supreme, OK?", "clueLength":"5", "startPos":"(6,0)", "endPos":"(6,4)"}
+			];
+
+			// Importing temp array into clueArray
+			for (var i = 0; i < temp.length; i++) {
+				clueArray.push([
+					temp[i].clueDirection,
+					temp[i].clueNumber,
+					temp[i].clueText,
+					temp[i].clueLength,
+					temp[i].startPos.substring(1, parseInt(temp[i].startPos.indexOf(","))),
+					temp[i].startPos.substring(parseInt(temp[i].startPos.indexOf(","))+1, parseInt(temp[i].startPos.indexOf(")"))),
+					temp[i].endPos.substring(1, parseInt(temp[i].endPos.indexOf(","))),
+					temp[i].endPos.substring(parseInt(temp[i].endPos.indexOf(","))+1, parseInt(temp[i].endPos.indexOf(")"))),
+					"UNCALCULATED",
+					"BLANK"
+				]);
+			}	
+		}
+
+		function addClues(clueArray) {
+			// Add clues to clue list
+			for (var i = 0; i < clueArray.length; i++) {
+				var table = document.getElementById(clueArray[i][0]+"Clues");
+
+				var row = table.insertRow();
+				var cell = row.insertCell(0);
+				cell.innerHTML = "<img src='../img/statusCalculating.png' border=0/>";
+				clueArray[i][9] = cell;
+
+				var clueText = clueArray[i][1] + ". " + clueArray[i][2] + " (" + clueArray[i][3] + ")";
+				cell = row.insertCell(0);
+				cell.innerHTML = clueText;
+			};
+
+			// Unhighlight crossword table
+			for (var i = 0; i < clueArray.length; i++) {
+				if (clueArray[i][0] === "across") {
+					for (var j = parseInt(clueArray[i][4]); j < parseInt(clueArray[i][6])+1; j++) {
+						setUnblank(j, clueArray[i][7]);
+					}
+				}
+				if (clueArray[i][0] === "down") {
+					for (var j = parseInt(clueArray[i][5]); j < parseInt(clueArray[i][7])+1; j++) {
+						setUnblank(clueArray[i][4], j);
+					}
+				}
+			}
+		}
+
+		function fillCrossword(answerArray) {
+			for (var i = 0; i < 15; i++) {
+				for (var j = 0; j < 15; j++) {
+					document.getElementById("crosswordTable").rows[i].cells[j].innerHTML = answerArray[i][j];
+				};
+			};
+		}
+
+	    function getCell(x, y) {
+	    	var cell = document.getElementById("crosswordTable").rows[y].cells[x];
+	    	return cell.innerHTML;
+	    }
+
+    	function updateCell(x, y, content) {
+			document.getElementById("crosswordTable").rows[y].cells[x].innerHTML = content.toString();
+		}
+
+		function setBlank(x, y) {
+			var cell = document.getElementById("crosswordTable").rows[parseInt(y)].cells[parseInt(x)].className = "blankCell";
+		}
+
+		function setUnblank(x, y) {
+			var cell = document.getElementById("crosswordTable").rows[parseInt(y)].cells[parseInt(x)].className = "crosswordCell";
+		}
+    </script>
+</head>
+
+<body>
+	<div class="container">
+		<div id="leftPane">
+			<div id="title">
+				<h1>Project Edmund</h1>
+				<h2>A Cryptic Crossword Solver</h2>
+			</div>
+			<div id="clues">
+				<h3 class="clueHeader">Across</h3>
+				<table id="acrossClues"></table>
+				<h3 class="clueHeader">Down</h3>
+				<table id="downClues"></table>
+			</div>
+		</div>
+		<div id="rightPane">
+			<table id="crosswordTable"></table>
+		</div>
+	</div>
+</body>
+
+<script>
+
+	// Add rows and cells to table
+	var table = document.getElementById("crosswordTable");
+	for (var i = 0; i < 15; i++) {
+		var row = table.insertRow();
+		row.id = "row_" + i.toString();
+
+		for (var j = 0; j < 15; j++) {
+			var cell = row.insertCell(0);
+			cell.className = cell.className + " crosswordCell";
+		};
+	};
+
+	// Arrays
+	var answerArray = [];
+	for (var i = 0; i < 15; i++) {
+		answerArray.push([".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "."]);
+	};
+	fillCrossword(answerArray);
+
+	// Fill all blank
+	for (var i = 0; i < 15; i++) {
+		for (var j = 0; j < 15; j++) {
+			setBlank(i, j);
+		}
+	}
+
+	// [clueDirection, clueNumber, clueText, clueLength, startX, startY, endX, endY, status, statusLink]
+	var clueArray = [];
+
+	// Import JSON crossword file into clueArray list
+	importCrosswordClues(clueArray);
+	addClues(clueArray);
+
+	// Get answers from Edmund
+	for (var i = 0; i < Things.length; i++) {
+		Things[i]
+	};
+
+	// tests to delete
+	
+	alert("done");
+</script>
+
+</html>
