@@ -1,0 +1,73 @@
+html, body {
+  width:  100%;
+  height: 100%;
+  margin: 0px;
+
+  background-color: #D5EBE8;
+}
+
+img {
+	width: 30px;
+	height: 30px;
+}
+
+#title {
+	margin-left: 5%;
+}
+
+#clues {
+
+	margin-left: auto;
+  margin-right: auto;
+
+	width: 200px;
+  height: 500px;
+  overflow: scroll;
+}
+
+.clueHeader {
+	text-decoration: underline;
+	text-align: center;
+}
+
+#crosswordTable {
+	border-collapse: collapse;
+
+	margin-top: 20%;
+}
+
+.crosswordCell {
+	height: 30px;
+	width: 30px;
+
+	border: 1px solid black;
+	text-align: center;
+
+	background-color: LightGray;
+}
+
+.blankCell {
+  height: 30px;
+  width: 30px;
+
+  border: 1px solid black;
+  text-align: center;
+
+	background-color: black;
+}
+
+.crosswordIndex {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;  
+      z-index: 10;
+    text-align:right;
+    vertical-align:bottom;
+}
+
+.container > * {
+    display: inline-block;
+    vertical-align: top;
+}
