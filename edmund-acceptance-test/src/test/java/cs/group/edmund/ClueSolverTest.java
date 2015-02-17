@@ -3,18 +3,27 @@ package cs.group.edmund;
 import com.googlecode.yatspec.junit.SpecRunner;
 import com.googlecode.yatspec.state.givenwhenthen.*;
 import cs.group.edmund.launch.EdmundRunner;
+import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-import org.junit.Ignore;
+import org.hamcrest.TypeSafeMatcher;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 
 @RunWith(SpecRunner.class)
 public class ClueSolverTest extends TestState {
 
     private EdmundRunner edmundRunner;
+    private ResponseEntity<String> response;
 
-    @Ignore
+    @After
+    public void tearDown() {
+        edmundRunner.stopEdmund();
+    }
+
     @Test
     public void userIsReturnedCorrectAnswerForItsGivenClue() throws Exception {
         given(edmundIsRunning());
@@ -24,15 +33,12 @@ public class ClueSolverTest extends TestState {
         then(edmundReturns(), theAnswer("doc"));
     }
 
-    private Matcher<? super String> theAnswer(String answer) {
-        return null;
-    }
-
     private GivensBuilder edmundIsRunning() {
         return new GivensBuilder() {
             @Override
             public InterestingGivens build(InterestingGivens interestingGivens) throws Exception {
-                edmundRunner = new EdmundRunner(10200);
+                edmundRunner = new EdmundRunner();
+                edmundRunner.startEdmund();
                 return interestingGivens;
             }
         };
@@ -42,7 +48,10 @@ public class ClueSolverTest extends TestState {
         return new ActionUnderTest() {
             @Override
             public CapturedInputAndOutputs execute(InterestingGivens interestingGivens, CapturedInputAndOutputs capturedInputAndOutputs) throws Exception {
-                return null;
+                String url = String.format("http://localhost:9090/solve?clue=%s&hint=&length=3", clue);
+                response = new RestTemplate().getForEntity(url, String.class);
+                capturedInputAndOutputs.add("URL: ", url);
+                return capturedInputAndOutputs;
             }
         };
     }
@@ -51,7 +60,23 @@ public class ClueSolverTest extends TestState {
         return new StateExtractor<String>() {
             @Override
             public String execute(CapturedInputAndOutputs capturedInputAndOutputs) throws Exception {
-                return null;
+                capturedInputAndOutputs.add("Response from Edmund: ", response.getBody());
+                capturedInputAndOutputs.add("Response code: ", response.getStatusCode());
+                return response.getBody();
+            }
+        };
+    }
+
+    private Matcher<? super String> theAnswer(String answer) {
+        return new TypeSafeMatcher<String>() {
+            @Override
+            protected boolean matchesSafely(String s) {
+                return s.contains(answer);
+            }
+
+            @Override
+            public void describeTo(Description description) {
+                description.appendText(answer);
             }
         };
     }
