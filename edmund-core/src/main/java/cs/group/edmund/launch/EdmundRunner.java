@@ -1,53 +1,31 @@
 package cs.group.edmund.launch;
 
-import cs.group.edmund.servlet.IndexServlet;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-import static java.lang.Integer.parseInt;
-
+@Configuration
+@EnableAutoConfiguration
+@ComponentScan
+@SuppressWarnings("unused")
 public class EdmundRunner {
 
-    private final ServletContextHandler context;
-    private final Server server;
+    private ConfigurableApplicationContext edmundRunner;
 
-    public EdmundRunner(int port) {
-        server = new Server(port);
-
-        context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.setContextPath("/edmund");
-        server.setHandler(context);
-
-        context.addServlet(new ServletHolder(new IndexServlet()), "");
-
-        try {
-            server.start();
-        } catch (Exception e) {
-            System.out.println("Edmund server failed to start! " + e);
-        }
-
+    public static void main(String[] args) {
+        new EdmundRunner();
     }
 
-    public void stopServer() {
-        try {
-            server.stop();
-        } catch (Exception e) {
-            System.out.println("Failed to stop server = " + e);
-            e.printStackTrace();
-        }
+    public void startEdmund() {
+        edmundRunner = new SpringApplicationBuilder(EdmundRunner.class)
+                .showBanner(true)
+                .run();
     }
 
-    public static void main(String[] args) throws Exception {
-
-        String webPort = System.getenv("PORT");
-        if (webPort == null || webPort.isEmpty()) {
-            webPort = "8080";
-        }
-
-        new EdmundRunner(parseInt(webPort));
-
+    public void stopEdmund() {
+        SpringApplication.exit(edmundRunner);
     }
-
-
 }
