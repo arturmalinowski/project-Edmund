@@ -1,7 +1,9 @@
 package cs.group.edmund.utils;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
-import java.net.URI;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +14,11 @@ public class Dictionary {
     private List<String> words = new ArrayList<>();
 
     public Dictionary() {
-        URI url;
         try {
-            url = ClassLoader.getSystemResource("dictionary.txt").toURI();
-            words = readLines(new File(url));
+            File dictionary = new File("dictionary");
+            InputStream in = OfflineThesaurus.class.getClassLoader().getResourceAsStream("dictionary.txt");
+            FileUtils.copyInputStreamToFile(in, dictionary);
+            words = readLines(dictionary);
         } catch (Exception e) {
             e.printStackTrace();
         }

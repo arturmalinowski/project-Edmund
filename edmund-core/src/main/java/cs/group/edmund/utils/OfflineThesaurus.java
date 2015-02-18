@@ -4,7 +4,7 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,12 +15,13 @@ import static org.apache.commons.io.FileUtils.readLines;
 public class OfflineThesaurus {
 
     private HashMap<String, ArrayList<String>> words = new HashMap<>();
-    private URI url;
     private File file;
 
     public OfflineThesaurus() {
         try {
-            file = new File(ClassLoader.getSystemResource("thesaurus.txt").toURI());
+            file = new File("thesaurus.txt");
+            InputStream in = OfflineThesaurus.class.getClassLoader().getResourceAsStream("thesaurus.txt");
+            FileUtils.copyInputStreamToFile(in, file);
             readFromFile();
         } catch (Exception e) {
             e.printStackTrace();
@@ -30,7 +31,7 @@ public class OfflineThesaurus {
     public void addNewQuery(String queryWord, List<String> synonyms) {
         String line = "";
 
-        if(!synonyms.isEmpty()) {
+        if (!synonyms.isEmpty()) {
             for (String word : synonyms) {
                 line = line + "," + word;
             }
@@ -40,8 +41,7 @@ public class OfflineThesaurus {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        else {
+        } else {
             try {
                 FileUtils.writeStringToFile(file, queryWord.toLowerCase() + ":\n", "utf8", true);
             } catch (IOException e) {
@@ -50,23 +50,23 @@ public class OfflineThesaurus {
         }
     }
 
-    public ArrayList<String> results(String word){
+    public ArrayList<String> results(String word) {
         return words.get(word.toLowerCase());
     }
 
-    public boolean hasWord(String word){
+    public boolean hasWord(String word) {
         return words.containsKey(word.toLowerCase());
     }
 
-    public void readFromFile(){
+    public void readFromFile() {
         List<String> listOfWords = new ArrayList<>();
         try {
             listOfWords = readLines(file);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for(String word : listOfWords) {
-            String arrayNew = word.substring(word.indexOf(":")+1, word.length());
+        for (String word : listOfWords) {
+            String arrayNew = word.substring(word.indexOf(":") + 1, word.length());
             words.put(word.substring(0, word.indexOf(":")).toLowerCase(), new ArrayList<>(Arrays.asList(arrayNew.split(","))));
         }
     }
