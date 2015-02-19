@@ -14,9 +14,9 @@ import static java.util.Arrays.asList;
 
 public class Selector {
 
-    private List<List<String>> allPossibleAnswers = new ArrayList<>();
-
     public List<String> retrieveAnswer(String phrase, String hint, int answerLength, Thesaurus thesaurus) throws Exception {
+
+        List<List<String>> allPossibleAnswers = new ArrayList<>();
 
         List<Clue> clues = asList(
                 new ReversalClue(thesaurus),
@@ -27,7 +27,7 @@ public class Selector {
                 new DoubleDefinitionsClue(thesaurus));
 
         // go through each clue solver with the phrase
-        retrievePossibleAnswers(phrase, hint, answerLength, clues);
+        retrievePossibleAnswers(phrase, hint, answerLength, clues, allPossibleAnswers);
 
         if (allPossibleAnswers.size() == 1) {
             if (allPossibleAnswers.get(0).size() == 1) {
@@ -59,7 +59,7 @@ public class Selector {
 
     }
 
-    private void retrievePossibleAnswers(String phrase, String hint, int answerLength, List<Clue> clues) {
+    private void retrievePossibleAnswers(String phrase, String hint, int answerLength, List<Clue> clues, List<List<String>> allPossibleAnswers) {
         for (Clue clue : clues) {
             if (clue.isRelevant(phrase)) {
                 Optional<List<String>> answer = clue.solve(phrase, hint, answerLength);
