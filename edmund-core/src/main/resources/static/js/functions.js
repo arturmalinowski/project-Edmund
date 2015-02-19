@@ -4,26 +4,58 @@ for (var i = 0; i < 15; i++) {
 	answerArray.push([".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "."]);
 }
 
-setupTable(clueArray, answerArray);
+setupTable();
+
+// Send all clues to Edmund
+function runEdmund() {
+
+	for (var i = 0; i < clueArray.length; i++) {
+		if (clueArray[i][8] != "SOLVED") {
+			sendToEdmund(i);
+		}
+	}
+}
+
+
+// Send clue to Edmund with hint (INCOMPLETE)
+function sendToEdmund(clueIndex) {
+
+	log("Sending " + clueArray[clueIndex][1] + " " + clueArray[clueIndex][0] + " to Edmund.");
+	clueArray[clueIndex][9].innerHTML = "<img src='img/statusCalculating.png' border=0/>";
+
+	var clueText = clueArray[clueIndex][2];
+	var hint = clueArray[clueIndex][10];
+	var clueLength = clueArray[clueIndex][3];
+	var url = "http://localhost:9090/solve?clue=" + clueText + "&hint=" + hint + "&length=" + clueLength;
+ 	
+	// ajax request
+	$.getJSON(url, function(data) {
+		receiveFromEdmund(clueIndex, data[0], "success");
+	})
+	.error( function(data) {
+		receiveFromEdmund(clueIndex, data, "failure");
+	});
+}
+
 
 //
-function runEdmund() {
-	// Tests to delete
-	//updateAnswerArray("0", "aaaaaa"); //
-	//updateAnswerArray("1", "5abcde"); //
-	//updateAnswerArray("2", "9abcdefg"); //
-	//updateAnswerArray("3", "10abcd"); //
-	//updateAnswerArray("12", "2abcd"); //
-	updateCrosswordByEdmund();
-	alert("Ran Edmund");
+function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
+	if (returnStatus === "success") {
+		updateAnswerArray(clueIndex, newAnswer);
+		clueArray[clueIndex][8] = "SOLVED";
+		clueArray[clueIndex][9].innerHTML = "<img src='img/statusSolved.png' border=0/>";
+		log("Edmund solved " + clueArray[clueIndex][1] + " " + clueArray[clueIndex][0] + ".&#10;");
+	}
+	else {
+		clueArray[clueIndex][8] = "UNSOLVED";
+		clueArray[clueIndex][9].innerHTML = "<img src='img/statusFailed.png' border=0/>";
+		log("Edmund could not resolve " + clueArray[clueIndex][1] + " " + clueArray[clueIndex][0] + ".&#10;");
+	}
 }
 
 
 // Setup Table structure (COMPLETE)
-function setupTable(clueArray, answerArray) {
-	this.clueArray = clueArray;
-	this.answerArray = answerArray;
-
+function setupTable() {
 	// Add rows and cells to table
 	var table = document.getElementById("crosswordTable");
 	for (var i = 0; i < 15; i++) {
@@ -61,11 +93,17 @@ function importCrosswordClues() {
 		{"clueDirection":"across", "clueNumber":"5", "clueText":"Challenging sweetheart heartlessly", "clueLength":"6", "startPos":"(0,4)", "endPos":"(5,4)"},
 		{"clueDirection":"across", "clueNumber":"6", "clueText":"Armor in the post", "clueLength":"4", "startPos":"(0,5)", "endPos":"(3,5)"},
 		{"clueDirection":"across", "clueNumber":"7", "clueText":"His work is often framed", "clueLength":"6", "startPos":"(0,6)", "endPos":"(5,6)"},
+		{"clueDirection":"across", "clueNumber":"8", "clueText":"Get cast adrift in boat", "clueLength":"6", "startPos":"(0,7)", "endPos":"(5,7)"},
+		{"clueDirection":"across", "clueNumber":"9", "clueText":"Wear around the brave", "clueLength":"7", "startPos":"(0,8)", "endPos":"(6,8)"},
+		{"clueDirection":"across", "clueNumber":"10", "clueText":"Beheaded celebrity is sailor", "clueLength":"3", "startPos":"(0,9)", "endPos":"(2,9)"},
+		{"clueDirection":"across", "clueNumber":"11", "clueText":"Nothing for romance", "clueLength":"4", "startPos":"(0,10)", "endPos":"(3,10)"},
+		{"clueDirection":"across", "clueNumber":"12", "clueText":"Going round stronghold, take a look", "clueLength":"4", "startPos":"(0,11)", "endPos":"(3,11)"},
 
 		{"clueDirection":"down", "clueNumber":"8", "clueText":"Jeer? I beg to differ!", "clueLength":"4", "startPos":"(14,0)", "endPos":"(14,3)"},
 	]; // DELETE LATER
 
 	// Importing temp array into clueArray
+	// [clueDirection, clueNumber, clueText, clueLength, startX, startY, endX, endY, clueStatus, clueStatusGraphic, clueHint]
 	for (var i = 0; i < temp.length; i++) {
 		clueArray.push([
 			temp[i].clueDirection,
@@ -111,8 +149,7 @@ function addClues() {
 		document.getElementById("crosswordTable").rows[yy].cells[xx].innerHTML = '.<div class="daySubscript">' + num + '</div>';
 
 		// Log clue added
-		log("Added " + clueArray[i][0] + " Clue: " + clueArray[i][1] + ". " + clueArray[i][2] + " (" + clueArray[i][3] + ").");
-		log("");
+		log("Added " + clueArray[i][0] + " Clue: " + clueArray[i][1] + ". " + clueArray[i][2] + " (" + clueArray[i][3] + ").&#10;");
 	}
 
 	// Unhighlight crossword table
@@ -155,43 +192,6 @@ function generateHints() {
 			clueArray[i][10] = temp;
 		}
 	}
-}
-
-
-// Use Edmund to find answers to clues (INCOMPLETE)
-function updateCrosswordByEdmund() {
-	for (var i = 0; i < clueArray.length; i++) {
-		log("Sending " + clueArray[i][1] + " " + clueArray[i][0] + " to Edmund.");
-		clueArray[i][9].innerHTML = "<img src='img/statusCalculating.png' border=0/>";
-
-		// send clue to edmund, get response
-		var newAnswer = sendToEdmund(clueArray[i][2], clueArray[i][3], clueArray[i][10]);
-
-		if (!(newAnswer === "*")) {
-			clueArray[i][10] = newAnswer;
-			updateAnswerArray(clueArray, answerArray, i);
-		}
-		else {
-			clueArray[i][9].innerHTML = "<img src='img/statusFailed.png' border=0/>";
-			log("Edmund could not resolve " + clueArray[i][1] + " " + clueArray[i][0] + ".");
-			log("");
-		}
-	}
-}
-
-
-// Send clue to Edmund with hint (INCOMPLETE)
-function sendToEdmund(clueText, clueLength, hint) {
-	var url = "http://localhost:9090/solve?clue=" + clueText + "&hint=" + hint + "&length=" + clueLength;
-	alert(url);
-	
-	// ajax request
-	$.getJSON(url, function(result){
-		alert(result);
-	});
-
-	
-	return "*"; // EDMUND FAILURE
 }
 
 
