@@ -16,7 +16,7 @@ public class EdmundRunner {
     private ConfigurableApplicationContext edmundRunner;
 
     public static void main(String[] args) {
-        new EdmundRunner();
+        new EdmundRunner().startEdmund();
     }
 
     public void startEdmund() {
