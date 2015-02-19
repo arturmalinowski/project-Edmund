@@ -44,6 +44,8 @@ img {
 	text-align: center;
 
 	background-color: LightGray;
+
+  position: relative;
 }
 
 .blankCell {
@@ -70,4 +72,36 @@ img {
 .container > * {
     display: inline-block;
     vertical-align: top;
+}
+
+.daySubscript {
+    font-size: 10px;
+    color: Black;
+    position: absolute;
+    top: 0;
+    left: 0;  
+      z-index: 10;
+    text-align:right;
+    vertical-align:bottom;
+}
+
+#edmundButton {
+  margin-top: 10%;
+  margin-left: 30%;
+}
+
+#statusPane {
+  margin-left: 30%;
+  width: 300px;
+  height: 500px;
+  overflow: scroll;
+
+  text-align: center;
+}
+
+#statusLabel {
+  margin-top: 30%;
+  margin-left: 30%;
+  text-align: center;
+  text-decoration: underline;
 }

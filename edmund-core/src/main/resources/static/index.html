@@ -4,7 +4,9 @@
 		<meta charset="utf-8">
 		<title>Project Edmund</title>
 	    <link rel=stylesheet type="text/css" href="css/home.css">
+	    <link rel="shortcut icon" href="img/edmundLogo.ico">
 	    <script src="js/functions.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	</head>
 
 	<body>
@@ -20,9 +22,16 @@
 					<h3 class="clueHeader">Down</h3>
 					<table id="downClues"></table>
 				</div>
+				<div>
+					<button id="edmundButton" type="button" onclick="runEdmund()">Run Edmund</button>
+				</div>
 			</div>
 			<div id="rightPane">
 				<table id="crosswordTable"></table>
+			</div>
+			<div>
+				<p id="statusLabel">Edmund Status</p>
+				<textarea readonly id="statusPane"></textarea>
 			</div>
 		</div>
 	</body>
