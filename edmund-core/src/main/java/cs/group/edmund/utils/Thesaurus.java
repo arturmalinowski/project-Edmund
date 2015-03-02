@@ -17,7 +17,7 @@ import java.util.List;
 public class Thesaurus {
 
     private OfflineThesaurus offlineThesaurus = new OfflineThesaurus();
-    public static final String BIG_HUGE_LABS_API_KEY = "4dc4530e78ea832bb937f3e12563b9f7";
+    public static final String BIG_HUGE_LABS_API_KEY = "81fee77d8f082fbcc725c0684c190b28";
 
     public ArrayList<String> getAllSynonymsXML(String word) {
         if (offlineThesaurus.hasWord(word)) {
