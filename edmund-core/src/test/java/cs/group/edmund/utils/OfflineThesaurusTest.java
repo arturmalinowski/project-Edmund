@@ -1,6 +1,7 @@
 package cs.group.edmund.utils;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -42,8 +43,10 @@ public class OfflineThesaurusTest {
         assertThat(offlineThesaurus.hasWord("retards"), is(true));
     }
 
+    @Ignore
+    // new words are added to the offline thesaurus so will only pass once with a certain word
     @Test
-    public void checkIfWordWIthNoResultsGetsSavedOfflineTest() {
+    public void checkIfWordWithNoResultsGetsSavedOfflineTest() {
         Boolean check = offlineThesaurus.hasWord("sharif");
 
         assertThat(check, is(false));
