@@ -1,61 +1,21 @@
+// [clueDirection, clueNumber, clueNumberLink, clueText, clueLength, startX, startY, endX, endY, clueStatus, clueStatusLink, clueHint, clueAnswers]
 var clueArray = [];
 var answerArray = [];
 for (var i = 0; i < 15; i++) {
 	answerArray.push([".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "."]);
 }
-
 setupTable();
+var logNum = 1;
+var jsonUploaded = false;
 
-// Send all clues to Edmund
-function runEdmund() {
+// TESTS
 
-	for (var i = 0; i < clueArray.length; i++) {
-		if (clueArray[i][8] != "SOLVED") {
-			sendToEdmund(i);
-		}
-	}
-}
-
-
-// Send clue to Edmund with hint (INCOMPLETE)
-function sendToEdmund(clueIndex) {
-
-	log("Sending " + clueArray[clueIndex][1] + " " + clueArray[clueIndex][0] + " to Edmund.");
-	clueArray[clueIndex][9].innerHTML = "<img src='img/statusCalculating.png' border=0/>";
-
-	var clueText = clueArray[clueIndex][2];
-	var hint = clueArray[clueIndex][10];
-	var clueLength = clueArray[clueIndex][3];
-	var url = "http://localhost:9090/solve?clue=" + clueText + "&hint=" + hint + "&length=" + clueLength;
- 	
-	// ajax request
-	$.getJSON(url, function(data) {
-		receiveFromEdmund(clueIndex, data[0], "success");
-	})
-	.error( function(data) {
-		receiveFromEdmund(clueIndex, data, "failure");
-	});
-}
-
-
+// Functions
 //
-function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
-	if (returnStatus === "success") {
-		updateAnswerArray(clueIndex, newAnswer);
-		clueArray[clueIndex][8] = "SOLVED";
-		clueArray[clueIndex][9].innerHTML = "<img src='img/statusSolved.png' border=0/>";
-		log("Edmund solved " + clueArray[clueIndex][1] + " " + clueArray[clueIndex][0] + ".&#10;");
-	}
-	else {
-		clueArray[clueIndex][8] = "UNSOLVED";
-		clueArray[clueIndex][9].innerHTML = "<img src='img/statusFailed.png' border=0/>";
-		log("Edmund could not resolve " + clueArray[clueIndex][1] + " " + clueArray[clueIndex][0] + ".&#10;");
-	}
-}
-
-
-// Setup Table structure (COMPLETE)
+//
+// Setup Table structure (WORKING)
 function setupTable() {
+
 	// Add rows and cells to table
 	var table = document.getElementById("crosswordTable");
 	for (var i = 0; i < 15; i++) {
@@ -63,198 +23,294 @@ function setupTable() {
 		row.id = "row_" + i.toString();
 
 		for (var j = 0; j < 15; j++) {
-			var cell = row.insertCell(0);
+			var cell = row.insertCell(-1);
+			cell.innerHTML = '<div id="' + j.toString() + '_' + i.toString() + '_content" contentEditable></div>' + '<div id="' + j.toString() + '_' + i.toString() + '_number' + '" class="daySubscript"></div>';
 			cell.className = cell.className + " crosswordCell";
 		}
 	}
 
-	// Fill all blank
+	// Set crossword cells as blank
 	for (var i = 0; i < 15; i++) {
 		for (var j = 0; j < 15; j++) {
 			setBlank(i, j);
 		}
 	}
 
-	// Setup rest of table
 	fillCrossword();
-	importCrosswordClues();
-	addClues();
 }
 
 
-// Import crossword clues into clueArray from JSON (INCOMPLETE)
-function importCrosswordClues() {
-	// Example clues to delete later
-	var temp = [
-		{"clueDirection":"across", "clueNumber":"1", "clueText":"Physician brings fish around", "clueLength":"3", "startPos":"(0,0)", "endPos":"(2,0)"},
-		{"clueDirection":"across", "clueNumber":"2", "clueText":"Times when things appear obscure?", "clueLength":"6", "startPos":"(0,1)", "endPos":"(5,1)"},
-		{"clueDirection":"across", "clueNumber":"3", "clueText":"Observe odd characters in scene", "clueLength":"3", "startPos":"(0,2)", "endPos":"(2,2)"},
-		{"clueDirection":"across", "clueNumber":"4", "clueText":"We surrounded strike snowy", "clueLength":"5", "startPos":"(0,3)", "endPos":"(4,3)"},
-		{"clueDirection":"across", "clueNumber":"5", "clueText":"Challenging sweetheart heartlessly", "clueLength":"6", "startPos":"(0,4)", "endPos":"(5,4)"},
-		{"clueDirection":"across", "clueNumber":"6", "clueText":"Armor in the post", "clueLength":"4", "startPos":"(0,5)", "endPos":"(3,5)"},
-		{"clueDirection":"across", "clueNumber":"7", "clueText":"His work is often framed", "clueLength":"6", "startPos":"(0,6)", "endPos":"(5,6)"},
-		{"clueDirection":"across", "clueNumber":"8", "clueText":"Get cast adrift in boat", "clueLength":"6", "startPos":"(0,7)", "endPos":"(5,7)"},
-		{"clueDirection":"across", "clueNumber":"9", "clueText":"Wear around the brave", "clueLength":"7", "startPos":"(0,8)", "endPos":"(6,8)"},
-		{"clueDirection":"across", "clueNumber":"10", "clueText":"Beheaded celebrity is sailor", "clueLength":"3", "startPos":"(0,9)", "endPos":"(2,9)"},
-		{"clueDirection":"across", "clueNumber":"11", "clueText":"Nothing for romance", "clueLength":"4", "startPos":"(0,10)", "endPos":"(3,10)"},
-		{"clueDirection":"across", "clueNumber":"12", "clueText":"Going round stronghold, take a look", "clueLength":"4", "startPos":"(0,11)", "endPos":"(3,11)"},
+// Clear current crossword configuration (WORKING)
+function clearConfiguration() {
 
-		{"clueDirection":"down", "clueNumber":"8", "clueText":"Jeer? I beg to differ!", "clueLength":"4", "startPos":"(14,0)", "endPos":"(14,3)"},
-	]; // DELETE LATER
+	// Clear crossword table
+	for (var i = 0; i < 15; i++) {
+		for (var j = 0; j < 15; j++) {
+			setBlank(i, j);
+			updateCell(i, j, ".");
+		}
+	}
 
-	// Importing temp array into clueArray
-	// [clueDirection, clueNumber, clueText, clueLength, startX, startY, endX, endY, clueStatus, clueStatusGraphic, clueHint]
-	for (var i = 0; i < temp.length; i++) {
-		clueArray.push([
-			temp[i].clueDirection,
-			temp[i].clueNumber,
-			temp[i].clueText,
-			temp[i].clueLength,
-			temp[i].startPos.substring(1, parseInt(temp[i].startPos.indexOf(","))),
-			temp[i].startPos.substring(parseInt(temp[i].startPos.indexOf(","))+1, parseInt(temp[i].startPos.indexOf(")"))),
-			temp[i].endPos.substring(1, parseInt(temp[i].endPos.indexOf(","))),
-			temp[i].endPos.substring(parseInt(temp[i].endPos.indexOf(","))+1, parseInt(temp[i].endPos.indexOf(")"))),
-			"UNCALCULATED",
-			"BLANK",
-			"BLANK"
-		]);
-	}	
-}
-
-// Add clue information to left side of page and crossword (COMPLETE)
-function addClues() {
-	// Add clues to clue list
-	for (var i = 0; i < clueArray.length; i++) {
+	// Delete clue information
+	for (var i in clueArray) {
 		var table = document.getElementById(clueArray[i][0]+"Clues");
-
-		var row = table.insertRow();
-		var cell = row.insertCell(0);
-		//cell.innerHTML = "<img src='img/statusAdded.jpg' border=0/>";
-		clueArray[i][9] = cell;
-
-		var temp = "";
-		for (var j = 0; j < parseInt(clueArray[i][3]); j++) {
-			temp = temp + ".";
-		}
-		clueArray[i][10] = temp;
-
-		var clueText = clueArray[i][1] + ". " + clueArray[i][2] + " (" + clueArray[i][3] + ")";
-		cell = row.insertCell(0);
-		cell.innerHTML = clueText;
-
-		var xx = clueArray[i][4];
-		var yy = clueArray[i][5];
-		var num = clueArray[i][1];
-
-		document.getElementById("crosswordTable").rows[yy].cells[xx].innerHTML = '.<div class="daySubscript">' + num + '</div>';
-
-		// Log clue added
-		log("Added " + clueArray[i][0] + " Clue: " + clueArray[i][1] + ". " + clueArray[i][2] + " (" + clueArray[i][3] + ").&#10;");
+		table.deleteRow(0);
 	}
 
-	// Unhighlight crossword table
-	for (var i = 0; i < clueArray.length; i++) {
-		if (clueArray[i][0] === "across") {
-			for (var j = parseInt(clueArray[i][4]); j < parseInt(clueArray[i][6])+1; j++) {
-				setUnblank(j, clueArray[i][7]);
+}
+
+
+// Upload selected .txt file with JSON, parse it to clueArray (WORKING)
+function uploadJSON() {
+
+	//clearConfiguration();
+
+	var x = document.getElementById("fileInput");
+	var file = x.files[0];
+	if (file.name.substring(file.name.indexOf(".") + 1) === "txt") {
+		x.disabled = true;
+		jsonUploaded = true;
+
+		var reader = new FileReader();
+		reader.onload = function(){
+			var json = reader.result,
+      		obj = JSON.parse(json);
+
+			// Import temp array into clueArray
+			// [clueDirection, clueNumber, clueNumberLink, clueText, clueLength, startX, startY, endX, endY, clueStatus, clueStatusLink, clueHint, clueAnswers]
+			for (var i = 0; i < obj.size; i++) {
+				clueArray.push([
+					obj.clues[i].clueDirection,
+					obj.clues[i].clueNumber,
+					document.getElementById(obj.clues[i].startPos.substring(1, parseInt(obj.clues[i].startPos.indexOf(","))) + "_" + obj.clues[i].startPos.substring(parseInt(obj.clues[i].startPos.indexOf(","))+1, parseInt(obj.clues[i].startPos.indexOf(")"))) + "_number"),
+					obj.clues[i].clueText,
+					obj.clues[i].clueLength,
+					obj.clues[i].startPos.substring(1, parseInt(obj.clues[i].startPos.indexOf(","))),
+					obj.clues[i].startPos.substring(parseInt(obj.clues[i].startPos.indexOf(","))+1, parseInt(obj.clues[i].startPos.indexOf(")"))),
+					obj.clues[i].endPos.substring(1, parseInt(obj.clues[i].endPos.indexOf(","))),
+					obj.clues[i].endPos.substring(parseInt(obj.clues[i].endPos.indexOf(","))+1, parseInt(obj.clues[i].endPos.indexOf(")"))),
+					"UNCALCULATED",
+					"BLANK",
+					"BLANK",
+					"BLANK"
+				]);
 			}
-		}
-		if (clueArray[i][0] === "down") {
-			for (var j = parseInt(clueArray[i][5]); j < parseInt(clueArray[i][7])+1; j++) {
-				setUnblank(clueArray[i][4], j);
-			}
-		}
+			addClues();
+		};
+		reader.readAsText(file);
 	}
 }
 
 
-// Generate hints by iterating through the answerArray (COMPLETE)
-function generateHints() {
-
-	for (var i = 0; i < clueArray.length; i++) {
-		var temp = "";
-		if (clueArray[i][0] === "across") {
-			for (var j = parseInt(clueArray[i][4]); j < parseInt(clueArray[i][6])+1; j++) {
-				var x = j;
-				var y = parseInt(clueArray[i][5]);
-
-				temp = temp + answerArray[x][y];
-			}
-			clueArray[i][10] = temp;
-		}
-		if (clueArray[i][0] === "down") {
-			for (var j = parseInt(clueArray[i][5]); j < parseInt(clueArray[i][7])+1; j++) {
-				var x = parseInt(clueArray[i][4]);
-				var y = j;
-
-				temp = temp + answerArray[x][y];
-			}
-			clueArray[i][10] = temp;
-		}
-	}
-}
-
-
-// Update answerArray with new answers (COMPLETE)
-function updateAnswerArray(clueIndexNumber, hint) {
-	// fill answerArray with new answer, update status
-	if (clueArray[clueIndexNumber][0] === "across") {
-		var temp = 0;
-		for (var j = parseInt(clueArray[clueIndexNumber][4]); j < parseInt(clueArray[clueIndexNumber][6])+1; j++) {
-			updateCell(j, clueArray[clueIndexNumber][5], hint.substring(temp, temp+1));
-			temp++;
-		}
-	}
-	if (clueArray[clueIndexNumber][0] === "down") {
-		var temp = 0;
-		for (var j = parseInt(clueArray[clueIndexNumber][5]); j < parseInt(clueArray[clueIndexNumber][7])+1; j++) {
-			updateCell(clueArray[clueIndexNumber][4], j, hint.substring(temp, temp+1));
-			temp++;
-		}
-	}
-	clueArray[clueIndexNumber][8] = "solved";
-	clueArray[clueIndexNumber][9].innerHTML = "<img src='img/statusSolved.png' border=0/>";
-}
-
-
-// Fill the crossword based on the answerArray (COMPLETE)
+// Fill the crossword with the contents of the answerArray (WORKING)
 function fillCrossword() {
 	for (var i = 0; i < 15; i++) {
 		for (var j = 0; j < 15; j++) {
-			document.getElementById("crosswordTable").rows[i].cells[j].innerHTML = answerArray[i][j];
+			updateCell(j, i, answerArray[j][i]);
 		}
 	}
 }
 
 
-// Get content of given cell (COMPLETE)
-function getCell(x, y) {
-	var cell = document.getElementById("crosswordTable").rows[y].cells[x];
-	return cell.innerHTML;
+// Add clue information to left side of page and crossword table (WORKING)
+function addClues() {
+
+	// Add clues to clue list
+	for (var i in clueArray) {
+		var table = document.getElementById(clueArray[i][0]+"Clues");
+
+		// Fill clueStatusLink
+		var row = table.insertRow();
+		var cell = row.insertCell(0);
+		clueArray[i][10] = cell;
+
+		// Fill hint
+		var temp = "";
+		for (var j = 0; j < parseInt(clueArray[i][4]); j++) {
+			temp = temp + ".";
+		}
+		clueArray[i][11] = temp;
+
+		// Display clueText
+		var clueText = clueArray[i][1] + ". " + clueArray[i][3] + " (" + clueArray[i][4] + ")";
+		cell = row.insertCell(0);
+		cell.innerHTML = clueText;
+
+		// Add clueIndex on crossword table
+		document.getElementById(clueArray[i][5] + "_" + clueArray[i][6] + "_number").innerHTML = clueArray[i][1];
+	}
+
+	// Unhighlight crossword table
+	for (var i in clueArray) {
+		if (clueArray[i][0] === "across") {
+			for (var j = parseInt(clueArray[i][5]); j < parseInt(clueArray[i][7])+1; j++) {
+				setUnblank(j, clueArray[i][6]);
+			}
+		}
+		if (clueArray[i][0] === "down") {
+			for (var j = parseInt(clueArray[i][6]); j < parseInt(clueArray[i][8])+1; j++) {
+				setUnblank(clueArray[i][7], j);
+			}
+		}
+	}
 }
 
 
-// Update the cell contents at the given coordinates (COMPLETE)
+// Send all unsolved clues to Edmund (WORKING)
+function runEdmund() {
+
+	if (jsonUploaded) {
+		updateAnswerArrayFromUser();
+		generateHints();
+
+		for (var i in clueArray) {
+			if (clueArray[i][9] != "SOLVED") {
+				clueArray[i][10].innerHTML = "<img src='img/statusCalculating.png' border=0/>";
+				sendToEdmund(i);
+			}
+		}
+	}
+}
+
+
+// Send clue to Edmund by index (WORKING)
+function sendToEdmund(clueIndex) {
+
+	// Generate URL for http request
+	var url = "http://localhost:9090/solve?clue=" + clueArray[clueIndex][3] + "&hint=" + clueArray[clueIndex][11] + "&length=" + clueArray[clueIndex][4];
+ 	
+	// ajax request
+	$.getJSON(url, function(data) {
+		receiveFromEdmund(clueIndex, data, "success");
+	})
+	.error( function(data) {
+		receiveFromEdmund(clueIndex, data, "failure");
+	});
+}
+
+
+// Receive responses from Edmund (WORKING)
+function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
+
+	// Answer found
+	if (returnStatus === "success") {
+		updateAnswerArrayFromHints(clueIndex, newAnswer[0]);
+		clueArray[clueIndex][9] = "SOLVED";
+
+		if (newAnswer.length == 1) {clueArray[clueIndex][10].innerHTML = "<img src='img/statusSolved.png' border=0/>";}
+		else {clueArray[clueIndex][10].innerHTML = "<img src='img/statusMultiple.png' border=0/>";}
+		//clueArray[clueIndex][10].innerHTML = "<img src='img/statusSolved.png' border=0/>";
+		//clueArray[clueIndex][10].title = newAnswer[0]; // DELETE
+
+		// log response details
+		//if (newAnswer.length == 1) { log("Edmund solved " + clueIndex + " " + clueArray[clueIndex][0] + ": " + newAnswer[0] + ".") }
+		//else {
+			//for (var i in newAnswer) {
+				//log("Edmund solved " + clueIndex + " " + clueArray[clueIndex][0] + ": Possible answer " + i + ": " + newAnswer[i] + ".");
+			//}
+		//}
+
+		// Log answers and add as tooltips
+		var temp = "";
+		for (var i in newAnswer) {
+			temp = temp + newAnswer[i];
+		}
+		clueArray[clueIndex][10].title = temp;
+		log("Edmund solved " + clueIndex + " " + clueArray[clueIndex][0] + ": " + temp + ".");
+	}
+	// Answer not found
+	else {
+		clueArray[clueIndex][9] = "UNSOLVED";
+		clueArray[clueIndex][10].innerHTML = "<img src='img/statusFailed.png' border=0/>";
+		log("Edmund could not solve " + clueIndex + " " + clueArray[clueIndex][0] + ".");
+	}
+}
+
+
+// Update the cell contents at the given coordinates (WORKING)
 function updateCell(x, y, content) {
 	answerArray[x][y] = content;
-	document.getElementById("crosswordTable").rows[y].cells[x].innerHTML = content.toString() + document.getElementById("crosswordTable").rows[y].cells[x].innerHTML.substring(1);
+	document.getElementById(x + "_" + y + "_content").innerHTML = content;
 	generateHints();
 }
 
 
-// Blank the cell at the given coordinates (COMPLETE)
+// Update answerArray with new answers (WORKING)
+function updateAnswerArrayFromHints(clueIndexNumber, answer) {
+
+	// fill answerArray with new answer, update clue status
+	var temp = 0;
+	if (clueArray[clueIndexNumber][0] === "across") {
+		for (var j = parseInt(clueArray[clueIndexNumber][5]); j < parseInt(clueArray[clueIndexNumber][7])+1; j++) {
+			updateCell(j, clueArray[clueIndexNumber][6], answer.substring(temp, temp+1));
+			temp++;
+		}
+	}
+	if (clueArray[clueIndexNumber][0] === "down") {
+		for (var j = parseInt(clueArray[clueIndexNumber][6]); j < parseInt(clueArray[clueIndexNumber][8])+1; j++) {
+			updateCell(clueArray[clueIndexNumber][7], j, answer.substring(temp, temp+1));
+			temp++;
+		}
+	}
+	clueArray[clueIndexNumber][9] = "solved";
+	clueArray[clueIndexNumber][10].innerHTML = "<img src='img/statusSolved.png' border=0/>";
+}
+
+
+// Fill answer array from crossword table content (WORKING)
+function updateAnswerArrayFromUser() {
+
+	for (var i = 0; i < 15; i++) {
+		for (var j = 0; j < 15; j++) {
+			answerArray[i][j] = document.getElementById(i + "_" + j + "_content").innerHTML;
+		}
+	}
+}
+
+
+// Generate hints by iterating through the answerArray (WORKING)
+function generateHints() {
+
+	for (var i in clueArray) {
+		var temp = "";
+		if (clueArray[i][0] === "across") {
+			for (var j = parseInt(clueArray[i][5]); j < parseInt(clueArray[i][7])+1; j++) {
+				var x = j;
+				var y = parseInt(clueArray[i][6]);
+
+				temp = temp + answerArray[x][y];
+			}
+			clueArray[i][11] = temp;
+		}
+		if (clueArray[i][0] === "down") {
+			for (var j = parseInt(clueArray[i][6]); j < parseInt(clueArray[i][8])+1; j++) {
+				var x = parseInt(clueArray[i][7]);
+				var y = j;
+
+				temp = temp + answerArray[x][y];
+			}
+			clueArray[i][11] = temp;
+		}
+	}
+}
+
+
+// Blanl the cell at the given coordinates (WORKING)
 function setBlank(x, y) {
 	var cell = document.getElementById("crosswordTable").rows[parseInt(y)].cells[parseInt(x)].className = "blankCell";
 }
 
 
-// Unblank the cell at the given coordinates (COMPLETE)
+// Unblank the cell at the given coordinates (WORKING)
 function setUnblank(x, y) {
 	var cell = document.getElementById("crosswordTable").rows[parseInt(y)].cells[parseInt(x)].className = "crosswordCell";
 }
 
-// Log messages to the status pane (COMPLETE)
+
+// Log messages to the status pane (WORKING)
 function log(message) {
+	message = logNum + " -> " + message;
 	document.getElementById("statusPane").innerHTML = document.getElementById("statusPane").innerHTML + "&#10;" + message;
-	document.getElementById("statusPane").scrollTop = document.getElementById("statusPane").scrollHeight 
+	document.getElementById("statusPane").scrollTop = document.getElementById("statusPane").scrollHeight;
+	logNum++;
 }
