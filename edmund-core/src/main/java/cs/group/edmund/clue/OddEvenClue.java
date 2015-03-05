@@ -101,8 +101,6 @@ public class OddEvenClue implements Clue {
                     if (singleAnswer.matches(hint)) {
                         answer = singleAnswer;
                     }
-                } else {
-
                 }
             }
         } else {

@@ -24,6 +24,7 @@ public class Selector {
                 new DeletionClue(thesaurus),
                 new AnagramClue(thesaurus),
                 new OddEvenClue(),
+                new HiddenClue(thesaurus),
                 new DoubleDefinitionsClue(thesaurus));
 
         // go through each clue solver with the phrase
