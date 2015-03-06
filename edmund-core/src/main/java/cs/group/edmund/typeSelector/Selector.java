@@ -19,12 +19,12 @@ public class Selector {
         List<List<String>> allPossibleAnswers = new ArrayList<>();
 
         List<Clue> clues = asList(
+                new AnagramClue(thesaurus),
+                new HiddenClue(thesaurus),
+                new OddEvenClue(),
+                new DeletionClue(thesaurus),
                 new ReversalClue(thesaurus),
                 new ContainerClue(thesaurus),
-                new DeletionClue(thesaurus),
-                new AnagramClue(thesaurus),
-                new OddEvenClue(),
-                new HiddenClue(thesaurus),
                 new DoubleDefinitionsClue(thesaurus));
 
         // go through each clue solver with the phrase
