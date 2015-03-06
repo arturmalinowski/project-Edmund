@@ -6,7 +6,7 @@
 			{"clueDirection":"across", "clueNumber":"4", "clueText":"We surrounded strike snowy", "clueLength":"5", "startPos":"(0,3)", "endPos":"(4,3)"},
 			{"clueDirection":"across", "clueNumber":"5", "clueText":"Challenging sweetheart heartlessly", "clueLength":"6", "startPos":"(0,4)", "endPos":"(5,4)"},
 			{"clueDirection":"across", "clueNumber":"6", "clueText":"Armor in the post", "clueLength":"4", "startPos":"(0,5)", "endPos":"(3,5)"},
-			{"clueDirection":"across", "clueNumber":"7", "clueText":"His work is often framed", "clueLength":"6", "startPos":"(0,6)", "endPos":"(5,6)"},
+			{"clueDirection":"across", "clueNumber":"7", "clueText":"His work is often framed", "clueLength":"7", "startPos":"(0,6)", "endPos":"(5,6)"},
 			{"clueDirection":"across", "clueNumber":"8", "clueText":"Get cast adrift in boat", "clueLength":"6", "startPos":"(0,7)", "endPos":"(5,7)"},
 			{"clueDirection":"across", "clueNumber":"9", "clueText":"Wear around the brave", "clueLength":"7", "startPos":"(0,8)", "endPos":"(6,8)"},
 			{"clueDirection":"across", "clueNumber":"10", "clueText":"Beheaded celebrity is sailor", "clueLength":"3", "startPos":"(0,9)", "endPos":"(2,9)"},
