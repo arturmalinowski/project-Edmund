@@ -41,7 +41,7 @@ public class DeletionClue implements Clue {
     @Override
     public boolean isRelevant(String phrase) {
         for (String keyWord : keyWords) {
-            if (phrase.contains(keyWord.toLowerCase()))
+            if (phrase.toLowerCase().contains(keyWord.toLowerCase()))
                 return true;
         }
         return false;

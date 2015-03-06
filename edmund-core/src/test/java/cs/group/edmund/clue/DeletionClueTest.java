@@ -35,7 +35,7 @@ public class DeletionClueTest {
     @Table({
             // Beheadments
             @Row({"Beheaded celebrity is sailor", "tar", "3", "t..", "head"}), // (passes)
-            @Row({"First off mobilize supporter", "ally", "4", "a...", "head"}), // "mobilize" -> "rally"
+            @Row({"First off mobilize supporter", "ally", "4", "a...", "head"}), // "mobilize" -> "rally" (passes)
             //@Row({"Work the land without first limb", "arm", "3", "a..", "head"}), // "work the land" -> "farm"
             //@Row({"Very happy to be associated with dropping introduction", "elated", "6", "e.....", "head"}), // "to be associated" -> "related"
             @Row({"Head off champion worker", "artisan", "7", "a......", "head"}), // (passes)
