@@ -111,7 +111,7 @@ public class AnagramClueTest {
         assertThat(Helper.combineWords(list, 7).contains("truerun"), is(true));
     }
 
-    @Ignore
+
     @Test
     @Table({@Row({"Get cast adrift in boat", "obtain", "6", "null"}),
             @Row({"Lisa mistaken to travel to sea", "sail", "4", "null"}),
@@ -142,6 +142,6 @@ public class AnagramClueTest {
         clue = new AnagramClue(thesaurus);
         Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
 
-        assertThat(answer.get(), is(clueAnswer));
+        assertThat(answer.get().get(0), is(clueAnswer));
     }
 }
