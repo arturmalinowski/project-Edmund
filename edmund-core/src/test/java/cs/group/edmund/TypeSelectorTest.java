@@ -45,9 +45,9 @@ public class TypeSelectorTest {
 
     @Test
     public void edmundReturnsTheCorrectAnswerForAContainerClue() throws Exception {
-        List<String> answer = selector.retrieveAnswer("We surrounded strike snowy", "w....", 5, thesaurus);
+        List<String> answer = selector.retrieveAnswer("Hide in Arthur's kingdom", "", 4, thesaurus);
 
-        assertThat(answer.get(0), is("white"));
+        assertThat(answer.get(0), is("king"));
     }
 
     @Test

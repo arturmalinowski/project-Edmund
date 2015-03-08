@@ -63,11 +63,20 @@ public class Selector {
     private void retrievePossibleAnswers(String phrase, String hint, int answerLength, List<Clue> clues, List<List<String>> allPossibleAnswers) {
         for (Clue clue : clues) {
             if (clue.isRelevant(phrase)) {
-                Optional<List<String>> answer = clue.solve(phrase, hint, answerLength);
-                if (answer.isPresent()) {
-                    allPossibleAnswers.add(answer.get());
-                }
+                computeAnswers(phrase, hint, answerLength, allPossibleAnswers, clue);
             }
+        }
+        if (allPossibleAnswers.size() == 0) {
+            for (Clue clue : clues) {
+                computeAnswers(phrase, hint, answerLength, allPossibleAnswers, clue);
+            }
+        }
+    }
+
+    private void computeAnswers(String phrase, String hint, int answerLength, List<List<String>> allPossibleAnswers, Clue clue) {
+        Optional<List<String>> answer = clue.solve(phrase, hint, answerLength);
+        if (answer.isPresent()) {
+            allPossibleAnswers.add(answer.get());
         }
     }
 }
