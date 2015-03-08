@@ -10,7 +10,8 @@ branches:
 deploy:
   provider: releases
   api_key: "8826c523aeefb8c21e3e2bdc1dd6a7a56e74a025"
-  file: "project-Edmund.jar"
+  file: "/home/travis/build/arturmalinowski/project-Edmund/edmund-core/target/project-Edmund.jar"
   skip_cleanup: true
   on:
     tags: true
+    all_branches: true
