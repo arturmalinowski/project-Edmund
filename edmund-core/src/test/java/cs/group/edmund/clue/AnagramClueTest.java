@@ -15,7 +15,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -66,15 +65,6 @@ public class AnagramClueTest {
         String crypticCrossword = clue.create("nights");
 
         assertThat(crypticCrossword, containsString("things"));
-    }
-
-    @Ignore
-    @Test
-    public void secondAnagramClueTestCanBeCreated() {
-        clue = new AnagramClue(thesaurus);
-        String crypticCrossword = clue.create("friend");
-
-        assertThat(crypticCrossword, anyOf(containsString("finder"), containsString("redfin")));
     }
 
     @Test
