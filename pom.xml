@@ -22,7 +22,7 @@
 
     <properties>
         <jetty.version>9.2.3.v20140905</jetty.version>
-        <start-class>project-Edmund.edmund-core.EdmundRunner</start-class>
+        <start-class>cs.group.edmund.launch.EdmundRunner</start-class>
     </properties>
 
 
