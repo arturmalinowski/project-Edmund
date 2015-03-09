@@ -3,6 +3,10 @@ jdk:
    - oraclejdk8
 notifications:
   email: false
+branches:
+   only:
+     - master
+     - stable
 deploy:
   provider: releases
   api_key: "8826c523aeefb8c21e3e2bdc1dd6a7a56e74a025"
