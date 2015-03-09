@@ -3,8 +3,10 @@ package cs.group.edmund.clue;
 import cs.group.edmund.fixtures.HttpClient;
 import cs.group.edmund.utils.Helper;
 import cs.group.edmund.utils.Thesaurus;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -117,15 +119,25 @@ public class AnagramClue implements Clue {
 
     public List<String> findAnagram(String word) {
         List<String> anagrams = new ArrayList<>();
-        JSONObject obj = new JSONObject(HttpClient.makeRequest("http://www.anagramica.com/all/:" + word));
 
-        if (obj.has("all")) {
-            JSONArray arr = obj.getJSONArray("all");
-            for (int i = 0; i < arr.length(); i++) {
-                if(arr.getString(i).length() == word.length() && !arr.getString(i).equals(word.toLowerCase())) {
-                    anagrams.add(arr.getString(i).toLowerCase());
+        String httpResponse = HttpClient.makeRequest("http://www.solverscrabble.com/words-with-the-letters-" + word);
+
+        if (httpResponse.contains("Anagrams of " + word)) {
+
+            int resultStartPosition = httpResponse.indexOf("<p class=\"letterInfo\">Anagrams");
+            int resultEndingPosition = httpResponse.indexOf("<p class=\"letterInfo\">Words with");
+            String result = httpResponse.substring(resultStartPosition, resultEndingPosition);
+
+            Document document = Jsoup.parse(result);
+            Elements elements = document.getElementsByClass("jumble");
+
+            for (Element element : elements) {
+                if (!element.text().equals(word.toLowerCase())) {
+                    anagrams.add(element.text());
                 }
             }
+        } else {
+            return null;
         }
 
         if ((anagrams.size() == 0) || (anagrams.size() < 2) && (anagrams.get(0).equals(word.toLowerCase()))) {
