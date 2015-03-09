@@ -25,7 +25,6 @@
         <start-class>cs.group.edmund.launch.EdmundRunner</start-class>
     </properties>
 
-
     <dependencyManagement>
         <dependencies>
             <dependency>
