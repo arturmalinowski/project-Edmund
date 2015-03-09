@@ -64,7 +64,7 @@ public class AnagramClueTest {
         clue = new AnagramClue(thesaurus);
         String crypticCrossword = clue.create("nights");
 
-        assertThat(crypticCrossword, containsString("things"));
+        assertThat(crypticCrossword, containsString("thing"));
     }
 
     @Test
