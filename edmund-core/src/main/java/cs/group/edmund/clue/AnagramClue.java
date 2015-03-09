@@ -122,7 +122,7 @@ public class AnagramClue implements Clue {
         if (obj.has("all")) {
             JSONArray arr = obj.getJSONArray("all");
             for (int i = 0; i < arr.length(); i++) {
-                if(arr.getString(i).length() == word.length()) {
+                if(arr.getString(i).length() == word.length() && !arr.getString(i).equals(word.toLowerCase())) {
                     anagrams.add(arr.getString(i).toLowerCase());
                 }
             }
