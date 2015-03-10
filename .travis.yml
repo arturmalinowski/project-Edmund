@@ -1,24 +1,26 @@
 language: java
 jdk:
-   - oraclejdk8
+- oraclejdk8
 notifications:
   email: false
 branches:
-   only:
-     - master
-     - stable
+  only:
+  - master
+  - stable
 deploy:
+  matrix:
   - provider: releases
-    api_key: "8826c523aeefb8c21e3e2bdc1dd6a7a56e74a025"
+    api_key: 8826c523aeefb8c21e3e2bdc1dd6a7a56e74a025
     file: "/home/travis/build/arturmalinowski/project-Edmund/edmund-core/target/project-Edmund.jar"
     skip_cleanup: true
     on:
       tags: true
       all_branches: true
   - provider: s3
-    access_key_id: "AKIAIRQPLCULWHZ4MRTA"
-    secret_access_key: "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"
-    bucket: "project-edmund"
+    access_key_id: AKIAJV7P7USHSL6R6PVA
+    secret_access_key:
+      secure: GK+6O75hFr9TfNalGLAqfanlkqQfQ78mwFKB03WK6SKP44I4QWp0rx1eJJuzxOjzZlDeEkwrL0M+lp9rphQTWHrr00Dfv7VSIoc0J59zaxIBVpSwOA5YLBulm8ocu2MGOAnpGaB+jFkHpXGqGbutlGrPb1TLKJagVV137+jC62Q=
+    bucket: project-edmund
     skip_cleanup: true
     acl: public_read
-    local_dir: "/home/travis/build/arturmalinowski/project-Edmund/edmund-core/target/project-Edmund.jar"
+    local_dir: "/home/travis/build/arturmalinowski/project-Edmund/edmund-core/target/"
