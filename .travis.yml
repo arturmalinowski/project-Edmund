@@ -21,4 +21,4 @@ deploy:
     bucket: "project-edmund"
     skip_cleanup: true
     acl: public_read
-    local_dir: build
+    local_dir: "/home/travis/build/arturmalinowski/project-Edmund/edmund-core/target/"
