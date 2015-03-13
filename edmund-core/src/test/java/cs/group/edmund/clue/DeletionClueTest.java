@@ -57,9 +57,7 @@ public class DeletionClueTest {
     })
     public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength, String hint, String deletionType) {
         Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
-        ArrayList<String> answerList = new ArrayList<>();
-        answerList.add(clueAnswer);
-        assertThat(answer.get(), is(answerList));
+        assertThat(answer.get().get(0), is(clueAnswer));
     }
 
     @Ignore

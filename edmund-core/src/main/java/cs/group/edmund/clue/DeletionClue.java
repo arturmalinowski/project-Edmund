@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.Collections;
 
 import static java.util.Arrays.asList;
 
@@ -63,7 +64,12 @@ public class DeletionClue implements Clue {
             if (phrase.substring(0, phrase.lastIndexOf(" ")).contains(key))
                 answers.add(solveFor(splitPhrase[splitPhrase.length - 1], phrase.substring(0, phrase.lastIndexOf(" ")), key, hint, answerLength));
 
+            answers.removeAll(Collections.singleton(null));
+
             // Return definitive answer
+            if (answers.size() == 0)
+                return Optional.empty();
+
             for (String answer : answers) {
                 if ((answer != null) && (!answer.contains(","))) {
                     finalAnswers.add(answer);
@@ -124,14 +130,6 @@ public class DeletionClue implements Clue {
                 likelyAnswers = likelyAnswers + w + ", ";
             }
             return likelyAnswers;
-        }
-        // No matches found
-        else if (answerList.size() == 0) {
-            String possibleAnswers = "";
-            for (String word : solutionsList) {
-                possibleAnswers = possibleAnswers + word + ", ";
-            }
-            return possibleAnswers;
         }
         // No possible answers found
         else {

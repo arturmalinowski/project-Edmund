@@ -55,7 +55,7 @@ public class ContainerClueTest {
     })
     public void bulkClueTest(String crosswordClue, String clueAnswer, String hint, String answerLength) {
         Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
-        assertThat(answer.get(), is(clueAnswer));
+        assertThat(answer.get().get(0), is(clueAnswer));
     }
 
     @Test
