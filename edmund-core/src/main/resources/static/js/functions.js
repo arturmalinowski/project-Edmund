@@ -8,7 +8,9 @@ setupTable();
 var logNum = 1;
 var jsonUploaded = false;
 
-// TESTS
+// Modify css
+modifyCSS();
+
 
 // Functions
 //
@@ -216,7 +218,7 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 			temp = temp + newAnswer[i];
 		}
 		clueArray[clueIndex][10].title = temp;
-		log("Edmund solved " + clueIndex + " " + clueArray[clueIndex][0] + ": " + temp + ".");
+		log("Edmund solved " + clueArray[clueIndex][1] + " " + clueArray[clueIndex][0] + ": " + temp + ".");
 	}
 	// Answer not found
 	else {
@@ -313,4 +315,22 @@ function log(message) {
 	document.getElementById("statusPane").innerHTML = document.getElementById("statusPane").innerHTML + "&#10;" + message;
 	document.getElementById("statusPane").scrollTop = document.getElementById("statusPane").scrollHeight;
 	logNum++;
+}
+
+function modifyCSS() {
+	var displayWidth = window.screen.availWidth;
+	var displayHeight = window.screen.availHeight;
+
+	document.getElementById("statusPane").style.width = (displayWidth/4).toString() + "px";
+	document.getElementById("statusPane").style.height = (displayHeight*2/3).toString() + "px";
+
+	document.getElementById("clues").style.width = (displayWidth/4).toString() + "px";
+	document.getElementById("clues").style.height = (displayHeight*2/3).toString() + "px";
+
+	//document.getElementById("crosswordCell").style.width = "30px";
+	//document.getElementById("crosswordCell").style.height = "30px";
+
+	//document.getElementById("blankCell").style.width = "30px";
+	//document.getElementById("blankCell").style.height = "30px";
+
 }
