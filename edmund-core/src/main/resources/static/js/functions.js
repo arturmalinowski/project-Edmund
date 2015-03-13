@@ -161,7 +161,16 @@ function addClues() {
 // Send all unsolved clues to Edmund (WORKING)
 function runEdmund() {
 
-	if (jsonUploaded) {
+	// Check if any clues still solving
+	var solving = false;
+	for (var i in clueArray) {
+		if (clueArray[i][9] === "SOLVING") {
+			solving = true;
+		}
+	}
+
+
+	if ((jsonUploaded) && (!solving)) {
 		updateAnswerArrayFromUser();
 		generateHints();
 
@@ -180,6 +189,7 @@ function sendToEdmund(clueIndex) {
 
 	// Generate URL for http request
 	var url = "http://localhost:9090/solve?clue=" + clueArray[clueIndex][3] + "&hint=" + clueArray[clueIndex][11] + "&length=" + clueArray[clueIndex][4];
+	clueArray[clueIndex][9] = "SOLVING";
  	
 	// ajax request
 	$.getJSON(url, function(data) {
@@ -201,16 +211,6 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 
 		if (newAnswer.length == 1) {clueArray[clueIndex][10].innerHTML = "<img src='img/statusSolved.png' border=0/>";}
 		else {clueArray[clueIndex][10].innerHTML = "<img src='img/statusMultiple.png' border=0/>";}
-		//clueArray[clueIndex][10].innerHTML = "<img src='img/statusSolved.png' border=0/>";
-		//clueArray[clueIndex][10].title = newAnswer[0]; // DELETE
-
-		// log response details
-		//if (newAnswer.length == 1) { log("Edmund solved " + clueIndex + " " + clueArray[clueIndex][0] + ": " + newAnswer[0] + ".") }
-		//else {
-			//for (var i in newAnswer) {
-				//log("Edmund solved " + clueIndex + " " + clueArray[clueIndex][0] + ": Possible answer " + i + ": " + newAnswer[i] + ".");
-			//}
-		//}
 
 		// Log answers and add as tooltips
 		var temp = "";
