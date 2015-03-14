@@ -51,15 +51,15 @@ public class OddEvenClue implements Clue {
         clueWords.removeAll(Arrays.asList("", null));
 
         for (int i : answerLength) {
-
             if (findType(keyWordsAny, phrase)) possibleAnswer = solveAny(i, hint);
             if (findType(keyWordsEven, phrase)) possibleAnswer = solveOddEven(i, 1, hint);
             if (findType(keyWordsOdd, phrase)) possibleAnswer = solveOddEven(i, 0, hint);
-
         }
 
         List<String> finalAnswers = new ArrayList<>();
-        finalAnswers.add(possibleAnswer);
+
+        if (!possibleAnswer.equals("")) finalAnswers.add(possibleAnswer);
+
         return Optional.of(finalAnswers);
     }
 
