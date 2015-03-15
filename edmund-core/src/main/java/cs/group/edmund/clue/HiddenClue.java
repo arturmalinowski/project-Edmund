@@ -153,7 +153,7 @@ public class HiddenClue implements Clue {
 
         for (String word : dictionary.getWords()) {
             if (word.length() == length) {
-                if (combine.contains(word)) {
+                if (combine.contains(word) && !words.contains(word)) {
                     answerList.add(word);
                 }
             }

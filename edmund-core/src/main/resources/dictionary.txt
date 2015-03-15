@@ -26280,6 +26280,7 @@ dialyzed
 dialyzer
 dialyzes
 diam
+diamante
 diamagnetic
 diamagnetism
 diameter

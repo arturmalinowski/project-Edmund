@@ -74,14 +74,14 @@ public class AnagramClue implements Clue {
                     possibleAnswer = synonymsCheck(answers, clueWords);
 
                     if (!possibleAnswer.equals("")) {
-                        finalAnswers.add(possibleAnswer);
+                        possibleAnswers.add(possibleAnswer);
                         break;
                     }
                     possibleAnswers.addAll(answers);
                 }
             }
         }
-
+        Helper.removeDuplicates(possibleAnswers);
         if (!hint.equals("")) {
             for (String word : possibleAnswers) {
                 if (word.matches(hint)) {
