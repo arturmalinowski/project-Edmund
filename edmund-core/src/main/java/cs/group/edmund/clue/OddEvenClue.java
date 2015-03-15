@@ -60,7 +60,12 @@ public class OddEvenClue implements Clue {
 
         if (!possibleAnswer.equals("")) finalAnswers.add(possibleAnswer);
 
-        return Optional.of(finalAnswers);
+        if (finalAnswers.size() > 0) {
+            return Optional.of(finalAnswers);
+        }
+        else {
+            return Optional.empty();
+        }
     }
 
     private String solveOddEven(int answerLength, int type, String hint) {

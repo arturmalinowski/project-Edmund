@@ -52,7 +52,7 @@ public class HiddenClue implements Clue {
         }
 
         if (!isHidden) {
-            finalAnswers = solveKeyless(clueWords, answerLength[0]);
+            finalAnswers = solveKeyless(clueWords, answerLength[0], hint);
             if (finalAnswers.size() > 0) {
                 return Optional.of(finalAnswers);
             }
@@ -113,11 +113,20 @@ public class HiddenClue implements Clue {
         searchAndCombine(joinedWords, words, answerLength, answerList);
     }
 
-    private List<String> solveKeyless(ArrayList<String> clueWords, int answerLength) {
+    private List<String> solveKeyless(ArrayList<String> clueWords, int answerLength, String hint) {
         String joinedWords = "";
+        ArrayList<String> wordList = new ArrayList<>();
         ArrayList<String> answerList = new ArrayList<>();
 
-        searchAndCombine(joinedWords, clueWords, answerLength, answerList);
+        searchAndCombine(joinedWords, clueWords, answerLength, wordList);
+
+        if (!hint.equals("")) {
+            for (String word : answerList) {
+                if (word.matches(hint)) {
+                    answerList.add(word);
+                }
+            }
+        }
 
         return answerList;
     }
