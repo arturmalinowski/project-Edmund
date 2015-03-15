@@ -43,15 +43,15 @@ public class AnagramClue implements Clue {
     @Override
     public Optional<List<String>> solve(String phrase, String hint, int... answerLength) {
         String keyWord = null;
-        String possibleAnswer = "";
+        String possibleAnswer;
         String[] words = phrase.replaceAll("[-+.^:,?!'’/]", " ").toUpperCase().split(" ");
         ArrayList<String> clueWords = new ArrayList<>(Arrays.asList(words));
         clueWords = Helper.removeDuplicates(clueWords);
         clueWords.removeAll(Arrays.asList("", null));
+        ArrayList<String> possibleAnswers = new ArrayList<>();
+        List<String> finalAnswers = new ArrayList<>();
 
         for (int i : answerLength) {
-
-            Boolean isAnagram = false;
 
             ArrayList<String> tempList = new ArrayList<>();
             tempList.addAll(clueWords);
@@ -60,61 +60,43 @@ public class AnagramClue implements Clue {
                 if (keyWords.contains(word)) {
                     if (isValidKeyword(tempList, word, i)) {
                         keyWord = word;
-                        isAnagram = true;
                         break;
                     }
                 }
             }
-            if (!isAnagram) {
-                return Optional.empty();
-            } else {
-                clueWords.remove(keyWord);
+            clueWords.remove(keyWord);
 
-                ArrayList<String> matchingWords = Helper.combineWords(clueWords, i);
+            ArrayList<String> matchingWords = Helper.combineWords(clueWords, i);
 
-                for (String word : matchingWords) {
-                    List<String> answers = findAnagram(word);
+            for (String word : matchingWords) {
+                List<String> answers = findAnagram(word);
 
-                    // TODO need to distinguish possible answers, when each word has just 1 result - using synonyms
-                    if ((answers != null) && (answers.size() < 2)) {
-                        possibleAnswer = answers.get(0);
-                        continue;
-                    }
-                    // TODO come up with a solution when there is more then one anagram of a word
-                    if (answers != null) {
-                        possibleAnswer = synonymsCheck(answers, clueWords);
-
-                        if (!possibleAnswer.equals("")) {
-                            break;
-                        }
-
-                        for (String answer : answers) {
-                            possibleAnswer = possibleAnswer + ", " + answer;
-                        }
-
-                        possibleAnswer = possibleAnswer.substring(2);
-                        possibleAnswer = "Possible answers: " + possibleAnswer;
-                    }
+                if ((answers != null) && (answers.size() < 2)) {
+                    possibleAnswers.addAll(answers);
                 }
-            }
 
-        }
-        if (possibleAnswer.contains("Possible answers") && hint != null) {
-            String[] possibleAnswers = possibleAnswer.substring(18).replaceAll("[-+.^:,?!'’/]", "").split(" ");
-            for (String answer : possibleAnswers) {
-                if (answer.matches(hint)) {
-                    possibleAnswer = answer;
-                    break;
+                if (answers != null) {
+                    possibleAnswer = synonymsCheck(answers, clueWords);
+
+                    if (!possibleAnswer.equals("")) {
+                        finalAnswers.add(possibleAnswer);
+                        break;
+                    }
+                    possibleAnswers.addAll(answers);
                 }
             }
         }
-        if (possibleAnswer.equals("")) {
-            return Optional.empty();
-        }
 
-        List<String> finalAnswers = new ArrayList<>();
-        finalAnswers.add(possibleAnswer);
-        return Optional.of(finalAnswers);
+        if (!hint.equals("")) {
+            for (String word : possibleAnswers) {
+                if (word.matches(hint)) {
+                    finalAnswers.add(word);
+                }
+            }
+        }
+        if (hint.equals("") && finalAnswers.size() < 1) return Optional.of(possibleAnswers);
+        if (finalAnswers.size() > 0) return Optional.of(finalAnswers);
+        return Optional.empty();
     }
 
     public List<String> findAnagram(String word) {

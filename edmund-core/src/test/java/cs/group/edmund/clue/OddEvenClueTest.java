@@ -33,7 +33,7 @@ public class OddEvenClueTest {
     @Test
     public void firstOddEvenClueCanBeSolved() {
         clue = new OddEvenClue();
-        Optional<List<String>> answer = clue.solve("Have a meal with every other tenant", null, 3);
+        Optional<List<String>> answer = clue.solve("Have a meal with every other tenant", "", 3);
 
         assertThat(answer.get().get(0), is("eat"));
     }
@@ -42,18 +42,18 @@ public class OddEvenClueTest {
     @Test
     public void secondOddEvenClueCanBeSolved() {
         clue = new OddEvenClue();
-        Optional<List<String>> answer = clue.solve("Observe odd characters in scene", null, 3);
+        Optional<List<String>> answer = clue.solve("Observe odd characters in scene", "", 3);
 
         assertThat(answer.get().get(0), is("see"));
     }
 
 
     @Test
-    @Table({@Row({"Sprout evenly in plant container", "pot", "3", "null"}),
-            @Row({"Odd oratress has rows", "oars", "4", "null"}),
-            //@Row({"Fern-owls itch regularly in play", "frolic", "6", "null"}),
-            //@Row({"Regulars in hard gang few saw", "adage", "5", "null"}),
-            @Row({"Conduct uneven wrangle", "wage", "4", "null"})})
+    @Table({@Row({"Sprout evenly in plant container", "pot", "3", ""}),
+            @Row({"Odd oratress has rows", "oars", "4", ""}),
+            //@Row({"Fern-owls itch regularly in play", "frolic", "6", ""}),
+            //@Row({"Regulars in hard gang few saw", "adage", "5", ""}),
+            @Row({"Conduct uneven wrangle", "wage", "4", ""})})
     public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength, String hint) {
         clue = new OddEvenClue();
         Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));

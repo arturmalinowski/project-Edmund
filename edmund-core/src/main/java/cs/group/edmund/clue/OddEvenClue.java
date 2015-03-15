@@ -102,7 +102,7 @@ public class OddEvenClue implements Clue {
 
         if (counter > 1) {
             for (String singleAnswer : possibleAnswers) {
-                if (hint != null) {
+                if (!hint.equals("")) {
                     if (singleAnswer.matches(hint)) {
                         answer = singleAnswer;
                     }
@@ -137,7 +137,7 @@ public class OddEvenClue implements Clue {
             }
         }
         for (String singleAnswer : possibleAnswers) {
-            if (hint != null && possibleAnswer.length() > 1) {
+            if (!hint.equals("") && possibleAnswer.length() > 1) {
                 if (singleAnswer.matches(hint)) {
                     answer = possibleAnswer;
                     break;

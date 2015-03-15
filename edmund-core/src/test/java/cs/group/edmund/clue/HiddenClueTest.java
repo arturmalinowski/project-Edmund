@@ -40,7 +40,7 @@ public class HiddenClueTest {
     @Test
     public void hiddenClueTestCanBeSolved() {
         clue = new HiddenClue(thesaurus);
-        Optional<List<String>> solvedWord = clue.solve("Formerly of some concern", null, 4);
+        Optional<List<String>> solvedWord = clue.solve("Formerly of some concern", "", 4);
 
         assertThat(solvedWord.get().contains("once"), is(true));
     }
@@ -48,26 +48,26 @@ public class HiddenClueTest {
     @Test
     public void secondHiddenClueTestCanBeSolved() {
         clue = new HiddenClue(thesaurus);
-        Optional<List<String>> solvedWord = clue.solve("Jane was hiding again", null, 4);
+        Optional<List<String>> solvedWord = clue.solve("Jane was hiding again", "", 4);
 
         assertThat(solvedWord.get().get(0), is("anew"));
     }
 
     @Test
     @Table({@Row({"Time to take part in flower arranging", "era", "3", ".r."}),
-            @Row({"Mislaid in Buffalo State", "lost", "4", "null"}),
-            @Row({"How some answers may be found in clues, some of which I'd denoted", "hidden", "6", "null"}),
-            @Row({"Composition from Bliss on a tape", "sonata", "6", "null"}),
+            @Row({"Mislaid in Buffalo State", "lost", "4", ""}),
+            @Row({"How some answers may be found in clues, some of which I'd denoted", "hidden", "6", ""}),
+            @Row({"Composition from Bliss on a tape", "sonata", "6", ""}),
             @Row({"What's in Latin sign, if I can translate, is of no importance", "insignificant", "13", ""}),
-            @Row({"Stop getting letters from friends", "end", "3", "null"}),
-            @Row({"Some teachers get hurt", "ache", "4", "null"}),
-            @Row({"Metal concealed by environmentalist", "iron", "4", "null"}),
+            @Row({"Stop getting letters from friends", "end", "3", ""}),
+            @Row({"Some teachers get hurt", "ache", "4", ""}),
+            @Row({"Metal concealed by environmentalist", "iron", "4", ""}),
             @Row({"Hide in Arthur's kingdom", "skin", "4", ""}),
-            @Row({"Who means to reveal where the heart is?", "home", "4", "null"}),
-            @Row({"Pole coming from Pakistan or Thailand", "north", "5", "null"}),
-            @Row({"Delia’s pickle contains jelly", "aspic", "5", "null"}),
-            @Row({"Brew some magic up pal", "cuppa", "5", "null"}),
-            @Row({"One lewdly desiring some bicycle chains?", "lech", "4", "null"})})
+            @Row({"Who means to reveal where the heart is?", "home", "4", ""}),
+            @Row({"Pole coming from Pakistan or Thailand", "north", "5", ""}),
+            @Row({"Delia’s pickle contains jelly", "aspic", "5", ""}),
+            @Row({"Brew some magic up pal", "cuppa", "5", ""}),
+            @Row({"One lewdly desiring some bicycle chains?", "lech", "4", ""})})
     public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength, String hint) {
         clue = new HiddenClue(thesaurus);
         Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));

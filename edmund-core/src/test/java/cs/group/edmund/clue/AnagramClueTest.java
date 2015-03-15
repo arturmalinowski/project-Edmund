@@ -45,7 +45,7 @@ public class AnagramClueTest {
     @Test
     public void anagramClueTestCanBeSolved() {
         clue = new AnagramClue(thesaurus);
-        Optional<List<String>> solvedWord = clue.solve("Times when things appear obscure?", null, 6);
+        Optional<List<String>> solvedWord = clue.solve("Times when things appear obscure?", "", 6);
 
         assertThat(solvedWord.get().get(0), is("nights"));
     }
@@ -53,7 +53,7 @@ public class AnagramClueTest {
     @Test
     public void secondAnagramClueCanBeSolved() {
         clue = new AnagramClue(new Thesaurus());
-        Optional<List<String>> answer = clue.solve("School run - true/false", null, 7);
+        Optional<List<String>> answer = clue.solve("School run - true/false", "", 7);
 
         assertThat(answer.get().get(0), is("nurture"));
     }
@@ -101,31 +101,31 @@ public class AnagramClueTest {
 
 
     @Test
-    @Table({@Row({"Get cast adrift in boat", "obtain", "6", "null"}),
-            @Row({"Lisa mistaken to travel to sea", "sail", "4", "null"}),
-            @Row({"Pleasant tumble in gale", "genial", "6", "null"}),
+    @Table({@Row({"Get cast adrift in boat", "obtain", "6", ""}),
+            @Row({"Lisa mistaken to travel to sea", "sail", "4", ""}),
+            @Row({"Pleasant tumble in gale", "genial", "6", ""}),
             @Row({"Delays upset traders", "retards", "7", ".....d."}),
-            @Row({"Pleased about a dire gift?", "gratified", "9", "null"}),
+            @Row({"Pleased about a dire gift?", "gratified", "9", ""}),
             @Row({"Desert or ruins made good", "restored", "8", "...t...."}),
-            @Row({"Dreadful nag punter found offensive", "repugnant", "9", "null"}),
+            @Row({"Dreadful nag punter found offensive", "repugnant", "9", ""}),
             //@Row({"A Greek mountain could be so lumpy", "olympus", "7", "null"}),
-            @Row({"Go near fresh fruit", "orange", "6", "null"}),
+            @Row({"Go near fresh fruit", "orange", "6", ""}),
             //@Row({"Keeps dissolving in tears", "retains", "7", "null"}),
-            @Row({"The importance of eating mud pie?", "magnitude", "9", "null"}),
-            @Row({"Reach up at tangled skydiving apparatus", "parachute", "9", "null"}),
-            @Row({"Form of rule as yet without extravagance", "austerely", "9", "null"}),
-            @Row({"Insane damn yeti is explosive", "dynamite", "8", "null"}),
-            @Row({"Badly pare the fruit", "pear", "4", "null"}),
-            @Row({"He cooked planet's animal", "elephant", "8", "null"}),
-            @Row({"Flustered, I forget rarer chilly compartment", "refrigerator", "12", "null"}),
+            @Row({"The importance of eating mud pie?", "magnitude", "9", ""}),
+            @Row({"Reach up at tangled skydiving apparatus", "parachute", "9", ""}),
+            @Row({"Form of rule as yet without extravagance", "austerely", "9", ""}),
+            @Row({"Insane damn yeti is explosive", "dynamite", "8", ""}),
+            @Row({"Badly pare the fruit", "pear", "4", ""}),
+            @Row({"He cooked planet's animal", "elephant", "8", ""}),
+            @Row({"Flustered, I forget rarer chilly compartment", "refrigerator", "12", ""}),
             //@Row({"Perilous sea dog? Run all over the place!", "dangerous", "9", "null"}),
-            @Row({"Mixed a lad’s greens", "salad", "5", "null"}),
-            @Row({"Stinging insect damaged paws", "wasp", "4", "null"}),
+            @Row({"Mixed a lad’s greens", "salad", "5", ""}),
+            @Row({"Stinging insect damaged paws", "wasp", "4", ""}),
             @Row({"Reversed out and got booked!", "reserved", "8", "r......."}),
-            @Row({"His patter confused analyst", "therapist", "9", "null"}),
-            @Row({"Teach about swindler", "cheat", "5", "null"}),
-            @Row({"Hens to become truthful?", "honest", "6", "null"}),
-            @Row({"Who's shaken up the display?", "show", "4", "null"})})
+            @Row({"His patter confused analyst", "therapist", "9", ""}),
+            @Row({"Teach about swindler", "cheat", "5", ""}),
+            @Row({"Hens to become truthful?", "honest", "6", ""}),
+            @Row({"Who's shaken up the display?", "show", "4", ""})})
     public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength, String hint) {
         clue = new AnagramClue(thesaurus);
         Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
