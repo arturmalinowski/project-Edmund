@@ -109,7 +109,13 @@ public class HiddenClue implements Clue {
                     }
                 }
                 if (!finalAnswers.isEmpty()) {
-                    return Optional.of(finalAnswers);
+                    ArrayList<String> hintAnswers = new ArrayList<>();
+                    for (String word : finalAnswers) {
+                        if (word.matches(hint)) {
+                            hintAnswers.add(word);
+                        }
+                    }
+                    return Optional.of(hintAnswers);
                 }
             }
             else {
