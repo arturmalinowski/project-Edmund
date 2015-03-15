@@ -1,10 +1,11 @@
 package cs.group.edmund.utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Helper {
 
@@ -86,5 +87,9 @@ public class Helper {
         list = filterByHint(list, hint);
 
         return list;
+    }
+
+    public static ArrayList<String> removeSpecialChar(String word){
+        return new ArrayList<>(Arrays.asList(word.replaceAll("[-+.^:,?!'’/\\s]", " ").toLowerCase().trim().split(" ")));
     }
 }

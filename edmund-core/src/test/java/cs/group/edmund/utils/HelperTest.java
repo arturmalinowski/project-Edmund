@@ -43,4 +43,15 @@ public class HelperTest {
 
         assertThat(filteredList, is(Helper.filterAll(list, "h...o", new int[]{5})));
     }
+
+    @Test
+    public void removeSpecialCharAndSplitTest() {
+        String word = "  Me remove you^?";
+        ArrayList<String> list;
+        list = Helper.removeSpecialChar(word);
+
+        assertThat(list.contains("remove"), is(true));
+        assertThat(list.contains("me"), is(true));
+        assertThat(list.contains("you"), is(true));
+    }
 }
