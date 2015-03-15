@@ -90,7 +90,7 @@ public class HiddenClue implements Clue {
 
             if (finalAnswers.isEmpty()) {
                 for (String singleAnswer : possibleAnswers) {
-                    if (hint != null) {
+                    if (!hint.equals("")) {
                         if (singleAnswer.matches(hint)) {
                             finalAnswers.add(singleAnswer);
                         }
@@ -98,13 +98,24 @@ public class HiddenClue implements Clue {
                 }
                 if (!finalAnswers.isEmpty()) {
                     return Optional.of(finalAnswers);
-                }else {
-                    return Optional.of(possibleAnswers);
+                }
+            }
+
+            if (!hint.equals("")) {
+                for (String word : possibleAnswers) {
+                    if (word.matches(hint)) {
+                        finalAnswers.add(word);
+                    }
+                }
+                if (!finalAnswers.isEmpty()) {
+                    return Optional.of(finalAnswers);
                 }
             }
             else {
                 return Optional.of(possibleAnswers);
             }
+
+            return Optional.empty();
         }
     }
 
