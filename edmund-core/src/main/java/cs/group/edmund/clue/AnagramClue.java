@@ -1,8 +1,13 @@
 package cs.group.edmund.clue;
 
+import cs.group.edmund.fixtures.HttpClient;
 import cs.group.edmund.utils.Dictionary;
 import cs.group.edmund.utils.Helper;
 import cs.group.edmund.utils.Thesaurus;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.util.*;
 
@@ -74,7 +79,7 @@ public class AnagramClue implements Clue {
                     possibleAnswer = synonymsCheck(answers, clueWords);
 
                     if (!possibleAnswer.equals("")) {
-                        possibleAnswers.add(possibleAnswer);
+                        finalAnswers.add(possibleAnswer);
                         break;
                     }
                     possibleAnswers.addAll(answers);
@@ -97,12 +102,24 @@ public class AnagramClue implements Clue {
     public List<String> findAnagram(String word) {
         List<String> anagrams = new ArrayList<>();
 
-        for (String dictWord : dictionary.getWords()) {
-            if (dictWord.length() == word.length() && !dictWord.toLowerCase().equals(word.toLowerCase())) {
-                if (isAnagram(dictWord.toLowerCase(), word.toLowerCase())) {
-                    anagrams.add(dictWord);
+        String httpResponse = HttpClient.makeRequest("http://www.solverscrabble.com/words-with-the-letters-" + word);
+
+        if (httpResponse.contains("Anagrams of " + word)) {
+
+            int resultStartPosition = httpResponse.indexOf("<p class=\"letterInfo\">Anagrams");
+            int resultEndingPosition = httpResponse.indexOf("<p class=\"letterInfo\">Words with");
+            String result = httpResponse.substring(resultStartPosition, resultEndingPosition);
+
+            Document document = Jsoup.parse(result);
+            Elements elements = document.getElementsByClass("jumble");
+
+            for (Element element : elements) {
+                if (!element.text().equals(word.toLowerCase())) {
+                    anagrams.add(element.text());
                 }
             }
+        } else {
+            return null;
         }
 
         if ((anagrams.size() == 0) || (anagrams.size() < 2) && (anagrams.get(0).equals(word.toLowerCase()))) {
