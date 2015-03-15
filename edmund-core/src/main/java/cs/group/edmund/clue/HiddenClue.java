@@ -13,12 +13,11 @@ import static java.util.Arrays.asList;
 public class HiddenClue implements Clue {
 
     private final List<String> keyWords;
-    private Dictionary dictionary;
+    private Dictionary dictionary = new Dictionary();
     private Thesaurus thesaurus;
 
-    public HiddenClue(Thesaurus thesaurus, Dictionary dictionary) {
+    public HiddenClue(Thesaurus thesaurus) {
         this.thesaurus = thesaurus;
-        this.dictionary = dictionary;
         keyWords = asList("buried in", "part of", "concealed", "contains", "from", "held by", "hide", "hiding", "hides", "include", "including", "includes", "mislaid", "part", "partially", "piece", "reveal", "some", "little", "within");
     }
 

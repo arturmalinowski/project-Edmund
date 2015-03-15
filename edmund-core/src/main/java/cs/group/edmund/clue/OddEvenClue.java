@@ -16,10 +16,9 @@ public class OddEvenClue implements Clue {
     private final List<String> keyWordsAny, keyWordsOdd, keyWordsEven;
     private String keyWord = null;
     private ArrayList<String> clueWords;
-    private Dictionary dict;
+    private Dictionary dict = new Dictionary();
 
-    public OddEvenClue(Dictionary dictionary) {
-        this.dict = dictionary;
+    public OddEvenClue() {
         keyWordsAny = asList("ALTERNATE", "REGULAR", "REGULARLY", "EVERY OTHER");
         keyWordsEven = asList("EVEN", "EVENLY", "EVERY SECOND");
         keyWordsOdd = asList("ODD", "ODDS", "UNEVEN");
