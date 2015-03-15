@@ -3,6 +3,7 @@ package cs.group.edmund.clue;
 import com.googlecode.yatspec.junit.Row;
 import com.googlecode.yatspec.junit.Table;
 import com.googlecode.yatspec.junit.TableRunner;
+import cs.group.edmund.utils.Dictionary;
 import cs.group.edmund.utils.Thesaurus;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,27 +20,29 @@ public class HiddenClueTest {
 
     private HiddenClue clue;
     private Thesaurus thesaurus;
+    private Dictionary dictionary;
 
     @Before
     public void setup() {
         thesaurus = new Thesaurus();
+        dictionary = new Dictionary();
     }
 
     @Test
     public void detectsThatClueIsAHiddenClue() {
-        clue = new HiddenClue(thesaurus);
+        clue = new HiddenClue(thesaurus, dictionary);
         assertThat(clue.isRelevant("Time to take part in flower arranging"), is(true));
     }
 
     @Test
     public void detectsThatClueIsNotAHiddenClue() {
-        clue = new HiddenClue(thesaurus);
+        clue = new HiddenClue(thesaurus, dictionary);
         assertThat(clue.isRelevant("Yearn for quite a while"), is(false));
     }
 
     @Test
     public void hiddenClueTestCanBeSolved() {
-        clue = new HiddenClue(thesaurus);
+        clue = new HiddenClue(thesaurus, dictionary);
         Optional<List<String>> solvedWord = clue.solve("Formerly of some concern", "", 4);
 
         assertThat(solvedWord.get().contains("once"), is(true));
@@ -47,7 +50,7 @@ public class HiddenClueTest {
 
     @Test
     public void secondHiddenClueTestCanBeSolved() {
-        clue = new HiddenClue(thesaurus);
+        clue = new HiddenClue(thesaurus, dictionary);
         Optional<List<String>> solvedWord = clue.solve("Jane was hiding again", "", 4);
 
         assertThat(solvedWord.get().get(0), is("anew"));
@@ -69,7 +72,7 @@ public class HiddenClueTest {
             @Row({"Brew some magic up pal", "cuppa", "5", ""}),
             @Row({"One lewdly desiring some bicycle chains?", "lech", "4", ""})})
     public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength, String hint) {
-        clue = new HiddenClue(thesaurus);
+        clue = new HiddenClue(thesaurus, dictionary);
         Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
 
         assertThat(answer.get().contains(clueAnswer), is(true));
