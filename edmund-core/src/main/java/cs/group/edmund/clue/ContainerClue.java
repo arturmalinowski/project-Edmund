@@ -155,7 +155,7 @@ public class ContainerClue implements Clue {
         return Helper.filterAll(containedWords, hint, answerLength);
     }
 
-    // Return a list of all possible combinations of words given in leftSynonyms/rightSynonyms
+    // Return a list of all possible combinations of words given in leftSynonyms/rightSynonyms.
     public ArrayList<String> returnContainedWords(ArrayList<String> leftSynonyms, ArrayList<String> rightSynonyms)
     {
         ArrayList<String> possibleWords = new ArrayList<>();
