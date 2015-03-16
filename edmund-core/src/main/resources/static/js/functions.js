@@ -5,7 +5,6 @@ for (var i = 0; i < 15; i++) {
 	answerArray.push([".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "."]);
 }
 setupTable();
-var logNum = 1;
 var jsonUploaded = false;
 
 // Modify css
@@ -227,7 +226,7 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 	else {
 		clueArray[clueIndex][9] = "UNSOLVED";
 		clueArray[clueIndex][10].innerHTML = "<img src='img/statusFailed.png' border=0/>";
-		log("Edmund could not solve " + clueIndex + " " + clueArray[clueIndex][0] + ".");
+		log("Edmund could not solve " + clueArray[clueIndex][1] + " " + clueArray[clueIndex][0] + ".");
 	}
 
 	//
@@ -317,10 +316,8 @@ function setUnblank(x, y) {
 
 // Log messages to the status pane (WORKING)
 function log(message) {
-	message = logNum + " -> " + message;
 	document.getElementById("statusPane").innerHTML = document.getElementById("statusPane").innerHTML + "&#10;" + message;
 	document.getElementById("statusPane").scrollTop = document.getElementById("statusPane").scrollHeight;
-	logNum++;
 }
 
 function modifyCSS() {
