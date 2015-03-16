@@ -215,8 +215,10 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 		// Log answers and add as tooltips
 		var temp = "";
 		for (var i in newAnswer) {
-			temp = temp + newAnswer[i];
+			temp = temp + newAnswer[i] + ", ";
 		}
+		temp = temp.substring(0, temp.length - 2);
+
 		clueArray[clueIndex][10].title = temp;
 		log("Edmund solved " + clueArray[clueIndex][1] + " " + clueArray[clueIndex][0] + ": " + temp + ".");
 	}

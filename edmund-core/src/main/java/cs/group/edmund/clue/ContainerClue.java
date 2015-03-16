@@ -13,8 +13,8 @@ import static java.util.Arrays.asList;
 public class ContainerClue implements Clue {
 
     private final List<String> keyWords;
-    private List<String> finalAnswers = new ArrayList<>();
     private Thesaurus thesaurus;
+    private String hint;
 
     public ContainerClue(Thesaurus thesaurus) {
         keyWords = asList("CAPTURING", "SURROUNDED", "PUT IN", "KEEPS", "INSIDE", " IN ", "CLOTHING", "ABOUT", "ADMIT", "ADMITS", "ADMITTING", "AROUND", "BESIEGE", "BESIEGES", "BESIEGING", "BOX", "BOXES", "BOXING", "BRIDGE", "BRIDGES", "BRIDGING", "CAPTURE", "CAPTURED", "CAPTURES", "CAPTURING", "CATCH", "CATCHES", "CATCHING", "CIRCLE", "CIRCLES", "CIRCLING", "CLUTCH", "CLUTCHES", "CLUTCHING", "CONTAIN", "CONTAINING", "CONTAINS", "COVER", "COVERING", "COVERS", "EMBRACE", "EMBRACES", "EMBRACING", "ENCIRCLE", "ENCIRCLES", "ENCIRCLING", "ENFOLD", "ENFOLDING", "ENFOLDS", "ENVELOP", "ENVELOPING", "ENVELOPS", "EXTERNAL", "FLANK", "FLANKING", "FLANKS", "FRAME", "FRAMED", "FRAMING", "FRAMES", "GRASP", "GRASPING", "GRASPS", "HARBOUR", "HARBOURS", "HARBOURING", "HOLD", "HOLDING", "HOLDS", "HOUSE", "HOUSES", "HOUSING", "OUTSIDE", "ENTERING", "RINGS", "ROUND", "SHELTER", "SHELTERING", "SHELTERS", "SURROUND", "SURROUNDING", "SURROUNDS", "SWALLOW", "SWALLOWING", "SWALLOWS", "TAKE IN", "TAKES IN", "TAKING IN", "WITHOUT", "WRAP", "WRAPPING", "WRAPS");
@@ -42,66 +42,52 @@ public class ContainerClue implements Clue {
         // Check if any known keyword is in phrase
         phrase = phrase.toLowerCase();
         String key = getKeyword(phrase);
+        this.hint = hint;
+
         if (isRelevant(phrase)) {
-            String[] splitPhrase = phrase.split("\\s+");
+            ArrayList<String> splitPhrase = Helper.removeSpecialChar(phrase);
 
             ArrayList<String> answers = new ArrayList<>();
-            answers.add(solveFor(splitPhrase[0], phrase.substring(phrase.indexOf(" ")+1), key, hint, answerLength)); // assuming hint is first word
-            for (String answer : answers) {
-                if (answer != null) {
-                    finalAnswers.add(answer);
-                    return Optional.of(finalAnswers);
-                }
-            }
+            answers.addAll(solveFor(splitPhrase.get(0), phrase.substring(phrase.indexOf(" ")+1), key, hint, answerLength)); // assuming hint is first word
+            answers.addAll(solveFor(splitPhrase.get(splitPhrase.size() - 1), phrase.substring(0, phrase.lastIndexOf(" ")), key, hint, answerLength)); // assuming hint is last word
 
-            answers = new ArrayList<>();
-            answers.add(solveFor(splitPhrase[splitPhrase.length - 1], phrase.substring(0, phrase.lastIndexOf(" ")), key, hint, answerLength)); // assuming hint is last word
-            for (String answer : answers) {
-                if (answer != null) {
-                    finalAnswers.add(answer);
-                    return Optional.of(finalAnswers);
-                }
-            }
+            return Optional.of(answers);
         }
         return Optional.empty();
     }
 
-    public String solveFor(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
+    public List<String> solveFor(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
     {
+        // Get synonyms and related words for the assumed answer clue
         ArrayList<String> potentialAnswers = new ArrayList<>();
         potentialAnswers.addAll(thesaurus.getAllSynonymsXML(assumedClue));
         potentialAnswers.addAll(thesaurus.getRelatedWordsXML(assumedClue));
         potentialAnswers = Helper.filterAll(potentialAnswers, hint, answerLength);
 
+        // Process the rest of the clue to find a match with the assumed answer clue results
         ArrayList<String> solutionsList = null;
         if (phrase.contains(keyword))
             solutionsList = getSolutions(splitPhrase(phrase, keyword).get(0), splitPhrase(phrase, keyword).get(1), answerLength);
-        if (solutionsList != null)
-            solutionsList = Helper.filterAll(solutionsList, hint, answerLength);
 
-        String answer = compareLists(potentialAnswers, solutionsList);
-        if (answer != null)
-            return answer;
-        else
-            return null;
+        return compareLists(potentialAnswers, solutionsList);
     }
 
     // Compare the list of solutions to the list of synonyms.
     // Return a match, else return possible answers
-    public String compareLists(ArrayList<String> synonyms, ArrayList<String> solutions)
+    public List<String> compareLists(ArrayList<String> synonyms, ArrayList<String> solutions)
     {
+        ArrayList words = new ArrayList<>();
+
         if ((synonyms != null) && (solutions != null)) {
-            // Loop through solutions and synonyms, looking for a matches
             for (String word : solutions) {
                 for (String synonym : synonyms) {
-                    if (word.equals(synonym)) {
-                        return word;
+                    if (word.toLowerCase().equals(synonym.toLowerCase())) {
+                        words.add(word.toLowerCase());
                     }
                 }
             }
         }
-        // No match found, so return null
-        return null;
+        return words;
     }
 
     // Return the keyword used in the phrase, else return null.
@@ -157,17 +143,16 @@ public class ContainerClue implements Clue {
             rightSynonyms.addAll(thesaurus.getRelatedWordsXML(rightSplit[0] + " " + rightSplit[1]));
         }
 
+        // Filter any synonyms larger than the answerLength
+        leftSynonyms = filterLargerWords(leftSynonyms, answerLength);
+        rightSynonyms = filterLargerWords(rightSynonyms, answerLength);
+
         // Calculate list of mixed words by using returnContainedWords(), then
         // Remove the answers that don't adhere to the answerLength
         ArrayList<String> containedWords = returnContainedWords(leftSynonyms, rightSynonyms);
-        if (answerLength.length == 1) {
-            for (Iterator<String> iter = containedWords.listIterator(); iter.hasNext(); ) {
-                String a = iter.next();
-                if (a.length() != answerLength[0])
-                    iter.remove();
-            }
-        }
-        return containedWords;
+
+
+        return Helper.filterAll(containedWords, hint, answerLength);
     }
 
     // Return a list of all possible combinations of words given in leftSynonyms/rightSynonyms
@@ -184,38 +169,30 @@ public class ContainerClue implements Clue {
                 // Place leftWord in every possible position in rightWord, add to list
                 for (int i = 1; i < rightWord.length(); i++) {
                     String possibleWord = rightWord.substring(0, i).trim() + leftWord.trim() + rightWord.substring(i);
-
-                    if (isWord(possibleWord))
-                        possibleWords.add(possibleWord.toLowerCase());
+                    possibleWords.add(possibleWord.toLowerCase());
                 }
 
                 // Place rightWord in every possible position in leftWord, add to list
                 for (int i = 1; i < leftWord.length(); i++) {
                     String possibleWord = leftWord.substring(0, i).trim() + rightWord.trim() + leftWord.substring(i);
-
-                    if (isWord(possibleWord))
-                        possibleWords.add(possibleWord.toLowerCase());
+                    possibleWords.add(possibleWord.toLowerCase());
                 }
             }
         }
         return possibleWords;
     }
 
-    // Check if the given string is an actual word
-    public boolean isWord(String word) {
-        return true;
-    }
-
-    //
-    public ArrayList<String> getRelatedSynonyms(String word) {
-        //
-        ArrayList<String> completeList = new ArrayList<>();
-        ArrayList<String> relatedWords = thesaurus.getRelatedWordsXML(word);
-
-        for (String w : relatedWords) {
-            completeList.addAll(thesaurus.getAllSynonymsXML(w));
+    public ArrayList<String> filterLargerWords(ArrayList<String> list, int... answerLength)
+    {
+        if (list.size() > 0) {
+            if (answerLength.length == 1) {
+                for (Iterator<String> iter = list.listIterator(); iter.hasNext(); ) {
+                    String word = iter.next();
+                    if ((word.length() > answerLength[0]) || (word.contains(" ")))
+                        iter.remove();
+                }
+            }
         }
-
-        return completeList;
+        return list;
     }
 }

@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,7 +29,7 @@ public class ContainerClueTest {
     }
 
     // Current success rate 33%
-    @Ignore
+    //@Ignore
     @Test
     @Table({
             // working without hints
@@ -36,7 +38,7 @@ public class ContainerClueTest {
             @Row({"We surrounded strike snowy", "white", "w....", "5"}),
             @Row({"Empty tin put in bin", "vacant", "v.....", "6"}),
             @Row({"Horseman capturing a freebooter", "raider", "r.....", "6"}),
-            @Row({"Hear about the moorland flower", "heather", "h......", "7"}), //"moorland flower" does not return "heather"
+            @Row({"Hear about the moorland flower", "heather", "h......", "7"}),
 
             @Row({"Relative entering Highland dance and showing off", "flaunting", "f........", "9"}), //"showing off" returns "flaunting"
             @Row({"Noted Noah's ship in the Mediterranean", "marked", "m.....", "6"}), // "ark" -> "med" = "marked", "noted" returns "marked"
@@ -54,6 +56,7 @@ public class ContainerClueTest {
             @Row({"Russet bears are raised", "reared", "r.....", "6"}) //"raised" does not return "reared"
     })
     public void bulkClueTest(String crosswordClue, String clueAnswer, String hint, String answerLength) {
+
         Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
         assertThat(answer.get().get(0), is(clueAnswer));
     }
@@ -69,17 +72,16 @@ public class ContainerClueTest {
     }
 
     @Test
-    public void testSplitPhrase() {
-        ArrayList<String> list = new ArrayList<>(asList("bird allowed", "tavern"));
-
-        assertThat(clue.splitPhrase("bird allowed outside tavern", "outside"), is(list));
-    }
+    public void testSplitPhrase() { assertThat(clue.splitPhrase("bird allowed outside tavern", "outside"), is(new ArrayList<>(asList("bird allowed", "tavern")))); }
 
     @Test
-    public void testCompareLists() {
-        ArrayList<String> synonyms = new ArrayList<>(asList("robin", "linnet", "owl", "pigeon"));
-        ArrayList<String> solutions = new ArrayList<>(asList("linnet", "leinnt", "letinn"));
+    public void testCompareLists() { assertThat(new ArrayList<>(asList("linnet")), is(clue.compareLists(new ArrayList<>(asList("robin", "linnet", "owl", "pigeon")), new ArrayList<>(asList("linnet", "leinnt", "letinn"))))); }
 
-        assertThat("linnet", is(clue.compareLists(synonyms, solutions)));
+    @Test
+    public void testFilterLargerWords() {
+        ArrayList<String> list = new ArrayList<>(asList("hell", "helios", "abraham"));
+        ArrayList<String> answerList = new ArrayList<>(asList("hell"));
+
+        assertThat(answerList, is(clue.filterLargerWords(list,4)));
     }
 }
