@@ -336,3 +336,16 @@ function modifyCSS() {
 	//document.getElementById("blankCell").style.height = "30px";
 
 }
+
+function pollEdmundButton() {
+	var solving = false;
+	for (var i in clueArray) {
+		if (clueArray[i][9] === "SOLVING") {
+			solving = true;
+		}
+	}
+
+	document.getElementById("edmundButton").disabled = solving;
+
+	setTimeout(pollEdmundButton(), 3000);
+}

@@ -62,7 +62,8 @@ public class DeletionClue implements Clue {
             answers.addAll(solveFor(splitPhrase.get(0), phrase.substring(phrase.indexOf(" ") + 1), key, hint, answerLength)); // assuming hint is first word
             answers.addAll(solveFor(splitPhrase.get(splitPhrase.size() - 1), phrase.substring(0, phrase.lastIndexOf(" ")), key, hint, answerLength)); // assuming hint is last word
 
-            return Optional.of(answers);
+            if (answers.size() > 0)
+                return Optional.of(answers);
         }
         return Optional.empty();
     }
