@@ -75,7 +75,7 @@ public class ContainerClue implements Clue {
     }
 
     // Compare the list of solutions to the list of synonyms.
-    // Return a match, else return possible answers
+    // Return a match, else return possible answers.
     public List<String> compareLists(ArrayList<String> synonyms, ArrayList<String> solutions)
     {
         ArrayList words = new ArrayList<>();
