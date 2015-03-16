@@ -56,55 +56,27 @@ public class DeletionClue implements Clue {
         String key = getKeyword(phrase);
 
         if (isRelevant(phrase)) {
-            String[] splitPhrase = phrase.split("\\s+");
+            ArrayList<String> splitPhrase = Helper.removeSpecialChar(phrase);
 
             ArrayList<String> answers = new ArrayList<>();
-            if (phrase.substring(phrase.indexOf(" ") + 1).contains(key))
-                answers.add(solveFor(splitPhrase[0], phrase.substring(phrase.indexOf(" ") + 1), key, hint, answerLength));
-            if (phrase.substring(0, phrase.lastIndexOf(" ")).contains(key))
-                answers.add(solveFor(splitPhrase[splitPhrase.length - 1], phrase.substring(0, phrase.lastIndexOf(" ")), key, hint, answerLength));
+            answers.addAll(solveFor(splitPhrase.get(0), phrase.substring(phrase.indexOf(" ") + 1), key, hint, answerLength)); // assuming hint is first word
+            answers.addAll(solveFor(splitPhrase.get(splitPhrase.size() - 1), phrase.substring(0, phrase.lastIndexOf(" ")), key, hint, answerLength)); // assuming hint is last word
 
-            answers.removeAll(Collections.singleton(null));
-
-            // Return definitive answer
-            if (answers.size() == 0)
-                return Optional.empty();
-
-            for (String answer : answers) {
-                if ((answer != null) && (!answer.contains(","))) {
-                    finalAnswers.add(answer);
-                    return Optional.of(finalAnswers);
-                }
-            }
-            // Last resort, try synonyms of related words
-            if (searchIntensity != 3) {
-                searchIntensity = 3;
-                return solve(phrase, hint, answerLength);
-            }
-            // Return Possible answers
-            for (String answer : answers) {
-                if ((answer != null) && (answer.contains(","))) {
-                    finalAnswers = Arrays.asList(answer.split("\\s*,\\s*"));
-                    return Optional.of(finalAnswers);
-                }
-            }
+            return Optional.of(answers);
         }
         return Optional.empty();
     }
 
     //
-    public String solveFor(String assumedClue, String phrase, String keyword, String hint, int... answerLength) {
+    public List<String> solveFor(String assumedClue, String phrase, String keyword, String hint, int... answerLength) {
+
         ArrayList<String> potentialAnswers = new ArrayList<>();
         potentialAnswers.addAll(thesaurus.getAllSynonymsXML(assumedClue));
-        if (searchIntensity > 1)
-            potentialAnswers.addAll(thesaurus.getRelatedWordsXML(assumedClue));
-        if (searchIntensity > 2)
-            potentialAnswers.addAll(thesaurus.getSynonymsOfRelatedWordsXML(assumedClue));
-        if (potentialAnswers != null)
-            potentialAnswers = Helper.filterAll(potentialAnswers, hint, answerLength);
+        potentialAnswers.addAll(thesaurus.getRelatedWordsXML(assumedClue));
+        potentialAnswers = Helper.filterAll(potentialAnswers, hint, answerLength);
 
         // Deduce which deletion clue type it is, and solve for that type
-        ArrayList<String> solutionsList = new ArrayList<>();
+        ArrayList<String> solutionsList = null;
         String deletionType = getDeletionType(phrase);
 
         if (deletionType.equals("head")) {
@@ -117,24 +89,7 @@ public class DeletionClue implements Clue {
             solutionsList = returnInternalDeletion(assumedClue, phrase, keyword, hint, answerLength);
         }
 
-        ArrayList<String> answerList = compareLists(potentialAnswers, solutionsList);
-
-        // Definitive answer found
-        if (answerList.size() == 1) {
-            return answerList.get(0);
-        }
-        // More than one match found
-        else if (answerList.size() > 1) {
-            String likelyAnswers = "";
-            for (String w : answerList) {
-                likelyAnswers = likelyAnswers + w + ", ";
-            }
-            return likelyAnswers;
-        }
-        // No possible answers found
-        else {
-            return null;
-        }
+        return compareLists(potentialAnswers, solutionsList);
     }
 
     //
@@ -164,26 +119,13 @@ public class DeletionClue implements Clue {
                 possibleSolutions.add(word.substring(1));
         }
 
-        if (searchIntensity > 1) {
-            for (String word : thesaurus.getRelatedWordsXML(leftWord)) {
-                if (word.length() > 1)
-                    possibleSolutions.add(word.substring(1));
-            }
-            for (String word : thesaurus.getRelatedWordsXML(rightWord)) {
-                if (word.length() > 1)
-                    possibleSolutions.add(word.substring(1));
-            }
+        for (String word : thesaurus.getRelatedWordsXML(leftWord)) {
+            if (word.length() > 1)
+                possibleSolutions.add(word.substring(1));
         }
-
-        if (searchIntensity > 2) {
-            for (String word : getRelatedWordSynonyms(leftSynonyms)) {
-                if (word.length() > 1)
-                    possibleSolutions.add(word.substring(1));
-            }
-            for (String word : getRelatedWordSynonyms(rightSynonyms)) {
-                if (word.length() > 1)
-                    possibleSolutions.add(word.substring(1));
-            }
+        for (String word : thesaurus.getRelatedWordsXML(rightWord)) {
+            if (word.length() > 1)
+                possibleSolutions.add(word.substring(1));
         }
 
         return Helper.filterAll(possibleSolutions, hint, answerLength);
@@ -216,26 +158,13 @@ public class DeletionClue implements Clue {
                 possibleSolutions.add(word.substring(0, word.length() - 1));
         }
 
-        if (searchIntensity > 1) {
-            for (String word : thesaurus.getRelatedWordsXML(leftWord)) {
-                if (word.length() > 1)
-                    possibleSolutions.add(word.substring(0, word.length() - 1));
-            }
-            for (String word : thesaurus.getRelatedWordsXML(rightWord)) {
-                if (word.length() > 1)
-                    possibleSolutions.add(word.substring(0, word.length() - 1));
-            }
+        for (String word : thesaurus.getRelatedWordsXML(leftWord)) {
+            if (word.length() > 1)
+                possibleSolutions.add(word.substring(0, word.length() - 1));
         }
-
-        if (searchIntensity > 2) {
-            for (String word : getRelatedWordSynonyms(leftSynonyms)) {
-                if (word.length() > 1)
-                    possibleSolutions.add(word.substring(0, word.length() - 1));
-            }
-            for (String word : getRelatedWordSynonyms(rightSynonyms)) {
-                if (word.length() > 1)
-                    possibleSolutions.add(word.substring(0, word.length() - 1));
-            }
+        for (String word : thesaurus.getRelatedWordsXML(rightWord)) {
+            if (word.length() > 1)
+                possibleSolutions.add(word.substring(0, word.length() - 1));
         }
 
         return Helper.filterAll(possibleSolutions, hint, answerLength);
@@ -268,33 +197,20 @@ public class DeletionClue implements Clue {
                 possibleSolutions.addAll(gutMiddle(word));
         }
 
-        if (searchIntensity > 1) {
-            for (String word : thesaurus.getRelatedWordsXML(leftWord)) {
-                if (word.length() > 1)
-                    possibleSolutions.addAll(gutMiddle(word));
-            }
-            for (String word : thesaurus.getRelatedWordsXML(rightWord)) {
-                if (word.length() > 1)
-                    possibleSolutions.addAll(gutMiddle(word));
-            }
+        for (String word : thesaurus.getRelatedWordsXML(leftWord)) {
+            if (word.length() > 1)
+                possibleSolutions.addAll(gutMiddle(word));
         }
-
-        if (searchIntensity > 2) {
-            for (String word : getRelatedWordSynonyms(leftSynonyms)) {
-                if (word.length() > 1)
-                    possibleSolutions.addAll(gutMiddle(word));
-            }
-            for (String word : getRelatedWordSynonyms(rightSynonyms)) {
-                if (word.length() > 1)
-                    possibleSolutions.addAll(gutMiddle(word));
-            }
+        for (String word : thesaurus.getRelatedWordsXML(rightWord)) {
+            if (word.length() > 1)
+                possibleSolutions.addAll(gutMiddle(word));
         }
 
         return Helper.filterAll(possibleSolutions, hint, answerLength);
     }
 
     // Return the given word, gutting every possible inner letter
-    public ArrayList<String> gutMiddle(String word) {
+    public List<String> gutMiddle(String word) {
         ArrayList<String> guttedWords = new ArrayList<>();
 
         for (int i = 1; i < word.length() - 1; i++) {
@@ -304,7 +220,7 @@ public class DeletionClue implements Clue {
     }
 
     // Return a list containing the left and right half of the phrase, split on the keyword
-    public ArrayList<String> splitPhrase(String phrase, String keyword) {
+    public List<String> splitPhrase(String phrase, String keyword) {
         ArrayList<String> list = new ArrayList<>();
         list.add(phrase.substring(0, phrase.indexOf(keyword)).trim());
         list.add(phrase.substring(phrase.lastIndexOf(keyword) + keyword.length()).trim());
@@ -313,21 +229,20 @@ public class DeletionClue implements Clue {
 
     // Compare the list of solutions to the list of synonyms.
     // Return a match, else return possible answers
-    public ArrayList<String> compareLists(ArrayList<String> synonyms, ArrayList<String> solutions) {
-        ArrayList<String> possibleAnswers = new ArrayList<>();
+    public List<String> compareLists(ArrayList<String> synonyms, ArrayList<String> solutions)
+    {
+        ArrayList words = new ArrayList<>();
 
         if ((synonyms != null) && (solutions != null)) {
-            // Loop through solutions and synonyms, looking for a matches
             for (String word : solutions) {
                 for (String synonym : synonyms) {
-                    if (word.equals(synonym)) {
-                        possibleAnswers.add(word);
+                    if (word.toLowerCase().equals(synonym.toLowerCase())) {
+                        words.add(word.toLowerCase());
                     }
                 }
             }
         }
-        // No match found, so return possible results
-        return possibleAnswers;
+        return words;
     }
 
     // Return the keyword used in the phrase, else return null.
@@ -359,14 +274,5 @@ public class DeletionClue implements Clue {
                 return "middle";
         }
         return "none";
-    }
-
-    // Return synonyms of related words
-    public ArrayList<String> getRelatedWordSynonyms(ArrayList<String> synonyms) {
-        ArrayList<String> relatedList = new ArrayList<>();
-        for (String word : synonyms) {
-            relatedList.addAll(thesaurus.getRelatedWordsXML(word));
-        }
-        return relatedList;
     }
 }

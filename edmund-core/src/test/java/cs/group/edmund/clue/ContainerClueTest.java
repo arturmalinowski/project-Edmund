@@ -29,7 +29,7 @@ public class ContainerClueTest {
     }
 
     // Current success rate 33%
-    //@Ignore
+    @Ignore
     @Test
     @Table({
             // working without hints

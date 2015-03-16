@@ -56,6 +56,7 @@ public class ContainerClue implements Clue {
         return Optional.empty();
     }
 
+    //
     public List<String> solveFor(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
     {
         // Get synonyms and related words for the assumed answer clue
@@ -149,10 +150,7 @@ public class ContainerClue implements Clue {
 
         // Calculate list of mixed words by using returnContainedWords(), then
         // Remove the answers that don't adhere to the answerLength
-        ArrayList<String> containedWords = returnContainedWords(leftSynonyms, rightSynonyms);
-
-
-        return Helper.filterAll(containedWords, hint, answerLength);
+        return Helper.filterAll(returnContainedWords(leftSynonyms, rightSynonyms), hint, answerLength);
     }
 
     // Return a list of all possible combinations of words given in leftSynonyms/rightSynonyms
@@ -182,6 +180,7 @@ public class ContainerClue implements Clue {
         return possibleWords;
     }
 
+    //
     public ArrayList<String> filterLargerWords(ArrayList<String> list, int... answerLength)
     {
         if (list.size() > 0) {
