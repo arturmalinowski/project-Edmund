@@ -174,12 +174,7 @@ function runEdmund() {
 		updateAnswerArrayFromUser();
 		generateHints();
 
-		for (var i in clueArray) {
-			if (clueArray[i][9] != "SOLVED") {
-				clueArray[i][10].innerHTML = "<img src='img/statusCalculating.png' border=0/>";
-				sendToEdmund(i);
-			}
-		}
+		sendToEdmund(0);
 	}
 }
 
@@ -187,17 +182,23 @@ function runEdmund() {
 // Send clue to Edmund by index (WORKING)
 function sendToEdmund(clueIndex) {
 
-	// Generate URL for http request
-	var url = "http://localhost:9090/solve?clue=" + clueArray[clueIndex][3] + "&hint=" + clueArray[clueIndex][11] + "&length=" + clueArray[clueIndex][4];
-	clueArray[clueIndex][9] = "SOLVING";
- 	
-	// ajax request
-	$.getJSON(url, function(data) {
-		receiveFromEdmund(clueIndex, data, "success");
-	})
-	.error( function(data) {
-		receiveFromEdmund(clueIndex, data, "failure");
-	});
+	//
+	if (clueArray[clueIndex][9] != "SOLVED") {
+		//
+		clueArray[clueIndex][10].innerHTML = "<img src='img/statusCalculating.png' border=0/>";
+
+		// Generate URL for http request
+		var url = "http://localhost:9090/solve?clue=" + clueArray[clueIndex][3] + "&hint=" + clueArray[clueIndex][11] + "&length=" + clueArray[clueIndex][4];
+		clueArray[clueIndex][9] = "SOLVING";
+	 	
+		// ajax request
+		$.getJSON(url, function(data) {
+			receiveFromEdmund(clueIndex, data, "success");
+		})
+		.error( function(data) {
+			receiveFromEdmund(clueIndex, data, "failure");
+		});
+	}
 }
 
 
@@ -228,6 +229,9 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 		clueArray[clueIndex][10].innerHTML = "<img src='img/statusFailed.png' border=0/>";
 		log("Edmund could not solve " + clueIndex + " " + clueArray[clueIndex][0] + ".");
 	}
+
+	//
+	if (clueIndex < clueArray.length) { sendToEdmund(clueIndex + 1); }
 }
 
 
