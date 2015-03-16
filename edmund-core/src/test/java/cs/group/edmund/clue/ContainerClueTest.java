@@ -4,6 +4,7 @@ import com.googlecode.yatspec.junit.Row;
 import com.googlecode.yatspec.junit.Table;
 import com.googlecode.yatspec.junit.TableRunner;
 import cs.group.edmund.utils.Thesaurus;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
