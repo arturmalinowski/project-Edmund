@@ -3,6 +3,7 @@ package cs.group.edmund;
 import cs.group.edmund.typeSelector.Selector;
 import cs.group.edmund.utils.Thesaurus;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class TypeSelectorTest {
         assertThat(answer.get(0), is("doc"));
     }
 
+    @Ignore
     @Test
     public void edmundReturnsTheCorrectAnswerForAnAnagramClue() throws Exception {
         List<String> answer = selector.retrieveAnswer("Times when things appear obscure?", "", 6, thesaurus);
