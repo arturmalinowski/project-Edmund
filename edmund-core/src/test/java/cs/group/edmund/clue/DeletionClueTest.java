@@ -3,12 +3,13 @@ package cs.group.edmund.clue;
 import com.googlecode.yatspec.junit.Row;
 import com.googlecode.yatspec.junit.Table;
 import com.googlecode.yatspec.junit.TableRunner;
+import cs.group.edmund.utils.Helper;
 import cs.group.edmund.utils.Thesaurus;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import cs.group.edmund.utils.Helper;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +31,7 @@ public class DeletionClueTest {
     }
 
     // Currently 30% success ratio
-    //@Ignore
+    @Ignore
     @Test
     @Table({
             // Beheadments

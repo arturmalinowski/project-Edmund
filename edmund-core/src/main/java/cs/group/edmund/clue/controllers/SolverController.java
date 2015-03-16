@@ -1,6 +1,7 @@
 package cs.group.edmund.clue.controllers;
 
 import cs.group.edmund.typeSelector.Selector;
+import cs.group.edmund.utils.Dictionary;
 import cs.group.edmund.utils.Thesaurus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -16,15 +17,15 @@ import java.util.List;
 public class SolverController {
 
     @Autowired
-    private final Selector selector;
+    private Selector selector;
 
     @Autowired
-    private final Thesaurus thesaurus;
+    private Thesaurus thesaurus;
 
-    public SolverController(Selector selector, Thesaurus thesaurus) {
-        this.selector = selector;
-        this.thesaurus = thesaurus;
-    }
+    @Autowired
+    private Dictionary dictionary;
+
+
 
     @RequestMapping(value = "solve", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -33,7 +34,7 @@ public class SolverController {
                                        @RequestParam("hint") String hint,
                                        @RequestParam("length") int length) {
         try {
-            List<String> answer = selector.retrieveAnswer(clue, hint, length, thesaurus);
+            List<String> answer = selector.retrieveAnswer(clue, hint, length);
             return new ResponseEntity<>(answer, HttpStatus.OK);
 
         } catch (Exception e) {

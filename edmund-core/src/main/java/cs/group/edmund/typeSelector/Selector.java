@@ -2,6 +2,7 @@ package cs.group.edmund.typeSelector;
 
 
 import cs.group.edmund.clue.*;
+import cs.group.edmund.utils.Dictionary;
 import cs.group.edmund.utils.Thesaurus;
 
 import java.util.ArrayList;
@@ -14,15 +15,25 @@ import static java.util.Arrays.asList;
 
 public class Selector {
 
-    public List<String> retrieveAnswer(String phrase, String hint, int answerLength, Thesaurus thesaurus) throws Exception {
+
+    private final Thesaurus thesaurus;
+    private final Dictionary dictionary;
+
+    public Selector(Thesaurus thesaurus, Dictionary dictionary) {
+
+        this.thesaurus = thesaurus;
+        this.dictionary = dictionary;
+    }
+
+    public List<String> retrieveAnswer(String phrase, String hint, int answerLength) throws Exception {
 
         List<List<String>> allPossibleAnswers = new ArrayList<>();
 
 
         List<Clue> clues = asList(
-                new AnagramClue(thesaurus),
-                new HiddenClue(thesaurus),
-                new OddEvenClue(),
+                new AnagramClue(thesaurus, dictionary),
+                new HiddenClue(thesaurus, dictionary),
+                new OddEvenClue(dictionary),
                 new DeletionClue(thesaurus),
                 new ReversalClue(thesaurus),
                 new ContainerClue(thesaurus),

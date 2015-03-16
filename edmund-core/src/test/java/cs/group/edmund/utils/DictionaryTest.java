@@ -17,7 +17,7 @@ public class DictionaryTest {
 
     @Test
     public void dictionaryCanReadFromFile(){
-        assertThat(dictionary.getWords().get(5), is("aardvark"));
+        assertThat(dictionary.getWords().contains("aardvark"), is(true));
     }
 
     @Test

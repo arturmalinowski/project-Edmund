@@ -3,6 +3,7 @@ package cs.group.edmund.clue;
 import com.googlecode.yatspec.junit.Row;
 import com.googlecode.yatspec.junit.Table;
 import com.googlecode.yatspec.junit.TableRunner;
+import cs.group.edmund.utils.Dictionary;
 import cs.group.edmund.utils.Helper;
 import cs.group.edmund.utils.Thesaurus;
 import org.junit.Before;
@@ -24,29 +25,31 @@ public class AnagramClueTest {
 
     private AnagramClue clue;
     private Thesaurus thesaurus;
+    private Dictionary dictionary;
 
 
     @Before
     public void setup() {
         thesaurus = new Thesaurus();
+        dictionary = new Dictionary();
 
     }
 
     @Test
     public void detectsThatClueIsAnAnagram() {
-        clue = new AnagramClue(thesaurus);
+        clue = new AnagramClue(thesaurus, dictionary);
         assertThat(clue.isRelevant("Times when things appear obscure?"), is(true));
     }
 
     @Test
     public void detectsThatClueIsNotAnAnagram() {
-        clue = new AnagramClue(thesaurus);
+        clue = new AnagramClue(thesaurus, dictionary);
         assertThat(clue.isRelevant("yearn for quite a while"), is(false));
     }
 
     @Test
     public void anagramClueTestCanBeSolved() {
-        clue = new AnagramClue(thesaurus);
+        clue = new AnagramClue(thesaurus, dictionary);
         Optional<List<String>> solvedWord = clue.solve("Times when things appear obscure?", "", 6);
 
         assertThat(solvedWord.get().get(0), is("nights"));
@@ -54,7 +57,7 @@ public class AnagramClueTest {
 
     @Test
     public void secondAnagramClueCanBeSolved() {
-        clue = new AnagramClue(thesaurus);
+        clue = new AnagramClue(thesaurus, dictionary);
         Optional<List<String>> answer = clue.solve("School run - true/false", "", 7);
 
         assertThat(answer.get().get(0), is("nurture"));
@@ -63,7 +66,7 @@ public class AnagramClueTest {
     @Ignore
     @Test
     public void firstAnagramClueTestCanBeCreated() {
-        clue = new AnagramClue(thesaurus);
+        clue = new AnagramClue(thesaurus, dictionary);
         String crypticCrossword = clue.create("nights");
 
         assertThat(crypticCrossword, containsString("thing"));
@@ -71,7 +74,7 @@ public class AnagramClueTest {
 
     @Test
     public void anagramFindsAllWords() {
-        clue = new AnagramClue(thesaurus);
+        clue = new AnagramClue(thesaurus, dictionary);
         List listOfWords = clue.findAnagram("friend");
 
         assertThat(listOfWords.contains("finder"), is(true));
@@ -79,7 +82,7 @@ public class AnagramClueTest {
 
     @Test
     public void isValidKeywordTest() {
-        clue = new AnagramClue(thesaurus);
+        clue = new AnagramClue(thesaurus, dictionary);
         ArrayList<String> list = new ArrayList<>(Arrays.asList("school", "run", "true", "false"));
 
         assertThat(clue.isValidKeyword(list, "run", 7), is(false));
@@ -87,7 +90,7 @@ public class AnagramClueTest {
 
     @Test
     public void isValidKeywordSecondTest() {
-        clue = new AnagramClue(thesaurus);
+        clue = new AnagramClue(thesaurus, dictionary);
         ArrayList<String> list = new ArrayList<>(Arrays.asList("school", "run", "true", "false"));
 
         assertThat(clue.isValidKeyword(list, "false", 7), is(true));
@@ -95,7 +98,7 @@ public class AnagramClueTest {
 
     @Test
     public void possibleAnagramsTest() {
-        clue = new AnagramClue(thesaurus);
+        clue = new AnagramClue(thesaurus, dictionary);
         ArrayList<String> list = new ArrayList<>(Arrays.asList("school", "run", "true", "false"));
 
         assertThat(Helper.combineWords(list, 7).contains("truerun"), is(true));
@@ -129,7 +132,7 @@ public class AnagramClueTest {
             @Row({"Hens to become truthful?", "honest", "6", ""}),
             @Row({"Who's shaken up the display?", "show", "4", ""})})
     public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength, String hint) {
-        clue = new AnagramClue(thesaurus);
+        clue = new AnagramClue(thesaurus, dictionary);
         Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
 
         assertThat(answer.get().get(0), is(clueAnswer));
