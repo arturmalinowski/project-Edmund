@@ -30,7 +30,7 @@ public class DeletionClueTest {
     }
 
     // Currently 30% success ratio
-    @Ignore
+    //@Ignore
     @Test
     @Table({
             // Beheadments
@@ -51,7 +51,7 @@ public class DeletionClueTest {
             //@Row({"Disheartened tinker making a row", "tier", "4", "t...", "middle"}), // "tinker"
             //@Row({"Dull speeches hollow assurances", "proses", "5", "p.....", "middle"}) // "assurances" -> "promises"
     })
-    public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength, String hint, String deletionType) {
+    public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength, String hint, String clueType) {
         Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
         assertThat(answer.get().get(0), is(clueAnswer));
     }
@@ -77,7 +77,7 @@ public class DeletionClueTest {
             //@Row({"Disheartened tinker making a row", "tier", "4", "....", "middle"}), // "tinker"
             //@Row({"Dull speeches hollow assurances", "proses", "5", ".......", "middle"}) // "assurances" -> "promises"
     })
-    public void bulkClueCloseTest(String crosswordClue, String clueAnswer, String answerLength, String hint, String deletionType) {
+    public void bulkClueCloseTest(String crosswordClue, String clueAnswer, String answerLength, String hint) {
         Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
         assertThat((answer.get().contains(clueAnswer)), is(true));
     }

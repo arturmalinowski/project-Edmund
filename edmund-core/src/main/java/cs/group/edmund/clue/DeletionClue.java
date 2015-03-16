@@ -4,19 +4,15 @@ import cs.group.edmund.utils.Helper;
 import cs.group.edmund.utils.Thesaurus;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.Collections;
 
 import static java.util.Arrays.asList;
 
 public class DeletionClue implements Clue {
 
     private final List<String> keyWordsHead, keyWordsTail, keyWordsBoth, keyWordsMiddle, keyWordsSpecific, keyWords;
-    private List<String> finalAnswers = new ArrayList<>();
     private Thesaurus thesaurus;
-    private int searchIntensity;
 
     public DeletionClue(Thesaurus thesaurus) {
         keyWordsHead = asList("WITHOUT FIRST", "DROPPING INTRODUCTION", "AFTER COMMENCEMENT", "BEGINNING TO GO", "BEHEADED", "BEHEADING", "DECAPITATED", "FIRST OFF", "HEADLESS", "HEAD OFF", "INITIALLY LACKING", "LEADERLESS", "LOSING OPENER", "MISSING THE FIRST", "NEEDING NO INTRODUCTION", "NOT BEGINNING", "NOT COMMENCING", "NOT STARTING", "START OFF", "START TO GO", "SCRATCH THE HEAD", "STRIKE THE HEAD", "UNINITIATED", "UNSTARTED", "WITHOUT ORIGIN");
@@ -31,7 +27,6 @@ public class DeletionClue implements Clue {
         keyWords.addAll(keyWordsMiddle);
         keyWords.addAll(keyWordsSpecific);
         this.thesaurus = thesaurus;
-        searchIntensity = 2;
     }
 
     @Override
@@ -81,20 +76,20 @@ public class DeletionClue implements Clue {
         String deletionType = getDeletionType(phrase);
 
         if (deletionType.equals("head")) {
-            solutionsList = returnBeheadmentDeletion(assumedClue, phrase, keyword, hint, answerLength);
+            solutionsList = returnBeheadmentDeletion(phrase, keyword, hint, answerLength);
         }
         if (deletionType.equals("tail")) {
-            solutionsList = returnCurtailmentDeletion(assumedClue, phrase, keyword, hint, answerLength);
+            solutionsList = returnCurtailmentDeletion(phrase, keyword, hint, answerLength);
         }
         if (deletionType.equals("middle")) {
-            solutionsList = returnInternalDeletion(assumedClue, phrase, keyword, hint, answerLength);
+            solutionsList = returnInternalDeletion(phrase, keyword, hint, answerLength);
         }
 
         return compareLists(potentialAnswers, solutionsList);
     }
 
     //
-    public ArrayList<String> returnBeheadmentDeletion(String assumedClue, String phrase, String keyword, String hint, int... answerLength) {
+    public ArrayList<String> returnBeheadmentDeletion(String phrase, String keyword, String hint, int... answerLength) {
         ArrayList<String> possibleSolutions = new ArrayList<>();
 
         String leftHalf = splitPhrase(phrase, keyword).get(0);
@@ -133,7 +128,7 @@ public class DeletionClue implements Clue {
     }
 
     //
-    public ArrayList<String> returnCurtailmentDeletion(String assumedClue, String phrase, String keyword, String hint, int... answerLength) {
+    public ArrayList<String> returnCurtailmentDeletion(String phrase, String keyword, String hint, int... answerLength) {
         ArrayList<String> possibleSolutions = new ArrayList<>();
 
         String leftHalf = splitPhrase(phrase, keyword).get(0);
@@ -172,7 +167,7 @@ public class DeletionClue implements Clue {
     }
 
     //
-    public ArrayList<String> returnInternalDeletion(String assumedClue, String phrase, String keyword, String hint, int... answerLength) {
+    public ArrayList<String> returnInternalDeletion(String phrase, String keyword, String hint, int... answerLength) {
         ArrayList<String> possibleSolutions = new ArrayList<>();
 
         String leftHalf = splitPhrase(phrase, keyword).get(0);
