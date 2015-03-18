@@ -171,8 +171,11 @@ function runEdmund() {
 		updateAnswerArrayFromUser();
 		generateHints();
 
-		sendToEdmund(0);
-		document.getElementById("edmundButton").disabled = true;
+        for (var i in clueArray) {
+            sendToEdmund(i);
+        }
+		//sendToEdmund(0);
+		//document.getElementById("edmundButton").disabled = true;
 	}
 }
 
@@ -197,13 +200,13 @@ function sendToEdmund(clueIndex) {
 			receiveFromEdmund(clueIndex, data, "failure");
 		});
 	}
-	else {
-        if (clueIndex == (clueArray.length - 1)) {
-            solving = false;
-            document.getElementById("edmundButton").disabled = false;
-        }
-        if ((clueIndex + 1) < clueArray.length) { sendToEdmund(clueIndex + 1); }
-	}
+	//else {
+        //if (clueIndex == (clueArray.length - 1)) {
+            //solving = false;
+            //document.getElementById("edmundButton").disabled = false;
+        //}
+        //if ((clueIndex + 1) < clueArray.length) { sendToEdmund(clueIndex + 1); }
+	//}
 }
 
 
@@ -235,11 +238,11 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 		log("Edmund could not solve " + clueArray[clueIndex][1] + " " + clueArray[clueIndex][0] + ".");
 	}
 
-	if (clueIndex == (clueArray.length - 1)) {
-        solving = false;
-        document.getElementById("edmundButton").disabled = false;
-    }
-    if ((clueIndex + 1) < clueArray.length) { sendToEdmund(clueIndex + 1); }
+	//if (clueIndex == (clueArray.length - 1)) {
+        //solving = false;
+        //document.getElementById("edmundButton").disabled = false;
+    //}
+    //if ((clueIndex + 1) < clueArray.length) { sendToEdmund(clueIndex + 1); }
 }
 
 
