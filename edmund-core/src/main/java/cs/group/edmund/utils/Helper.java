@@ -1,9 +1,6 @@
 package cs.group.edmund.utils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,10 +40,9 @@ public class Helper {
     // Filter methods
 
     public static ArrayList<String> removeDuplicates(ArrayList<String> list) {
-        HashSet<String> hs = new HashSet<>();
-        hs.addAll(list);
+        Set<String> s = new LinkedHashSet<>(list);
         list.clear();
-        list.addAll(hs);
+        list.addAll(s);
         return list;
     }
 

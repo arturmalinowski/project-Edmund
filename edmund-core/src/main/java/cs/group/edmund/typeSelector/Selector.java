@@ -48,31 +48,24 @@ public class Selector {
         retrievePossibleAnswers(phrase, hint, answerLength, clues, allPossibleAnswers);
 
         if (allPossibleAnswers.size() == 1) {
-            if (allPossibleAnswers.get(0).size() == 1) {
-                // when there is only one answer, return it
-                return new ArrayList<>(asList(allPossibleAnswers.get(0).get(0)));
-            } else {
-                // otherwise return the first answer from the first list
-                return allPossibleAnswers.get(0);
-            }
+            logger.info("Final answers for clue " + "\"" + phrase + "\"" + " : " + allPossibleAnswers);
+            return allPossibleAnswers.get(0);
         }
 
         if (allPossibleAnswers.size() > 1) {
             ArrayList<String> combinedAnswers = new ArrayList<>();
             for (List<String> possibleAnswer : allPossibleAnswers) {
-                if (possibleAnswer.size() == 1) {
-                    // when there is only one clue returning a list of answers, return that list
-                    return new ArrayList<>(asList(possibleAnswer.get(0)));
-                } else {
-                    // when more than one clue comes back with more than one answer, merge the lists and return that list
-                    combinedAnswers.addAll(possibleAnswer.stream().collect(Collectors.toList()));
-                    removeDuplicates(combinedAnswers);
-                }
+                // when more than one clue comes back with more than one answer, merge the lists and return that list
+                combinedAnswers.addAll(possibleAnswer.stream().collect(Collectors.toList()));
+                removeDuplicates(combinedAnswers);
             }
+
+            logger.info("Final answers for clue " + "\"" + phrase + "\"" + " : " + combinedAnswers);
             return combinedAnswers;
         }
 
         // when no answers are returned, throw
+        logger.info("No answer found for clue: " + "\"" + phrase + "\"");
         throw new IllegalArgumentException("Clue could not be solved");
 
     }

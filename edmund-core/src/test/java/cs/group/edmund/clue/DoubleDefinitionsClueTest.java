@@ -145,7 +145,7 @@ public class DoubleDefinitionsClueTest {
     public void moreThanOneMatchingWordsCanBeFound() {
         Optional<List<String>> solvedWord = clue.solve("Expensive expensive", null, 6);
 
-        assertThat(solvedWord.get().toString(), containsWords("pricey, costly"));
+        assertThat(solvedWord.get().toString(), containsWords("costly, pricey"));
     }
 
 

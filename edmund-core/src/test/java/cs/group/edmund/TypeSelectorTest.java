@@ -67,6 +67,6 @@ public class TypeSelectorTest {
     public void edmundCanReturnMultiplePossibleAnswers() throws Exception {
         List<String> answer = selector.retrieveAnswer("Reject junk", "......", 6);
 
-        assertThat(answer.toString(), containsWords("jetsam, refuse"));
+        assertThat(answer.toString(), containsWords("refuse, bounce, jetsam, orphan, remove, slough"));
     }
 }
