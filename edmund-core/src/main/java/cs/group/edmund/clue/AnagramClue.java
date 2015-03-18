@@ -37,17 +37,12 @@ public class AnagramClue implements Clue {
 
     @Override
     public Optional<List<String>> solve(String phrase, String hint, int... answerLength) {
-        String keyWord = null;
-        String possibleAnswer;
-        String[] words = phrase.replaceAll("[-+.^:,?!'’/]", " ").toUpperCase().split(" ");
-        ArrayList<String> clueWords = new ArrayList<>(Arrays.asList(words));
+        String keyWord = null, possibleAnswer;
+        String[] words = phrase.replaceAll("['’]", " ").replaceAll("[-+^:,.?!'’/]", "").toUpperCase().split(" ");
+        ArrayList<String> clueWords = new ArrayList<>(Arrays.asList(words)), possibleAnswers = new ArrayList<>(), finalAnswers = new ArrayList<>();
         clueWords = Helper.removeDuplicates(clueWords);
-        clueWords.removeAll(Arrays.asList("", null));
-        ArrayList<String> possibleAnswers = new ArrayList<>();
-        List<String> finalAnswers = new ArrayList<>();
 
         for (int i : answerLength) {
-
             ArrayList<String> tempList = new ArrayList<>();
             tempList.addAll(clueWords);
 
@@ -59,8 +54,8 @@ public class AnagramClue implements Clue {
                     }
                 }
             }
-            clueWords.remove(keyWord);
 
+            clueWords.remove(keyWord);
             ArrayList<String> matchingWords = Helper.combineWords(clueWords, i);
 
             for (String word : matchingWords) {
@@ -69,7 +64,6 @@ public class AnagramClue implements Clue {
                 if ((answers != null) && (answers.size() < 2)) {
                     possibleAnswers.addAll(answers);
                 }
-
                 if (answers != null) {
                     possibleAnswer = synonymsCheck(answers, clueWords);
 
@@ -81,7 +75,9 @@ public class AnagramClue implements Clue {
                 }
             }
         }
+
         Helper.removeDuplicates(possibleAnswers);
+
         if (!hint.equals("")) {
             for (String word : possibleAnswers) {
                 if (word.matches(hint)) {
@@ -89,8 +85,10 @@ public class AnagramClue implements Clue {
                 }
             }
         }
+
         if (hint.equals("") && finalAnswers.size() < 1 && possibleAnswers.size() > 0) return Optional.of(possibleAnswers);
         if (finalAnswers.size() > 0) return Optional.of(finalAnswers);
+
         return Optional.empty();
     }
 
@@ -138,6 +136,7 @@ public class AnagramClue implements Clue {
         list.remove(keyWord);
         ArrayList<String> newList = new ArrayList<>(list);
 
+        loop:
         for (String word : newList) {
             if (word.length() > answerLength) {
                 list.remove(word);
@@ -146,15 +145,18 @@ public class AnagramClue implements Clue {
             for (String secondWord : newList) {
                 if (secondWord.length() + word.length() == answerLength) {
                     check = true;
+                    break loop;
                 }
                 for (String thirdWord : newList) {
                     if (thirdWord.length() + secondWord.length() + word.length() == answerLength) {
                         check = true;
+                        break loop;
                     }
                 }
             }
             if (word.length() == answerLength) {
                 check = true;
+                break loop;
             }
         }
         list.add(keyWord);
