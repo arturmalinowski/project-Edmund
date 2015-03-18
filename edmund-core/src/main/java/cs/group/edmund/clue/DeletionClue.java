@@ -41,7 +41,7 @@ public class DeletionClue implements Clue {
     @Override
     public boolean isRelevant(String phrase) {
         for (String keyWord : keyWords) {
-            if (phrase.toLowerCase().contains(keyWord.toLowerCase()))
+            if (phrase.contains(keyWord.toLowerCase()))
                 return true;
         }
         return false;
@@ -58,9 +58,11 @@ public class DeletionClue implements Clue {
             ArrayList<String> splitPhrase = Helper.removeSpecialChar(phrase);
 
             ArrayList<String> answers = new ArrayList<>();
-            answers.addAll(solveFor(splitPhrase.get(0), phrase.substring(phrase.indexOf(" ") + 1), key, hint, answerLength)); // assuming hint is first word
-            answers.addAll(solveFor(splitPhrase.get(splitPhrase.size() - 1), phrase.substring(0, phrase.lastIndexOf(" ")), key, hint, answerLength)); // assuming hint is last word
+            answers.addAll(solveFor(splitPhrase.get(0), phrase.substring(phrase.indexOf(" ")+1), key, hint, answerLength)); // assuming hint is first word
+            if (answers.size() > 0)
+                return Optional.of(answers);
 
+            answers.addAll(solveFor(splitPhrase.get(splitPhrase.size() - 1), phrase.substring(0, phrase.lastIndexOf(" ")), key, hint, answerLength)); // assuming hint is last word
             if (answers.size() > 0)
                 return Optional.of(answers);
             else if (searchIntensity < 2) {
@@ -270,15 +272,13 @@ public class DeletionClue implements Clue {
     // Return a match, else return possible answers
     public List<String> compareLists(ArrayList<String> synonyms, ArrayList<String> solutions)
     {
-        if ((synonyms.size() > 0) || (solutions.size() > 0)) {
-            Set<String> synonymsSet = new HashSet(synonyms);
-            Set<String> solutionsSet = new HashSet(solutions);
+        if ((synonyms != null) && (solutions != null)) {
+            Set<String> synonymsSet = new HashSet<String>(synonyms);
+            Set<String> solutionsSet = new HashSet<String>(solutions);
             synonymsSet.retainAll(solutionsSet);
-            return new ArrayList(synonymsSet);
+            return new ArrayList<>(synonymsSet);
         }
-        else {
-            return new ArrayList<>();
-        }
+        return new ArrayList<>();
     }
 
     // Return the keyword used in the phrase, else return null.

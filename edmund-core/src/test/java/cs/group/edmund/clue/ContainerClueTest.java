@@ -31,6 +31,7 @@ public class ContainerClueTest {
     @Ignore
     @Test
     @Table({
+            //@Row({"Going round stronghold, take a look", "teak", "....", "4"}),
             // working
             @Row({"Wear around the brave", "weather", "w......", "7"}), // (passes)
             @Row({"Put on around the brave", "weather", "w......", "7"}), // (passes)

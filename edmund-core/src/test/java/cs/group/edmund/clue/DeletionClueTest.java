@@ -38,23 +38,27 @@ public class DeletionClueTest {
             @Row({"Beheaded celebrity is sailor", "tar", "3", "t..", "head"}), // (passes)
             @Row({"First off mobilize supporter", "ally", "4", "a...", "head"}), // "mobilize" -> "rally" (passes)
             @Row({"Work the land without first limb", "arm", "3", "a..", "head"}), // "work the land" -> "farm" (passes)
-            @Row({"Very happy to be associated with dropping introduction", "elated", "6", "e.....", "head"}), // "to be associated" -> "related"
             @Row({"Head off champion worker", "artisan", "7", "a......", "head"}), // (passes)
+
+            @Row({"Shout read endlessly", "boo", "3", "b..", "tail"}), // (passes) // curtailment
+            @Row({"Challenging sweetheart heartlessly", "daring", "6", "d.....", "middle"}), // (passes) // internal
+
+            @Row({"Very happy to be associated with dropping introduction", "elated", "6", "e.....", "head"}), // "to be associated" -> "related"
+
             @Row({"Suggest not starting in a flabby way", "imply", "5", "i....", "head"}), // "in a flabby way" -> "limply"
 
             // Curtailments
-            @Row({"Shout read endlessly", "boo", "3", "b..", "tail"}), // (passes)
+
             @Row({"Vehicle backing away from wagon", "car", "3", "c..", "tail"}), // "wagon" -> "cart"
             @Row({"Circuit almost falling", "lap", "4", "l..", "tail"}), // "almost" -> "lapse"
 
             // Internal Deletion
-            @Row({"Challenging sweetheart heartlessly", "daring", "6", "d.....", "middle"}), // (passes)
+
             @Row({"Disheartened tinker making a row", "tier", "4", "t...", "middle"}), // "tinker"
             @Row({"Dull speeches hollow assurances", "proses", "5", "p.....", "middle"}) // "assurances" -> "promises"
     })
     public void bulkClueTest(String crosswordClue, String clueAnswer, String answerLength, String hint, String clueType) {
         Optional<List<String>> answers = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
-        System.out.println(answers); // DELETE
         assertThat(answers.get().contains(clueAnswer), is(true));
     }
 

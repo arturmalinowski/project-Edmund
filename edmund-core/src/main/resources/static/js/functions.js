@@ -1,15 +1,16 @@
+preloadImages();
 // [clueDirection, clueNumber, clueNumberLink, clueText, clueLength, startX, startY, endX, endY, clueStatus, clueStatusLink, clueHint, clueAnswers]
 var clueArray = [];
 var answerArray = [];
+var jsonUploaded = false;
+var solving = false;
+
 for (var i = 0; i < 15; i++) {
 	answerArray.push([".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "."]);
 }
 setupTable();
-var jsonUploaded = false;
-var solving = false;
-
-// Modify css
 modifyCSS();
+
 
 // Functions
 //
@@ -160,23 +161,20 @@ function addClues() {
 function runEdmund() {
 
 	// Check if any clues still solving
-	for (var i in clueArray) {
-		if (clueArray[i][9] === "SOLVING") {
-			solving = true;
-		}
-	}
+    	for (var i in clueArray) {
+    		if (clueArray[i][9] === "SOLVING") {
+    			solving = true;
+    		}
+    	}
 
 
-	if ((jsonUploaded) && (!solving)) {
-		updateAnswerArrayFromUser();
-		generateHints();
+    	if ((jsonUploaded) && (!solving)) {
+    		updateAnswerArrayFromUser();
+    		generateHints();
 
-        for (var i in clueArray) {
-            sendToEdmund(i);
-        }
-		//sendToEdmund(0);
-		//document.getElementById("edmundButton").disabled = true;
-	}
+    		sendToEdmund(0);
+    		document.getElementById("edmundButton").disabled = true;
+    	}
 }
 
 
@@ -200,13 +198,13 @@ function sendToEdmund(clueIndex) {
 			receiveFromEdmund(clueIndex, data, "failure");
 		});
 	}
-	//else {
-        //if (clueIndex == (clueArray.length - 1)) {
-            //solving = false;
-            //document.getElementById("edmundButton").disabled = false;
-        //}
-        //if ((clueIndex + 1) < clueArray.length) { sendToEdmund(clueIndex + 1); }
-	//}
+	else {
+        if (clueIndex == (clueArray.length - 1)) {
+            solving = false;
+            document.getElementById("edmundButton").disabled = false;
+        }
+        if ((clueIndex + 1) < clueArray.length) { sendToEdmund(clueIndex + 1); }
+	}
 }
 
 
@@ -238,11 +236,11 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 		log("Edmund could not solve " + clueArray[clueIndex][1] + " " + clueArray[clueIndex][0] + ".");
 	}
 
-	//if (clueIndex == (clueArray.length - 1)) {
-        //solving = false;
-        //document.getElementById("edmundButton").disabled = false;
-    //}
-    //if ((clueIndex + 1) < clueArray.length) { sendToEdmund(clueIndex + 1); }
+	if (clueIndex == (clueArray.length - 1)) {
+        solving = false;
+        document.getElementById("edmundButton").disabled = false;
+    }
+    if ((clueIndex + 1) < clueArray.length) { sendToEdmund(clueIndex + 1); }
 }
 
 
@@ -348,4 +346,16 @@ function modifyCSS() {
 	//document.getElementById("blankCell").style.width = "30px";
 	//document.getElementById("blankCell").style.height = "30px";
 
+}
+
+function preloadImages() {
+    // preload images
+    ImageCalculating = new Image(30,30);
+    ImageCalculating.src = "img/statusCalculating.png";
+    ImageSolved = new Image(30,30);
+    ImageSolved.src = "img/statusSolved.png";
+    ImageMultiple = new Image(30,30);
+    ImageMultiple.src = "img/statusMultiple.png";
+    ImageFailed = new Image(30,30);
+    ImageFailed.src = "img/statusFailed.png";
 }
