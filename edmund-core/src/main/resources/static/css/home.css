@@ -95,12 +95,8 @@ img {
 }
 
 #statusPane {
+  margin-top: 10%;
   margin-left: 10%;
   overflow: scroll;
   text-align: center;
-}
-
-#statusLabel {
-  text-align: center;
-  text-decoration: underline;
 }

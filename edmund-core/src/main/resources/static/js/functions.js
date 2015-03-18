@@ -6,10 +6,10 @@ for (var i = 0; i < 15; i++) {
 }
 setupTable();
 var jsonUploaded = false;
+var solving = false;
 
 // Modify css
 modifyCSS();
-
 
 // Functions
 //
@@ -57,7 +57,6 @@ function clearConfiguration() {
 		var table = document.getElementById(clueArray[i][0]+"Clues");
 		table.deleteRow(0);
 	}
-
 }
 
 
@@ -161,7 +160,6 @@ function addClues() {
 function runEdmund() {
 
 	// Check if any clues still solving
-	var solving = false;
 	for (var i in clueArray) {
 		if (clueArray[i][9] === "SOLVING") {
 			solving = true;
@@ -174,6 +172,7 @@ function runEdmund() {
 		generateHints();
 
 		sendToEdmund(0);
+		document.getElementById("edmundButton").disabled = true;
 	}
 }
 
@@ -197,6 +196,13 @@ function sendToEdmund(clueIndex) {
 		.error( function(data) {
 			receiveFromEdmund(clueIndex, data, "failure");
 		});
+	}
+	else {
+        if (clueIndex == (clueArray.length - 1)) {
+            solving = false;
+            document.getElementById("edmundButton").disabled = false;
+        }
+        if ((clueIndex + 1) < clueArray.length) { sendToEdmund(clueIndex + 1); }
 	}
 }
 
@@ -229,8 +235,11 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 		log("Edmund could not solve " + clueArray[clueIndex][1] + " " + clueArray[clueIndex][0] + ".");
 	}
 
-	//
-	if (clueIndex < clueArray.length) { sendToEdmund(clueIndex + 1); }
+	if (clueIndex == (clueArray.length - 1)) {
+        solving = false;
+        document.getElementById("edmundButton").disabled = false;
+    }
+    if ((clueIndex + 1) < clueArray.length) { sendToEdmund(clueIndex + 1); }
 }
 
 
@@ -336,17 +345,4 @@ function modifyCSS() {
 	//document.getElementById("blankCell").style.width = "30px";
 	//document.getElementById("blankCell").style.height = "30px";
 
-}
-
-function pollEdmundButton() {
-	var solving = false;
-	for (var i in clueArray) {
-		if (clueArray[i][9] === "SOLVING") {
-			solving = true;
-		}
-	}
-
-	document.getElementById("edmundButton").disabled = solving;
-
-	setTimeout(pollEdmundButton(), 3000);
 }

@@ -15,10 +15,12 @@ public class ContainerClue implements Clue {
     private final List<String> keyWords;
     private Thesaurus thesaurus;
     private String hint;
+    private int searchIntensity;
 
     public ContainerClue(Thesaurus thesaurus) {
-        keyWords = asList("CAPTURING", "SURROUNDED", "PUT IN", "KEEPS", "INSIDE", " IN ", "CLOTHING", "ABOUT", "ADMIT", "ADMITS", "ADMITTING", "AROUND", "BESIEGE", "BESIEGES", "BESIEGING", "BOX", "BOXES", "BOXING", "BRIDGE", "BRIDGES", "BRIDGING", "CAPTURE", "CAPTURED", "CAPTURES", "CAPTURING", "CATCH", "CATCHES", "CATCHING", "CIRCLE", "CIRCLES", "CIRCLING", "CLUTCH", "CLUTCHES", "CLUTCHING", "CONTAIN", "CONTAINING", "CONTAINS", "COVER", "COVERING", "COVERS", "EMBRACE", "EMBRACES", "EMBRACING", "ENCIRCLE", "ENCIRCLES", "ENCIRCLING", "ENFOLD", "ENFOLDING", "ENFOLDS", "ENVELOP", "ENVELOPING", "ENVELOPS", "EXTERNAL", "FLANK", "FLANKING", "FLANKS", "FRAME", "FRAMED", "FRAMING", "FRAMES", "GRASP", "GRASPING", "GRASPS", "HARBOUR", "HARBOURS", "HARBOURING", "HOLD", "HOLDING", "HOLDS", "HOUSE", "HOUSES", "HOUSING", "OUTSIDE", "ENTERING", "RINGS", "ROUND", "SHELTER", "SHELTERING", "SHELTERS", "SURROUND", "SURROUNDING", "SURROUNDS", "SWALLOW", "SWALLOWING", "SWALLOWS", "TAKE IN", "TAKES IN", "TAKING IN", "WITHOUT", "WRAP", "WRAPPING", "WRAPS");
+        keyWords = asList("CAPTURING", "SURROUNDED", "PUT IN", "KEEPS", "INSIDE", " IN ", "CLOTHING", "ABOUT", "ADMIT", "ADMITS", "ADMITTING", "AROUND", "BESIEGE", "BESIEGES", "BESIEGING", "BOX", "BOXES", "BOXING", "BRIDGE", "BRIDGES", "BRIDGING", "CAPTURE", "CAPTURED", "CAPTURES", "CAPTURING", "CATCH", "CATCHES", "CATCHING", "CIRCLE", "CIRCLES", "CIRCLING", "CLUTCH", "CLUTCHES", "CLUTCHING", "CONTAIN", "CONTAINING", "CONTAINS", "COVER", "COVERING", "COVERS", "EMBRACE", "EMBRACES", "EMBRACING", "ENCIRCLE", "ENCIRCLES", "ENCIRCLING", "ENFOLDING", "ENFOLDS", "ENFOLD", "ENVELOPING", "ENVELOPS", "ENVELOP", "EXTERNAL", "FLANKING", "FLANK", "FLANKS", "FRAMED", "FRAMES", "FRAMING", "FRAME", "GRASP", "GRASPING", "GRASPS", "HARBOUR", "HARBOURS", "HARBOURING", "HOLD", "HOLDING", "HOLDS", "HOUSE", "HOUSES", "HOUSING", "OUTSIDE", "ENTERING", "RINGS", "ROUND", "SHELTER", "SHELTERING", "SHELTERS", "SURROUND", "SURROUNDING", "SURROUNDS", "SWALLOW", "SWALLOWING", "SWALLOWS", "TAKE IN", "TAKES IN", "TAKING IN", "WITHOUT", "WRAP", "WRAPPING", "WRAPS");
         this.thesaurus = thesaurus;
+        searchIntensity = 0;
     }
 
     @Override
@@ -53,6 +55,10 @@ public class ContainerClue implements Clue {
 
             if (answers.size() > 0)
                 return Optional.of(answers);
+            else if (searchIntensity < 1) {
+                searchIntensity++;
+                return solve(phrase, hint, answerLength);
+            }
         }
         return Optional.empty();
     }
@@ -64,6 +70,8 @@ public class ContainerClue implements Clue {
         ArrayList<String> potentialAnswers = new ArrayList<>();
         potentialAnswers.addAll(thesaurus.getAllSynonymsXML(assumedClue));
         potentialAnswers.addAll(thesaurus.getRelatedWordsXML(assumedClue));
+        if (searchIntensity > 0) // NEW
+            potentialAnswers.addAll(thesaurus.getRelatedWordsOfSynonymsXML(assumedClue)); // NEW
         potentialAnswers = Helper.filterAll(potentialAnswers, hint, answerLength);
 
         // Process the rest of the clue to find a match with the assumed answer clue results
@@ -82,9 +90,11 @@ public class ContainerClue implements Clue {
 
         if ((synonyms != null) && (solutions != null)) {
             for (String word : solutions) {
+                word = word.toLowerCase();
                 for (String synonym : synonyms) {
-                    if (word.toLowerCase().equals(synonym.toLowerCase())) {
-                        words.add(word.toLowerCase());
+                    synonym = synonym.toLowerCase();
+                    if (word.equals(synonym)) {
+                        words.add(word);
                     }
                 }
             }
@@ -123,26 +133,31 @@ public class ContainerClue implements Clue {
 
         // Add synonyms/related words of left/right most words to arrays (including the word itself), then
         // Add synonyms/related words of 2 left/right most words to arrays (including the word itself), then
-        leftSynonyms.add(leftWord);
-        rightSynonyms.add(rightWord);
+        if ((!leftWord.equals("")) && (leftWord.length() > 1)) {
+            leftSynonyms.add(leftWord);
 
-        // Find synonyms/related words before mixing them
-        if ((leftSplit.length >= 1) && (rightSplit.length >= 1)) {
-            leftSynonyms.addAll(thesaurus.getAllSynonymsXML(leftWord));
-            rightSynonyms.addAll(thesaurus.getAllSynonymsXML(rightWord));
+            if  (leftSplit.length >= 1) {
+                leftSynonyms.addAll(thesaurus.getAllSynonymsXML(leftWord));
+                leftSynonyms.addAll(thesaurus.getRelatedWordsXML(leftWord));
+            }
 
-            leftSynonyms.addAll(thesaurus.getRelatedWordsXML(leftWord));
-            rightSynonyms.addAll(thesaurus.getRelatedWordsXML(rightWord));
+            if (leftSplit.length >= 2) {
+                leftSynonyms.addAll(thesaurus.getAllSynonymsXML(leftSplit[leftSplit.length - 2] + " " + leftSplit[leftSplit.length - 1]));
+                leftSynonyms.addAll(thesaurus.getRelatedWordsXML(leftSplit[leftSplit.length - 2] + " " + leftSplit[leftSplit.length - 1]));
+            }
         }
+        if ((!rightWord.equals("")) && (rightWord.length() > 1)) {
+            rightSynonyms.add(rightWord);
 
-        if (leftSplit.length >= 2) {
-            leftSynonyms.addAll(thesaurus.getAllSynonymsXML(leftSplit[leftSplit.length - 2] + " " + leftSplit[leftSplit.length - 1]));
-            leftSynonyms.addAll(thesaurus.getRelatedWordsXML(leftSplit[leftSplit.length - 2] + " " + leftSplit[leftSplit.length - 1]));
-        }
+            if  (rightSplit.length >= 1) {
+                rightSynonyms.addAll(thesaurus.getAllSynonymsXML(rightWord));
+                rightSynonyms.addAll(thesaurus.getRelatedWordsXML(rightWord));
+            }
 
-        if (rightSplit.length >= 2) {
-            rightSynonyms.addAll(thesaurus.getAllSynonymsXML(rightSplit[0] + " " + rightSplit[1]));
-            rightSynonyms.addAll(thesaurus.getRelatedWordsXML(rightSplit[0] + " " + rightSplit[1]));
+            if (rightSplit.length >= 2) {
+                rightSynonyms.addAll(thesaurus.getAllSynonymsXML(rightSplit[0] + " " + rightSplit[1]));
+                rightSynonyms.addAll(thesaurus.getRelatedWordsXML(rightSplit[0] + " " + rightSplit[1]));
+            }
         }
 
         // Filter any synonyms larger than the answerLength

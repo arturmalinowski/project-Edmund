@@ -31,32 +31,46 @@ public class ContainerClueTest {
     @Ignore
     @Test
     @Table({
-            // working without hints
-            @Row({"Wear around the brave", "weather", "w......", "7"}),
-            @Row({"Put on around the brave", "weather", "w......", "7"}),
-            @Row({"We surrounded strike snowy", "white", "w....", "5"}),
-            @Row({"Empty tin put in bin", "vacant", "v.....", "6"}),
-            @Row({"Horseman capturing a freebooter", "raider", "r.....", "6"}),
-            @Row({"Hear about the moorland flower", "heather", "h......", "7"})
+            // working
+            @Row({"Wear around the brave", "weather", "w......", "7"}), // (passes)
+            @Row({"Put on around the brave", "weather", "w......", "7"}), // (passes)
+            @Row({"We surrounded strike snowy", "white", "w....", "5"}), // (passes)
+            @Row({"Empty tin put in bin", "vacant", "v.....", "6"}), // (passes)
+            @Row({"Horseman capturing a freebooter", "raider", "r.....", "6"}), // (passes)
+            @Row({"Hear about the moorland flower", "heather", "h......", "7"}), // (passes)
+            @Row({"Everyone in wager on dancing performance", "ballet", "b.....", "6"}), // (passes)
+            @Row({"Attire clothing the brave", "weather", "w......", "7"}), // (passes)
+            @Row({"Stash or put in stage", "storage", "s......", "7"}), // (passes)
+            @Row({"Make a change and put me in last", "emend", "e....", "5"}), // (passes)
 
-//            @Row({"Relative entering Highland dance and showing off", "flaunting", "f........", "9"}), //"showing off" returns "flaunting"
-//            @Row({"Noted Noah's ship in the Mediterranean", "marked", "m.....", "6"}), // "ark" -> "med" = "marked", "noted" returns "marked"
-//            @Row({"Shrink from phone in church", "cringe", "c.....", "6"}), // "ce" + "ring" = "cringe", "shrink" returns "cringe"
-//
-//            @Row({"Outlaw in gangs carrying equipment", "brigands", "b.......", "8"}), //"outlaws" does not return "brigand", but "outlaw" does
-//
-//            @Row({"Object when put into torn clothing", "raiment", "r......", "7"}), //"clothing" does not return "raiment"
-//            @Row({"Points out lion in tropical islands", "indicates", "i........", "9"}), //"cat" -> "indies" = "indicates", "points out" does not return "indicates"
-//            @Row({"Apostle's friend outside of university", "paul", "p...", "4"}), //"pal" -> "u" = "paul", "apostle" does not return "paul"
-//            @Row({"Everyone in wager on dancing performance", "ballet", "b.....", "6"}), // "all" -> "bet" = "ballet", "dancing" or "performance" does not return "ballet"
-//            @Row({"Widest and best way inside", "broadest", "b.......", "8"}), //"best" -> "road" = "broadest", "widest" returns nothing
-//            @Row({"Damage surrounding the brave", "weather", "w......", "7"}), //"damage" does not return "wear"
-//            @Row({"Stuck with tot holding present", "adhered", "a......", "7"}), //"stuck" does not return "adhered"
-//            @Row({"Russet bears are raised", "reared", "r.....", "6"}) //"raised" does not return "reared"
+            @Row({"Superman retains interest in Painter", "titian", "t.....", "6"}),
+            @Row({"Everything in the broadcast is superficial", "shallow", "s......", "7"}),
+            @Row({"Hospital residents make knots in trousers", "patients", "p.......", "8"}),
+            @Row({"Cooked meat in the oven - uncooked outside it?", "roasted", "r......", "7"}),
+
+            @Row({"Mixed a boy’s greens", "salad", "s....", "5"}),
+            @Row({"South in motionless flyer", "insert", "i.....", "6"}),
+            @Row({"Sink, as in rubbish container", "basin", "b....", "5"}),
+            @Row({"Contented and very quiet, cutting hay", "happy", "h....", "5"}),
+            @Row({"Quick! Sieve, including tungsten!", "swift", "s....", "5"}),
+            @Row({"Find a doctor getting to grips with garbled voices", "discover", "d.......", "8"}),
+            @Row({"Shave back in south eastern Mexican shawl", "serape", "s.....", "6"}),
+            @Row({"Relative entering Highland dance and showing off", "flaunting", "f........", "9"}), //"showing off" returns "flaunting"
+            @Row({"Noted Noah's ship in the Mediterranean", "marked", "m.....", "6"}), // "ark" -> "med" = "marked", "noted" returns "marked"
+            @Row({"Shrink from phone in church", "cringe", "c.....", "6"}), // "ce" + "ring" = "cringe", "shrink" returns "cringe"
+            @Row({"Outlaw in gangs carrying equipment", "brigands", "b.......", "8"}), //"outlaws" does not return "brigand", but "outlaw" does
+            @Row({"Object when put into torn clothing", "raiment", "r......", "7"}), //"clothing" does not return "raiment"
+            @Row({"Points out lion in tropical islands", "indicates", "i........", "9"}), //"cat" -> "indies" = "indicates", "points out" does not return "indicates"
+            @Row({"Apostle's friend outside of university", "paul", "p...", "4"}), //"pal" -> "u" = "paul", "apostle" does not return "paul"
+            @Row({"Widest and best way inside", "broadest", "b.......", "8"}), //"best" -> "road" = "broadest", "widest" returns nothing
+            @Row({"Damage surrounding the brave", "weather", "w......", "7"}), //"damage" does not return "wear"
+            @Row({"Stuck with tot holding present", "adhered", "a......", "7"}), //"stuck" does not return "adhered"
+            @Row({"Russet bears are raised", "reared", "r.....", "6"}) //"raised" does not return "reared"
     })
     public void bulkClueTest(String crosswordClue, String clueAnswer, String hint, String answerLength) {
-        Optional<List<String>> answer = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
-        assertThat(answer.get().get(0), is(clueAnswer));
+        Optional<List<String>> answers = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
+        System.out.println(answers); // DELETE
+        assertThat(answers.get().contains(clueAnswer), is(true));
     }
 
     @Test

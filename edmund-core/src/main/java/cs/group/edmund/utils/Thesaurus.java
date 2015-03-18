@@ -25,6 +25,10 @@ public class Thesaurus {
 
 
     public ArrayList<String> getAllSynonymsXML(String word) {
+        if (word.length() < 2) {
+            if ((!(word.equals("a")) || !(word.equals("i"))) || !(word.equals("o")))
+                return new ArrayList<>();
+        }
         if (offlineThesaurus.hasWord(word)) {
             return offlineThesaurus.results(word);
         }
@@ -79,6 +83,10 @@ public class Thesaurus {
     }
 
     public ArrayList<String> getRelatedWordsXML(String word) {
+        if (word.length() < 2) {
+            if ((!(word.equals("a")) || !(word.equals("i"))) || !(word.equals("o")))
+                return new ArrayList<>();
+        }
         ArrayList<String> elementList = new ArrayList<>();
         SAXReader reader = new SAXReader();
         Document document;
