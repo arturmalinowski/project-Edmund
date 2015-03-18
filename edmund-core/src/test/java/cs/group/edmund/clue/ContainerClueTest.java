@@ -4,8 +4,8 @@ import com.googlecode.yatspec.junit.Row;
 import com.googlecode.yatspec.junit.Table;
 import com.googlecode.yatspec.junit.TableRunner;
 import cs.group.edmund.utils.Thesaurus;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -69,7 +69,6 @@ public class ContainerClueTest {
     })
     public void bulkClueTest(String crosswordClue, String clueAnswer, String hint, String answerLength) {
         Optional<List<String>> answers = clue.solve(crosswordClue, hint, Integer.parseInt(answerLength));
-        System.out.println(answers); // DELETE
         assertThat(answers.get().contains(clueAnswer), is(true));
     }
 

@@ -102,7 +102,7 @@ public class DoubleDefinitionsClue implements Clue {
         if (leftBackupWord != null) {
             leftBackupWordList = (containsSearchableWords(leftBackupWord) ? thesaurus.getAllSynonymsXML(leftBackupWord) : leftBackupWordList);
         }
-        if (leftBackupWord != null) {
+        if (rightBackupWord != null) {
             rightBackupWordList = (containsSearchableWords(rightBackupWord) ? thesaurus.getAllSynonymsXML(rightBackupWord) : rightBackupWordList);
         }
     }
@@ -121,9 +121,12 @@ public class DoubleDefinitionsClue implements Clue {
 
             secondElementList.addAll(thesaurus.getRelatedWordsXML(splitPhrase[1]));
 
-            leftBackupWordList.addAll(thesaurus.getRelatedWordsXML(leftBackupWord));
-
-            rightBackupWordList.addAll(thesaurus.getRelatedWordsXML(rightBackupWord));
+            if (leftBackupWord != null) {
+                leftBackupWordList.addAll(thesaurus.getRelatedWordsXML(leftBackupWord));
+            }
+            if (rightBackupWord != null) {
+                rightBackupWordList.addAll(thesaurus.getRelatedWordsXML(rightBackupWord));
+            }
 
             searchLists();
 
