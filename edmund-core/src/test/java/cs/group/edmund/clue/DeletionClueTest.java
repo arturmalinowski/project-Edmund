@@ -34,6 +34,7 @@ public class DeletionClueTest {
     @Ignore
     @Test
     @Table({
+            @Row({"Nothing for romance", "aaa", "3", "...", "head"}),
             // Beheadments
             @Row({"Beheaded celebrity is sailor", "tar", "3", "t..", "head"}), // (passes)
             @Row({"First off mobilize supporter", "ally", "4", "a...", "head"}), // "mobilize" -> "rally" (passes)

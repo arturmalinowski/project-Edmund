@@ -78,10 +78,10 @@ public class ContainerClueTest {
         assertThat(clue.isRelevant("Bird allowed outside tavern"), is(true));
     }
 
-    @Test
-    public void testGetKeyword() {
-        assertThat(clue.getKeyword("bird allowed outside tavern"), is("outside"));
-    }
+    //@Test
+    //public void testGetKeyword() {
+        //assertThat(clue.getKeyword("bird allowed outside tavern", is("outside"));
+    //}
 
     @Test
     public void testSplitPhrase() { assertThat(clue.splitPhrase("bird allowed outside tavern", "outside"), is(new ArrayList<>(asList("bird allowed", "tavern")))); }

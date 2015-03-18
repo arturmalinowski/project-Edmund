@@ -18,7 +18,7 @@ public class DeletionClue implements Clue {
     private int searchIntensity;
 
     public DeletionClue(Thesaurus thesaurus) {
-        keyWordsHead = asList("WITHOUT FIRST", "DROPPING INTRODUCTION", "AFTER COMMENCEMENT", "BEGINNING TO GO", "BEHEADED", "BEHEADING", "DECAPITATED", "FIRST OFF", "HEADLESS", "HEAD OFF", "INITIALLY LACKING", "LEADERLESS", "LOSING OPENER", "MISSING THE FIRST", "NEEDING NO INTRODUCTION", "NOT BEGINNING", "NOT COMMENCING", "NOT STARTING", "START OFF", "START TO GO", "SCRATCH THE HEAD", "STRIKE THE HEAD", "UNINITIATED", "UNSTARTED", "WITHOUT ORIGIN");
+        keyWordsHead = asList("WITHOUT FIRST", "DROPPING INTRODUCTION", "AFTER COMMENCEMENT", "BEGINNING TO GO", "BEHEADED", "BEHEADING", "DECAPITATED", "FIRST OFF", "HEADLESS", "HEAD OFF", "INITIALLY LACKING", "LEADERLESS", "LOSING OPENER", "MISSING THE FIRST", "NEEDING NO INTRODUCTION", "get BEGINNING", "NOT COMMENCING", "NOT STARTING", "START OFF", "START TO GO", "SCRATCH THE HEAD", "STRIKE THE HEAD", "UNINITIATED", "UNSTARTED", "WITHOUT ORIGIN");
         keyWordsTail = asList("ENDLESSLY", "ENDLESS", "BACKING AWAY", "ABRIDGED", "ALMOST", "BACK OFF", "CLIPPED", "CURTAILED", "CUT SHORT", "DETAILED", "EARLY CLOSING", "FALLING SHORT", "FINISH OFF", "FOR THE MOST PART", "INCOMPLETE", "INTERMINABLE", "LACKING FINISH", "MISSING THE LAST", "MOST", "MOSTLY", "NEARLY", "NOT COMPLETELY", "NOT FULLY", "NOT QUITE", "SHORT", "SHORTENING", "TAILLESS", "UNENDING", "UNFINISHED", "WITHOUT END");
         keyWordsBoth = asList("EDGES AWAY", "LACKING WINGS", "LIMITLESS", "LOSING MARGINS", "SHELLED", "SIDES SPLITTING", "TRIMMED", "UNLIMITED", "WINGLESS", "WITHOUT LIMITS");
         keyWordsMiddle = asList("HEARTLESSLY", "HEARTLESS", "DISHEARTENED", "LOSING HEART", "HOLLOW", "CORED", "EMPTIED", "EMPTY", "EVACUATED", "FILLETED", "GUTTED", "HOLLOW", "UNCENTERED");
@@ -41,21 +41,21 @@ public class DeletionClue implements Clue {
     @Override
     public boolean isRelevant(String phrase) {
         for (String keyWord : keyWords) {
-            if (phrase.contains(keyWord.toLowerCase()))
+            keyWord = keyWord.toLowerCase();
+            if (((phrase.startsWith(keyWord + " ")) || (phrase.endsWith(" " + keyWord))) || (phrase.contains(" " + keyWord + " "))) {
                 return true;
+            }
         }
         return false;
     }
 
     @Override
     public Optional<List<String>> solve(String phrase, String hint, int... answerLength) {
-
-        // Check if any known keyword is in phrase
-        phrase = phrase.toLowerCase();
-        String key = getKeyword(phrase);
+        phrase = Helper.removeSpecialCharString(phrase);
+        ArrayList<String> splitPhrase = Helper.removeSpecialChar(phrase);
 
         if (isRelevant(phrase)) {
-            ArrayList<String> splitPhrase = Helper.removeSpecialChar(phrase);
+            String key = getKeyword(phrase);
 
             ArrayList<String> answers = new ArrayList<>();
             answers.addAll(solveFor(splitPhrase.get(0), phrase.substring(phrase.indexOf(" ")+1), key, hint, answerLength)); // assuming hint is first word
@@ -284,8 +284,10 @@ public class DeletionClue implements Clue {
     // Return the keyword used in the phrase, else return null.
     public String getKeyword(String phrase) {
         for (String keyWord : keyWords) {
-            if (phrase.contains(keyWord.toLowerCase()))
-                return keyWord.toLowerCase();
+            keyWord = keyWord.toLowerCase();
+            if (((phrase.startsWith(keyWord + " ")) || (phrase.endsWith(" " + keyWord))) || (phrase.contains(" " + keyWord + " "))) {
+                return keyWord;
+            }
         }
         return null;
     }

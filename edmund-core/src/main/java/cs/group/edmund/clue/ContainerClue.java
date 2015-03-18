@@ -31,11 +31,12 @@ public class ContainerClue implements Clue {
     }
 
     @Override
-    public boolean isRelevant(String phrase)
-    {
+    public boolean isRelevant(String phrase) {
         for (String keyWord : keyWords) {
-            if (phrase.contains(" " + keyWord.toLowerCase() + " "))
+            keyWord = keyWord.toLowerCase();
+            if (((phrase.startsWith(keyWord + " ")) || (phrase.endsWith(" " + keyWord))) || (phrase.contains(" " + keyWord + " "))) {
                 return true;
+            }
         }
         return false;
     }
@@ -43,13 +44,12 @@ public class ContainerClue implements Clue {
     @Override
     public Optional<List<String>> solve(String phrase, String hint, int... answerLength)
     {
-        // Check if any known keyword is in phrase
-        phrase = phrase.toLowerCase();
-        String key = getKeyword(phrase);
-        this.hint = hint;
+        phrase = Helper.removeSpecialCharString(phrase);
+        ArrayList<String> splitPhrase = Helper.removeSpecialChar(phrase);
 
         if (isRelevant(phrase)) {
-            ArrayList<String> splitPhrase = Helper.removeSpecialChar(phrase);
+            String key = getKeyword(phrase);
+            this.hint = hint;
 
             ArrayList<String> answers = new ArrayList<>();
             answers.addAll(solveFor(splitPhrase.get(0), phrase.substring(phrase.indexOf(" ")+1), key, hint, answerLength)); // assuming hint is first word
@@ -103,8 +103,10 @@ public class ContainerClue implements Clue {
     public String getKeyword(String phrase)
     {
         for (String keyWord : keyWords) {
-            if (phrase.contains(" " + keyWord.toLowerCase() + " "))
+            keyWord = keyWord.toLowerCase();
+            if (((phrase.startsWith(keyWord + " ")) || (phrase.endsWith(" " + keyWord))) || (phrase.contains(" " + keyWord + " "))) {
                 return keyWord.toLowerCase();
+            }
         }
         return null;
     }
