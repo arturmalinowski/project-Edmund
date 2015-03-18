@@ -1,6 +1,8 @@
 package cs.group.edmund.utils;
 
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +18,8 @@ public class OfflineThesaurus {
 
     private HashMap<String, ArrayList<String>> words = new HashMap<>();
     private File file;
+
+    Logger logger = LoggerFactory.getLogger("cs.group.edmund.utils");
 
     public OfflineThesaurus() {
         try {
@@ -37,12 +41,14 @@ public class OfflineThesaurus {
             }
             line = line.substring(1);
             try {
+                logger.info("Writing word: " + queryWord.toLowerCase() + " with synonyms to offline Thesaurus");
                 FileUtils.writeStringToFile(file, queryWord.toLowerCase() + ":" + line + "\n", "utf8", true);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
             try {
+                logger.info("Writing word: " + queryWord.toLowerCase() + " with no synonyms to offline Thesaurus");
                 FileUtils.writeStringToFile(file, queryWord.toLowerCase() + ":\n", "utf8", true);
             } catch (IOException e) {
                 e.printStackTrace();

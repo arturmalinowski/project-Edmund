@@ -21,7 +21,7 @@ public class Thesaurus {
     private OfflineThesaurus offlineThesaurus = new OfflineThesaurus();
     public static final String BIG_HUGE_LABS_API_KEY = "81fee77d8f082fbcc725c0684c190b28";
 
-    Logger logger = LoggerFactory.getLogger("cs.group.edmund.typeSelector");
+    Logger logger = LoggerFactory.getLogger("cs.group.edmund.utils");
 
 
     public ArrayList<String> getAllSynonymsXML(String word) {
