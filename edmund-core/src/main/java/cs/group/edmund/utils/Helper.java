@@ -8,10 +8,10 @@ public class Helper {
 
     public static ArrayList<String> combineWords(ArrayList<String> list, int answerLength) {
         ArrayList<String> wordsList = new ArrayList<>();
-        ArrayList<String> secondList = new ArrayList<>(list);
-        ArrayList<String> thirdList = new ArrayList<>(list);
 
         for(String word : list) {
+            ArrayList<String> secondList = new ArrayList<>(list);
+            ArrayList<String> thirdList = new ArrayList<>(list);
             if (word.length() > answerLength) {
                 continue;
             }
