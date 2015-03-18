@@ -52,9 +52,9 @@ public class DeletionClue implements Clue {
     @Override
     public Optional<List<String>> solve(String phrase, String hint, int... answerLength) {
         phrase = Helper.removeSpecialCharString(phrase);
-        ArrayList<String> splitPhrase = Helper.removeSpecialChar(phrase);
 
         if (isRelevant(phrase)) {
+            ArrayList<String> splitPhrase = Helper.removeSpecialChar(phrase);
             String key = getKeyword(phrase);
 
             ArrayList<String> answers = new ArrayList<>();

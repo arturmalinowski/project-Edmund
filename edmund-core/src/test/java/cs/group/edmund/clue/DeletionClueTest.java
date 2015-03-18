@@ -34,7 +34,6 @@ public class DeletionClueTest {
     @Ignore
     @Test
     @Table({
-            @Row({"Nothing for romance", "aaa", "3", "...", "head"}),
             // Beheadments
             @Row({"Beheaded celebrity is sailor", "tar", "3", "t..", "head"}), // (passes)
             @Row({"First off mobilize supporter", "ally", "4", "a...", "head"}), // "mobilize" -> "rally" (passes)
@@ -49,12 +48,10 @@ public class DeletionClueTest {
             @Row({"Suggest not starting in a flabby way", "imply", "5", "i....", "head"}), // "in a flabby way" -> "limply"
 
             // Curtailments
-
             @Row({"Vehicle backing away from wagon", "car", "3", "c..", "tail"}), // "wagon" -> "cart"
             @Row({"Circuit almost falling", "lap", "4", "l..", "tail"}), // "almost" -> "lapse"
 
             // Internal Deletion
-
             @Row({"Disheartened tinker making a row", "tier", "4", "t...", "middle"}), // "tinker"
             @Row({"Dull speeches hollow assurances", "proses", "5", "p.....", "middle"}) // "assurances" -> "promises"
     })

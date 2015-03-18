@@ -45,9 +45,9 @@ public class ContainerClue implements Clue {
     public Optional<List<String>> solve(String phrase, String hint, int... answerLength)
     {
         phrase = Helper.removeSpecialCharString(phrase);
-        ArrayList<String> splitPhrase = Helper.removeSpecialChar(phrase);
 
         if (isRelevant(phrase)) {
+            ArrayList<String> splitPhrase = Helper.removeSpecialChar(phrase);
             String key = getKeyword(phrase);
             this.hint = hint;
 

@@ -1,0 +1,27 @@
+{
+	"clues": [
+			{"clueDirection":"across", "clueNumber":"1", "clueText":"Wear around the brave", "clueLength":"7", "startPos":"(0,0)", "endPos":"(6,0)"},
+			{"clueDirection":"across", "clueNumber":"2", "clueText":"Physician brings fish around", "clueLength":"3", "startPos":"(12,0)", "endPos":"(14,0)"},
+			{"clueDirection":"across", "clueNumber":"3", "clueText":"Rising star, nonsense", "clueLength":"4", "startPos":"(10,2)", "endPos":"(13,2)"},
+			{"clueDirection":"across", "clueNumber":"4", "clueText":"Stash or put in stage", "clueLength":"7", "startPos":"(3,3)", "endPos":"(9,3)"},
+			{"clueDirection":"across", "clueNumber":"5", "clueText":"Run away from an infertile area", "clueLength":"6", "startPos":"(9,5)", "endPos":"(14,5)"},
+			{"clueDirection":"across", "clueNumber":"6", "clueText":"Beheaded celebrity is sailor", "clueLength":"3", "startPos":"(7,7)", "endPos":"(9,7)"},
+			{"clueDirection":"across", "clueNumber":"7", "clueText":"Go near fresh fruit", "clueLength":"6", "startPos":"(6,9)", "endPos":"(11,9)"},
+			{"clueDirection":"across", "clueNumber":"8", "clueText":"Make a change and put me in last", "clueLength":"5", "startPos":"(0,10)", "endPos":"(4,10)"},
+			{"clueDirection":"across", "clueNumber":"9", "clueText":"Delia's pickle contains jelly", "clueLength":"5", "startPos":"(3,13)", "endPos":"(7,13)"},
+			{"clueDirection":"across", "clueNumber":"10", "clueText":"Sprout evenly in plant container", "clueLength":"3", "startPos":"(0,14)", "endPos":"(2,14)"},
+
+			{"clueDirection":"down", "clueNumber":"1", "clueText":"We surrounded strike, snowy", "clueLength":"5", "startPos":"(0,0)", "endPos":"(0,4)"},
+			{"clueDirection":"down", "clueNumber":"12", "clueText":"Horseman capturing a freebooter", "clueLength":"6", "startPos":"(0,6)", "endPos":"(0,11)"},
+			{"clueDirection":"down", "clueNumber":"13", "clueText":"Composition from Bliss on a tape", "clueLength":"6", "startPos":"(3,8)", "endPos":"(3,13)"},
+			{"clueDirection":"down", "clueNumber":"14", "clueText":"Hear about the moorland flower", "clueLength":"7", "startPos":"(4,0)", "endPos":"(4,6)"},
+			{"clueDirection":"down", "clueNumber":"15", "clueText":"Empty Tin? Put in Bin", "clueLength":"6", "startPos":"(7,2)", "endPos":"(7,7)"},
+			{"clueDirection":"down", "clueNumber":"16", "clueText":"One lewdly desiring some bicycle chains?", "clueLength":"4", "startPos":"(7,11)", "endPos":"(7,14)"},
+			{"clueDirection":"down", "clueNumber":"5", "clueText":"Challenging sweetheart heartlessly", "clueLength":"6", "startPos":"(9,5)", "endPos":"(9,10)"},
+			{"clueDirection":"down", "clueNumber":"17", "clueText":"Stop the flow in crazy get-up", "clueLength":"3", "startPos":"(9,12)", "endPos":"(9,14)"},
+			{"clueDirection":"down", "clueNumber":"18", "clueText":"Expensive honey", "clueLength":"4", "startPos":"(11,8)", "endPos":"(11,11)"},
+			{"clueDirection":"down", "clueNumber":"19", "clueText":"Succession of command", "clueLength":"5", "startPos":"(13,4)", "endPos":"(13,8)"},
+			{"clueDirection":"down", "clueNumber":"20", "clueText":"Containers for drinks taken back to bar", "clueLength":"4", "startPos":"(14,9)", "endPos":"(14,12)"}
+	],
+	"size" : 21
+}
