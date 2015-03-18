@@ -1,6 +1,7 @@
 package cs.group.edmund.clue;
 
 import cs.group.edmund.utils.Dictionary;
+import cs.group.edmund.utils.Helper;
 import cs.group.edmund.utils.Thesaurus;
 
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class HiddenClue implements Clue {
         Boolean isHidden = false;
         String[] words = phrase.replaceAll("[-+.^:,?!'’/]", " ").toLowerCase().split(" ");
         ArrayList<String> clueWords = new ArrayList<>(Arrays.asList(words));
-        List<String> finalAnswers = new ArrayList<>();
+        ArrayList<String> finalAnswers = new ArrayList<>();
 
         for (String word : clueWords) {
             if (keyWords.contains(word)) {
@@ -98,6 +99,7 @@ public class HiddenClue implements Clue {
                     }
                 }
                 if (!finalAnswers.isEmpty()) {
+                    Helper.removeDuplicates(finalAnswers);
                     return Optional.of(finalAnswers);
                 }
             }
@@ -115,10 +117,12 @@ public class HiddenClue implements Clue {
                             hintAnswers.add(word);
                         }
                     }
+                    Helper.removeDuplicates(hintAnswers);
                     return Optional.of(hintAnswers);
                 }
             }
             else {
+                Helper.removeDuplicates(possibleAnswers);
                 return Optional.of(possibleAnswers);
             }
 
@@ -131,7 +135,7 @@ public class HiddenClue implements Clue {
         searchAndCombine(joinedWords, words, answerLength, answerList);
     }
 
-    private List<String> solveKeyless(ArrayList<String> clueWords, int answerLength, String hint) {
+    private ArrayList<String> solveKeyless(ArrayList<String> clueWords, int answerLength, String hint) {
         String joinedWords = "";
         ArrayList<String> wordList = new ArrayList<>();
         ArrayList<String> answerList = new ArrayList<>();
