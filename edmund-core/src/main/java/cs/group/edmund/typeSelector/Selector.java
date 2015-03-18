@@ -4,6 +4,8 @@ package cs.group.edmund.typeSelector;
 import cs.group.edmund.clue.*;
 import cs.group.edmund.utils.Dictionary;
 import cs.group.edmund.utils.Thesaurus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,17 +17,20 @@ import static java.util.Arrays.asList;
 
 public class Selector {
 
+    Logger logger = LoggerFactory.getLogger("cs.group.edmund.typeSelector");
 
     private final Thesaurus thesaurus;
     private final Dictionary dictionary;
 
     public Selector(Thesaurus thesaurus, Dictionary dictionary) {
-
         this.thesaurus = thesaurus;
         this.dictionary = dictionary;
     }
 
     public List<String> retrieveAnswer(String phrase, String hint, int answerLength) throws Exception {
+        logger.info("Retrieving answer for clue: " + phrase);
+        logger.info("Hint: " + hint);
+        logger.info("Answer length: " + answerLength);
 
         List<List<String>> allPossibleAnswers = new ArrayList<>();
 
@@ -75,11 +80,13 @@ public class Selector {
     private void retrievePossibleAnswers(String phrase, String hint, int answerLength, List<Clue> clues, List<List<String>> allPossibleAnswers) {
         for (Clue clue : clues) {
             if (clue.isRelevant(phrase)) {
+                logger.info("Current relevant clue type: " + clue.getClass().getSimpleName());
                 computeAnswers(phrase, hint, answerLength, allPossibleAnswers, clue);
             }
         }
         if (allPossibleAnswers.size() == 0) {
             for (Clue clue : clues) {
+                logger.info("Current non-relevant clue type: " + clue.getClass().getSimpleName());
                 computeAnswers(phrase, hint, answerLength, allPossibleAnswers, clue);
             }
         }
@@ -89,6 +96,7 @@ public class Selector {
         Optional<List<String>> answer = clue.solve(phrase, hint, answerLength);
         if (answer.isPresent()) {
             allPossibleAnswers.add(answer.get());
+            logger.info("Current answers found for: " + clue.getClass().getSimpleName() + " is :" + answer.get());
         }
     }
 }

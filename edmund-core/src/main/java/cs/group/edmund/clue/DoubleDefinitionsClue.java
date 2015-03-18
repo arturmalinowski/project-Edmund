@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static cs.group.edmund.utils.Helper.removeDuplicates;
+import static cs.group.edmund.utils.Helper.removeSpecialCharString;
 
 public class DoubleDefinitionsClue implements Clue {
 
@@ -49,7 +50,7 @@ public class DoubleDefinitionsClue implements Clue {
             this.hint = ".*";
         }
 
-        return getAnswer(phrase.toLowerCase());
+        return getAnswer(removeSpecialCharString(phrase));
     }
 
 

@@ -92,4 +92,8 @@ public class Helper {
     public static ArrayList<String> removeSpecialChar(String word){
         return new ArrayList<>(Arrays.asList(word.replaceAll("[-+.^:,?!'’/\\s]", " ").toLowerCase().trim().split(" ")));
     }
+
+    public static String removeSpecialCharString(String word){
+        return word.replaceAll("[-+.^:,?!'’/\\s]", " ").toLowerCase().trim();
+    }
 }

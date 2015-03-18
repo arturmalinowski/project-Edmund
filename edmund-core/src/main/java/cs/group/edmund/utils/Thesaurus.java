@@ -8,6 +8,8 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -19,6 +21,9 @@ public class Thesaurus {
     private OfflineThesaurus offlineThesaurus = new OfflineThesaurus();
     public static final String BIG_HUGE_LABS_API_KEY = "81fee77d8f082fbcc725c0684c190b28";
 
+    Logger logger = LoggerFactory.getLogger("cs.group.edmund.typeSelector");
+
+
     public ArrayList<String> getAllSynonymsXML(String word) {
         if (offlineThesaurus.hasWord(word)) {
             return offlineThesaurus.results(word);
@@ -26,16 +31,21 @@ public class Thesaurus {
         ArrayList<String> elementList = new ArrayList<>();
         SAXReader reader = new SAXReader();
         Document document;
-        String url = "http://words.bighugelabs.com/api/2/" + BIG_HUGE_LABS_API_KEY + "/" + word.toLowerCase().replace(" ", "-") + "/xml";
+        String url = "http://words.bighugelabs.com/api/2/" + BIG_HUGE_LABS_API_KEY + "/" + word.toLowerCase().replace(" ", "%20") + "/xml";
+        logger.info("Making http request to: " + url);
         String response = HttpClient.makeRequest(url);
 
         if (HttpClient.responseCode() == 404) {
+            logger.info("Http response code: " + HttpClient.responseCode());
+
             offlineThesaurus.addNewQuery(word, elementList);
             return elementList;
         }
 
         if (HttpClient.responseCode() == 200) {
             try {
+                logger.info("Http response code: " + HttpClient.responseCode());
+
                 document = reader.read(new StringReader(response));
                 Element root = document.getRootElement();
 
