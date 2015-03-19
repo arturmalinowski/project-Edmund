@@ -183,6 +183,14 @@ function runEdmundSingle() {
     var hint = document.getElementById("hint").value.toString();
     var url = "http://localhost:9090/solve?clue=" + clue + "&hint=" + hint + "&length=" + length;
 
+    if (hint === "hint?") {
+        hint = "";
+        for (var i = 0; i < parseInt(length); i++) {
+        	hint = hint + ".";
+        }
+        document.getElementById("hint").innerHTML = hint;
+    }
+
     // ajax request
     $.getJSON(url, function(data) {
         if (data.length == 1) {
@@ -190,8 +198,8 @@ function runEdmundSingle() {
         }
         else {
             var temp = "";
-            for (var i in newAnswer) {
-            	temp = temp + newAnswer[i] + ", ";
+            for (var i in data) {
+            	temp = temp + data[i] + ", ";
             }
             temp = temp.substring(0, temp.length - 2);
             document.getElementById("answer").innerHTML = "Your answer could be: " + temp;
