@@ -124,10 +124,20 @@ img {
 }
 
 #singleClue {
+    background: #3498db;
+    margin-left: 125px;
     text-align: center;
+    color: white;
 }
 
 #answerLength {
-    margin-left: 15px;
+    background: #3498db;
     text-align: center;
+    color: white;
+}
+
+#askEdmund {
+    margin-left: 515px;
+    align: center;
+    width: 120px;
 }
