@@ -128,12 +128,14 @@ img {
     text-align: center;
     color: white;
     margin-left: 75px;
+    resize: none;
 }
 
 #answerLength {
     background: #3498db;
     text-align: center;
     color: white;
+    resize: none;
 }
 
 #askEdmund {
@@ -146,4 +148,5 @@ img {
     text-align: center;
     color: white;
     background: #3498db;
+    resize: none;
 }
