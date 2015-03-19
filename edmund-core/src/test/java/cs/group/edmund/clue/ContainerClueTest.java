@@ -33,15 +33,15 @@ public class ContainerClueTest {
     @Table({
             //@Row({"Going round stronghold, take a look", "teak", "....", "4"}),
             // working
-            @Row({"Wear around the brave", "weather", "w......", "7"}), // (passes)
-            @Row({"Put on around the brave", "weather", "w......", "7"}), // (passes)
-            @Row({"We surrounded strike snowy", "white", "w....", "5"}), // (passes)
-            @Row({"Empty tin put in bin", "vacant", "v.....", "6"}), // (passes)
-            @Row({"Horseman capturing a freebooter", "raider", "r.....", "6"}), // (passes)
-            @Row({"Hear about the moorland flower", "heather", "h......", "7"}), // (passes)
-            @Row({"Everyone in wager on dancing performance", "ballet", "b.....", "6"}), // (passes)
-            @Row({"Attire clothing the brave", "weather", "w......", "7"}), // (passes)
-            @Row({"Stash or put in stage", "storage", "s......", "7"}), // (passes)
+            //@Row({"Wear around the brave", "weather", "w......", "7"}), // (passes)
+            //@Row({"Put on around the brave", "weather", "w......", "7"}), // (passes)
+            //@Row({"We surrounded strike snowy", "white", "w....", "5"}), // (passes)
+            //@Row({"Empty tin put in bin", "vacant", "v.....", "6"}), // (passes)
+            //@Row({"Horseman capturing a freebooter", "raider", "r.....", "6"}), // (passes)
+            //@Row({"Hear about the moorland flower", "heather", "h......", "7"}), // (passes)
+            //@Row({"Everyone in wager on dancing performance", "ballet", "b.....", "6"}), // (passes)
+            //@Row({"Attire clothing the brave", "weather", "w......", "7"}), // (passes)
+            //@Row({"Stash or put in stage", "storage", "s......", "7"}), // (passes)
             @Row({"Make a change and put me in last", "emend", "e....", "5"}), // (passes)
 
             @Row({"Superman retains interest in Painter", "titian", "t.....", "6"}),

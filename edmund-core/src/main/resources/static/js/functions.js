@@ -177,9 +177,28 @@ function runEdmund() {
 
 //
 function runEdmundSingle() {
-    var clue = document.getElementById("singleClue");
-    var length = document.getElementById("answerLength");
-    var hint = document.getElementById("hint");
+    var clue = document.getElementById("singleClue").value.toString();
+    var length = document.getElementById("answerLength").value.toString();
+    var hint = document.getElementById("hint").value.toString();
+    var url = "http://localhost:9090/solve?clue=" + clue + "&hint=" + hint + "&length=" + length;
+
+    // ajax request
+    $.getJSON(url, function(data) {
+        if (data.length == 1) {
+            document.getElementById("answer").innerHTML = "Your answer is: " + data[0];
+        }
+        else {
+            var temp = "";
+            for (var i in newAnswer) {
+            	temp = temp + newAnswer[i] + ", ";
+            }
+            temp = temp.substring(0, temp.length - 2);
+            document.getElementById("answer").innerHTML = "Your answer could be: " + temp;
+        }
+    })
+    .error( function(data) {
+        document.getElementById("answer").innerHTML = "We're sorry, Edmund could not find the answer!";
+    });
 }
 
 
@@ -331,24 +350,6 @@ function setUnblank(x, y) {
 	updateCell(x, y, ".");
 }
 
-function modifyCSS() {
-	var displayWidth = window.screen.availWidth;
-	var displayHeight = window.screen.availHeight;
-
-	document.getElementById("statusPane").style.width = (displayWidth/4).toString() + "px";
-	document.getElementById("statusPane").style.height = (displayHeight*2/3).toString() + "px";
-
-	document.getElementById("clues").style.width = (displayWidth/4).toString() + "px";
-	document.getElementById("clues").style.height = (displayHeight*2/3).toString() + "px";
-
-	//document.getElementById("crosswordCell").style.width = "30px";
-	//document.getElementById("crosswordCell").style.height = "30px";
-
-	//document.getElementById("blankCell").style.width = "30px";
-	//document.getElementById("blankCell").style.height = "30px";
-
-}
-
 function preloadImages() {
     // preload images
     ImageCalculating = new Image(30,30);
@@ -377,14 +378,14 @@ function addClickListeners() {
             addClickListener(j, i);
     	}
     }
-}
 
-//
-function addKeyListeners() {
-
-}
-
-//
-function addKeyListener() {
-
+    document.getElementById("singleClue").addEventListener("click", function(){
+        document.getElementById("singleClue").innerHTML = "";
+    });
+    document.getElementById("answerLength").addEventListener("click", function(){
+            document.getElementById("answerLength").innerHTML = "";
+    });
+    document.getElementById("hint").addEventListener("click", function(){
+            document.getElementById("hint").innerHTML = "";
+    });
 }
