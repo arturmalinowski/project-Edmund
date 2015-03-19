@@ -19,21 +19,19 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-
 </head>
 <body>
 
 <div class="container">
-    <div class="header clearfix">
+    <div class="header">
         <nav>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation" class="active" id="edmundButton" onclick="runEdmund()"><a href="#">Run Edmund</a></li>
+                <li role="presentation" class="runButton"> <button type="button" class="btn btn-primary btn-lg" id="edmundButton" onclick="runEdmund()">Run Edmund</button></li>
+                <!--<li role="presentation" class="active" id="edmundButton" onclick="runEdmund()"><a href="#">Run Edmund</a></li>-->
                 <li role="presentation" class="file"> <input type="file" id="fileInput" onchange="uploadJSON()"></li>
             </ul>
         </nav>
-        <h2 class="text-muted">Project Edmund</h2>
+        <h2 class="title-text">Project Edmund</h2>
     </div>
 </div>
 

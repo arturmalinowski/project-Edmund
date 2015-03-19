@@ -33,6 +33,7 @@ img {
 
 .clueHeader {
 	text-align: center;
+	color: #2980b9;
 }
 
 #crosswordTable {
@@ -96,11 +97,28 @@ img {
 .column-right{ float: right; width: 30%;padding-top: 75px;}
 .column-center{ display: inline-block; width: 40%;}
 
-.active {
-  margin-top: 15px;
-  margin-right: 300px;
+.runButton {
+  margin-top: 17px;
+  padding-right: 240px;
   }
 
 .file {
   margin-top: 25px;
+  margin-right: 50px;
+  color: white;
   }
+
+.header {
+    background-color: #95a5a6;
+    height: 75px;
+}
+
+.title-text {
+    margin-left: 10px;
+    padding-top: 20px;
+    color: white;
+}
+
+.btn {
+    background: #2980b9;
+}
