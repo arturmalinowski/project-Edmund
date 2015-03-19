@@ -9,8 +9,8 @@ for (var i = 0; i < 15; i++) {
 	answerArray.push([".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "."]);
 }
 setupTable();
-modifyCSS();
-
+addClickListeners();
+addKeyListeners();
 
 // Functions
 //
@@ -63,8 +63,6 @@ function clearConfiguration() {
 
 // Upload selected .txt file with JSON, parse it to clueArray (WORKING)
 function uploadJSON() {
-
-	//clearConfiguration();
 
 	var x = document.getElementById("fileInput");
 	var file = x.files[0];
@@ -177,19 +175,25 @@ function runEdmund() {
     	}
 }
 
+//
+function runEdmundSingle() {
+    var clue = document.getElementById("singleClue");
+    var length = document.getElementById("answerLength");
+    var hint = document.getElementById("hint");
+}
+
 
 // Send clue to Edmund by index (WORKING)
 function sendToEdmund(clueIndex) {
 
-	//
-	if (clueArray[clueIndex][9] != "SOLVED") {
+	if (((clueArray[clueIndex][9] === "UNCALCULATED") || (clueArray[clueIndex][9] === "MULTIPLE")) || (clueArray[clueIndex][9] === "UNSOLVED")) {
 		//
+		clueArray[clueIndex][9] = "SOLVING";
 		clueArray[clueIndex][10].innerHTML = "<img src='img/statusCalculating.png' border=0/>";
 
 		// Generate URL for http request
 		var url = "http://localhost:9090/solve?clue=" + clueArray[clueIndex][3] + "&hint=" + clueArray[clueIndex][11] + "&length=" + clueArray[clueIndex][4];
-		clueArray[clueIndex][9] = "SOLVING";
-	 	
+
 		// ajax request
 		$.getJSON(url, function(data) {
 			receiveFromEdmund(clueIndex, data, "success");
@@ -199,11 +203,11 @@ function sendToEdmund(clueIndex) {
 		});
 	}
 	else {
+	    if ((clueIndex + 1) < clueArray.length) { sendToEdmund(clueIndex + 1); }
         if (clueIndex == (clueArray.length - 1)) {
             solving = false;
             document.getElementById("edmundButton").disabled = false;
         }
-        if ((clueIndex + 1) < clueArray.length) { sendToEdmund(clueIndex + 1); }
 	}
 }
 
@@ -213,20 +217,24 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 
 	// Answer found
 	if (returnStatus === "success") {
-		updateAnswerArrayFromHints(clueIndex, newAnswer[0]);
-		clueArray[clueIndex][9] = "SOLVED";
 
-		if (newAnswer.length == 1) {clueArray[clueIndex][10].innerHTML = "<img src='img/statusSolved.png' border=0/>";}
-		else {clueArray[clueIndex][10].innerHTML = "<img src='img/statusMultiple.png' border=0/>";}
+		if (newAnswer.length == 1) {
+		    clueArray[clueIndex][9] = "SOLVED";
+		    clueArray[clueIndex][10].innerHTML = "<img src='img/statusSolved.png' border=0/>";
+		    updateAnswerArrayFromHints(clueIndex, newAnswer[0]);
+		}
+		else {
+		    clueArray[clueIndex][9] = "MULTIPLE";
+		    clueArray[clueIndex][10].innerHTML = "<img src='img/statusMultiple.png' border=0/>";
+		    clueArray[clueIndex][12] = newAnswer;
+		}
 
 		// Log answers and add as tooltips
 		var temp = "";
 		for (var i in newAnswer) {
 			temp = temp + newAnswer[i] + ", ";
 		}
-		temp = temp.substring(0, temp.length - 2);
-
-		clueArray[clueIndex][10].title = temp;
+		clueArray[clueIndex][10].title = temp.substring(0, temp.length - 2);
 	}
 	// Answer not found
 	else {
@@ -313,12 +321,14 @@ function generateHints() {
 // Blank the cell at the given coordinates (WORKING)
 function setBlank(x, y) {
 	var cell = document.getElementById("crosswordTable").rows[parseInt(y)].cells[parseInt(x)].className = "blankCell";
+	updateCell(y, x, "");
 }
 
 
 // Unblank the cell at the given coordinates (WORKING)
 function setUnblank(x, y) {
 	var cell = document.getElementById("crosswordTable").rows[parseInt(y)].cells[parseInt(x)].className = "crosswordCell";
+	updateCell(x, y, ".");
 }
 
 function modifyCSS() {
@@ -349,4 +359,32 @@ function preloadImages() {
     ImageMultiple.src = "img/statusMultiple.png";
     ImageFailed = new Image(30,30);
     ImageFailed.src = "img/statusFailed.png";
+}
+
+//
+function addClickListener(x, y) {
+    document.getElementById(x.toString() + "_" + y.toString() + "_content").addEventListener("click", function(){
+        if (!solving) {
+            updateCell(x, y, "");
+        }
+    });
+}
+
+//
+function addClickListeners() {
+    for (var i = 0; i < 15; i++) {
+    	for (var j = 0; j < 15; j++) {
+            addClickListener(j, i);
+    	}
+    }
+}
+
+//
+function addKeyListeners() {
+
+}
+
+//
+function addKeyListener() {
+
 }
