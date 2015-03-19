@@ -1,37 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Project Edmund</title>
-	    <link rel=stylesheet type="text/css" href="css/home.css">
-	    <link rel="shortcut icon" href="img/edmundLogo.ico">
-	    <script src="js/functions.js"></script>
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	</head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel=stylesheet type="text/css" href="css/home.css">
+    <link rel="shortcut icon" href="img/edmundLogo.ico">
+    <script src="js/functions.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-	<body>
-		<div class="container">
-			<div id="leftPane">
-				<div id="title">
-					<h1>Project Edmund</h1>
-					<h2>A Cryptic Crossword Solver</h2>
-				</div>
-				<div id="clues">
-					<h3 class="clueHeader">Across</h3>
-					<table id="acrossClues"></table>
-					<h3 class="clueHeader">Down</h3>
-					<table id="downClues"></table>
-				</div>
-				<div> <button id="edmundButton" type="button" onclick="runEdmund()">Run Edmund</button> </div>
-				<div> <input type="file" id="fileInput" onchange="uploadJSON()"> </div>
-			</div>
-			<div id="rightPane">
-				<table id="crosswordTable"></table>
-			</div>
-			<div>
-				<textarea readonly id="statusPane"></textarea>
-			</div>
-		</div>
-	</body>
-	<script src="js/functions.js"></script>
+    <title>Edmund</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="active" id="edmundButton" onclick="runEdmund()"><a href="#">Run Edmund</a></li>
+                <li role="presentation" class="file"> <input type="file" id="fileInput" onchange="uploadJSON()"></li>
+            </ul>
+        </nav>
+        <h2 class="text-muted">Project Edmund</h2>
+    </div>
+</div>
+
+<div class="container">
+    <div class="column-left" id="left">
+        <div>
+            <h3 class="clueHeader">Across</h3>
+            <table id="acrossClues"></table>
+        </div>
+        <div></div>
+    </div>
+    <div class="column-center" id="center">
+        <table id="crosswordTable"></table>
+    </div>
+    <div class="column-right" id="right">
+            <h3 class="clueHeader">Down</h3>
+            <table id="downClues"></table>
+        </div>
+</div>
+</body>
+<script src="js/functions.js"></script>
 </html>

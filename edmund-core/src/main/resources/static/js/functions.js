@@ -227,13 +227,11 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 		temp = temp.substring(0, temp.length - 2);
 
 		clueArray[clueIndex][10].title = temp;
-		log("Edmund solved " + clueArray[clueIndex][1] + " " + clueArray[clueIndex][0] + ": " + temp + ".");
 	}
 	// Answer not found
 	else {
 		clueArray[clueIndex][9] = "UNSOLVED";
 		clueArray[clueIndex][10].innerHTML = "<img src='img/statusFailed.png' border=0/>";
-		log("Edmund could not solve " + clueArray[clueIndex][1] + " " + clueArray[clueIndex][0] + ".");
 	}
 
 	if (clueIndex == (clueArray.length - 1)) {
@@ -312,7 +310,7 @@ function generateHints() {
 }
 
 
-// Blanl the cell at the given coordinates (WORKING)
+// Blank the cell at the given coordinates (WORKING)
 function setBlank(x, y) {
 	var cell = document.getElementById("crosswordTable").rows[parseInt(y)].cells[parseInt(x)].className = "blankCell";
 }
@@ -321,13 +319,6 @@ function setBlank(x, y) {
 // Unblank the cell at the given coordinates (WORKING)
 function setUnblank(x, y) {
 	var cell = document.getElementById("crosswordTable").rows[parseInt(y)].cells[parseInt(x)].className = "crosswordCell";
-}
-
-
-// Log messages to the status pane (WORKING)
-function log(message) {
-	document.getElementById("statusPane").innerHTML = document.getElementById("statusPane").innerHTML + "&#10;" + message;
-	document.getElementById("statusPane").scrollTop = document.getElementById("statusPane").scrollHeight;
 }
 
 function modifyCSS() {
