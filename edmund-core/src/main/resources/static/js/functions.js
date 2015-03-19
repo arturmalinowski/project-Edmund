@@ -214,7 +214,10 @@ function runEdmundSingle() {
 // Send clue to Edmund by index (WORKING)
 function sendToEdmund(clueIndex) {
 
-	if (((clueArray[clueIndex][9] === "UNCALCULATED") || (clueArray[clueIndex][9] === "MULTIPLE")) || (clueArray[clueIndex][9] === "UNSOLVED")) {
+    if (clueArray[clueIndex][11].indexOf(".") == -1) {
+        receiveFromEdmund(clueIndex, [clueArray[clueIndex][11]], "user");
+    }
+	else if (((clueArray[clueIndex][9] === "UNCALCULATED") || (clueArray[clueIndex][9] === "MULTIPLE")) || (clueArray[clueIndex][9] === "UNSOLVED")) {
 		//
 		clueArray[clueIndex][9] = "SOLVING";
 		clueArray[clueIndex][10].innerHTML = "<img src='img/statusCalculating.png' border=0/>";
@@ -264,6 +267,12 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 		}
 		clueArray[clueIndex][10].title = temp.substring(0, temp.length - 2);
 	}
+	else if (returnStatus === "user") {
+	    clueArray[clueIndex][9] = "USER";
+        clueArray[clueIndex][10].innerHTML = "<img src='img/statusUser.png' border=0/>";
+        clueArray[clueIndex][10].title = "";
+        updateAnswerArrayFromHints(clueIndex, newAnswer[0]);
+	}
 	// Answer not found
 	else {
 		clueArray[clueIndex][9] = "UNSOLVED";
@@ -304,8 +313,8 @@ function updateAnswerArrayFromHints(clueIndexNumber, answer) {
 			temp++;
 		}
 	}
-	clueArray[clueIndexNumber][9] = "solved";
-	clueArray[clueIndexNumber][10].innerHTML = "<img src='img/statusSolved.png' border=0/>";
+	//clueArray[clueIndexNumber][9] = "solved";
+	//clueArray[clueIndexNumber][10].innerHTML = "<img src='img/statusSolved.png' border=0/>";
 }
 
 
@@ -370,6 +379,8 @@ function preloadImages() {
     ImageMultiple.src = "img/statusMultiple.png";
     ImageFailed = new Image(30,30);
     ImageFailed.src = "img/statusFailed.png";
+    ImageUser = new Image(30,30);
+    ImageUser.src = "img/statusUser.png";
 }
 
 //
