@@ -268,6 +268,7 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 	else {
 		clueArray[clueIndex][9] = "UNSOLVED";
 		clueArray[clueIndex][10].innerHTML = "<img src='img/statusFailed.png' border=0/>";
+		clueArray[clueIndex][10].title = "";
 	}
 
 	if (clueIndex == (clueArray.length - 1)) {

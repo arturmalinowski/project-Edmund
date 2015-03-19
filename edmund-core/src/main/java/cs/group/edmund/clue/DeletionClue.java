@@ -65,10 +65,10 @@ public class DeletionClue implements Clue {
             answers.addAll(solveFor(splitPhrase.get(splitPhrase.size() - 1), phrase.substring(0, phrase.lastIndexOf(" ")), key, hint, answerLength)); // assuming hint is last word
             if (answers.size() > 0)
                 return Optional.of(answers);
-            else if (searchIntensity < 2) {
-                searchIntensity++;
-                return solve(phrase, hint, answerLength);
-            }
+            //else if (searchIntensity < 2) {
+                //searchIntensity++;
+                //return solve(phrase, hint, answerLength);
+            //}
         }
         return Optional.empty();
     }
