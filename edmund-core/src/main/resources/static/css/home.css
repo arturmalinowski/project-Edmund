@@ -125,9 +125,9 @@ img {
 
 #singleClue {
     background: #3498db;
-    margin-left: 125px;
     text-align: center;
     color: white;
+    margin-left: 75px;
 }
 
 #answerLength {
@@ -140,4 +140,10 @@ img {
     margin-left: 515px;
     align: center;
     width: 120px;
+}
+
+#hint {
+    text-align: center;
+    color: white;
+    background: #3498db;
 }
