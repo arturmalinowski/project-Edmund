@@ -38,7 +38,7 @@ public class AnagramClue implements Clue {
     @Override
     public Optional<List<String>> solve(String phrase, String hint, int... answerLength) {
         String keyWord = null, possibleAnswer;
-        String[] words = phrase.replaceAll("['’]", " ").replaceAll("[-+^:,.?!'’/]", "").toUpperCase().split(" ");
+        String[] words = phrase.replaceAll("['’/]", " ").replaceAll("[-+^:,.?!'’]", "").toUpperCase().split(" ");
         ArrayList<String> clueWords = new ArrayList<>(Arrays.asList(words)), possibleAnswers = new ArrayList<>(), finalAnswers = new ArrayList<>();
         clueWords = Helper.removeDuplicates(clueWords);
 

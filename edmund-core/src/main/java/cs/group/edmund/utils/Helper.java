@@ -43,6 +43,7 @@ public class Helper {
         Set<String> s = new LinkedHashSet<>(list);
         list.clear();
         list.addAll(s);
+        list.remove("");
         return list;
     }
 
