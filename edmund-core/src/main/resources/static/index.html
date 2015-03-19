@@ -12,9 +12,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
     <title>Edmund</title>
-
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="sticky-footer.css" rel="stylesheet">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
@@ -27,7 +29,6 @@
         <nav>
             <ul class="nav nav-pills pull-right">
                 <li role="presentation" class="runButton"> <button type="button" class="btn btn-primary btn-lg" id="edmundButton" onclick="runEdmund()">Run Edmund</button></li>
-                <!--<li role="presentation" class="active" id="edmundButton" onclick="runEdmund()"><a href="#">Run Edmund</a></li>-->
                 <li role="presentation" class="file"> <input type="file" id="fileInput" onchange="uploadJSON()"></li>
             </ul>
         </nav>
@@ -51,6 +52,21 @@
             <table id="downClues"></table>
         </div>
 </div>
+
+<!-- Begin page content -->
+<div class="container">
+    <div class="page-header">
+        <!--<textarea rows="1" cols="140" id="singleClue">Or ask Edmund just one clue!</textarea>-->
+        <!--<textarea rows="1" cols="20" id="answerLength">Answer length</textarea>-->
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <!--<button type="button" class="btn btn-primary" id="askEdmund" onclick="runEdmund()">Ask Edmund!</button>-->
+    </div>
+</footer>
+
 </body>
 <script src="js/functions.js"></script>
 </html>

@@ -100,7 +100,7 @@ img {
 .runButton {
   margin-top: 17px;
   padding-right: 240px;
-  }
+   }
 
 .file {
   margin-top: 25px;
@@ -121,4 +121,13 @@ img {
 
 .btn {
     background: #2980b9;
+}
+
+#singleClue {
+    text-align: center;
+}
+
+#answerLength {
+    margin-left: 15px;
+    text-align: center;
 }
