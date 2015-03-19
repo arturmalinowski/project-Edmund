@@ -21,6 +21,7 @@ public class Selector {
 
     private final Thesaurus thesaurus;
     private final Dictionary dictionary;
+    private List<String> algoCheck = new ArrayList<>();
 
     public Selector(Thesaurus thesaurus, Dictionary dictionary) {
         this.thesaurus = thesaurus;
@@ -73,16 +74,20 @@ public class Selector {
     private void retrievePossibleAnswers(String phrase, String hint, int answerLength, List<Clue> clues, List<List<String>> allPossibleAnswers) {
         for (Clue clue : clues) {
             if (clue.isRelevant(phrase)) {
+                algoCheck.add(clue.getClass().getSimpleName());
                 logger.info("Current relevant clue type: " + clue.getClass().getSimpleName());
                 computeAnswers(phrase, hint, answerLength, allPossibleAnswers, clue);
             }
         }
         if (allPossibleAnswers.size() == 0) {
             for (Clue clue : clues) {
-                logger.info("Current non-relevant clue type: " + clue.getClass().getSimpleName());
-                computeAnswers(phrase, hint, answerLength, allPossibleAnswers, clue);
+                if (!algoCheck.contains(clue.getClass().getSimpleName())) {
+                    logger.info("Current non-relevant clue type: " + clue.getClass().getSimpleName());
+                    computeAnswers(phrase, hint, answerLength, allPossibleAnswers, clue);
+                }
             }
         }
+        algoCheck.clear();
     }
 
     private void computeAnswers(String phrase, String hint, int answerLength, List<List<String>> allPossibleAnswers, Clue clue) {
