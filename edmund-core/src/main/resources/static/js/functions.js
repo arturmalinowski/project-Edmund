@@ -183,7 +183,7 @@ function runEdmundSingle() {
     var hint = document.getElementById("hint").value.toString();
     var url = "http://localhost:9090/solve?clue=" + clue + "&hint=" + hint + "&length=" + length;
 
-    if (hint === "hint?") {
+    if ((hint === "hint?") || (hint === "")) {
         hint = "";
         for (var i = 0; i < parseInt(length); i++) {
         	hint = hint + ".";
@@ -390,11 +390,14 @@ function addClickListeners() {
 
     document.getElementById("singleClue").addEventListener("click", function(){
         document.getElementById("singleClue").innerHTML = "";
+        document.getElementById("singleClue").value = "";
     });
     document.getElementById("answerLength").addEventListener("click", function(){
             document.getElementById("answerLength").innerHTML = "";
+             document.getElementById("answerLength").value = "";
     });
     document.getElementById("hint").addEventListener("click", function(){
             document.getElementById("hint").innerHTML = "";
+            document.getElementById("hint").value = "";
     });
 }
