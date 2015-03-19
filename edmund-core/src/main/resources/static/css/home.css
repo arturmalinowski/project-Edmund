@@ -150,3 +150,11 @@ img {
     background: #3498db;
     resize: none;
 }
+
+#answer {
+    margin-left: 300px;
+    text-align: center;
+    color: white;
+    background: #3498db;
+    resize: none;
+    }

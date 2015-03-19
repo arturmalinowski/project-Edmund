@@ -177,6 +177,7 @@ function runEdmund() {
 
 //
 function runEdmundSingle() {
+    document.getElementById("answer").innerHTML = "Edmund is thinking...";
     var clue = document.getElementById("singleClue").value.toString();
     var length = document.getElementById("answerLength").value.toString();
     var hint = document.getElementById("hint").value.toString();
