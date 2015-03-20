@@ -214,24 +214,27 @@ function runEdmundSingle() {
 // Send clue to Edmund by index (WORKING)
 function sendToEdmund(clueIndex) {
 
-    if (clueArray[clueIndex][11].indexOf(".") == -1) {
-        receiveFromEdmund(clueIndex, [clueArray[clueIndex][11]], "user");
-    }
-	else if (((clueArray[clueIndex][9] === "UNCALCULATED") || (clueArray[clueIndex][9] === "MULTIPLE")) || (clueArray[clueIndex][9] === "UNSOLVED")) {
+	if (((clueArray[clueIndex][9] === "UNCALCULATED") || (clueArray[clueIndex][9] === "MULTIPLE")) || (clueArray[clueIndex][9] === "UNSOLVED")) {
 		//
-		clueArray[clueIndex][9] = "SOLVING";
-		clueArray[clueIndex][10].innerHTML = "<img src='img/statusCalculating.png' border=0/>";
+		if (clueArray[clueIndex][11].indexOf(".") == -1) {
+                receiveFromEdmund(clueIndex, [clueArray[clueIndex][11]], "user");
+        }
+        else {
+            	clueArray[clueIndex][9] = "SOLVING";
+            	clueArray[clueIndex][10].innerHTML = "<img src='img/statusCalculating.png' border=0/>";
 
-		// Generate URL for http request
-		var url = "http://localhost:9090/solve?clue=" + clueArray[clueIndex][3] + "&hint=" + clueArray[clueIndex][11] + "&length=" + clueArray[clueIndex][4];
+            	// Generate URL for http request
+            	var url = "http://localhost:9090/solve?clue=" + clueArray[clueIndex][3] + "&hint=" + clueArray[clueIndex][11] + "&length=" + clueArray[clueIndex][4];
 
-		// ajax request
-		$.getJSON(url, function(data) {
-			receiveFromEdmund(clueIndex, data, "success");
-		})
-		.error( function(data) {
-			receiveFromEdmund(clueIndex, data, "failure");
-		});
+            	// ajax request
+            	$.getJSON(url, function(data) {
+            		receiveFromEdmund(clueIndex, data, "success");
+            	})
+            	.error( function(data) {
+            		receiveFromEdmund(clueIndex, data, "failure");
+            	});
+        }
+
 	}
 	else {
 	    if ((clueIndex + 1) < clueArray.length) { sendToEdmund(clueIndex + 1); }
