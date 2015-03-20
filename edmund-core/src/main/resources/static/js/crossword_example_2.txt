@@ -1,0 +1,25 @@
+{
+	"clues": [
+			{"clueDirection":"across", "clueNumber":"3", "clueText":"His patter confused analyst", "clueLength":"9", "startPos":"(0,12)", "endPos":"(8,12)"},
+			{"clueDirection":"across", "clueNumber":"4", "clueText":"The importance of eating mud pie?", "clueLength":"9", "startPos":"(6,1)", "endPos":"(14,1)"},
+			{"clueDirection":"across", "clueNumber":"5", "clueText":"Reach up at tangled skydiving apparatus", "clueLength":"9", "startPos":"(6,7)", "endPos":"(14,7)"},
+			{"clueDirection":"across", "clueNumber":"6", "clueText":"Dreadful nag punter found offensive", "clueLength":"9", "startPos":"(6,10)", "endPos":"(14,10)"},
+			{"clueDirection":"across", "clueNumber":"8", "clueText":"Reversed out and got booked!", "clueLength":"8", "startPos":"(7,5)", "endPos":"(14,5)"},
+			{"clueDirection":"across", "clueNumber":"9", "clueText":"Bambi for example, overturned a plant", "clueLength":"4", "startPos":"(11,12)", "endPos":"(14,12)"},
+			{"clueDirection":"across", "clueNumber":"11", "clueText":"Brew some magic up pal", "clueLength":"5", "startPos":"(2,9)", "endPos":"(6,9)"},
+			{"clueDirection":"across", "clueNumber":"14", "clueText":"Go in record", "clueLength":"5", "startPos":"(3,14)", "endPos":"(7,14)"},
+			{"clueDirection":"across", "clueNumber":"16", "clueText":"Armor in the post", "clueLength":"4", "startPos":"(2,4)", "endPos":"(5,4)"},
+			{"clueDirection":"across", "clueNumber":"17", "clueText":"An elevating kipling poem", "clueLength":"2", "startPos":"(2,2)", "endPos":"(3,2)"},
+
+			{"clueDirection":"down", "clueNumber":"1", "clueText":"What's in Latin sign, if I can translate, is of no importance", "clueLength":"13", "startPos":"(0,0)", "endPos":"(0,12)"},
+			{"clueDirection":"down", "clueNumber":"2", "clueText":"Flustered, I forget rarer chilly compartment", "clueLength":"12", "startPos":"(14,0)", "endPos":"(14,13)"},
+			{"clueDirection":"down", "clueNumber":"5", "clueText":"Badly pare the fruit", "clueLength":"4", "startPos":"(6,7)", "endPos":"(6,10)"},
+			{"clueDirection":"down", "clueNumber":"10", "clueText":"Conduct uneven wrangle", "clueLength":"4", "startPos":"(7,0)", "endPos":"(7,3)"},
+			{"clueDirection":"down", "clueNumber":"12", "clueText":"Pole coming from Pakistan or Thailand", "clueLength":"5", "startPos":"(11,3)", "endPos":"(11,7)"},
+			{"clueDirection":"down", "clueNumber":"13", "clueText":"Sprout evenly in plant container", "clueLength":"3", "startPos":"(5,12)", "endPos":"(5,14)"},
+			{"clueDirection":"down", "clueNumber":"15", "clueText":"Insane damn yeti is explosive", "clueLength":"8", "startPos":"(2,0)", "endPos":"(2,7)"},
+			{"clueDirection":"down", "clueNumber":"18", "clueText":"Metal concealed by environmentalist", "clueLength":"4", "startPos":"(4,4)", "endPos":"(4,7)"}
+
+	],
+	"size" : 18
+}

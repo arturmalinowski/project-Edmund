@@ -256,10 +256,12 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 		    clueArray[clueIndex][9] = "SOLVED";
 		    clueArray[clueIndex][10].innerHTML = "<img src='img/statusSolved.png' border=0/>";
 		    updateAnswerArrayFromHints(clueIndex, newAnswer[0]);
+		    clueArray[clueIndex][12] = newAnswer;
 		}
 		else {
 		    clueArray[clueIndex][9] = "MULTIPLE";
 		    clueArray[clueIndex][10].innerHTML = "<img src='img/statusMultiple.png' border=0/>";
+		    clueArray[clueIndex][12] = newAnswer;
 		    clueArray[clueIndex][12] = newAnswer;
 		}
 
@@ -274,6 +276,7 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 	    clueArray[clueIndex][9] = "USER";
         clueArray[clueIndex][10].innerHTML = "<img src='img/statusUser.png' border=0/>";
         clueArray[clueIndex][10].title = "";
+        clueArray[clueIndex][12] = newAnswer;
         updateAnswerArrayFromHints(clueIndex, newAnswer[0]);
 	}
 	// Answer not found
@@ -281,6 +284,7 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 		clueArray[clueIndex][9] = "UNSOLVED";
 		clueArray[clueIndex][10].innerHTML = "<img src='img/statusFailed.png' border=0/>";
 		clueArray[clueIndex][10].title = "";
+		clueArray[clueIndex][12] = [];
 	}
 
 	if (clueIndex == (clueArray.length - 1)) {
