@@ -63,15 +63,6 @@ public class AnagramClueTest {
         assertThat(answer.get().get(0), is("nurture"));
     }
 
-    @Ignore
-    @Test
-    public void firstAnagramClueTestCanBeCreated() {
-        clue = new AnagramClue(thesaurus, dictionary);
-        String crypticCrossword = clue.create("nights");
-
-        assertThat(crypticCrossword, containsString("thing"));
-    }
-
     @Test
     public void anagramFindsAllWords() {
         clue = new AnagramClue(thesaurus, dictionary);
