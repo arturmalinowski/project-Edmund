@@ -16,6 +16,7 @@ public class DeletionClue implements Clue {
     private final List<String> keyWordsHead, keyWordsTail, keyWordsBoth, keyWordsMiddle, keyWordsSpecific, keyWords;
     private Thesaurus thesaurus;
     private int searchIntensity;
+    private boolean deepSearch;
 
     public DeletionClue(Thesaurus thesaurus) {
         keyWordsHead = asList("WITHOUT FIRST", "DROPPING INTRODUCTION", "AFTER COMMENCEMENT", "BEGINNING TO GO", "BEHEADED", "BEHEADING", "DECAPITATED", "FIRST OFF", "HEADLESS", "HEAD OFF", "INITIALLY LACKING", "LEADERLESS", "LOSING OPENER", "MISSING THE FIRST", "NEEDING NO INTRODUCTION", "get BEGINNING", "NOT COMMENCING", "NOT STARTING", "START OFF", "START TO GO", "SCRATCH THE HEAD", "STRIKE THE HEAD", "UNINITIATED", "UNSTARTED", "WITHOUT ORIGIN");
@@ -31,6 +32,7 @@ public class DeletionClue implements Clue {
         keyWords.addAll(keyWordsSpecific);
         this.thesaurus = thesaurus;
         searchIntensity = 0;
+        deepSearch = false;
     }
 
     @Override
@@ -65,10 +67,10 @@ public class DeletionClue implements Clue {
             answers.addAll(solveFor(splitPhrase.get(splitPhrase.size() - 1), phrase.substring(0, phrase.lastIndexOf(" ")), key, hint, answerLength)); // assuming hint is last word
             if (answers.size() > 0)
                 return Optional.of(answers);
-            //else if (searchIntensity < 2) {
-                //searchIntensity++;
-                //return solve(phrase, hint, answerLength);
-            //}
+            else if ((searchIntensity < 2) && (deepSearch)) {
+                searchIntensity++;
+                return solve(phrase, hint, answerLength);
+            }
         }
         return Optional.empty();
     }
@@ -100,7 +102,7 @@ public class DeletionClue implements Clue {
         return compareLists(potentialAnswers, solutionsList);
     }
 
-    //
+    // Solve the phrase with the Beheadment algorithm
     public ArrayList<String> returnBeheadmentDeletion(String phrase, String keyword, String hint, int... answerLength) {
         ArrayList<String> possibleSolutions = new ArrayList<>();
 
@@ -111,6 +113,7 @@ public class DeletionClue implements Clue {
         String leftWord = leftSplit[leftSplit.length - 1];
         String rightWord = rightSplit[0];
 
+        // Remove the first letter from the left and right words (including their synoynms and related words)
         if (leftWord.length() > 1)
             possibleSolutions.add(leftWord.substring(1));
         if (rightWord.length() > 1)
@@ -150,7 +153,7 @@ public class DeletionClue implements Clue {
         return Helper.filterAll(possibleSolutions, hint, answerLength);
     }
 
-    //
+    // Solve the phrase with the Curtailment algorithm
     public ArrayList<String> returnCurtailmentDeletion(String phrase, String keyword, String hint, int... answerLength) {
         ArrayList<String> possibleSolutions = new ArrayList<>();
 
@@ -161,6 +164,7 @@ public class DeletionClue implements Clue {
         String leftWord = leftSplit[leftSplit.length - 1];
         String rightWord = rightSplit[0];
 
+        // Remove the last letter from the left and right words (including their synoynms and related words)
         if (leftWord.length() > 1)
             possibleSolutions.add(leftWord.substring(0, leftWord.length() - 1));
         if (rightWord.length() > 1)
@@ -200,7 +204,7 @@ public class DeletionClue implements Clue {
         return Helper.filterAll(possibleSolutions, hint, answerLength);
     }
 
-    //
+    // Solve the phrase with the Internal algorithm
     public ArrayList<String> returnInternalDeletion(String phrase, String keyword, String hint, int... answerLength) {
         ArrayList<String> possibleSolutions = new ArrayList<>();
 
@@ -211,6 +215,7 @@ public class DeletionClue implements Clue {
         String leftWord = leftSplit[leftSplit.length - 1];
         String rightWord = rightSplit[0];
 
+        // Remove every single character from inside the left and right words (including their synoynms and related words)
         if (leftWord.length() > 2)
             possibleSolutions.addAll(gutMiddle(leftWord));
         if (rightWord.length() > 2)

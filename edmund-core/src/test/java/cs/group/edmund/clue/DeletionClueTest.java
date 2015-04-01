@@ -30,7 +30,7 @@ public class DeletionClueTest {
 
     }
 
-    // Currently 30% success ratio.
+    // Currently 30% success ratio with deepSearch.
     @Ignore
     @Test
     @Table({

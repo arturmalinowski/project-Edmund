@@ -15,7 +15,7 @@ addKeyListeners();
 // Functions
 //
 //
-// Setup Table structure (WORKING)
+// Setup Table structure
 function setupTable() {
 
 	// Add rows and cells to table
@@ -42,7 +42,7 @@ function setupTable() {
 }
 
 
-// Clear current crossword configuration (WORKING)
+// Clear current crossword configuration
 function clearConfiguration() {
 
 	// Clear crossword table
@@ -61,7 +61,7 @@ function clearConfiguration() {
 }
 
 
-// Upload selected .txt file with JSON, parse it to clueArray (WORKING)
+// Upload selected .txt file with JSON, parse it to clueArray
 function uploadJSON() {
 
 	var x = document.getElementById("fileInput");
@@ -75,7 +75,7 @@ function uploadJSON() {
 			var json = reader.result,
       		obj = JSON.parse(json);
 
-			// Import temp array into clueArray
+			// Import JSON into clueArray
 			// [clueDirection, clueNumber, clueNumberLink, clueText, clueLength, startX, startY, endX, endY, clueStatus, clueStatusLink, clueHint, clueAnswers]
 			for (var i = 0; i < obj.size; i++) {
 				clueArray.push([
@@ -101,7 +101,7 @@ function uploadJSON() {
 }
 
 
-// Fill the crossword with the contents of the answerArray (WORKING)
+// Fill the crossword with the contents of the answerArray
 function fillCrossword() {
 	for (var i = 0; i < 15; i++) {
 		for (var j = 0; j < 15; j++) {
@@ -111,7 +111,7 @@ function fillCrossword() {
 }
 
 
-// Add clue information to left side of page and crossword table (WORKING)
+// Add clue information to left side of page and crossword table
 function addClues() {
 
 	// Add clues to clue list
@@ -155,7 +155,7 @@ function addClues() {
 }
 
 
-// Send all unsolved clues to Edmund (WORKING)
+// Send all unsolved clues to Edmund
 function runEdmund() {
 
 	// Check if any clues still solving
@@ -175,7 +175,7 @@ function runEdmund() {
     	}
 }
 
-//
+// Run single clue Edmund
 function runEdmundSingle() {
     document.getElementById("answer").innerHTML = "Edmund is thinking...";
     var clue = document.getElementById("singleClue").value.toString();
@@ -211,11 +211,11 @@ function runEdmundSingle() {
 }
 
 
-// Send clue to Edmund by index (WORKING)
+// Send clue to Edmund by index
 function sendToEdmund(clueIndex) {
 
 	if (((clueArray[clueIndex][9] === "UNCALCULATED") || (clueArray[clueIndex][9] === "MULTIPLE")) || (clueArray[clueIndex][9] === "UNSOLVED")) {
-		//
+		// User filled in crossword
 		if (clueArray[clueIndex][11].indexOf(".") == -1) {
                 receiveFromEdmund(clueIndex, [clueArray[clueIndex][11]], "user");
         }
@@ -246,7 +246,7 @@ function sendToEdmund(clueIndex) {
 }
 
 
-// Receive responses from Edmund (WORKING)
+// Receive responses from Edmund
 function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 
 	// Answer found
@@ -295,7 +295,7 @@ function receiveFromEdmund(clueIndex, newAnswer, returnStatus) {
 }
 
 
-// Update the cell contents at the given coordinates (WORKING)
+// Update the cell contents at the given coordinates
 function updateCell(x, y, content) {
 	answerArray[x][y] = content;
 	document.getElementById(x + "_" + y + "_content").innerHTML = content;
@@ -303,7 +303,7 @@ function updateCell(x, y, content) {
 }
 
 
-// Update answerArray with new answers (WORKING)
+// Update answerArray with new answers
 function updateAnswerArrayFromHints(clueIndexNumber, answer) {
 
 	// fill answerArray with new answer, update clue status
@@ -320,12 +320,10 @@ function updateAnswerArrayFromHints(clueIndexNumber, answer) {
 			temp++;
 		}
 	}
-	//clueArray[clueIndexNumber][9] = "solved";
-	//clueArray[clueIndexNumber][10].innerHTML = "<img src='img/statusSolved.png' border=0/>";
 }
 
 
-// Fill answer array from crossword table content (WORKING)
+// Fill answer array from crossword table content
 function updateAnswerArrayFromUser() {
 
 	for (var i = 0; i < 15; i++) {
@@ -336,7 +334,7 @@ function updateAnswerArrayFromUser() {
 }
 
 
-// Generate hints by iterating through the answerArray (WORKING)
+// Generate hints by iterating through the answerArray
 function generateHints() {
 
 	for (var i in clueArray) {
@@ -363,14 +361,14 @@ function generateHints() {
 }
 
 
-// Blank the cell at the given coordinates (WORKING)
+// Blank the cell at the given coordinates
 function setBlank(x, y) {
 	var cell = document.getElementById("crosswordTable").rows[parseInt(y)].cells[parseInt(x)].className = "blankCell";
 	updateCell(y, x, "");
 }
 
 
-// Unblank the cell at the given coordinates (WORKING)
+// Unblank the cell at the given coordinates
 function setUnblank(x, y) {
 	var cell = document.getElementById("crosswordTable").rows[parseInt(y)].cells[parseInt(x)].className = "crosswordCell";
 	updateCell(x, y, ".");

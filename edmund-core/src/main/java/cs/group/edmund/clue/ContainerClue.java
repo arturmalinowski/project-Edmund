@@ -17,12 +17,10 @@ public class ContainerClue implements Clue {
     private final List<String> keyWords;
     private Thesaurus thesaurus;
     private String hint;
-    private int searchIntensity;
 
     public ContainerClue(Thesaurus thesaurus) {
         keyWords = asList("CAPTURING", "SURROUNDED", "PUT IN", "KEEPS", "INSIDE", "IN", "CLOTHING", "ABOUT", "ADMIT", "ADMITS", "ADMITTING", "AROUND", "BESIEGE", "BESIEGES", "BESIEGING", "BOX", "BOXES", "BOXING", "BRIDGE", "BRIDGES", "BRIDGING", "CAPTURE", "CAPTURED", "CAPTURES", "CAPTURING", "CATCH", "CATCHES", "CATCHING", "CIRCLE", "CIRCLES", "CIRCLING", "CLUTCH", "CLUTCHES", "CLUTCHING", "CONTAIN", "CONTAINING", "CONTAINS", "COVER", "COVERING", "COVERS", "EMBRACE", "EMBRACES", "EMBRACING", "ENCIRCLE", "ENCIRCLES", "ENCIRCLING", "ENFOLDING", "ENFOLDS", "ENFOLD", "ENVELOPING", "ENVELOPS", "ENVELOP", "EXTERNAL", "FLANKING", "FLANK", "FLANKS", "FRAMED", "FRAMES", "FRAMING", "FRAME", "GRASP", "GRASPING", "GRASPS", "HARBOUR", "HARBOURS", "HARBOURING", "HOLD", "HOLDING", "HOLDS", "HOUSE", "HOUSES", "HOUSING", "OUTSIDE", "ENTERING", "RINGS", "ROUND", "SHELTER", "SHELTERING", "SHELTERS", "SURROUND", "SURROUNDING", "SURROUNDS", "SWALLOW", "SWALLOWING", "SWALLOWS", "TAKE IN", "TAKES IN", "TAKING IN", "WITHOUT", "WRAP", "WRAPPING", "WRAPS");
         this.thesaurus = thesaurus;
-        searchIntensity = 0;
     }
 
     @Override
@@ -30,8 +28,10 @@ public class ContainerClue implements Clue {
         return null;
     }
 
+
     @Override
     public boolean isRelevant(String phrase) {
+        // Checks if the keyword is present in the given phrase
         for (String keyWord : keyWords) {
             keyWord = keyWord.toLowerCase();
             if (((phrase.startsWith(keyWord + " ")) || (phrase.endsWith(" " + keyWord))) || (phrase.contains(" " + keyWord + " "))) {
@@ -59,23 +59,17 @@ public class ContainerClue implements Clue {
             answers.addAll(solveFor(splitPhrase.get(splitPhrase.size() - 1), phrase.substring(0, phrase.lastIndexOf(" ")), key, hint, answerLength)); // assuming hint is last word
             if (answers.size() > 0)
                 return Optional.of(answers);
-            //else if (searchIntensity == 0) {
-                //searchIntensity++;
-                //return solve(phrase, hint, answerLength);
-            //}
         }
         return Optional.empty();
     }
 
-    //
+    // Solve the phrase given an assumed clue word to the answer.
     public List<String> solveFor(String assumedClue, String phrase, String keyword, String hint, int... answerLength)
     {
         // Get synonyms and related words for the assumed answer clue
         ArrayList<String> potentialAnswers = new ArrayList<>();
         potentialAnswers.addAll(thesaurus.getAllSynonymsXML(assumedClue));
         potentialAnswers.addAll(thesaurus.getRelatedWordsXML(assumedClue));
-        if (searchIntensity > 0) // NEW
-            potentialAnswers.addAll(thesaurus.getRelatedWordsOfSynonymsXML(assumedClue)); // NEW
         potentialAnswers = Helper.filterAll(potentialAnswers, hint, answerLength);
 
         // Process the rest of the clue to find a match with the assumed answer clue results
@@ -86,8 +80,7 @@ public class ContainerClue implements Clue {
         return compareLists(potentialAnswers, solutionsList);
     }
 
-    // Compare the list of solutions to the list of synonyms.
-    // Return a match, else return possible answers.
+    // Compare the list of solutions to the list of synonyms, return the match.
     public List<String> compareLists(ArrayList<String> synonyms, ArrayList<String> solutions)
     {
         if ((synonyms != null) && (solutions != null)) {
@@ -136,7 +129,7 @@ public class ContainerClue implements Clue {
         String rightWord = rightSplit[0];
 
         // Add synonyms/related words of left/right most words to arrays (including the word itself), then
-        // Add synonyms/related words of 2 left/right most words to arrays (including the word itself), then
+        // Add synonyms/related words of the 2 left/right most words to arrays (including the word itself), then
         if (!leftWord.equals("")) {
             leftSynonyms.add(leftWord);
 
@@ -200,7 +193,7 @@ public class ContainerClue implements Clue {
         return possibleWords;
     }
 
-    //
+    // Filter words larger than the answer length
     public ArrayList<String> filterLargerWords(ArrayList<String> list, int... answerLength)
     {
         if (list.size() > 0) {
